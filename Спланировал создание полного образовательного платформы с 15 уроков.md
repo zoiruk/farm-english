@@ -1,0 +1,79 @@
+The user wants me to create a comprehensive A0-A1 curriculum for seasonal workers based on the CEFR A0-A1 document. Let me analyze what's in the CEFR A0-A1 document and map every grammar point and vocabulary theme to farm/seasonal worker context.
+From the CEFR A0-A1 document:
+Grammar
+1. am / is /are – positive, negative, question forms
+2. Subject pronouns (I, you, he, etc.)
+3. Possessive adjectives (my, your, etc.)
+4. Object pronouns (me, him, us, etc.)
+5. This is …
+6. Questions (where / what)
+7. Possessive 's
+8. have / has
+9. Present Simple – positive, negative, questions forms
+10. articles (a / an)
+11. this / that / these / those
+12. Questions about quantity
+13. There is / are (a / some / any)
+14. Prepositions (place & time)
+15. was / were born
+16. Past Simple – regular & irregular – positive, negative, questions forms
+17. can / can't
+18. want / like / would like
+19. Present Simple and Present Continuous – positive, negative, question forms
+20. Present Continuous for future
+
+Vocabulary:
+1. numbers 1-100
+2. everyday objects
+3. countries / cities
+4. nationalities / languages
+5. jobs
+6. personal information
+7. family relations
+8. adjectives (describing an object, person or place)
+9. sports & activities
+10. food & drink
+11. everyday verbs
+12. adverbs of frequency
+13. verb + noun collocations
+14. verb + adverb collocations
+15. rooms in a house & furniture
+16. places in a city / village
+17. colours
+18. clothing
+19. transport & travel
+
+Everyday English & Productive Skills:
+1. greetings / social expressions
+2. telling the time
+3. talking about days, dates, years
+4. using the phone
+5. requests & offers
+6. asking for & giving simple directions
+7. in a restaurant
+8. shopping
+9. asking about problems & giving suggestions
+10. writing a postcard
+11. filling in forms
+12. writing a short description of a place, person or experience
+13. using simple texts to locate and use information
+
+…
+
+Good. Now let me write the complete platform as an HTML file with all 15 A0-A1 lessons. This will be a large file. Let me write it carefully.
+I'll create a single HTML file with:
+
+* All 15 lessons fully mapped from the CEFR A0-A1 document
+* Farm/seasonal worker adapted content
+* RU + UZ translations
+* Web Speech API
+* localStorage progress
+* Clean mobile-first UI
+
+Let me write all the lesson data first, then the full UI code.
+I'll structure it as:
+
+* 6 modules
+* 15 lessons total
+* Each lesson: grammar (rule + 3 examples) + words (6) + dialogue (5 lines) + quiz (3 Qs)
+

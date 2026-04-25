@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>FarmEnglish — Английский для сезонных рабочих</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f0f2f5;
+      --bg-top: linear-gradient(180deg, #dce4ed 0%, #f0f2f5 40%);
+      --card: #ffffff;
+      --card-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --card-shadow-hover: 0 4px 12px rgba(0,0,0,0.08);
+      --text: #1a1a2e;
+      --text2: #5a6070;
+      --text3: #8e95a2;
+      --border: #e8eaed;
+      --radius: 16px;
+      /* CEFR Level Colors */
+      --c-a1: #e87830;
+      --c-a2: #22a65e;
+      --c-b1: #1a9cb0;
+      --c-b2: #3dba5e;
+      --c-c1: #c23a82;
+      --c-c2: #6b7280;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      outline: none;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    .app {
+      max-width: 460px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 30px;
+      background: var(--bg-top);
+      position: relative;
+    }
+
+    /* Header */
+    .hdr {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px 10px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(240,242,245,0.75);
+    }
+
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-icon {
+      font-size: 22px;
+    }
+
+    .logo-txt {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      color: var(--text);
+    }
+
+    .logo-txt em {
+      font-style: normal;
+      color: var(--c-a1);
+    }
+
+    .lang-btn {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: var(--card-shadow);
+      font-family: inherit;
+    }
+
+    .lang-btn span {
+      font-size: 12px;
+    }
+
+    /* Hero — Title Section */
+    .hero {
+      margin: 20px 20px 0;
+      padding: 0;
+    }
+
+    .hero-title {
+      font-size: 30px;
+      font-weight: 900;
+      margin: 0 0 6px 0;
+      line-height: 1.15;
+      color: var(--text);
+      letter-spacing: -0.5px;
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--text2);
+      margin: 0 0 24px;
+      font-weight: 400;
+    }
+
+    /* Level Cards */
+    .lv-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 0 16px 20px;
+    }
+
+    .lv-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px 20px 18px;
+      border-left: 4px solid var(--c-a1);
+      position: relative;
+      text-decoration: none;
+      color: inherit;
+      transition: box-shadow 0.25s, transform 0.15s;
+      display: block;
+      box-shadow: var(--card-shadow);
+      cursor: pointer;
+    }
+
+    .lv-card:hover {
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    .lv-card:active {
+      transform: scale(0.985);
+    }
+
+    .lv-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 10px;
+    }
+
+    .lv-icon-float {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      opacity: 0.85;
+    }
+
+    .lv-name {
+      display: block;
+      font-size: 19px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--text);
+      line-height: 1.2;
+      letter-spacing: -0.3px;
+      padding-right: 40px;
+    }
+
+    .lv-desc {
+      display: block;
+      font-size: 14px;
+      color: var(--text2);
+      line-height: 1.4;
+      margin-bottom: 16px;
+      padding-right: 20px;
+    }
+
+    .lv-btm {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .lv-link {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--c-a1);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .lv-link-arrow {
+      font-size: 18px;
+      transition: transform 0.2s;
+    }
+
+    .lv-card:hover .lv-link-arrow {
+      transform: translateX(3px);
+    }
+
+    .lv-prog-txt {
+      font-size: 12px;
+      color: var(--text3);
+      font-weight: 500;
+    }
+
+    /* Locked Level */
+    .lv-card.locked {
+      opacity: 0.55;
+      cursor: default;
+    }
+
+    .lv-card.locked:hover {
+      box-shadow: var(--card-shadow);
+    }
+
+    .lv-card.locked:active {
+      transform: none;
+    }
+
+    .lock-ic {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      font-size: 16px;
+      color: var(--text3);
+    }
+
+    /* Bottom Nav */
+    .nav {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 460px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 8px 0 22px 0;
+      z-index: 100;
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      text-decoration: none;
+      color: var(--text3);
+      border: none;
+      background: none;
+      cursor: pointer;
+      transition: color 0.2s;
+      font-family: inherit;
+    }
+
+    .nav-item.active {
+      color: var(--c-a1);
+    }
+
+    .nav-ic {
+      font-size: 22px;
+      margin-bottom: 1px;
+      transition: transform 0.2s;
+    }
+
+    .nav-item.active .nav-ic {
+      transform: scale(1.1);
+    }
+
+    .nav-lbl {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 1000;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal {
+      width: 100%;
+      max-width: 460px;
+      background: #ffffff;
+      border-radius: 20px 20px 0 0;
+      padding: 20px 20px 36px 20px;
+      animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    .modal-handle {
+      width: 36px;
+      height: 4px;
+      background: #d1d5db;
+      border-radius: 2px;
+      margin: 0 auto 20px auto;
+    }
+
+    .lang-opt {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      cursor: pointer;
+      margin-bottom: 4px;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .lang-opt:active {
+      background: #f5f5f5;
+    }
+
+    .lang-opt.active {
+      background: rgba(232,120,48,0.08);
+      border-color: rgba(232,120,48,0.2);
+    }
+
+    .lang-opt .flag {
+      font-size: 26px;
+    }
+
+    .lang-opt .name {
+      font-size: 16px;
+      font-weight: 600;
+      flex: 1;
+      color: var(--text);
+    }
+
+    .lang-opt .check {
+      color: var(--c-a1);
+      font-weight: 800;
+      opacity: 0;
+    }
+
+    .lang-opt.active .check {
+      opacity: 1;
+    }
+
+    /* Stats Row */
+    .stats-row {
+      display: flex;
+      gap: 10px;
+      margin: 0 16px 24px;
+    }
+
+    .stat-pill {
+      flex: 1;
+      background: var(--card);
+      border-radius: 14px;
+      padding: 14px 12px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+      cursor: default;
+      transition: box-shadow 0.2s, transform 0.15s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .stat-pill.clickable {
+      cursor: pointer;
+    }
+
+    .stat-pill.clickable:hover {
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    .stat-pill.clickable:active {
+      transform: scale(0.97);
+    }
+
+    .stat-val {
+      display: block;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .stat-ic {
+      font-size: 16px;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .stat-lbl {
+      display: block;
+      font-size: 10px;
+      color: var(--text3);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app" id="app">
+    <!-- Header -->
+    <div class="hdr">
+      <div class="logo-wrap">
+        <span class="logo-icon">🌿</span>
+        <div class="logo-txt">Farm<em>English</em></div>
+      </div>
+      <button class="lang-btn" onclick="openModal()">
+        <span id="cur_lang_flag">🇷🇺</span> <span id="cur_lang_name">RU</span>
+      </button>
+    </div>
+
+    <!-- Hero — Title -->
+    <div class="hero">
+      <h1 class="hero-title" id="h_title">Английский для<br>сезонных работников</h1>
+      <p class="hero-sub" id="h_sub">Выберите ваш уровень</p>
+    </div>
+
+    <!-- Stats + Navigation Pills -->
+    <div class="stats-row">
+      <div class="stat-pill">
+        <span class="stat-val" id="st_lessons">0</span>
+        <span class="stat-lbl" id="sl_lessons">уроков</span>
+      </div>
+      <a class="stat-pill clickable" href="a1.html#phrases">
+        <span class="stat-ic">💬</span>
+        <span class="stat-val" id="st_words">0</span>
+        <span class="stat-lbl" id="sl_words">разговорник</span>
+      </a>
+      <a class="stat-pill clickable" href="a1.html">
+        <span class="stat-ic">📊</span>
+        <span class="stat-val" id="st_streak">0</span>
+        <span class="stat-lbl" id="sl_streak">прогресс</span>
+      </a>
+    </div>
+
+    <!-- Levels List -->
+    <div class="lv-list" id="lv_list">
+      <!-- JS renders levels here -->
+    </div>
+
+
+  </div>
+
+  <!-- Language Modal -->
+  <div class="modal-overlay" id="modal" onclick="closeModal(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-handle"></div>
+      <div class="lv-list-modal">
+        <div class="lang-opt" id="opt_ru" onclick="changeLang('ru')">
+          <span class="flag">🇷🇺</span>
+          <span class="name">Русский</span>
+          <span class="check">✓</span>
+        </div>
+        <div class="lang-opt" id="opt_uz" onclick="changeLang('uz')">
+          <span class="flag">🇺🇿</span>
+          <span class="name">O'zbekcha</span>
+          <span class="check">✓</span>
+        </div>
+        <div class="lang-opt" id="opt_tj" onclick="changeLang('tj')">
+          <span class="flag">🇹🇯</span>
+          <span class="name">Тоҷикӣ</span>
+          <span class="check">✓</span>
+        </div>
+        <div class="lang-opt" id="opt_kg" onclick="changeLang('kg')">
+          <span class="flag">🇰🇬</span>
+          <span class="name">Кыргызча</span>
+          <span class="check">✓</span>
+        </div>
+        <div class="lang-opt" id="opt_kz" onclick="changeLang('kz')">
+          <span class="flag">🇰🇿</span>
+          <span class="name">Қазақша</span>
+          <span class="check">✓</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="translations.js"></script>
+  <script>
+    // window._lang уже инициализирован в translations.js через getLang()
+
+    const LEVELS = [
+      { id: 'a1', code: 'CEFR A0-A1', name_key: 'level_a1_title', desc_key: 'level_a1_desc', file: 'a1.html', color: '#e87830', icon: '📘', iconBg: 'rgba(232,120,48,0.12)' },
+      { id: 'a2', code: 'CEFR A1-A2', name_key: 'level_a2_title', desc_key: 'level_a2_desc', file: 'a2.html', color: '#22a65e', icon: '📗', iconBg: 'rgba(34,166,94,0.12)', locked: true },
+      { id: 'b1', code: 'CEFR A2-B1', name_key: 'level_b1_title', desc_key: 'level_b1_desc', file: 'b1.html', color: '#1a9cb0', icon: '📙', iconBg: 'rgba(26,156,176,0.12)', locked: true },
+      { id: 'b2', code: 'CEFR B1-B2', name_key: 'level_b2_title', desc_key: 'level_b2_desc', file: 'b2.html', color: '#3dba5e', icon: '📕', iconBg: 'rgba(61,186,94,0.12)', locked: true },
+      { id: 'c1', code: 'CEFR B2-C1', name_key: 'level_c1_title', desc_key: 'level_c1_desc', file: 'c1.html', color: '#c23a82', icon: '💎', iconBg: 'rgba(194,58,130,0.12)', locked: true }
+    ];
+
+    function render() {
+      const lang = window._lang || 'ru';
+
+      // Stats
+      const doneA1 = JSON.parse(localStorage.getItem('fe_a1') || '[]');
+      document.getElementById('st_lessons').innerText = doneA1.length;
+      document.getElementById('st_words').innerText = localStorage.getItem('fe_words') || '0';
+      document.getElementById('st_streak').innerText = localStorage.getItem('fe_streak') || '0';
+
+      // Language header
+      const flags = { ru: '🇷🇺', uz: '🇺🇿', tj: '🇹🇯', kg: '🇰🇬', kz: '🇰🇿' };
+      document.getElementById('cur_lang_name').innerText = lang.toUpperCase();
+      document.getElementById('cur_lang_flag').innerText = flags[lang] || '🇷🇺';
+
+      // Hero
+      const titleMap = {ru:'Английский для<br>сезонных работников',uz:"Mavsumiy ishchilar<br>uchun ingliz tili",tj:'Забони англисӣ барои<br>коргарони мавсумӣ',kg:'Мезгилдик жумушчулар<br>үчүн англис тили',kz:'Маусымдық жұмысшылар<br>үшін ағылшын тілі'};
+      const subMap = {ru:'Выберите ваш уровень',uz:'Darajangizni tanlang',tj:'Сатҳи худро интихоб кунед',kg:'Деңгээлиңизди тандаңыз',kz:'Деңгейіңізді таңдаңыз'};
+      document.getElementById('h_title').innerHTML = titleMap[lang] || titleMap.ru;
+      document.getElementById('h_sub').innerText = subMap[lang] || subMap.ru;
+
+      // Stat labels — first pill is lesson count, others are nav shortcuts
+      const phraseMap={ru:'Разговорник',uz:'Iboralar',tj:'Ибораҳо',kg:'Сөздүк',kz:'Тіркестер'};
+      const progressMap={ru:'Прогресс',uz:'Natijalar',tj:'Пешрафт',kg:'Прогресс',kz:'Прогресс'};
+      document.getElementById('sl_lessons').innerText = t('lessons');
+      document.getElementById('sl_words').innerText = phraseMap[lang]||phraseMap.ru;
+      document.getElementById('sl_streak').innerText = progressMap[lang]||progressMap.ru;
+
+
+      // Level cards
+      const list = document.getElementById('lv_list');
+      list.innerHTML = '';
+
+      LEVELS.forEach(lv => {
+        const isLocked = lv.locked && doneA1.length < 15;
+        const doneCount = lv.id === 'a1' ? doneA1.length : 0;
+        const total = 15;
+
+        const card = document.createElement('div');
+        card.className = `lv-card ${isLocked ? 'locked' : ''}`;
+        card.style.borderLeftColor = lv.color;
+        card.onclick = () => { if (!isLocked) window.location.href = lv.file; };
+
+        const linkLabel = isLocked ? t('locked') : (doneCount > 0 ? t('continue_btn') : t('start'));
+
+        card.innerHTML = `
+          ${isLocked
+            ? '<span class="lock-ic">🔒</span>'
+            : `<div class="lv-icon-float" style="background:${lv.iconBg}">${lv.icon}</div>`
+          }
+          <span class="lv-badge" style="color:${lv.color}">${lv.code}</span>
+          <span class="lv-name">${t(lv.name_key)}</span>
+          <span class="lv-desc">${t(lv.desc_key)}</span>
+          <div class="lv-btm">
+            <span class="lv-link" style="color:${lv.color}">
+              ${linkLabel} <span class="lv-link-arrow">→</span>
+            </span>
+            ${!isLocked && lv.id === 'a1' ? `<span class="lv-prog-txt">${doneCount} / ${total}</span>` : ''}
+          </div>
+        `;
+        list.appendChild(card);
+      });
+
+      // Active language in modal
+      document.querySelectorAll('.lang-opt').forEach(opt => {
+        opt.classList.toggle('active', opt.id === 'opt_' + lang);
+      });
+    }
+
+    function openModal() { document.getElementById('modal').style.display = 'flex'; }
+    function closeModal(e) { document.getElementById('modal').style.display = 'none'; }
+    function changeLang(l) {
+      setLang(l);  // setLang() из translations.js — обновляет window._lang и localStorage
+      render();
+      closeModal();
+    }
+
+    // Инициализация
+    window.onload = render;
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,1958 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>FarmEnglish — A0-A1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+      background: #f0f2f5;
+      color: #1a1a2e;
+      min-height: 100vh;
+      line-height: 1.5
+    }
+
+    .app {
+      max-width: 460px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(180deg, #dce4ed 0%, #f0f2f5 35%)
+    }
+
+    .float-back {
+      position: fixed;
+      top: 12px;
+      right: max(12px, calc(50% - 218px));
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 12px 8px 16px;
+      background: rgba(255, 255, 255, .88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid #e8eaed;
+      border-radius: 99px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1a1a2e;
+      cursor: pointer;
+      font-family: inherit;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+      transition: transform .15s, box-shadow .15s
+    }
+
+    .float-back:active {
+      transform: scale(.95);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .06)
+    }
+
+    .float-back .fb-arrow {
+      font-size: 15px;
+      color: #e87830
+    }
+
+    .scr {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px
+    }
+
+    /* Chapter card — reference style */
+    .ch-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 18px 20px 16px;
+      margin-bottom: 14px;
+      border-left: 4px solid #3b82f6;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .05);
+      cursor: pointer;
+      transition: box-shadow .2s, transform .15s
+    }
+
+    .ch-card:active {
+      transform: scale(.985)
+    }
+
+    .ch-badge {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .7px;
+      margin-bottom: 8px;
+      display: inline-block
+    }
+
+    .ch-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+      line-height: 1.25;
+      letter-spacing: -.2px
+    }
+
+    .ch-sub {
+      font-size: 13px;
+      color: #8e95a2;
+      margin-bottom: 14px;
+      font-weight: 400
+    }
+
+    .ch-prog-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .ch-prog-bar {
+      flex: 1;
+      background: #e8eaed;
+      border-radius: 99px;
+      height: 6px
+    }
+
+    .ch-prog-fill {
+      height: 6px;
+      border-radius: 99px;
+      transition: width .5s
+    }
+
+    .ch-prog-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #e8eaed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0
+    }
+
+    .ch-prog-dot.done {
+      font-size: 14px
+    }
+
+    /* Lesson inner view */
+    .les-scr {
+      flex: 1;
+      overflow-y: auto
+    }
+
+    .les-hdr {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e8eaed;
+      position: sticky;
+      top: 0;
+      z-index: 50
+    }
+
+    .back-btn {
+      background: #f0f2f5;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 7px 14px;
+      font-size: 13px;
+      color: #1a1a2e;
+      cursor: pointer;
+      font-weight: 600;
+      white-space: nowrap;
+      font-family: inherit
+    }
+
+    .les-hdr-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a1a2e;
+      flex: 1;
+      line-height: 1.3
+    }
+
+    .les-hdr-lvl {
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      background: #e87830;
+      border-radius: 8px;
+      padding: 3px 10px;
+      white-space: nowrap
+    }
+
+    .tabs {
+      display: flex;
+      background: #e8eaed;
+      margin: 12px 16px;
+      border-radius: 12px;
+      padding: 3px;
+      gap: 3px
+    }
+
+    .tab {
+      flex: 1;
+      padding: 8px 2px;
+      border: none;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      background: none;
+      color: #8e95a2;
+      font-family: inherit
+    }
+
+    .tab.on {
+      background: #fff;
+      color: #1a1a2e;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .08)
+    }
+
+    .les-body {
+      padding: 0 16px 80px
+    }
+
+    .g-card {
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid #e8eaed;
+      padding: 16px;
+      margin-bottom: 12px
+    }
+
+    .g-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e87830;
+      margin-bottom: 6px
+    }
+
+    .g-rule {
+      font-size: 14px;
+      color: #333;
+      line-height: 1.7;
+      background: #fef7f0;
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 10px
+    }
+
+    .g-rule code {
+      font-family: inherit;
+      font-weight: 700;
+      color: #1a1a2e
+    }
+
+    .g-ex-box {
+      border-left: 3px solid #e87830;
+      padding: 10px 14px;
+      background: #fef7f0;
+      border-radius: 0 10px 10px 0;
+      margin-bottom: 8px
+    }
+
+    .g-en {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 4px
+    }
+
+    .g-tr {
+      font-size: 12px;
+      color: #666
+    }
+
+    .g-note {
+      font-size: 12px;
+      color: #888;
+      margin-top: 8px;
+      font-style: italic;
+      background: #fffbe6;
+      padding: 8px 12px;
+      border-radius: 10px
+    }
+
+    .speak-btn {
+      background: #e87830;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 7px 14px;
+      font-size: 12px;
+      cursor: pointer;
+      margin-top: 8px;
+      font-family: inherit;
+      font-weight: 600
+    }
+
+    .w-hint {
+      font-size: 13px;
+      color: #c05600;
+      background: #fef7f0;
+      border-radius: 10px;
+      padding: 10px;
+      text-align: center;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .w-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px
+    }
+
+    .w-card {
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid #e8eaed;
+      padding: 14px 10px;
+      cursor: pointer;
+      text-align: center;
+      transition: all .15s
+    }
+
+    .w-card:active {
+      background: #fef7f0;
+      border-color: #e87830
+    }
+
+    .w-em {
+      font-size: 30px;
+      margin-bottom: 6px;
+      display: block
+    }
+
+    .w-en {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a1a2e
+    }
+
+    .w-ru {
+      font-size: 11px;
+      color: #666;
+      margin-top: 3px
+    }
+
+    .w-pn {
+      font-size: 11px;
+      color: #e87830;
+      margin-top: 3px;
+      font-style: italic
+    }
+
+    .d-play {
+      background: #e87830;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      margin-bottom: 14px;
+      font-family: inherit
+    }
+
+    .d-bbl {
+      margin-bottom: 11px
+    }
+
+    .d-mgr {
+      background: #fef7f0;
+      border-radius: 4px 14px 14px 14px;
+      padding: 11px 14px;
+      max-width: 88%
+    }
+
+    .d-wkr {
+      background: #fff;
+      border: 1px solid #e8eaed;
+      border-radius: 14px 4px 14px 14px;
+      padding: 11px 14px;
+      max-width: 88%;
+      margin-left: auto
+    }
+
+    .d-spkr {
+      font-size: 10px;
+      font-weight: 700;
+      color: #aaa;
+      margin-bottom: 3px
+    }
+
+    .d-txt {
+      font-size: 14px;
+      color: #1a1a2e;
+      line-height: 1.5;
+      font-weight: 500
+    }
+
+    .d-tr {
+      font-size: 11px;
+      color: #888;
+      margin-top: 3px
+    }
+
+    .d-spk-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 4px;
+      opacity: .7
+    }
+
+    .q-card {
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid #e8eaed;
+      padding: 16px;
+      margin-bottom: 12px
+    }
+
+    .q-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: #e87830;
+      margin-bottom: 6px
+    }
+
+    .q-q {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 12px;
+      line-height: 1.4
+    }
+
+    .q-hint {
+      font-size: 14px;
+      font-weight: 400;
+      color: #8e95a2;
+      margin-top: 6px
+    }
+
+    .q-opts {
+      display: flex;
+      flex-direction: column;
+      gap: 8px
+    }
+
+    .q-opt {
+      background: #f5f6f8;
+      border: 1px solid #e8eaed;
+      border-radius: 12px;
+      padding: 12px 15px;
+      font-size: 14px;
+      cursor: pointer;
+      color: #333;
+      text-align: left;
+      font-weight: 500;
+      font-family: inherit
+    }
+
+    .q-opt.correct {
+      background: #ecfdf5;
+      border-color: #22a65e;
+      color: #166534;
+      font-weight: 600
+    }
+
+    .q-opt.wrong {
+      background: #fef2f2;
+      border-color: #ef4444;
+      color: #991b1b
+    }
+
+    .q-fb {
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 8px;
+      text-align: center
+    }
+
+    .q-fb.ok {
+      color: #22a65e
+    }
+
+    .q-fb.no {
+      color: #ef4444
+    }
+
+    .done-banner {
+      background: linear-gradient(135deg, #e87830, #f59e0b);
+      border-radius: 14px;
+      padding: 22px;
+      text-align: center;
+      margin-top: 8px;
+      margin-bottom: 16px
+    }
+
+    .done-emoji {
+      font-size: 40px;
+      margin-bottom: 8px
+    }
+
+    .done-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px
+    }
+
+    .done-sub {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .85);
+      margin-bottom: 12px
+    }
+
+    .finish-btn {
+      background: #fff;
+      color: #e87830;
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      font-family: inherit
+    }
+
+    .pf-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+      overflow-x: auto;
+      padding-bottom: 2px
+    }
+
+    .pf-chip {
+      background: #fff;
+      border: 1px solid #e8eaed;
+      border-radius: 99px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #666;
+      white-space: nowrap;
+      cursor: pointer;
+      flex-shrink: 0;
+      font-family: inherit
+    }
+
+    .pf-chip.on {
+      background: #e87830;
+      border-color: #e87830;
+      color: #fff
+    }
+
+    .ph-item {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #e8eaed;
+      padding: 13px 15px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .ph-txt {
+      flex: 1
+    }
+
+    .ph-en {
+      font-size: 14px;
+      font-weight: 600;
+      color: #1a1a2e
+    }
+
+    .ph-tr {
+      font-size: 12px;
+      color: #888;
+      margin-top: 2px
+    }
+
+    .ph-sp {
+      background: #fef7f0;
+      border: 1px solid #e8eaed;
+      border-radius: 8px;
+      padding: 7px 10px;
+      font-size: 16px;
+      cursor: pointer;
+      flex-shrink: 0
+    }
+
+    .str-card {
+      background: linear-gradient(135deg, #e87830, #f59e0b);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 14px
+    }
+
+    .str-n {
+      font-size: 40px;
+      font-weight: 700;
+      color: #fff
+    }
+
+    .str-info .str-t {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff
+    }
+
+    .str-info .str-s {
+      font-size: 12px;
+      color: rgba(255, 255, 255, .8);
+      margin-top: 3px
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px
+    }
+
+    .st-card {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #e8eaed;
+      padding: 15px;
+      text-align: center
+    }
+
+    .st-n {
+      font-size: 28px;
+      font-weight: 800;
+      color: #e87830
+    }
+
+    .st-l {
+      font-size: 12px;
+      color: #8e95a2;
+      margin-top: 3px;
+      font-weight: 500
+    }
+
+    .prog-bar-lg {
+      background: #e8eaed;
+      border-radius: 99px;
+      height: 8px;
+      margin: 8px 0 16px
+    }
+
+    .prog-bar-lg-fill {
+      background: #e87830;
+      height: 8px;
+      border-radius: 99px;
+      transition: width .5s
+    }
+
+    .sec-lbl {
+      font-size: 11px;
+      font-weight: 700;
+      color: #8e95a2;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      margin: 0 0 10px
+    }
+
+    .g-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      overflow-x: auto;
+      padding-bottom: 2px
+    }
+
+    .g-tab {
+      flex: 1;
+      background: #fff;
+      border: .5px solid #ddd8c8;
+      border-radius: 8px;
+      padding: 10px 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #666;
+      text-align: center;
+      white-space: nowrap
+    }
+
+    .g-tab.on {
+      background: #e6f4e0;
+      border-color: #2a5320;
+      color: #2a5320
+    }
+
+    .g-table-wrap {
+      overflow-x: auto;
+      background: #fff;
+      border-radius: 12px;
+      border: .5px solid #ddd8c8;
+      margin-bottom: 12px
+    }
+
+    .g-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    .g-table th {
+      background: #f7f5f0;
+      padding: 10px;
+      font-weight: 600;
+      color: #666;
+      border-bottom: 1px solid #ddd8c8;
+      font-size: 12px
+    }
+
+    .g-table td {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      vertical-align: top
+    }
+
+    .g-transcr {
+      font-size: 11px;
+      color: #e87830;
+      margin-top: 2px
+    }
+
+    .g-tr-cell {
+      font-size: 12px;
+      color: #555;
+      margin-top: 2px
+    }
+
+    .g-cult {
+      background: #fffbe6;
+      border-left: 4px solid #f9a825;
+      padding: 12px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 12px;
+      font-size: 13px;
+      color: #555;
+      line-height: 1.4
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app" id="app">
+    <button class="float-back" onclick="goBack()"><svg class="fb-arrow" width="16" height="16" viewBox="0 0 24 24"
+        fill="none" stroke="#e87830" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6" />
+      </svg> <span id="backLbl">Назад</span></button>
+    <div id="root" style="flex:1;overflow:hidden;display:flex;flex-direction:column"></div>
+  </div>
+  <script>
+    // ── TRANSLATIONS ──────────────────────────────────────────────────────────────
+    const TR = {
+      ru: {
+        home: 'Главная', phrases: 'Фразник', progress: 'Прогресс',
+        done_of: (n, t) => `${n} / ${t} уроков пройдено`,
+        grammar: 'Грамматика', words: 'Слова', dialogue: 'Диалог', quiz: 'Тест',
+        back: 'Назад', manager: 'Менеджер', worker: 'Рабочий',
+        tap_word: 'Нажмите на слово — услышите произношение',
+        play: '▶ Слушать диалог', complete: '✓ Завершить урок', completed: '✓ Пройден',
+        all: 'Все', work: 'Работа', health: 'Здоровье', pay: 'Зарплата', shop: 'Магазин', social: 'Общение', sos: 'SOS',
+        correct: '✓ Правильно!', wrong: '✗ Неверно — попробуйте снова',
+        congrats: 'Урок пройден! 🎉', score: 'Все ответы верны!',
+        lessons_done: 'уроков завершено', words_learned: 'слов изучено', pts: 'баллов',
+        q_complete: '✍️ Заполните пропуск:', q_translate: '🗣️ Переведите:', q_negative: '❌ Найдите отрицание:', q_correct: '✅ Какое предложение правильное?', q_question: '❓ Какой вопрос подходит к ответу:',
+        question_of: (q, t) => `Вопрос ${q} из ${t}`,
+        quiz_expl: '💡 <b>Объяснение:</b>',
+        quiz_ok_title: "✅ Отлично! Правильно.",
+        quiz_no_title: "❌ Ошибка — это шаг к успеху!",
+        quiz_no_desc: ["Ошибки — это ступеньки к успеху! Попробуйте еще раз. 💪","Не сдавайтесь! С каждой попыткой вы становитесь лучше. 🌟","Ошибаться полезно, так мы учимся быстрее. Не сдавайтесь! 🔥","Вы на правильном пути! Подумайте еще раз. 🧠","Никто не идеален с первого раза. Продолжайте! 🚀","Каждая ошибка делает вас умнее. Попробуйте снова! 💡","Упорство — ключ к знаниям. Вы сможете! 🔑","Не бойтесь ошибаться, бойтесь остановиться. Вперед! 🏃‍♂️","Отличная попытка! Теперь вы знаете, как не надо. Попробуем иначе? 😉","Ваш мозг сейчас активно работает и учится. Продолжайте! 🏋️‍♂️","Не опускайте руки! С каждым разом будет легче. 📈","Секрет успеха — не сдаваться после первой неудачи. 🏆","Даже носители языка иногда ошибаются. Попробуйте еще раз! 🗣️","Эта ошибка поможет вам запомнить правило навсегда! 📌","Терпение и труд все перетрут. Еще одна попытка! 🛠️","Учеба — это процесс. Вы отлично справляетесь, продолжайте! 🌱","Немного подумайте и попробуйте другой вариант. 🤔","Не расстраивайтесь! Главное — понять принцип. 🎯","Вы ближе к правильному ответу, чем кажется! 🌈","Ошибки показывают, что вы стараетесь. Молодец! 👏","Английский любит смелых. Смело пробуйте снова! 🦁","Ничего страшного! Прочитайте объяснение и попробуйте опять. 📖","Помните: трудно в учении — легко в работе. 💼","Ваш прогресс уже заметен, не останавливайтесь из-за одной ошибки! 🧗‍♂️","Анализируйте ошибки, и они станут вашей силой. 🔋","Верьте в себя! У вас обязательно получится. ✨","Главное — это желание учиться. А правильный ответ мы найдем! 🔍","Попытка не пытка. Давайте попробуем еще раз! 🎯","Вы уже столько выучили, эта задача тоже вам по плечу! 🐘","Сделайте глубокий вдох и выберите другой вариант. 🌬️"]
+      },
+      kz: {
+        home: 'Басты бет', phrases: 'Сөздік', progress: 'Прогресс',
+        done_of: (n, t) => `${n} / ${t} сабақ аяқталды`,
+        grammar: 'Грамматика', words: 'Сөздер', dialogue: 'Диалог', quiz: 'Тест',
+        back: 'Артқа', manager: 'Менеджер', worker: 'Жұмысшы',
+        tap_word: 'Тыңдау үшін сөзге басыңыз',
+        play: '▶ Диалогты тыңдау', complete: '✓ Сабақты аяқтау', completed: '✓ Аяқталды',
+        all: 'Барлығы', work: 'Жұмыс', health: 'Денсаулық', pay: 'Жалақы', shop: 'Дүкен', social: 'Қарым-қатынас', sos: 'SOS',
+        correct: '✓ Дұрыс!', wrong: '✗ Қате — қайталаңыз',
+        congrats: 'Сабақ аяқталды! 🎉', score: 'Барлық жауаптар дұрыс!',
+        lessons_done: 'сабақ аяқталды', words_learned: 'сөз үйренілді', pts: 'ұпай',
+        q_complete: '✍️ Бос орынды толтырыңыз:', q_translate: '🗣️ Аударыңыз:', q_negative: '❌ Болымсыз түрді табыңыз:', q_correct: '✅ Қай сөйлем дұрыс?', q_question: '❓ Жауапқа қай сұрақ сәйкес келеді:',
+        question_of: (q, t) => `Сұрақ ${q} / ${t}`,
+        quiz_expl: '💡 <b>Түсіндірме:</b>',
+        quiz_ok_title: "✅ Тамаша! Дұрыс.",
+        quiz_no_title: "❌ Қате — жетістікке қадам!",
+        quiz_no_desc: ["Қате — жетістікке қадам! Тағы бір рет байқап көріңіз. 💪","Берілмеңіз! Әр талпыныс сайын сіз жақсара түсесіз. 🌟","Қателесу пайдалы, осылайша біз тезірек үйренеміз! 🔥","Сіз дұрыс жолдасыз! Тағы бір рет ойланып көріңіз. 🧠","Ешкім бірінші реттен мінсіз болмайды. Жалғастырыңыз! 🚀","Әр қате сізді ақылдырақ етеді. Тағы да байқап көріңіз! 💡","Табандылық — білім кілті. Сіздің қолыңыздан келеді! 🔑","Қателесуден қорықпаңыз, тоқтап қалудан қорықыңыз. Алға! 🏃‍♂️","Жақсы талпыныс! Енді қалай жасамау керектігін білесіз. Тағы байқап көреміз бе? 😉","Миыңыз қазір белсенді жұмыс істеп, үйреніп жатыр. Жалғастырыңыз! 🏋️‍♂️","Қолыңызды түсірмеңіз! Әр жолы оңайырақ болады. 📈","Жетістік құпиясы — бірінші сәтсіздіктен кейін берілмеу. 🏆","Тілді білетіндер де кейде қателеседі. Тағы да байқап көріңіз! 🗣️","Бұл қате ережені мәңгі есте сақтауға көмектеседі! 📌","Сабыр мен еңбек бәрін жеңеді. Тағы бір талпыныс! 🛠️","Оқу — бұл процесс. Сіз жақсы жасап жатырсыз, жалғастырыңыз! 🌱","Кішкене ойланып, басқа нұсқаны таңдаңыз. 🤔","Мұңаймаңыз! Ең бастысы — қағиданы түсіну. 🎯","Сіз ойлағаннан да дұрыс жауапқа жақынсыз! 🌈","Қателер сіздің талпынып жатқаныңызды көрсетеді. Жарайсыз! 👏","Ағылшын тілі батылдарды жақсы көреді. Батыл түрде тағы байқап көріңіз! 🦁","Ештеңе етпейді! Түсіндірмені оқып, қайта байқап көріңіз. 📖","Есіңізде болсын: оқуда қиын, жұмыста оңай. 💼","Сіздің дамуыңыз байқалады, бір қате үшін тоқтап қалмаңыз! 🧗‍♂️","Қателерді талдаңыз, сонда олар сіздің күшіңізге айналады. 🔋","Өзіңізге сеніңіз! Міндетті түрде қолыңыздан келеді. ✨","Ең бастысы — оқуға деген ынта. Ал дұрыс жауапты біз табамыз! 🔍","Талпыныстан зиян жоқ. Келіңіз, тағы да байқап көрейік! 🎯","Сіз көп нәрсе үйрендіңіз, бұл тапсырма да сіздің қолыңыздан келеді! 🐘","Терең дем алып, басқа нұсқаны таңдаңыз. 🌬️"]
+      },
+      uz: {
+        home: 'Bosh sahifa', phrases: 'Iboralar', progress: 'Natijalar',
+        done_of: (n, t) => `${n} / ${t} dars tugallandi`,
+        grammar: 'Grammatika', words: "So'zlar", dialogue: 'Dialog', quiz: 'Test',
+        back: 'Orqaga', manager: 'Menejer', worker: 'Ishchi',
+        tap_word: "So'zni eshitish uchun bosing",
+        play: '▶ Dialogni tinglash', complete: '✓ Darsni tugatish', completed: "✓ Tugallandi",
+        all: 'Barchasi', work: 'Ish', health: 'Salomatlik', pay: 'Maosh', shop: "Do'kon", social: 'Muloqot', sos: 'SOS',
+        correct: "✓ To'g'ri!", wrong: "✗ Noto'g'ri — qayta urining",
+        congrats: "Dars tugallandi! 🎉", score: "Barcha javoblar to'g'ri!",
+        lessons_done: 'dars tugallandi', words_learned: "so'z o'rganildi", pts: 'ball',
+        q_complete: '✍️ Bo\'sh joyni to\'ldiring:', q_translate: '🗣️ Tarjima qiling:', q_negative: '❌ Inkor shaklni toping:', q_correct: '✅ Qaysi gap to\'g\'ri?', q_question: '❓ Javobga qaysi savol mos keladi:',
+        question_of: (q, t) => `Savol ${q} / ${t}`,
+        quiz_expl: '💡 <b>Tushuntirish:</b>',
+        quiz_ok_title: "✅ Ajoyib! To'g'ri.",
+        quiz_no_title: "❌ Xato — muvaffaqiyatga qadam!",
+        quiz_no_desc: ["Xato — muvaffaqiyatga qadam! Yana urinib ko'ring. 💪","Taslim bo'lmang! Har bir urinish bilan yaxshilanyapsiz. 🌟","Xato qilish foydali, shunday qilib tezroq o'rganamiz! 🔥","Siz to'g'ri yo'ldasiz! Yana bir bor o'ylab ko'ring. 🧠","Hech kim birinchisida mukammal bo'lmaydi. Davom eting! 🚀","Har bir xato sizni aqlliroq qiladi. Yana urinib ko'ring! 💡","Qat'iyat — bilim kaliti. Siz buni eplaysiz! 🔑","Xato qilishdan qo'rqmang, to'xtab qolishdan qo'rqing. Olg'a! 🏃‍♂️","Yaxshi harakat! Endi qanday qilmaslikni bilasiz. Yana urinaylikmi? 😉","Miya hozir faol ishlamoqda va o'rganmoqda. Davom eting! 🏋️‍♂️","Taslim bo'lmang! Har safar osonroq bo'ladi. 📈","Muvaffaqiyat siri — birinchi xatodan keyin taslim bo'lmaslikdir. 🏆","Hatoki til egalari ham xato qilishadi. Yana urinib ko'ring! 🗣️","Bu xato qoidani butunlay eslab qolishingizga yordam beradi! 📌","Sabr va mehnat barchasini yengadi. Yana bir urinish! 🛠️","O'qish bu jarayon. Siz yaxshi bajaryapsiz, davom eting! 🌱","Bir oz o'ylab ko'ring va boshqa variantni tanlang. 🤔","Xafa bo'lmang! Asosiysi tamoyilni tushunish. 🎯","Siz to'g'ri javobga o'ylaganingizdan ham yaqinroqsiz! 🌈","Xatolar sizning harakat qilayotganingizni ko'rsatadi. Barakalla! 👏","Ingliz tili jasurlarni sevadi. Jasorat bilan yana urinib ko'ring! 🦁","Hechqisi yo'q! Tushuntirishni o'qing va yana urinib ko'ring. 📖","Yodda tuting: o'qishda qiyin, ishda oson. 💼","Sizning o'sishingiz sezilmoqda, bitta xato uchun to'xtamang! 🧗‍♂️","Xatolarni tahlil qiling va ular sizning kuchingizga aylanadi. 🔋","O'zingizga ishoning! Albatta uddalaysiz. ✨","Asosiysi — o'rganish istagi. To'g'ri javobni esa topamiz! 🔍","Urinish ziyon qilmaydi. Keling yana urinib ko'ramiz! 🎯","Siz allaqachon ko'p narsani o'rgandingiz, bu vazifani ham eplaysiz! 🐘","Chuqur nafas oling va boshqa variantni tanlang. 🌬️"]
+      },
+      tj: {
+        home: 'Саҳифа', phrases: 'Ибораҳо', progress: 'Пешрафт',
+        done_of: (n, t) => `${n} / ${t} дарс гузашт`,
+        grammar: 'Грамматика', words: 'Калимаҳо', dialogue: 'Муколама', quiz: 'Тест',
+        back: 'Бозгашт', manager: 'Мудир', worker: 'Коргар',
+        tap_word: 'Барои шунидан пахш кунед',
+        play: '▶ Муколамаро гӯш кунед', complete: '✓ Дарсро тамом кунед', completed: '✓ Тамом шуд',
+        all: 'Ҳама', work: 'Кор', health: 'Саломатӣ', pay: 'Маош', shop: 'Дӯкон', social: 'Муошират', sos: 'SOS',
+        correct: '✓ Дуруст!', wrong: '✗ Нодуруст — бори дигар',
+        congrats: 'Дарс гузашт! 🎉', score: 'Ҳамаи ҷавобҳо дуруст!',
+        lessons_done: 'дарс тамом шуд', words_learned: 'калима омӯхта шуд', pts: 'хол',
+        q_complete: '✍️ Холиро пур кунед:', q_translate: '🗣️ Тарҷума кунед:', q_negative: '❌ Шакли инкориро ёбед:', q_correct: '✅ Кадом ҷумла дуруст аст?', q_question: '❓ Ба ҷавоб кадом савол мувофиқ аст:',
+        question_of: (q, t) => `Саволи ${q} аз ${t}`,
+        quiz_expl: '💡 <b>Шарҳ:</b>',
+        quiz_ok_title: "✅ Олӣ! Дуруст.",
+        quiz_no_title: "❌ Хато — як қадам ба сӯи муваффақият!",
+        quiz_no_desc: ["Хато — як қадам ба сӯи муваффақият аст! Боз кӯшиш кунед. 💪","Таслим нашавед! Бо ҳар як кӯшиш шумо беҳтар мешавед. 🌟","Хато кардан муфид аст, ҳамин тавр мо тезтар меомӯзем! 🔥","Шумо дар роҳи дуруст ҳастед! Боз як бор фикр кунед. 🧠","Ҳеҷ кас аз дафъаи аввал комил нест. Идома диҳед! 🚀","Ҳар як хато шуморо донотар мекунад. Боз кӯшиш кунед! 💡","Устуворӣ — калиди дониш аст. Шумо метавонед! 🔑","Аз хато кардан натарсед, аз қафо гаштан тарсед. Ба пеш! 🏃‍♂️","Кӯшиши хуб! Акнун медонед, ки чӣ тавр накунед. Боз кӯшиш кунем? 😉","Майнаи шумо ҳоло фаъолона кор ва омӯзиш дорад. Идома диҳед! 🏋️‍♂️","Даст наафтонед! Ҳар дафъа осонтар хоҳад шуд. 📈","Сирри муваффақият — баъд аз хатои аввал таслим нашудан аст. 🏆","Ҳатто забондонон баъзан хато мекунанд. Боз кӯшиш кунед! 🗣️","Ин хато кӯмак мекунад, ки қоидаро абадӣ дар хотир нигоҳ доред! 📌","Сабр ва меҳнат ҳамаро мағлуб мекунад. Боз як кӯшиш! 🛠️","Омӯзиш ин раванд аст. Шумо хуб ҳастед, идома диҳед! 🌱","Каме фикр кунед ва варианти дигарро интихоб намоед. 🤔","Ноумед нашавед! Муҳимаш фаҳмидани қоида аст. 🎯","Шумо ба ҷавоби дуруст аз он ки фикр мекунед, наздиктаред! 🌈","Хатогиҳо нишон медиҳанд, ки шумо кӯшиш карда истодаед. Офарин! 👏","Забони англисӣ ҷасуронро дӯст медорад. Далерона боз кӯшиш кунед! 🦁","Ҳеҷ гап не! Шарҳро хонед ва боз кӯшиш кунед. 📖","Дар хотир доред: дар омӯзиш душвор, дар кор осон. 💼","Пешрафти шумо аён аст, барои як хато манъ нашавед! 🧗‍♂️","Хатогиҳоро таҳлил кунед ва онҳо ба қувваи шумо табдил меёбанд. 🔋","Ба худ бовар кунед! Шумо албатта метавонед. ✨","Муҳимаш — хоҳиши омӯзиш. Ҷавоби дурустро бошад, меёбем! 🔍","Кӯшиш зарар надорад. Биёед боз як бор кӯшиш кунем! 🎯","Шумо аллакай бисёр чизро омӯхтед, ин вазифа ҳам аз дастатон меояд! 🐘","Нафаси амиқ кашед ва варианти дигарро интихоб кунед. 🌬️"]
+      },
+      kg: {
+        home: 'Башкы бет', phrases: 'Фразалар', progress: 'Жетишкендик',
+        done_of: (n, t) => `${n} / ${t} сабак аяктады`,
+        grammar: 'Грамматика', words: 'Сөздөр', dialogue: 'Диалог', quiz: 'Тест',
+        back: 'Артка', manager: 'Менеджер', worker: 'Жумушчу',
+        tap_word: 'Укуу үчүн сөзгө басыңыз',
+        play: '▶ Диалогду угуу', complete: '✓ Сабакты аяктоо', completed: '✓ Аяктады',
+        all: 'Баары', work: 'Иш', health: 'Саламаттык', pay: 'Эмгек акы', shop: 'Дүкөн', social: 'Баарлашуу', sos: 'SOS',
+        correct: '✓ Туура!', wrong: '✗ Туура эмес — кайра',
+        congrats: 'Сабак аяктады! 🎉', score: 'Бардык жооптор туура!',
+        lessons_done: 'сабак аяктады', words_learned: 'сөз үйрөнүлдү', pts: 'упай',
+        q_complete: '✍️ Боштукту толтуруңуз:', q_translate: '🗣️ Которуңуз:', q_negative: '❌ Жокко чыгарууну табыңыз:', q_correct: '✅ Кайсы сүйлөм туура?', q_question: '❓ Жоопко кайсы суроо туура келет:',
+        question_of: (q, t) => `Суроо ${q} / ${t}`,
+        quiz_expl: '💡 <b>Түшүндүрмө:</b>',
+        quiz_ok_title: "✅ Абдан жакшы! Туура.",
+        quiz_no_title: "❌ Ката — ийгиликке кадам!",
+        quiz_no_desc: ["Ката — ийгиликке кадам! Дагы бир жолу аракет кылып көрүңүз. 💪","Багынбаңыз! Ар бир аракет менен сиз жакшыраак болуп жатасыз. 🌟","Ката кетирүү пайдалуу, ошентип биз тезирээк үйрөнөбүз! 🔥","Сиз туура жолдосуз! Дагы бир жолу ойлонуп көрүңүз. 🧠","Эч ким биринчи жолкусунда идеалдуу болбойт. Уланта бериңиз! 🚀","Ар бир ката сизди акылдуураак кылат. Дагы аракет кылыңыз! 💡","Өжөрлүк — билимдин ачкычы. Колуңуздан келет! 🔑","Ката кетирүүдөн коркпоңуз, токтоп калуудан коркуңуз. Алга! 🏃‍♂️","Жакшы аракет! Эми кандай кылбоо керектигин билесиз. Дагы көрөлүбү? 😉","Мээңиз азыр активдүү иштеп, үйрөнүп жатат. Улантыңыз! 🏋️‍♂️","Багынбаңыз! Ар бир жолу оңой болот. 📈","Ийгиликтин сыры — биринчи катадан кийин багынбоо. 🏆","Тилди билгендер деле кээде ката кетиришет. Дагы аракет кылып көрүңүз! 🗣️","Бул ката эрежени түбөлүккө эстеп калууга жардам берет! 📌","Сабыр жана эмгек баарын жеңет. Дагы бир аракет! 🛠️","Окуу бул процесс. Сиз жакшы кылып жатасыз, улантыңыз! 🌱","Бир аз ойлонуп, башка жоопту тандап көрүңүз. 🤔","Капа болбоңуз! Эң негизгиси эрежени түшүнүү. 🎯","Сиз ойлогондон да туура жоопко жакынсыз! 🌈","Каталар сиздин аракет кылып жатканыңызды көрсөтөт. Азаматсыз! 👏","Англис тили эр жүрөктөрдү жакшы көрөт. Коркпой дагы аракет кылыңыз! 🦁","Эч нерсе эмес! Түшүндүрмөнү окуп, кайра аракет кылыңыз. 📖","Эсиңизде болсун: окууда кыйын, жумушта оңой. 💼","Сиздин өсүүңүз байкалып турат, бир ката үчүн токтобоңуз! 🧗‍♂️","Каталарды анализдеңиз, алар сиздин күчүңүзгө айланат. 🔋","Өзүңүзгө ишениңиз! Сөзсүз колуңуздан келет. ✨","Негизгиси — үйрөнүүгө болгон каалоо. Туура жоопту табабыз! 🔍","Аракеттен зыян жок. Келиңиз дагы аракет кылып көрөлү! 🎯","Сиз көп нерсени үйрөндүңүз, бул тапшырманы да аткара аласыз! 🐘","Терең дем алып, башка вариантын тандаңыз. 🌬️"]
+      }
+    };
+    let lang = localStorage.getItem('fe_lang') || 'ru', scr = 'home', curLesson = null, curTab = 'grammar', curGrammarForm = 'positive', quizState = {};
+    let done = JSON.parse(localStorage.getItem('fe_a1') || '[]');
+    let pfCat = 'all';
+    const t = (k, ...a) => { const v = (TR[lang] || TR['ru'])[k] || (TR['ru'] || {})[k]; return typeof v === 'function' ? v(...a) : (v ?? k) };
+    const gl = (o, k) => o[k + '_' + lang] || o[k + '_ru'] || '';
+    const spk = (txt, r = .88) => { if (!speechSynthesis) return; speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(txt); u.lang = 'en-GB'; u.rate = r; speechSynthesis.speak(u) };
+    let dlgTimer = null;
+    function stopDlg() { if (dlgTimer) clearTimeout(dlgTimer); if (speechSynthesis) speechSynthesis.cancel() }
+    function playDlg(lines) { stopDlg(); let i = 0; function nx() { if (i >= lines.length) return; spk(lines[i].en); dlgTimer = setTimeout(nx, (lines[i].en.length * 70) + 900); i++; } nx() }
+  </script>
+  <script>
+    // ── LESSON DATA ───────────────────────────────────────────────────────────────
+    const MODS = [
+      { id: 1, emoji: '👋', name_ru: 'Знакомство', name_uz: 'Tanishuv', name_tj: 'Шиносоӣ', name_kg: 'Тааныштыруу', lessons: [1, 2] },
+      { id: 2, emoji: '🚜', name_ru: 'На ферме', name_uz: 'Fermada', name_tj: 'Дар ферма', name_kg: 'Фермада', lessons: [3, 4, 5] },
+      { id: 3, emoji: '⏱️', name_ru: 'Каждый день', name_uz: 'Har kuni', name_tj: 'Ҳар рӯз', name_kg: 'Ар күн', lessons: [6, 7] },
+      { id: 4, emoji: '🧤', name_ru: 'Безопасность', name_uz: 'Xavfsizlik', name_tj: 'Бехатарӣ', name_kg: 'Коопсуздук', lessons: [8] },
+      { id: 5, emoji: '🏠', name_ru: 'Жизнь в кэмпе', name_uz: 'Lagerdagi hayot', name_tj: 'Дар лагер', name_kg: 'Лагерде', lessons: [9, 10, 11] },
+      { id: 6, emoji: '📋', name_ru: 'Документы и здоровье', name_uz: "Hujjatlar va salomatlik", name_tj: 'Ҳуҷҷат ва саломатӣ', name_kg: 'Документ жана саламаттык', lessons: [12, 13, 14, 15] },
+    ];
+    const LESSONS = [
+      {
+        id: 1, mod: 1,
+        name_ru: 'Привет! Я — Ахмад', name_uz: 'Salom! Men Ahmad', name_tj: 'Салом! Ман Аҳмад', name_kg: 'Салам! Мен Ахмад',
+        cefr: 'am/is/are · Pronouns · Greetings',
+        grammar: {
+          title_ru: 'Глагол TO BE: am / is / are', title_uz: "TO BE fe'li", title_tj: 'Феъли TO BE', title_kg: 'TO BE этиши', title_kz: 'TO BE етістігі',
+          intro_ru: '<div style="line-height:1.6">В английском так говорить ошибка:<br>❌ <b>I Ahmad</b><br>Правильно:<br>✅ <b>I am Ahmad</b><br>👉 Всегда добавляйте <b>am / is / are</b>.</div>',
+          intro_uz: '<div style="line-height:1.6">Ingliz tilida bunday deyish xato:<br>❌ <b>I Ahmad</b><br>To‘g‘risi:<br>✅ <b>I am Ahmad</b><br>👉 Har doim <b>am / is / are</b> qo‘shish kerak.</div>',
+          intro_tj: '<div style="line-height:1.6">Дар англисӣ ин тавр гуфтан хатост:<br>❌ <b>I Ahmad</b><br>Дуруст:<br>✅ <b>I am Ahmad</b><br>👉 Ҳамеша <b>am / is / are</b> илова кунед.</div>',
+          intro_kg: '<div style="line-height:1.6">Англисче минтип айтуу ката:<br>❌ <b>I Ahmad</b><br>Туурасы:<br>✅ <b>I am Ahmad</b><br>👉 Ар дайым <b>am / is / are</b> кошуңуз.</div>',
+          intro_kz: '<div style="line-height:1.6">Ағылшынша бұлай айту қате:<br>❌ <b>I Ahmad</b><br>Дұрысы:<br>✅ <b>I am Ahmad</b><br>👉 Әрқашан <b>am / is / are</b> қосу керек.</div>',
+          cultural_ru: 'В узбекском, таджикском, кыргызском и казахском языках нет глагола "быть" в настоящем времени. В английском он ОБЯЗАТЕЛЕН!',
+          cultural_uz: "O'zbek tilida hozirgi zamonda 'bo'lmoq' fe'li ishlatilmaydi. Ingliz tilida u MAJBURIY!",
+          cultural_tj: 'Дар забони тоҷикӣ дар замони ҳозира феъли «будан» истифода намешавад. Дар англисӣ он ҲАТМӢ аст!',
+          cultural_kg: 'Кыргыз тилинде учур чакта "болуу" этиши колдонулбайт. Англис тилинде ал МИЛДЕТТҮҮ!',
+          cultural_kz: 'Қазақ тілінде осы шақта "болу" етістігі қолданылмайды. Ағылшын тілінде ол МІНДЕТТІ!',
+          note_ru: 'НЕ говорите "I is" или "He am" — это ошибка!',
+          note_uz: "Xato: 'I is' yoki 'He am'.",
+          note_tj: 'Хато: «I is» ё «He am».',
+          note_kg: 'Ката: "I is" же "He am".',
+          note_kz: 'Қате: "I is" немесе "He am".',
+          forms: {
+            positive: {
+              label_ru: '✅ Утверждение', label_uz: '✅ Tasdiq', label_tj: '✅ Тасдиқ', label_kg: '✅ Ырастоо', label_kz: '✅ Растау',
+              rule_ru: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px"><div><code>I am</code> <span class="g-transcr">[ай эм]</span> (я)</div><div><code>We are</code> <span class="g-transcr">[уи ар]</span> (мы)</div><div><code>You are</code> <span class="g-transcr">[ю ар]</span> (вы/ты)</div><div><code>They are</code> <span class="g-transcr">[зэй ар]</span> (они)</div><div><code>He is</code> <span class="g-transcr">[хи из]</span> (он)</div><div><code>She is</code> <span class="g-transcr">[ши из]</span> (она)</div><div style="grid-column:1/-1"><code>It is</code> <span class="g-transcr">[ит из]</span> (оно)</div></div>',
+              rule_uz: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px"><div><code>I am</code> <span class="g-transcr">[ай эм]</span> (men)</div><div><code>We are</code> <span class="g-transcr">[уи ар]</span> (biz)</div><div><code>You are</code> <span class="g-transcr">[ю ар]</span> (siz/sen)</div><div><code>They are</code> <span class="g-transcr">[зэй ар]</span> (ular)</div><div><code>He is</code> <span class="g-transcr">[хи из]</span> (u, erkak)</div><div><code>She is</code> <span class="g-transcr">[ши из]</span> (u, ayol)</div><div style="grid-column:1/-1"><code>It is</code> <span class="g-transcr">[ит из]</span> (u, narsa)</div></div>',
+              rule_tj: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px"><div><code>I am</code> <span class="g-transcr">[ай эм]</span> (ман)</div><div><code>We are</code> <span class="g-transcr">[уи ар]</span> (мо)</div><div><code>You are</code> <span class="g-transcr">[ю ар]</span> (шумо/ту)</div><div><code>They are</code> <span class="g-transcr">[зэй ар]</span> (онҳо)</div><div><code>He is</code> <span class="g-transcr">[хи из]</span> (ӯ, мард)</div><div><code>She is</code> <span class="g-transcr">[ши из]</span> (вай, зан)</div><div style="grid-column:1/-1"><code>It is</code> <span class="g-transcr">[ит из]</span> (он)</div></div>',
+              rule_kg: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px"><div><code>I am</code> <span class="g-transcr">[ай эм]</span> (мен)</div><div><code>We are</code> <span class="g-transcr">[уи ар]</span> (биз)</div><div><code>You are</code> <span class="g-transcr">[ю ар]</span> (сиз/сен)</div><div><code>They are</code> <span class="g-transcr">[зэй ар]</span> (алар)</div><div><code>He is</code> <span class="g-transcr">[хи из]</span> (ал, эркек)</div><div><code>She is</code> <span class="g-transcr">[ши из]</span> (ал, аял)</div><div style="grid-column:1/-1"><code>It is</code> <span class="g-transcr">[ит из]</span> (ал, нерсе)</div></div>',
+              rule_kz: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px"><div><code>I am</code> <span class="g-transcr">[ай эм]</span> (мен)</div><div><code>We are</code> <span class="g-transcr">[уи ар]</span> (біз)</div><div><code>You are</code> <span class="g-transcr">[ю ар]</span> (сіз/сен)</div><div><code>They are</code> <span class="g-transcr">[зэй ар]</span> (олар)</div><div><code>He is</code> <span class="g-transcr">[хи из]</span> (ол, ер)</div><div><code>She is</code> <span class="g-transcr">[ши из]</span> (ол, әйел)</div><div style="grid-column:1/-1"><code>It is</code> <span class="g-transcr">[ит из]</span> (ол, зат)</div></div>',
+              table: [
+                { subj: 'I', verb: 'am', example: 'I am Ahmad.', transcr: 'Ай эм Ахмад', tr_ru: 'Я — Ахмад', tr_uz: 'Men Ahmad', tr_tj: 'Ман Аҳмад', tr_kg: 'Мен Ахмад', tr_kz: 'Мен Ахмад' },
+                { subj: 'He/She/It', verb: 'is', example: 'He is a manager.', transcr: 'Хи из э мэнеджер', tr_ru: 'Он менеджер', tr_uz: 'U menejer', tr_tj: 'Ӯ мудир аст', tr_kg: 'Ал менеджер', tr_kz: 'Ол менеджер' },
+                { subj: 'We/You/They', verb: 'are', example: 'They are workers.', transcr: 'Зэй ар вокерз', tr_ru: 'Они рабочие', tr_uz: 'Ular ishchilar', tr_tj: 'Онҳо коргаранд', tr_kg: 'Алар жумушчулар', tr_kz: 'Олар жұмысшылар' },
+                { subj: 'I', verb: 'am', example: 'I am from Tajikistan.', transcr: 'Ай эм фром Таджикистан', tr_ru: 'Я из Таджикистана', tr_uz: 'Men Tojikistondan', tr_tj: 'Ман аз Тоҷикистон', tr_kg: 'Мен Тажикстандан', tr_kz: 'Мен Тәжікстаннан' }
+              ]
+            },
+            negative: {
+              label_ru: '❌ Отрицание', label_uz: '❌ Inkor', label_tj: '❌ Инкор', label_kg: '❌ Жокко чыгаруу', label_kz: '❌ Теріске шығару',
+              rule_ru: 'Добавляем <b>not</b>:<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px"><div><code>I am not</code> <span class="g-transcr">[ай эм нот]</span> (я не)</div><div><code>We are not</code> <span class="g-transcr">[уи ар нот]</span> (мы не)</div><div><code>You are not</code> <span class="g-transcr">[ю ар нот]</span> (вы не)</div><div><code>They are not</code> <span class="g-transcr">[зэй ар нот]</span> (они не)</div><div><code>He is not</code> <span class="g-transcr">[хи из нот]</span> (он не)</div><div><code>She is not</code> <span class="g-transcr">[ши из нот]</span> (она не)</div><div style="grid-column:1/-1"><code>It is not</code> <span class="g-transcr">[ит из нот]</span> (оно не)</div></div>',
+              rule_uz: '<b>not</b> qo\'shamiz:<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px"><div><code>I am not</code> <span class="g-transcr">[ай эм нот]</span> (men emas)</div><div><code>We are not</code> <span class="g-transcr">[уи ар нот]</span> (biz emas)</div><div><code>You are not</code> <span class="g-transcr">[ю ар нот]</span> (siz emas)</div><div><code>They are not</code> <span class="g-transcr">[зэй ар нот]</span> (ular emas)</div><div><code>He is not</code> <span class="g-transcr">[хи из нот]</span> (u emas)</div><div><code>She is not</code> <span class="g-transcr">[ши из нот]</span> (u emas)</div><div style="grid-column:1/-1"><code>It is not</code> <span class="g-transcr">[ит из нот]</span> (u emas)</div></div>',
+              rule_tj: 'Илова мекунем <b>not</b>:<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px"><div><code>I am not</code> <span class="g-transcr">[ай эм нот]</span> (ман нестам)</div><div><code>We are not</code> <span class="g-transcr">[уи ар нот]</span> (мо нестем)</div><div><code>You are not</code> <span class="g-transcr">[ю ар нот]</span> (шумо нестед)</div><div><code>They are not</code> <span class="g-transcr">[зэй ар нот]</span> (онҳо нестанд)</div><div><code>He is not</code> <span class="g-transcr">[хи из нот]</span> (ӯ нест)</div><div><code>She is not</code> <span class="g-transcr">[ши из нот]</span> (вай нест)</div><div style="grid-column:1/-1"><code>It is not</code> <span class="g-transcr">[ит из нот]</span> (он нест)</div></div>',
+              rule_kg: '<b>not</b> кошобуз:<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px"><div><code>I am not</code> <span class="g-transcr">[ай эм нот]</span> (мен эмесмин)</div><div><code>We are not</code> <span class="g-transcr">[уи ар нот]</span> (биз эмеспиз)</div><div><code>You are not</code> <span class="g-transcr">[ю ар нот]</span> (сиз эмессиз)</div><div><code>They are not</code> <span class="g-transcr">[зэй ар нот]</span> (алар эмес)</div><div><code>He is not</code> <span class="g-transcr">[хи из нот]</span> (ал эмес)</div><div><code>She is not</code> <span class="g-transcr">[ши из нот]</span> (ал эмес)</div><div style="grid-column:1/-1"><code>It is not</code> <span class="g-transcr">[ит из нот]</span> (ал эмес)</div></div>',
+              rule_kz: '<b>not</b> қосамыз:<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px"><div><code>I am not</code> <span class="g-transcr">[ай эм нот]</span> (мен емеспін)</div><div><code>We are not</code> <span class="g-transcr">[уи ар нот]</span> (біз емеспіз)</div><div><code>You are not</code> <span class="g-transcr">[ю ар нот]</span> (сіз емессіз)</div><div><code>They are not</code> <span class="g-transcr">[зэй ар нот]</span> (олар емес)</div><div><code>He is not</code> <span class="g-transcr">[хи из нот]</span> (ол емес)</div><div><code>She is not</code> <span class="g-transcr">[ши из нот]</span> (ол емес)</div><div style="grid-column:1/-1"><code>It is not</code> <span class="g-transcr">[ит из нот]</span> (ол емес)</div></div>',
+              table: [
+                { subj: 'I', verb: 'am not', example: 'I am not late.', transcr: 'Ай эм нот лэйт', tr_ru: 'Я не опоздал', tr_uz: "Men kech qolganim yo'q", tr_tj: 'Ман дер нашудам', tr_kg: 'Мен кечиккен жокмун', tr_kz: 'Мен кешікпедім' },
+                { subj: 'He/She/It', verb: 'is not', example: 'She is not a packer.', transcr: 'Ши из нот э пакер', tr_ru: 'Она не упаковщица', tr_uz: 'U qadoqlovchi emas', tr_tj: 'Вай қадоқкунанда нест', tr_kg: 'Ал таңгоолочу эмес', tr_kz: 'Ол орамашы емес' },
+                { subj: 'We/You/They', verb: 'are not', example: 'We are not tired.', transcr: 'Уи ар нот тайерд', tr_ru: 'Мы не устали', tr_uz: 'Biz charchamadik', tr_tj: 'Мо хаста нестем', tr_kg: 'Биз чарчаган жокпуз', tr_kz: 'Біз шаршаған жоқпыз' }
+              ]
+            },
+            question: {
+              label_ru: '❓ Вопрос', label_uz: '❓ Savol', label_tj: '❓ Савол', label_kg: '❓ Суроо', label_kz: '❓ Сұрақ',
+              rule_ru: 'Глагол выходит вперёд:<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px"><div><code>Am I?</code> <span class="g-transcr">[эм ай]</span> (я?)</div><div><code>Are we?</code> <span class="g-transcr">[ар уи]</span> (мы?)</div><div><code>Are you?</code> <span class="g-transcr">[ар ю]</span> (вы/ты?)</div><div><code>Are they?</code> <span class="g-transcr">[ар зэй]</span> (они?)</div><div><code>Is he?</code> <span class="g-transcr">[из хи]</span> (он?)</div><div><code>Is she?</code> <span class="g-transcr">[из ши]</span> (она?)</div><div style="grid-column:1/-1"><code>Is it?</code> <span class="g-transcr">[из ит]</span> (оно?)</div></div>',
+              rule_uz: 'Fe\'l oldinga chiqadi:<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px"><div><code>Am I?</code> <span class="g-transcr">[эм ай]</span> (menmi?)</div><div><code>Are we?</code> <span class="g-transcr">[ар уи]</span> (bizmi?)</div><div><code>Are you?</code> <span class="g-transcr">[ар ю]</span> (siz/senmi?)</div><div><code>Are they?</code> <span class="g-transcr">[ар зэй]</span> (ularmi?)</div><div><code>Is he?</code> <span class="g-transcr">[из хи]</span> (umi?)</div><div><code>Is she?</code> <span class="g-transcr">[из ши]</span> (umi?)</div><div style="grid-column:1/-1"><code>Is it?</code> <span class="g-transcr">[из ит]</span> (umi?)</div></div>',
+              rule_tj: 'Феъл ба пеш меояд:<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px"><div><code>Am I?</code> <span class="g-transcr">[эм ай]</span> (ман?)</div><div><code>Are we?</code> <span class="g-transcr">[ар уи]</span> (мо?)</div><div><code>Are you?</code> <span class="g-transcr">[ар ю]</span> (шумо/ту?)</div><div><code>Are they?</code> <span class="g-transcr">[ар зэй]</span> (онҳо?)</div><div><code>Is he?</code> <span class="g-transcr">[из хи]</span> (ӯ?)</div><div><code>Is she?</code> <span class="g-transcr">[из ши]</span> (вай?)</div><div style="grid-column:1/-1"><code>Is it?</code> <span class="g-transcr">[из ит]</span> (он?)</div></div>',
+              rule_kg: 'Этиш алдыга чыгат:<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px"><div><code>Am I?</code> <span class="g-transcr">[эм ай]</span> (менби?)</div><div><code>Are we?</code> <span class="g-transcr">[ар уи]</span> (бизби?)</div><div><code>Are you?</code> <span class="g-transcr">[ар ю]</span> (сизби?)</div><div><code>Are they?</code> <span class="g-transcr">[ар зэй]</span> (аларбы?)</div><div><code>Is he?</code> <span class="g-transcr">[из хи]</span> (албы?)</div><div><code>Is she?</code> <span class="g-transcr">[из ши]</span> (албы?)</div><div style="grid-column:1/-1"><code>Is it?</code> <span class="g-transcr">[из ит]</span> (албы?)</div></div>',
+              rule_kz: 'Етістік алдыға шығады:<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px"><div><code>Am I?</code> <span class="g-transcr">[эм ай]</span> (мен бе?)</div><div><code>Are we?</code> <span class="g-transcr">[ар уи]</span> (біз бе?)</div><div><code>Are you?</code> <span class="g-transcr">[ар ю]</span> (сіз бе?)</div><div><code>Are they?</code> <span class="g-transcr">[ар зэй]</span> (олар ма?)</div><div><code>Is he?</code> <span class="g-transcr">[из хи]</span> (ол ма?)</div><div><code>Is she?</code> <span class="g-transcr">[из ши]</span> (ол ма?)</div><div style="grid-column:1/-1"><code>Is it?</code> <span class="g-transcr">[из ит]</span> (ол ма?)</div></div>',
+              table: [
+                { verb: 'Are', subj: 'you', example: 'Are you from Uzbekistan?', transcr: 'Ар ю фром Узбекистан?', tr_ru: 'Вы из Узбекистана?', tr_uz: "Siz O'zbekistondanmisiz?", tr_tj: 'Шумо аз Ӯзбекистон ҳастед?', tr_kg: 'Сиз Өзбекстандансызбы?', tr_kz: 'Сіз Өзбекстаннансыз ба?' },
+                { verb: 'Is', subj: 'she', example: 'Is she your supervisor?', transcr: 'Из ши ё супервайзер?', tr_ru: 'Она ваш супервайзер?', tr_uz: 'U sizning nazoratchiingizmi?', tr_tj: 'Вай назоратчии шумост?', tr_kg: 'Ал сиздин жетекчиби?', tr_kz: 'Ол сіздің жетекшіңіз бе?' },
+                { verb: 'Are', subj: 'the gloves', example: 'Are the gloves in the box?', transcr: 'Ар зэ главз ин зэ бокс?', tr_ru: 'Перчатки в ящике?', tr_uz: 'Qo\'lqoplar qutidami?', tr_tj: 'Дастпӯшакҳо дар қуттӣ ҳастанд?', tr_kg: 'Мээлейлер кутудабы?', tr_kz: 'Қолғаптар қорапта ма?' }
+              ]
+            }
+          }
+        },
+        words: [
+          { e: '👋', en: 'Hello / Hi', ru: 'Привет / Здравствуйте', uz: 'Salom / Assalomu alaykum', tj: 'Салом', kg: 'Салам', kz: 'Сәлем / Сәлеметсіз бе', pn: '/həˈləʊ / haɪ/', transcr: 'Хэлоу / Хай' },
+          { e: '🌅', en: 'Good morning', ru: 'Доброе утро', uz: 'Xayrli tong', tj: 'Субҳ бахайр', kg: 'Кутман эртең', kz: 'Қайырлы таң', pn: '/ɡʊd ˈmɔːnɪŋ/', transcr: 'Гуд монинг' },
+          { e: '🤝', en: 'Nice to meet you!', ru: 'Приятно познакомиться!', uz: 'Tanishganimdan xursandman!', tj: 'Аз вохӯрӣ шодам!', kg: 'Таанышканыма кубандым!', kz: 'Танысқаныма қуаныштымын!', pn: '/naɪs tə miːt juː/', transcr: 'Найс ту мит ю' },
+          { e: '👋', en: 'Goodbye / Bye', ru: 'До свидания', uz: "Xayr / Ko'rishguncha", tj: 'Хайр / То боздид', kg: 'Жакшы калыңыз', kz: 'Сау болыңыз', pn: '/ɡʊdˈbaɪ/', transcr: 'Гудбай / Бай' },
+          { e: '🌙', en: 'Good evening', ru: 'Добрый вечер', uz: 'Xayrli kech', tj: 'Бегоҳ бахайр', kg: 'Кечкиңиз жакшы', kz: 'Қайырлы кеш', pn: '/ɡʊd ˈiːvnɪŋ/', transcr: 'Гуд ивнинг' },
+          { e: '👤', en: 'name', ru: 'имя', uz: 'ism', tj: 'ном', kg: 'ат', kz: 'есім / ат', pn: '/neɪm/', transcr: 'нэйм' },
+          { e: '🌍', en: 'country', ru: 'страна', uz: 'mamlakat', tj: 'кишвар', kg: 'өлкө', kz: 'ел', pn: '/ˈkʌntri/', transcr: 'кантри' },
+          { e: '🏠', en: 'home / house', ru: 'дом', uz: 'uy', tj: 'хона', kg: 'үй', kz: 'үй', pn: '/həʊm/', transcr: 'хоум / хаус' },
+          { e: '🛂', en: 'passport', ru: 'паспорт', uz: 'pasport', tj: 'паспорт / шиноснома', kg: 'паспорт', kz: 'паспорт', pn: '/ˈpɑːspɔːt/', transcr: 'паспорт' },
+          { e: '📋', en: 'visa', ru: 'виза', uz: 'viza', tj: 'виза', kg: 'виза', kz: 'виза', pn: '/ˈviːzə/', transcr: 'виза' },
+          { e: '🤷', en: "I don't understand", ru: 'Я не понимаю', uz: "Men tushunmayapman", tj: 'Ман намефаҳмам', kg: 'Мен түшүнбөй жатам', kz: 'Мен түсінбей жатырмын', pn: '/aɪ dəʊnt ˌʌndəˈstænd/', transcr: 'Ай донт андэстэнд' },
+          { e: '🗣️', en: 'Please speak slowly', ru: 'Пожалуйста, говорите медленно', uz: "Iltimos, sekin gapiring", tj: 'Лутфан, оҳиста гап занед', kg: 'Сураныч, жай сүйлөңүз', kz: 'Өтінемін, баяу сөйлеңіз', pn: '/pliːz spiːk ˈsləʊli/', transcr: 'Плиз спик слоули' },
+          { e: '🔁', en: 'Can you repeat?', ru: 'Можете повторить?', uz: "Takrorlaysizmi?", tj: 'Такрор мекунед?', kg: 'Кайталап коюңузчу?', kz: 'Қайталай аласыз ба?', pn: '/kæn juː rɪˈpiːt/', transcr: 'Кэн ю рипит?' },
+          { e: '❓', en: 'Where is...?', ru: 'Где находится...?', uz: '...qayerda?', tj: '...дар куҷо аст?', kg: '...кайда?', kz: '...қайда?', pn: '/weər ɪz/', transcr: 'Вэар из...' },
+          { e: '📱', en: 'phone number', ru: 'номер телефона', uz: 'telefon raqami', tj: 'рақами телефон', kg: 'телефон номери', kz: 'телефон нөмірі', pn: '/fəʊn ˈnʌmbər/', transcr: 'фоун намбэр' },
+          { e: '👨', en: 'man', ru: 'мужчина', uz: 'erkak', tj: 'мард', kg: 'эркек', kz: 'ер адам', pn: '/mæn/', transcr: 'мэн' },
+          { e: '👩', en: 'woman', ru: 'женщина', uz: 'ayol', tj: 'зан', kg: 'аял', kz: 'әйел', pn: '/ˈwʊmən/', transcr: 'вумэн' },
+          { e: '👥', en: 'people / team', ru: 'люди / команда', uz: 'odamlar / jamoa', tj: 'мардум / даста', kg: 'адамдар / команда', kz: 'адамдар / команда', pn: '/ˈpiːpl/', transcr: 'пипл / тим' },
+          { e: '🧑‍🌾', en: 'worker', ru: 'рабочий', uz: 'ishchi', tj: 'коргар', kg: 'жумушчу', kz: 'жұмысшы', pn: '/ˈwɜːkər/', transcr: 'вокер' },
+          { e: '👨‍💼', en: 'supervisor / boss', ru: 'супервайзер / начальник', uz: 'nazoratchi / boshliq', tj: 'назоратчӣ / сардор', kg: 'жетекчи / башчы', kz: 'жетекші / бастық', pn: '/ˈsuːpəvaɪzər/', transcr: 'супервайзер / бос' },
+          { e: '✅', en: 'Yes', ru: 'Да', uz: 'Ha', tj: 'Ҳа / Бале', kg: 'Ооба', kz: 'Иә', pn: '/jes/', transcr: 'Йес' },
+          { e: '❌', en: 'No', ru: 'Нет', uz: "Yo'q", tj: 'Не / На', kg: 'Жок', kz: 'Жоқ', pn: '/nəʊ/', transcr: 'Ноу' },
+          { e: '🆘', en: 'Help!', ru: 'Помогите!', uz: 'Yordam bering!', tj: 'Кӯмак кунед!', kg: 'Жардам бериңиз!', kz: 'Көмектесіңіз!', pn: '/help/', transcr: 'Хэлп' },
+          { e: '💧', en: 'water', ru: 'вода', uz: 'suv', tj: 'об', kg: 'суу', kz: 'су', pn: '/ˈwɔːtər/', transcr: 'вотэ' },
+          { e: '🚻', en: 'toilet / WC', ru: 'туалет', uz: 'hojatxona', tj: 'ҳоҷатхона', kg: 'даараткана', kz: 'дәретхана', pn: '/ˈtɔɪlɪt/', transcr: 'тойлет' },
+          { e: '🕐', en: 'What time is it?', ru: 'Который час?', uz: 'Soat necha?', tj: 'Соат чанд аст?', kg: 'Саат канча?', kz: 'Сағат қанша?', pn: '/wɒt taɪm ɪz ɪt/', transcr: 'Уот тайм из ит?' },
+          { e: '📍', en: 'I am here', ru: 'Я здесь', uz: 'Men shu yerdaman', tj: 'Ман дар ин ҷо ҳастам', kg: 'Мен бул жердемин', kz: 'Мен мұндамын', pn: '/aɪ æm hɪər/', transcr: 'Ай эм хиэр' },
+        ],
+        dialogue: [
+          { s: 'm', en: 'Good morning! Welcome to Green Fields Farm. My name is Tom.', ru: 'Доброе утро! Добро пожаловать. Меня зовут Том.', uz: 'Xayrli tong! Xush kelibsiz. Mening ismim Tom.', tj: 'Субҳ бахайр! Хуш омадед. Номи ман Том аст.', kg: 'Кутман эртең! Кош келиңиз. Менин атым Том.', kz: 'Қайырлы таң! Қош келдіңіз. Менің атым Том.', transcr: 'Гуд монинг! Уэлкам ту Грин Филдс Фарм. Май нэйм из Том.' },
+          { s: 'w', en: 'Good morning. My name is Ahmad. I am from Tajikistan.', ru: 'Доброе утро. Меня зовут Ахмад. Я из Таджикистана.', uz: 'Xayrli tong. Mening ismim Ahmad. Men Tojikistondan.', tj: 'Субҳ бахайр. Номи ман Аҳмад. Ман аз Тоҷикистон.', kg: 'Кутман эртең. Менин атым Ахмад. Мен Тажикстандан.', kz: 'Қайырлы таң. Менің атым Ахмад. Мен Тәжікстаннан.', transcr: 'Гуд монинг. Май нэйм из Ахмад. Ай эм фром Таджикистан.' },
+          { s: 'm', en: 'Nice to meet you, Ahmad! Are you a new worker?', ru: 'Приятно познакомиться, Ахмад! Вы новый рабочий?', uz: "Tanishganimdan xursandman! Siz yangi ishchimisiz?", tj: 'Хурсандам, Аҳмад! Оё шумо коргари нав ҳастед?', kg: 'Таанышканыма кубандым! Сиз жаңы жумушчусузбу?', kz: 'Танысқаныма қуаныштымын! Сіз жаңа жұмысшысыз ба?', transcr: 'Найс ту мит ю, Ахмад! Ар ю э нью вокер?' },
+          { s: 'w', en: 'Yes, I am. This is my first day. I am very happy to be here.', ru: 'Да. Сегодня мой первый день. Я очень рад быть здесь.', uz: "Ha. Bu mening birinchi kunim. Bu yerda bo'lishdan xursandman.", tj: 'Ҳа. Ин рӯзи аввали ман аст. Хеле хурсандам.', kg: 'Ооба. Бул менин биринчи күнүм. Бул жерде болгонума кубандым.', kz: 'Иә. Бұл менің бірінші күнім. Мұнда болғаныма өте қуаныштымын.', transcr: 'Йес, ай эм. Зис из май фёст дэй. Ай эм вэри хэппи ту би хиэр.' },
+          { s: 'm', en: 'Great! Is your colleague Rustam from Uzbekistan?', ru: 'Отлично! Ваш коллега Рустам из Узбекистана?', uz: "Zo'r! Hamkasbingiz Rustam O'zbekistondan kelasizmi?", tj: 'Аҷаб! Ҳамкори шумо Рустам аз Ӯзбекистон аст?', kg: 'Сонун! Кесиптешиңиз Рустам Өзбекстандан келет беле?', kz: 'Керемет! Әріптесіңіз Рустам Өзбекстаннан ба?', transcr: 'Грэйт! Из ё колиг Рустам фром Узбекистан?' },
+          { s: 'w', en: 'Yes, he is from Uzbekistan. We are good friends.', ru: 'Да, он из Узбекистана. Мы хорошие друзья.', uz: "Ha, u O'zbekistondan. Biz yaxshi do'stmiz.", tj: 'Ҳа, ӯ аз Ӯзбекистон. Мо дӯстони хуб ҳастем.', kg: 'Ооба, ал Өзбекстандан. Биз жакшы досторбуз.', kz: 'Иә, ол Өзбекстаннан. Біз жақсы достармыз.', transcr: 'Йес, хи из фром Узбекистан. Уи ар гуд фрэндз.' },
+          { s: 'w', en: 'Excuse me, where is the toilet please?', ru: 'Извините, где туалет?', uz: "Kechirasiz, hojatxona qayerda?", tj: 'Бубахшед, ҳоҷатхона дар куҷост?', kg: 'Кечириңиз, даараткана кайда?', kz: 'Кешіріңіз, дәретхана қайда?', transcr: 'Экскьюз ми, вэар из зэ тойлет плиз?' },
+          { s: 'm', en: "It is over there, behind the office. Do you need water too?", ru: 'Вон там, за офисом. Вам нужна вода?', uz: "U yerda, ofis orqasida. Sizga suv ham kerakmi?", tj: 'Он тараф, пушти офис. Ба шумо об ҳам лозим аст?', kg: 'Ошол жакта, офистин артында. Сууга да муктажсызбы?', kz: 'Ана сонда, офистің артында. Сізге су да керек пе?', transcr: 'Ит из овэ зэа, бихайнд зэ офис. Ду ю нид вотэ ту?' },
+          { s: 'w', en: "Yes please! I don't understand — behind the office?", ru: 'Да, пожалуйста! Я не понимаю — за офисом?', uz: "Ha, iltimos! Men tushunmayapman — ofis orqasidami?", tj: 'Ҳа, лутфан! Ман намефаҳмам — пушти офис?', kg: 'Ооба, сураныч! Мен түшүнбөй жатам — офистин артындабы?', kz: 'Иә, өтінемін! Мен түсінбей жатырмын — офистің артында ма?', transcr: 'Йес плиз! Ай донт андэстэнд — бихайнд зэ офис?' },
+          { s: 'm', en: "Yes! Behind the big white building. Here is my phone number — call if you need help.", ru: 'Да! За большим белым зданием. Вот мой номер — звоните, если нужна помощь.', uz: "Ha! Katta oq bino orqasida. Mana mening telefon raqamim — kerak bo'lsa qo'ng'iroq qiling.", tj: 'Ҳа! Пушти бинои калони сафед. Ин рақами ман — занг занед агар кӯмак лозим.', kg: 'Ооба! Чоң ак имараттын артында. Менин телефон номерим — жардам керек болсо чалыңыз.', kz: 'Иә! Үлкен ақ ғимараттың артында. Менің телефон нөмірім — көмек керек болса хабарласыңыз.', transcr: 'Йес! Бихайнд зэ биг уайт билдинг. Хиэр из май фоун намбэр — кол иф ю нид хэлп.' },
+        ],
+        quiz: [
+          { q: '[COMPLETE] "I ___ Ahmad. I ___ from Tajikistan."', opts: ['am / am', 'is / is', 'are / are', 'am / is'], c: 0, hint_ru: 'Я Ахмад. Я из Таджикистана.', hint_uz: 'Men Ahmad. Men Tojikistondanman.', hint_tj: 'Ман Аҳмад. Ман аз Тоҷикистон.', hint_kg: 'Мен Ахмад. Мен Тажикстанданмын.', hint_kz: 'Мен Ахмад. Мен Тәжікстаннанмын.' },
+          { q: '[COMPLETE] "She ___ a picker. They ___ new workers."', opts: ['am / am', 'is / are', 'are / is', 'is / is'], c: 1, hint_ru: 'Она сборщица. Они новые рабочие.', hint_uz: 'U yig\'uvchi. Ular yangi ishchilar.', hint_tj: 'Вай чинакчӣ. Онҳо коргарони нав.', hint_kg: 'Ал теримчи. Алар жаңы жумушчулар.', hint_kz: 'Ол теруші. Олар жаңа жұмысшылар.' },
+          { q: '[TRANSLATE]', opts: ['Good morning!', 'Nice to meet you!', 'Thank you!', 'Welcome!'], c: 1, hint_ru: 'Приятно познакомиться', hint_uz: 'Tanishganimdan xursandman', hint_tj: 'Аз вохӯрӣ шодам', hint_kg: 'Таанышканыма кубандым', hint_kz: 'Танысқаныма қуаныштымын' },
+          { q: '[TRANSLATE]', opts: ['Good morning!', 'Good evening!', 'Goodbye!', 'Good night!'], c: 0, hint_ru: 'Доброе утро', hint_uz: 'Xayrli tong', hint_tj: 'Субҳ бахайр', hint_kg: 'Кутман эртең', hint_kz: 'Қайырлы таң' },
+          { q: '[COMPLETE] "I don\'t ___. Can you repeat?"', opts: ['understand', 'like', 'want', 'know'], c: 0, hint_ru: 'Я не понимаю. Можете повторить?', hint_uz: 'Men tushunmayapman. Qaytarib yuborasizmi?', hint_tj: 'Ман намефаҳмам. Метавонед такрор кунед?', hint_kg: 'Мен түшүнбөй жатам. Кайталай аласызбы?', hint_kz: 'Мен түсінбеймін. Қайталай аласыз ба?' },
+          { q: '[COMPLETE] "___ is your name?" — "My name is Ahmad."', opts: ['What', 'Where', 'Who', 'How'], c: 0, hint_ru: 'Как твое имя? — Мое имя Ахмад.', hint_uz: 'Ismingiz nima? — Mening ismim Ahmad.', hint_tj: 'Номи шумо чист? — Номи ман Аҳмад.', hint_kg: 'Сенин атың ким? — Менин атым Ахмад.', hint_kz: 'Сенің атың кім? — Менің атым Ахмад.' },
+          { q: '[COMPLETE] "Are you from Uzbekistan?" — "Yes, I ___"', opts: ['am', 'is', 'are', 'be'], c: 0, hint_ru: 'Вы из Узбекистана? — Да, я оттуда.', hint_uz: 'Siz O\'zbekistondanmisiz? — Ha, shunday.', hint_tj: 'Шумо аз Ӯзбекистон ҳастед? — Ҳа, ҳамин тавр.', hint_kg: 'Сиз Өзбекстандансызбы? — Ооба, ошондой.', hint_kz: 'Сіз Өзбекстаннансыз ба? — Иә, солай.' },
+          { q: '[TRANSLATE]', opts: ['Goodbye!', 'Thank you!', 'Hello!', 'Sorry!'], c: 0, hint_ru: 'До свидания', hint_uz: 'Xayr', hint_tj: 'Хайр', hint_kg: 'Жакшы калыңыз', hint_kz: 'Сау болыңыз' },
+          { q: '[COMPLETE] "Where ___ the toilet?" — "It is over there."', opts: ['is', 'am', 'are', 'do'], c: 0, hint_ru: 'Где туалет? — Он вон там.', hint_uz: 'Hojatxona qayerda? — U anavi yerda.', hint_tj: 'Ҳоҷатхона дар куҷост? — Он дар он ҷо.', hint_kg: 'Даараткана кайда? — Ал тигил жакта.', hint_kz: 'Дәретхана қайда? — Ол ана жерде.' },
+          { q: '[COMPLETE] "We ___ good friends. They ___ new workers."', opts: ['are / are', 'is / is', 'am / are', 'are / is'], c: 0, hint_ru: 'Мы хорошие друзья. Они новые рабочие.', hint_uz: 'Biz yaxshi do\'stlar. Ular yangi ishchilar.', hint_tj: 'Мо дӯстони хуби. Онҳо коргарони нав.', hint_kg: 'Биз жакшы досторбуз. Алар жаңы жумушчулар.', hint_kz: 'Біз жақсы достармыз. Олар жаңа жұмысшылар.' },
+        ]
+      },
+      {
+        id: 2, mod: 1,
+        name_ru: 'Моя работа, моя команда', name_uz: 'Mening ishim va jamoam', name_tj: 'Кор ва дастаи ман', name_kg: 'Менин ишим жана командам',
+        cefr: "Possessive adjectives · Possessive 's · Jobs",
+        grammar: {
+          title_ru: "Притяжательные: my/your/his/her + Possessive 's", title_uz: "Egalik: my/your/his/her + Possessive 's", title_tj: "Соҳибӣ: my/your/his/her + Possessive 's", title_kg: "Таандык: my/your/his/her + Possessive 's", title_kz: "Тәуелдік: my/your/his/her + Possessive 's",
+          intro_ru: '<div style="line-height:1.6">Слово "мой" ставится строго ПЕРЕД предметом:<br>❌ <b>box my</b><br>✅ <b>my box</b> (мой ящик)<br>👉 Слова <b>my, your, his, her</b> всегда идут первыми.</div>',
+          intro_uz: '<div style="line-height:1.6">"Mening" so‘zi doim narsadan OLDIN keladi:<br>❌ <b>box my</b><br>✅ <b>my box</b> (mening qutim)<br>👉 <b>my, your, his, her</b> so‘zlari doim birinchi keladi.</div>',
+          intro_tj: '<div style="line-height:1.6">Калимаи "ман" ҳамеша ПЕШ АЗ ашё меояд:<br>❌ <b>box my</b><br>✅ <b>my box</b> (қуттии ман)<br>👉 Калимаҳои <b>my, your, his, her</b> ҳамеша якум меоянд.</div>',
+          intro_kg: '<div style="line-height:1.6">"Менин" деген сөз дайыма нерсенин АЛДЫНДА келет:<br>❌ <b>box my</b><br>✅ <b>my box</b> (менин кутучам)<br>👉 <b>my, your, his, her</b> сөздөрү дайыма биринчи келет.</div>',
+          intro_kz: '<div style="line-height:1.6">"Менің" деген сөз әрқашан заттың АЛДЫНДА тұрады:<br>❌ <b>box my</b><br>✅ <b>my box</b> (менің жәшігім)<br>👉 <b>my, your, his, her</b> сөздері әрқашан бірінші тұрады.</div>',
+          cultural_ru: 'В узбекском/таджикском/кыргызском притяжательность выражается суффиксом (-им, -инг). В английском — отдельным словом ПЕРЕД существительным: my, your, his, her.',
+          cultural_uz: "O'zbek tilida egalik qo'shimchalar bilan ifodalanadi (-im, -ing). Ingliz tilida esa alohida so'z otdan OLDIN keladi: my, your, his, her.",
+          cultural_tj: 'Дар тоҷикӣ соҳибият бо пасванд (-ам, -ат) ифода мешавад. Дар англисӣ — калимаи алоҳида ПЕШИ исм: my, your, his, her.',
+          cultural_kg: 'Кыргыз тилинде таандыктык мүчө менен (-ым, -ың) билдирилет. Англис тилинде — зат атооч АЛДЫНДА өзүнчө сөз: my, your, his, her.',
+          note_ru: '"his" = его (мужчина). "her" = её (женщина). НЕ путайте!',
+          note_uz: '"his" = uniki (erkak). "her" = uniki (ayol). Aralashtirib yubormang!',
+          note_tj: '"his" = аз они ӯ (мард). "her" = аз они вай (зан). Фарқ кунед!',
+          note_kg: '"his" = анын (эркек). "her" = анын (аял). Аралаштырбаңыз!',
+          forms: {
+            positive: {
+              label_ru: '✅ Утверждение', label_uz: '✅ Tasdiq', label_tj: '✅ Тасдиқ', label_kg: '✅ Ырастоо', label_kz: '✅ Растау',
+              rule_ru: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px"><div><code>my</code> <span class="g-transcr">[май]</span> (мой)</div><div><code>our</code> <span class="g-transcr">[ауэ]</span> (наш)</div><div><code>your</code> <span class="g-transcr">[ё]</span> (твой/ваш)</div><div><code>their</code> <span class="g-transcr">[зэа]</span> (их)</div><div><code>his</code> <span class="g-transcr">[хиз]</span> (его)</div><div><code>her</code> <span class="g-transcr">[хё]</span> (её)</div></div>',
+              rule_uz: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px"><div><code>my</code> <span class="g-transcr">[май]</span> (mening)</div><div><code>our</code> <span class="g-transcr">[ауэ]</span> (bizning)</div><div><code>your</code> <span class="g-transcr">[ё]</span> (sizning)</div><div><code>their</code> <span class="g-transcr">[зэа]</span> (ularning)</div><div><code>his</code> <span class="g-transcr">[хиз]</span> (uning, erkak)</div><div><code>her</code> <span class="g-transcr">[хё]</span> (uning, ayol)</div></div>',
+              rule_tj: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px"><div><code>my</code> <span class="g-transcr">[май]</span> (манам)</div><div><code>our</code> <span class="g-transcr">[ауэ]</span> (моям)</div><div><code>your</code> <span class="g-transcr">[ё]</span> (шумоям)</div><div><code>their</code> <span class="g-transcr">[зэа]</span> (онҳоям)</div><div><code>his</code> <span class="g-transcr">[хиз]</span> (вайам, мард)</div><div><code>her</code> <span class="g-transcr">[хё]</span> (вайам, зан)</div></div>',
+              rule_kg: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px"><div><code>my</code> <span class="g-transcr">[май]</span> (менин)</div><div><code>our</code> <span class="g-transcr">[ауэ]</span> (биздин)</div><div><code>your</code> <span class="g-transcr">[ё]</span> (сиздин/сенин)</div><div><code>their</code> <span class="g-transcr">[зэа]</span> (алардын)</div><div><code>his</code> <span class="g-transcr">[хиз]</span> (анын, эркек)</div><div><code>her</code> <span class="g-transcr">[хё]</span> (анын, аял)</div></div>',
+              rule_kz: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-top:4px"><div><code>my</code> <span class="g-transcr">[май]</span> (менің)</div><div><code>our</code> <span class="g-transcr">[ауэ]</span> (біздің)</div><div><code>your</code> <span class="g-transcr">[ё]</span> (сіздің/сенің)</div><div><code>their</code> <span class="g-transcr">[зэа]</span> (олардың)</div><div><code>his</code> <span class="g-transcr">[хиз]</span> (оның, ер)</div><div><code>her</code> <span class="g-transcr">[хё]</span> (оның, әйел)</div></div>',
+              table: [
+                { subj: 'I →', verb: 'my', example: 'My name is Ahmad.', transcr: 'Май нэйм из Ахмад', tr_ru: 'Моё имя — Ахмад', tr_uz: 'Mening ismim Ahmad', tr_tj: 'Номи ман Аҳмад', tr_kg: 'Менин атым Ахмад' },
+                { subj: 'You →', verb: 'your', example: 'Your gloves are here.', transcr: 'Ё главз ар хиэр', tr_ru: 'Ваши перчатки здесь', tr_uz: "Sizning qo'lqoplaringiz shu yerda", tr_tj: 'Дастпӯшакҳои шумо ин ҷост', tr_kg: 'Сиздин колгаптарыңыз бул жерде' },
+                { subj: 'He →', verb: 'his', example: 'His job is picking.', transcr: 'Хиз джоб из пикинг', tr_ru: 'Его работа — сбор', tr_uz: 'Uning ishi terimchilik', tr_tj: 'Кори ӯ теримгарӣ', tr_kg: 'Анын иши терүү' },
+                { subj: 'She →', verb: 'her', example: 'Her supervisor is Anna.', transcr: 'Хё супервайзер из Анна', tr_ru: 'Её супервайзер — Анна', tr_uz: 'Uning nazoratchi Anna', tr_tj: 'Назоратчии вай Анна', tr_kg: 'Анын жетекчиси Анна' },
+                { subj: 'We →', verb: 'our', example: 'Our team has 8 pickers.', transcr: 'Ауэ тим хэз эйт пикерз', tr_ru: 'В нашей команде 8 сборщиков', tr_uz: 'Jamoamizda 8 ta terimchi', tr_tj: 'Дастаи мо 8 теримгар дорад', tr_kg: 'Биздин командада 8 терүүчү' },
+                { subj: "Name + 's", verb: "'s", example: "Tom's farm is big.", transcr: "Томз фарм из биг", tr_ru: 'Ферма Тома большая', tr_uz: "Tom's fermasi katta", tr_tj: 'Фермаи Том калон аст', tr_kg: 'Томдун фермасы чоң' }
+              ]
+            },
+            negative: {
+              label_ru: '❌ Отрицание', label_uz: '❌ Inkor', label_tj: '❌ Инкор', label_kg: '❌ Терс', label_kz: '❌ Теріс',
+              rule_ru: 'Притяжательные не меняются при отрицании. Отрицание — в глаголе: <code>My row is not here.</code>',
+              rule_uz: "Egalik olmoshlari inkor shaklda o'zgarmaydi. Inkor fe'lda: <code>My row is not here.</code>",
+              table: [
+                { subj: 'my', verb: 'is not', example: 'My row is not here.', transcr: 'Май роу из нот хиэр', tr_ru: 'Мой ряд не здесь', tr_uz: "Mening qatorim shu yerda emas", tr_tj: 'Қатори ман ин ҷо нест', tr_kg: 'Менин катарым бул жерде эмес' },
+                { subj: 'his', verb: 'is not', example: 'His phone is not working.', transcr: 'Хиз фоун из нот вокинг', tr_ru: 'Его телефон не работает', tr_uz: "Uning telefoni ishlamayapti", tr_tj: 'Телефони ӯ кор намекунад', tr_kg: 'Анын телефону иштебейт' },
+                { subj: 'our', verb: 'are not', example: 'Our gloves are not new.', transcr: 'Ауэ главз ар нот нью', tr_ru: 'Наши перчатки не новые', tr_uz: "Bizning qo'lqoplarimiz yangi emas", tr_tj: 'Дастпӯшакҳои мо нав нестанд', tr_kg: 'Биздин колгаптарыбыз жаңы эмес' }
+              ]
+            },
+            question: {
+              label_ru: '❓ Вопрос', label_uz: '❓ Savol', label_tj: '❓ Савол', label_kg: '❓ Суроо', label_kz: '❓ Сұрақ',
+              rule_ru: 'Вопрос — глагол вперёд: <code>Is your name Ahmad?</code> · <code>What is her job?</code>',
+              rule_uz: "Savol — fe'l oldinga: <code>Is your name Ahmad?</code> · <code>What is her job?</code>",
+              table: [
+                { verb: 'Is', subj: 'your name', example: 'Is your name Ahmad?', transcr: 'Из ё нэйм Ахмад?', tr_ru: 'Вас зовут Ахмад?', tr_uz: 'Sizning ismingiz Ahmadmi?', tr_tj: 'Номи шумо Аҳмад аст?', tr_kg: 'Сиздин атыңыз Ахмадбы?' },
+                { verb: 'What is', subj: 'her job', example: 'What is her job?', transcr: 'Уот из хё джоб?', tr_ru: 'Какая у неё работа?', tr_uz: 'Uning ishi nima?', tr_tj: 'Кори вай чист?', tr_kg: 'Анын иши эмне?' },
+                { verb: 'Where is', subj: 'our row', example: 'Where is our row?', transcr: 'Вэар из ауэ роу?', tr_ru: 'Где наш ряд?', tr_uz: 'Qatorimiz qayerda?', tr_tj: 'Қатори мо дар куҷост?', tr_kg: 'Биздин катарыбыз кайда?' }
+              ]
+            }
+          }
+        },
+        words: [
+          { e: '🍓', en: 'picker', ru: 'сборщик/сборщица', uz: 'terimchi', tj: 'теримгар', kg: 'терүүчү', kz: 'терімші', pn: '/ˈpɪkər/', transcr: 'пикер' },
+          { e: '📦', en: 'packer', ru: 'упаковщик', uz: 'qadoqlovchi', tj: 'қадоқкунанда', kg: 'таңгоолочу', kz: 'орамашы', pn: '/ˈpækər/', transcr: 'пакер' },
+          { e: '👔', en: 'line leader', ru: 'бригадир', uz: 'brigadir', tj: 'бригадир', kg: 'бригадир', kz: 'бригадир', pn: '/laɪn ˈliːdər/', transcr: 'лайн лидер' },
+          { e: '🏢', en: 'farm manager', ru: 'управляющий фермой', uz: 'ferma menejeri', tj: 'мудири ферма', kg: 'ферма менеджери', kz: 'ферма менеджері', pn: '/fɑːm ˈmænɪdʒər/', transcr: 'фарм мэнеджер' },
+          { e: '🚛', en: 'tractor driver', ru: 'водитель трактора', uz: "traktor haydovchisi", tj: 'ронандаи трактор', kg: 'трактор айдоочусу', kz: 'трактор жүргізушісі', pn: '/ˈtræktər ˈdraɪvər/', transcr: 'трактэ драйвэ' },
+          { e: '🤝', en: 'colleague / teammate', ru: 'коллега / напарник', uz: 'hamkasb', tj: 'ҳамкор', kg: 'кесиптеш', kz: 'әріптес', pn: '/ˈkɒliːɡ/', transcr: 'колиг / тиммэйт' },
+          { e: '👷', en: 'worker', ru: 'рабочий', uz: 'ishchi', tj: 'коргар', kg: 'жумушчу', kz: 'жұмысшы', pn: '/ˈwɜːkər/', transcr: 'вокер' },
+          { e: '👨‍💼', en: 'supervisor', ru: 'супервайзер', uz: 'nazoratchi', tj: 'назоратчӣ', kg: 'жетекчи', kz: 'жетекші', pn: '/ˈsuːpəvaɪzər/', transcr: 'супервайзер' },
+          { e: '🧑‍🔧', en: 'mechanic', ru: 'механик', uz: 'mexanik', tj: 'механик', kg: 'механик', kz: 'механик', pn: '/məˈkænɪk/', transcr: 'мэкэник' },
+          { e: '🧹', en: 'cleaner', ru: 'уборщик', uz: 'tozalovchi', tj: 'тозакунанда', kg: 'тазалоочу', kz: 'тазалаушы', pn: '/ˈkliːnər/', transcr: 'клинэ' },
+          { e: '🚿', en: 'washroom attendant', ru: 'сотрудник помывочной', uz: 'yuvish xonasi ishchisi', tj: 'коргари шустхона', kg: 'жуунуучу бөлмө кызматчысы', kz: 'жуу бөлмесі қызметкері', pn: '/ˈwɒʃruːm/', transcr: 'уошрум атэндэнт' },
+          { e: '📋', en: 'notice board', ru: 'доска объявлений', uz: "e'lon taxtasi", tj: 'тахтаи эълон', kg: 'жарыялоо тактасы', kz: 'хабарландыру тақтасы', pn: '/ˈnəʊtɪs bɔːd/', transcr: 'ноутис борд' },
+          { e: '🧤', en: 'gloves', ru: 'перчатки', uz: "qo'lqoplar", tj: 'дастпӯшакҳо', kg: 'колгаптар', kz: 'қолғаптар', pn: '/ɡlʌvz/', transcr: 'главз' },
+          { e: '🦺', en: 'high-vis vest', ru: 'жилет-сигнал', uz: 'signal jilet', tj: 'ҷилети сигналӣ', kg: 'сигналдык жилет', kz: 'сигналдық жилет', pn: '/haɪ vɪz vest/', transcr: 'хай виз вест' },
+          { e: '👢', en: 'boots', ru: 'сапоги', uz: 'etiklar', tj: 'мӯзаҳо', kg: 'өтүктөр', kz: 'етіктер', pn: '/buːts/', transcr: 'бутс' },
+          { e: '🏷️', en: 'name badge', ru: 'бейдж с именем', uz: 'ism kartochkasi', tj: 'бейҷи ном', kg: 'ат бейджи', kz: 'ат белгісі', pn: '/neɪm bædʒ/', transcr: 'нэйм бэдж' },
+          { e: '⏰', en: 'shift', ru: 'смена', uz: 'smena', tj: 'навбат', kg: 'навбат', kz: 'ауысым', pn: '/ʃɪft/', transcr: 'шифт' },
+          { e: '☀️', en: 'morning shift', ru: 'утренняя смена', uz: 'ertalabki smena', tj: 'навбати субҳ', kg: 'эртеңки навбат', kz: 'таңғы ауысым', pn: '/ˈmɔːnɪŋ ʃɪft/', transcr: 'монинг шифт' },
+          { e: '🌙', en: 'night shift', ru: 'ночная смена', uz: 'tungi smena', tj: 'навбати шаб', kg: 'түнкү навбат', kz: 'түнгі ауысым', pn: '/naɪt ʃɪft/', transcr: 'найт шифт' },
+          { e: '🍽️', en: 'break / lunch break', ru: 'перерыв / обед', uz: 'tanaffus / tushlik', tj: 'истироҳат / нисфирӯзӣ', kg: 'тыным / түшкү тамак', kz: 'үзіліс / түскі ас', pn: '/breɪk/', transcr: 'брэйк / ланч брэйк' },
+          { e: '📍', en: 'meeting point', ru: 'место встречи', uz: "uchrashuv joyi", tj: 'ҷои вохӯрӣ', kg: 'жолугушуу жери', kz: 'кездесу орны', pn: '/ˈmiːtɪŋ pɔɪnt/', transcr: 'митинг поинт' },
+          { e: '🚐', en: 'minibus', ru: 'микроавтобус', uz: 'mikroavtobus', tj: 'микроавтобус', kg: 'микроавтобус', kz: 'микроавтобус', pn: '/ˈmɪnibʌs/', transcr: 'минибас' },
+          { e: '🌿', en: 'row', ru: 'ряд (грядка)', uz: 'qator', tj: 'қатор', kg: 'катар', kz: 'қатар', pn: '/rəʊ/', transcr: 'роу' },
+          { e: '🧺', en: 'tray / punnet', ru: 'лоток', uz: 'quti / lotok', tj: 'қуттӣ / лоток', kg: 'септет / лоток', kz: 'науа / лоток', pn: '/treɪ/', transcr: 'трэй / панит' },
+          { e: '🏠', en: 'accommodation / camp', ru: 'жильё / кэмп', uz: 'turar joy / lager', tj: 'манзил / лагер', kg: 'жашай жер / лагерь', kz: 'тұрғын үй / лагерь', pn: '/əˌkɒməˈdeɪʃn/', transcr: 'экомодэйшн / кэмп' },
+          { e: '📱', en: 'phone number', ru: 'номер телефона', uz: 'telefon raqami', tj: 'рақами телефон', kg: 'телефон номери', kz: 'телефон нөмірі', pn: '/fəʊn ˈnʌmbər/', transcr: 'фоун намбэр' },
+          { e: '🗺️', en: 'office', ru: 'офис', uz: 'ofis', tj: 'офис', kg: 'офис', kz: 'офис', pn: '/ˈɒfɪs/', transcr: 'офис' },
+          { e: '🔑', en: 'locker', ru: 'шкафчик', uz: 'shkafcha', tj: 'ҷевон', kg: 'шкафча', kz: 'шкафша', pn: '/ˈlɒkər/', transcr: 'локэ' },
+          { e: '📝', en: 'contract', ru: 'контракт / договор', uz: 'shartnoma', tj: 'шартнома', kg: 'келишим', kz: 'шарт', pn: '/ˈkɒntrækt/', transcr: 'контракт' },
+          { e: '💰', en: 'wage / pay', ru: 'зарплата', uz: 'maosh', tj: 'маош', kg: 'эмгек акы', kz: 'жалақы', pn: '/weɪdʒ/', transcr: 'вэйдж / пэй' },
+        ],
+        dialogue: [
+          { s: 'm', en: "Good morning team! Let me introduce your new colleague Ahmad.", ru: 'Доброе утро, команда! Позвольте представить нового коллегу — Ахмада.', uz: "Xayrli tong, jamoa! Yangi hamkasb Ahmadni tanitay.", tj: 'Субҳ бахайр, даста! Ҳамкори нав Аҳмадро муаррифӣ кунам.', kg: 'Кутман эртең, команда! Жаңы кесиптеш Ахмадды тааныштырайын.', transcr: 'Гуд монинг тим! Лэт ми интродьюс ё нью колиг Ахмад.' },
+          { s: 'w', en: "Hello! My name is Rustam. I am a picker. What is your job, Ahmad?", ru: 'Привет! Меня зовут Рустам. Я сборщик. Какая у тебя работа, Ахмад?', uz: "Salom! Mening ismim Rustam. Men terimchiman. Sizning ishingiz nima, Ahmad?", tj: 'Салом! Номи ман Рустам. Ман теримгар. Кори ту чист, Аҳмад?', kg: 'Салам! Менин атым Рустам. Мен терүүчүмүн. Сенин ишиң эмне, Ахмад?', transcr: 'Хэллоу! Май нэйм из Рустам. Ай эм э пикер. Уот из ё джоб, Ахмад?' },
+          { s: 'w', en: "I am Ahmad. I am also a picker. Nice to meet you, Rustam!", ru: 'Я Ахмад. Я тоже сборщик. Рад познакомиться, Рустам!', uz: "Men Ahmad. Men ham terimchiman. Tanishganimdan xursandman, Rustam!", tj: 'Ман Аҳмад ҳастам. Ман ҳам теримгар. Хурсандам, Рустам!', kg: 'Мен Ахмадмын. Мен да терүүчүмүн. Таанышканыма кубандым, Рустам!', transcr: 'Ай эм Ахмад. Ай эм олсоу э пикер. Найс ту мит ю, Рустам!' },
+          { s: 'm', en: "Your line leader is Anna. Anna's job is to check your trays every hour.", ru: "Ваш бригадир — Анна. Работа Анны — проверять ваши лотки каждый час.", uz: "Sizning brigadiringiz Anna. Anna's ishi har soat lotiklaringizni tekshirish.", tj: 'Бригадири шумо Анна. Кори Анна ҳар соат тафтиш кардани лотокҳои шумост.', kg: 'Сиздин бригадириңиз Анна. Анна иши ар саат сепеттериңизди текшерүү.', transcr: 'Ё лайн лидер из Анна. Аннас джоб из ту чэк ё трэйз эври ауэр.' },
+          { s: 'w', en: "What is her phone number? Is it on our notice board?", ru: 'Какой у неё номер телефона? Он на нашей доске объявлений?', uz: "Uning telefon raqami nima? Bu bizning e'lon taxtamizda bormi?", tj: 'Рақами телефони вай чанд аст? Дар тахтаи эълони мо ҳаст?', kg: 'Анын телефон номери эмне? Ал биздин жарыялоо тактага жазылганбы?', transcr: 'Уот из хё фоун намбэр? Из ит он ауэ ноутис борд?' },
+          { s: 'm', en: "Yes, her number is on the notice board. Your lockers are in the office.", ru: 'Да, её номер на доске. Ваши шкафчики в офисе.', uz: "Ha, uning raqami e'lon taxtasida. Shkafchalaringiz ofisda.", tj: 'Ҳа, рақами вай дар тахта. Ҷевонҳои шумо дар офис.', kg: 'Ооба, анын номери тактада. Шкафчаларыңыз офисте.', transcr: 'Йес, хё намбэ из он зэ ноутис борд. Ё локэз ар ин зэ офис.' },
+          { s: 'w', en: "Where is my locker? And where are our boots and gloves?", ru: 'Где мой шкафчик? А где наши сапоги и перчатки?', uz: "Mening shkafcham qayerda? Etiklar va qo'lqoplarimiz qayerda?", tj: 'Ҷевони ман дар куҷост? Мӯзаҳо ва дастпӯшакҳои мо?', kg: 'Менин шкафчам кайда? Өтүктөрүбүз жана колгаптарыбыз кайда?', transcr: 'Вэар из май локэ? Энд вэар ар ауэ бутс энд главз?' },
+          { s: 'm', en: "His locker is number 12. Your boots are in the changing room.", ru: 'Его шкафчик номер 12. Ваши сапоги в раздевалке.', uz: "Uning shkafchasi 12 raqam. Etiklaringiz kiyinish xonasida.", tj: 'Ҷевони ӯ рақами 12. Мӯзаҳои шумо дар хонаи либоспӯшӣ.', kg: 'Анын шкафчасы 12 номер. Өтүктөрүңүз кийим алмаштыруу бөлмөсүндө.', transcr: 'Хиз локэ из намбэ твэлв. Ё бутс ар ин зэ чэйнджинг рум.' },
+          { s: 'w', en: "Our shift starts at 6 AM. What time is their shift?", ru: 'Наша смена в 6 утра. Когда их смена?', uz: "Bizning smenamiz ertalab 6 da. Ularning smenasi qachon?", tj: 'Навбати мо соати 6 субҳ. Навбати онҳо кай аст?', kg: 'Биздин навбат эртеңки 6-да. Алардын навбаты качан?', transcr: 'Ауэ шифт стартс эт сикс эй эм. Уот тайм из зэар шифт?' },
+          { s: 'm', en: "Their shift is at 2 PM. Here is your name badge and your contract. Welcome!", ru: 'Их смена в 14:00. Вот ваш бейдж и контракт. Добро пожаловать!', uz: "Ularning smenasi soat 2 PM. Mana sizning ism kartochkangiz va shartnomangiz. Xush kelibsiz!", tj: 'Навбати онҳо 2 PM. Ин бейҷи ном ва шартномаи шумо. Хуш омадед!', kg: 'Алардын навбаты 2 PM. Бул сиздин ат бейджиңиз жана келишимиңиз. Кош келиңиз!', transcr: 'Зэар шифт из эт ту пи эм. Хиэр из ё нэйм бэдж энд ё контракт. Уэлкам!' },
+        ],
+        quiz: [
+          { q: "Which sentence is correct?", opts: ["His name is Rustam. Her name is Fatima.", "His name is Rustam. Her name is he.", "Him name is Rustam.", "My name are Ahmad."], c: 0 },
+          { q: "Translate: 'Её работа — упаковка. Его работа — сбор ягод.'", opts: ["His job is packing. Her job is picking.", "Her job is packing. His job is picking.", "Her job is packing. Her job is picking.", "His job is packing. His job is picking."], c: 1 },
+          { q: "'The farm belongs to Tom.' How do we say 'ферма Тома'?", opts: ["Tom farm", "Toms farm", "Tom's farm", "Farm of Tom's"], c: 2 },
+          { q: "'___ gloves are in the locker.' (his — мужчина)", opts: ["Her", "His", "He", "Him"], c: 1 },
+          { q: "'___ shift starts at 6 AM.' (мы)", opts: ["Their", "Your", "Our", "My"], c: 2 },
+          { q: "'Where is ___ name badge?' (she — женщина)", opts: ["his", "she", "her", "hers"], c: 2 },
+          { q: "'___ locker is number 12.' (he — мужчина)", opts: ["Her", "His", "He's", "Him"], c: 1 },
+          { q: "Translate: 'Наша команда — 8 сборщиков'", opts: ["Their team has 8 pickers.", "Our team has 8 pickers.", "My team has 8 pickers.", "Your team has 8 pickers."], c: 1 },
+          { q: "'Anna's job' means:", opts: ["Anna owns a job", "The job OF Anna", "Anna is a job", "Jobs for Anna"], c: 1 },
+          { q: "'What is ___ phone number?' — asking about the supervisor (she)", opts: ["his", "her", "their", "our"], c: 1 },
+        ]
+      },
+      {
+        id: 3, mod: 2,
+        name_ru: 'Что это такое?', name_uz: "Bu nima?", name_tj: 'Ин чист?', name_kg: 'Бул эмне?',
+        cefr: 'This/That/These/Those · Articles a/an · Farm objects',
+        grammar: {
+          title_ru: 'This/That/These/Those + Артикли A/AN', title_uz: 'This/That/These/Those + A/AN', title_tj: 'This/That/These/Those + A/AN', title_kg: 'This/That/These/Those + A/AN', title_kz: 'This/That/These/Those + A/AN',
+          cultural_ru: 'В узбекском/таджикском/кыргызском нет артиклей a/an. В английском перед единственным предметом ВСЕГДА нужен артикль: a punnet, an apple.',
+          cultural_uz: "O'zbek tilida artikl yo'q. Ingliz tilida bitta narsa oldida DOIM artikl kerak: a punnet, an apple.",
+          cultural_tj: 'Дар тоҷикӣ артикл нест. Дар англисӣ пеши як чиз ҲАМЕША артикл лозим: a punnet, an apple.',
+          cultural_kg: 'Кыргыз тилинде артикль жок. Англис тилинде бир нерсенин алдында ДАЙЫМА артикль керек: a punnet, an apple.',
+          note_ru: 'AN apple ✓ (гласный) · AN orange ✓ · A strawberry ✓ · A greenhouse ✓',
+          note_uz: 'AN apple ✓ · AN orange ✓ · A strawberry ✓ · A greenhouse ✓',
+          note_tj: 'AN apple ✓ · AN orange ✓ · A strawberry ✓ · A greenhouse ✓',
+          note_kg: 'AN apple ✓ · AN orange ✓ · A strawberry ✓ · A greenhouse ✓',
+          forms: {
+            positive: {
+              label_ru: '✅ Утверждение', label_uz: '✅ Tasdiq', label_tj: '✅ Тасдиқ', label_kg: '✅ Ырастоо', label_kz: '✅ Растау',
+              rule_ru: '<code>This</code> = это (близко, 1) · <code>That</code> = то (далеко, 1) · <code>These</code> = эти · <code>Those</code> = те',
+              rule_uz: '<code>This</code> = bu (yaqin, 1) · <code>That</code> = u (uzoq, 1) · <code>These</code> = bular · <code>Those</code> = ular',
+              table: [
+                { subj: 'This', verb: 'is', example: 'This is a punnet.', transcr: 'Зис из э панит', tr_ru: 'Это лоток', tr_uz: 'Bu quti', tr_tj: 'Ин қуттӣ аст', tr_kg: 'Бул септет' },
+                { subj: 'That', verb: 'is', example: 'That is a trolley.', transcr: 'Зэт из э троли', tr_ru: 'То тележка', tr_uz: 'U arava', tr_tj: 'Он аробаи даст аст', tr_kg: 'Ал арба' },
+                { subj: 'These', verb: 'are', example: 'These are strawberries.', transcr: 'Зиз ар стробериз', tr_ru: 'Это клубника (много)', tr_uz: 'Bular qulupnay', tr_tj: 'Инҳо тӯтиҳо', tr_kg: 'Булар кулпунай' },
+                { subj: 'It is', verb: 'a / an', example: 'It is an apple.', transcr: 'Ит из эн эпл', tr_ru: 'Это яблоко', tr_uz: 'Bu olma', tr_tj: 'Ин себ аст', tr_kg: 'Бул алма' }
+              ]
+            },
+            negative: {
+              label_ru: '❌ Отрицание', label_uz: '❌ Inkor', label_tj: '❌ Инкор', label_kg: '❌ Терс', label_kz: '❌ Теріс',
+              rule_ru: 'Добавляем <b>not</b>: <code>This is not a pear.</code> · <code>These are not raspberries.</code>',
+              rule_uz: "<b>not</b> qo'shamiz: <code>This is not a pear.</code> · <code>These are not raspberries.</code>",
+              table: [
+                { subj: 'This', verb: 'is not', example: 'This is not a pear.', transcr: 'Зис из нот э пэар', tr_ru: 'Это не груша', tr_uz: 'Bu nok emas', tr_tj: 'Ин нок нест', tr_kg: 'Бул алмурут эмес' },
+                { subj: 'Those', verb: 'are not', example: 'Those are not my gloves.', transcr: 'Зоуз ар нот май главз', tr_ru: 'Те не мои перчатки', tr_uz: "Ular mening qo'lqoplarim emas", tr_tj: 'Онҳо дастпӯшакҳои ман нестанд', tr_kg: 'Алар менин колгаптарым эмес' },
+                { subj: 'It', verb: 'is not', example: 'It is not an orange.', transcr: 'Ит из нот эн ориндж', tr_ru: 'Это не апельсин', tr_uz: 'Bu apelsin emas', tr_tj: 'Ин афлесун нест', tr_kg: 'Бул апельсин эмес' }
+              ]
+            },
+            question: {
+              label_ru: '❓ Вопрос', label_uz: '❓ Savol', label_tj: '❓ Савол', label_kg: '❓ Суроо', label_kz: '❓ Сұрақ',
+              rule_ru: 'Глагол вперёд: <code>Is this a punnet?</code> · <code>Are those strawberries?</code>',
+              rule_uz: "Fe'l oldinga: <code>Is this a punnet?</code> · <code>Are those strawberries?</code>",
+              table: [
+                { verb: 'Is', subj: 'this', example: 'Is this a punnet?', transcr: 'Из зис э панит?', tr_ru: 'Это лоток?', tr_uz: 'Bu qutimi?', tr_tj: 'Ин қуттӣ аст?', tr_kg: 'Бул септетпи?' },
+                { verb: 'What is', subj: 'that', example: 'What is that?', transcr: 'Уот из зэт?', tr_ru: 'Что это (далеко)?', tr_uz: 'U nima?', tr_tj: 'Он чист?', tr_kg: 'Ал эмне?' },
+                { verb: 'Are', subj: 'these', example: 'Are these raspberries?', transcr: 'Ар зиз разбериз?', tr_ru: 'Это малина?', tr_uz: 'Bular malinami?', tr_tj: 'Инҳо тамашк ҳастанд?', tr_kg: 'Булар малинабы?' }
+              ]
+            }
+          }
+        },
+        words: [
+          { e: '🛒', en: 'trolley', ru: 'тележка', uz: 'arava', tj: 'аробаи даст', kg: 'арба', pn: '/ˈtrɒli/', transcr: 'троли' },
+          { e: '🧺', en: 'punnet', ru: 'лоток для ягод', uz: 'meva qutisi', tj: 'қуттии мева', kg: 'жемиш себети', pn: '/ˈpʌnɪt/', transcr: 'панит' },
+          { e: '📦', en: 'crate / box', ru: 'ящик', uz: 'yashik', tj: 'қуттии калон', kg: 'кутуча', pn: '/kreɪt/', transcr: 'крэйт / бокс' },
+          { e: '🏚️', en: 'greenhouse', ru: 'теплица', uz: 'issiqxona', tj: 'гармхона', kg: 'жылуу үй', pn: '/ˈɡriːnhaʊs/', transcr: 'гринхаус' },
+          { e: '🌿', en: 'row', ru: 'ряд (грядка)', uz: 'qator', tj: 'қатор', kg: 'катар', pn: '/rəʊ/', transcr: 'роу' },
+          { e: '⚖️', en: 'weighing scale', ru: 'весы', uz: 'tarozi', tj: 'тарозу', kg: 'тараза', pn: '/ˈweɪɪŋ skeɪl/', transcr: 'вэйинг скэйл' },
+        ],
+        dialogue: [
+          { s: 'w', en: "Excuse me Tom. What is this? Is it a punnet?", ru: 'Извините, Том. Что это? Это лоток?', uz: "Kechirasiz, Tom. Bu nima? Bu qutimi?", tj: 'Бубахшед, Том. Ин чист? Ин қуттӣ аст?', kg: 'Кечириңиз, Том. Бул эмне? Бул септетпи?', transcr: 'Экскьюз ми Том. Уот из зис? Из ит э панит?' },
+          { s: 'm', en: "Yes! That is a punnet. You put the strawberries in these punnets.", ru: 'Да! Это лоток. Клубнику кладёте в эти лотки.', uz: "Ha! Bu quti. Siz qulupnayni shu qutilariga qo'yasiz.", tj: 'Ҳа! Ин қуттӣ. Тӯтиро дар ин қуттиҳо мегузоред.', kg: 'Ооба! Бул септет. Кулпунайды ушул септеттерге саласыз.', transcr: 'Йес! Зэт из э панит. Ю пут зэ стробериз ин зиз панитс.' },
+          { s: 'w', en: "And what is that big thing over there? Is it a trolley?", ru: 'А что это большая штука вон там? Это тележка?', uz: "Va u yerda u katta narsa nima? Bu arakami?", tj: 'Ва он чизи калон дар он тараф чист? Ин аробаи даст аст?', kg: 'Ал чоң нерсе эмне? Бул арбабы?', transcr: 'Энд уот из зэт биг синг овэ зэар? Из ит э троли?' },
+          { s: 'm', en: "Yes! That is a trolley. You put the full punnets on the trolley.", ru: 'Да! Это тележка. Заполненные лотки ставите на тележку.', uz: "Ha! U arava. To'liq qutilari aravaga qo'ying.", tj: 'Ҳа! Он аробаи даст. Қуттиҳои пурро ба аробаи даст гузоред.', kg: 'Ооба! Ал арба. Толгон септеттерди арбага коюңуз.', transcr: 'Йес! Зэт из э троли. Ю пут зэ фул панитс он зэ троли.' },
+          { s: 'w', en: "I understand. Are these scales for weighing the boxes?", ru: 'Понятно. Эти весы для взвешивания ящиков?', uz: "Tushundim. Bu tarozilar qutilari tortish uchunmi?", tj: 'Фаҳмидам. Ин тарозуҳо барои тавзин кардани қуттиҳост?', kg: 'Түшүндүм. Булар кутучаларды өлчөө үчүн тарназалабы?', transcr: 'Ай андэстэнд. Ар зиз скэйлз фо вэйинг зэ боксез?' },
+        ],
+        quiz: [
+          { q: "Fill: '___ is a punnet. ___ is a trolley over there.'", opts: ["This / Those", "This / That", "These / That", "That / This"], c: 1 },
+          { q: "Which article is correct?", opts: ["a apple", "an punnet", "a greenhouse", "an strawberry"], c: 2 },
+          { q: "'These are strawberries.' = how many?", opts: ["One", "Two or more", "Zero", "One very big one"], c: 1 },
+        ]
+      },
+      {
+        id: 4, mod: 2,
+        name_ru: 'Числа и время смены', name_uz: "Raqamlar va smena vaqti", name_tj: 'Рақамҳо ва вақти навбат', name_kg: 'Сандар жана навбат убактысы',
+        cefr: 'Numbers 1-100 · Telling the time · Days of the week',
+        grammar: {
+          title_ru: 'Числа 1-100 · Время · Дни недели', title_uz: "Raqamlar · Vaqt · Hafta kunlari", title_tj: 'Рақамҳо · Вақт · Рӯзҳои ҳафта', title_kg: 'Сандар · Убакыт · Жума күндөрү',
+          rule_ru: '<code>6:00</code> = six o\'clock · <code>6:30</code> = half past six · <code>6:15</code> = quarter past six · <code>6:45</code> = quarter to seven<br><b>AM</b> = утро (до 12:00) · <b>PM</b> = день/вечер (после 12:00)<br>Дни: Mon · Tue · Wed · Thu · Fri · Sat · Sun',
+          rule_uz: "<code>6:00</code> = six o'clock · <code>6:30</code> = half past six · <code>6:15</code> = quarter past six<br><b>AM</b> = ertalab (12:00 gacha) · <b>PM</b> = tushdan keyin<br>Kunlar: Mon · Tue · Wed · Thu · Fri · Sat · Sun",
+          rule_tj: '<code>6:00</code> = six o\'clock · <code>6:30</code> = half past six · <code>6:15</code> = quarter past six<br><b>AM</b> = субҳ · <b>PM</b> = баъд аз нисфирӯзӣ<br>Рӯзҳо: Mon · Tue · Wed · Thu · Fri · Sat · Sun',
+          rule_kg: '<code>6:00</code> = six o\'clock · <code>6:30</code> = half past six<br><b>AM</b> = эртең менен · <b>PM</b> = түштөн кийин<br>Күндөр: Mon · Tue · Wed · Thu · Fri · Sat · Sun',
+          note_ru: 'Monday=понедельник · Tuesday=вторник · Wednesday=среда · Thursday=четверг · Friday=пятница · Saturday=суббота · Sunday=воскресенье',
+          note_uz: "Monday=dushanba · Tuesday=seshanba · Wednesday=chorshanba · Thursday=payshanba · Friday=juma · Saturday=shanba · Sunday=yakshanba",
+          note_tj: 'Monday=душанбе · Tuesday=сешанбе · Wednesday=чоршанбе · Thursday=панҷшанбе · Friday=ҷумъа · Saturday=шанбе · Sunday=якшанбе',
+          note_kg: 'Monday=дүйшөмбү · Tuesday=шейшемби · Wednesday=шаршемби · Thursday=бейшемби · Friday=жума · Saturday=ишемби · Sunday=жекшемби',
+          examples: [
+            { en: "Shift starts at six o'clock (6:00 AM). Finish at two PM (2:00 PM).", ru: 'Смена начинается в шесть утра (6:00). Конец в два часа дня (14:00).', uz: "Smena ertalab soat oltida (6:00 AM) boshlanadi. Soat 2:00 PM da tugaydi.", tj: 'Навбат дар соати шаши субҳ (6:00 AM) шурӯъ мешавад. Дар 2:00 PM тамом.', kg: 'Навбат эртеңки алтыда (6:00 AM) башталат. Түштөн кийин экиде (2:00 PM) бүтөт.' },
+            { en: "Break is at ten thirty (10:30) for fifteen minutes. Today is Monday.", ru: 'Перерыв в десять тридцать (10:30), пятнадцать минут. Сегодня понедельник.', uz: "Tanaffus soat o'n yarimda (10:30), o'n besh daqiqa. Bugun dushanba.", tj: 'Истироҳат дар 10:30, понздаҳ дақиқа. Имрӯз душанбе.', kg: 'Тыным он жарымда (10:30), он беш мүнөт. Бүгүн дүйшөмбү.' },
+          ]
+        },
+        words: [
+          { e: '⏰', en: 'shift', ru: 'смена', uz: 'smena', tj: 'навбат', kg: 'навбат', pn: '/ʃɪft/' },
+          { e: '🕕', en: "six o'clock (6:00)", ru: 'шесть часов', uz: "soat olti", tj: 'соати шаш', kg: 'алты саат', pn: "/sɪks əˈklɒk/" },
+          { e: '📅', en: 'Monday / Friday', ru: 'понедельник / пятница', uz: "Dushanba / Juma", tj: 'Душанбе / Ҷумъа', kg: 'Дүйшөмбү / Жума', pn: '/ˈmʌndeɪ/' },
+          { e: '💷', en: 'fifty pounds (£50)', ru: 'пятьдесят фунтов', uz: "ellik funt", tj: 'панҷоҳ фунт', kg: 'элүү фунт', pn: '/ˈfɪfti paʊndz/' },
+          { e: '📦', en: 'thirty boxes', ru: 'тридцать ящиков', uz: "o'ttiz quti", tj: 'сӣ қуттӣ', kg: 'отуз кутуча', pn: '/ˈθɜːti bɒksɪz/' },
+          { e: '⌛', en: 'minute / hour', ru: 'минута / час', uz: "daqiqa / soat", tj: 'дақиқа / соат', kg: 'мүнөт / саат', pn: '/ˈmɪnɪt ˈaʊər/' },
+        ],
+        dialogue: [
+          { s: 'm', en: "Good morning. Today is Monday. Your shift starts at six o'clock AM.", ru: 'Доброе утро. Сегодня понедельник. Смена начинается в шесть утра.', uz: "Xayrli tong. Bugun dushanba. Smenangiz ertalab soat oltida boshlanadi.", tj: 'Субҳ бахайр. Имрӯз душанбе. Навбатитон дар соати шаши субҳ.', kg: 'Кутман эртең. Бүгүн дүйшөмбү. Навбатыңыз эртеңки алтыда башталат.' },
+          { s: 'w', en: "What time is the break, please?", ru: 'Когда перерыв, пожалуйста?', uz: "Tanaffus qachon, iltimos?", tj: 'Лутфан, истироҳат кай вақт?', kg: 'Тыным качан болот, суранам?' },
+          { s: 'm', en: "Break is at half past ten — 10:30 AM. Fifteen minutes.", ru: 'Перерыв в половине одиннадцатого — 10:30. Пятнадцать минут.', uz: "Tanaffus soat o'n yarimda — 10:30. O'n besh daqiqa.", tj: 'Истироҳат дар нисфи ёздаҳум — 10:30. Понздаҳ дақиқа.', kg: 'Тыным он жарымда — 10:30. Он беш мүнөт.' },
+          { s: 'w', en: "How many boxes is the target today?", ru: 'Сколько ящиков план на сегодня?', uz: "Bugungi maqsad necha quti?", tj: 'Нақшаи имрӯз чанд қуттӣ?', kg: 'Бүгүнкү максат канча кутуча?' },
+          { s: 'm', en: "Minimum thirty boxes per person. Pay day is this Friday.", ru: 'Минимум тридцать ящиков на человека. День зарплаты — эта пятница.', uz: "Har kishi uchun kamida o'ttiz quti. Maosh kuni shu juma.", tj: 'Ҳадди аққал сӣ қуттӣ аз ҳар кас. Рӯзи маош ин ҷумъа.', kg: 'Ар адам үчүн кеминде отуз кутуча. Эмгек акы бул жума.' },
+        ],
+        quiz: [
+          { q: "6:30 AM in words is...", opts: ["Six thirty AM", "Half past six AM", "Quarter past six AM", "Six o'clock AM"], c: 1 },
+          { q: "Monday, Tuesday, Wednesday, Thursday, ___?", opts: ["Sunday", "Saturday", "Friday", "Wednesday"], c: 2 },
+          { q: "AM means...", opts: ["After Midday", "Afternoon Morning", "Morning (before noon)", "Always Morning"], c: 2 },
+        ]
+      },
+      {
+        id: 5, mod: 2,
+        name_ru: 'Где столовая?', name_uz: "Oshxona qayerda?", name_tj: 'Ошхона куҷост?', name_kg: 'Ашкана кайда?',
+        cefr: 'Prepositions of place · Where/What questions · Directions',
+        grammar: {
+          title_ru: 'Предлоги места + вопросы WHERE / WHAT', title_uz: "Joy predloglari + WHERE/WHAT savollari", title_tj: 'Пешоянди макон + саволҳои WHERE/WHAT', title_kg: 'Жай байламачтары + WHERE/WHAT суроолору',
+          rule_ru: '<code>in</code> = внутри · <code>on</code> = на поверхности · <code>at</code> = у/при<br><code>next to</code> = рядом с · <code>opposite</code> = напротив · <code>between</code> = между<br><code>behind</code> = позади · <code>in front of</code> = перед',
+          rule_uz: "<code>in</code> = ichida · <code>on</code> = ustida · <code>at</code> = yonida<br><code>next to</code> = yonida · <code>opposite</code> = ro'parasida · <code>between</code> = o'rtasida<br><code>behind</code> = ortida · <code>in front of</code> = oldida",
+          rule_tj: '<code>in</code> = дар дохил · <code>on</code> = болои · <code>at</code> = пеши<br><code>next to</code> = паҳлӯи · <code>opposite</code> = рӯ ба рӯи<br><code>behind</code> = паси · <code>in front of</code> = пеши',
+          rule_kg: '<code>in</code> = ичинде · <code>on</code> = үстүндө · <code>at</code> = жанында<br><code>next to</code> = жанында · <code>opposite</code> = каршысында<br><code>behind</code> = артында · <code>in front of</code> = алдында',
+          note_ru: 'Turn LEFT = повернуть налево · Turn RIGHT = повернуть направо · Go STRAIGHT = идти прямо',
+          note_uz: "Turn LEFT = chapga buring · Turn RIGHT = o'ngga buring · Go STRAIGHT = to'g'ri boring",
+          note_tj: 'Turn LEFT = ба чап гардед · Turn RIGHT = ба рост гардед · Go STRAIGHT = рост равед',
+          note_kg: 'Turn LEFT = солго бур · Turn RIGHT = оңго бур · Go STRAIGHT = түз бар',
+          examples: [
+            { en: 'The canteen is next to the main gate.', ru: 'Столовая рядом с главными воротами.', uz: "Oshxona asosiy darvoza yonida.", tj: 'Ошхона паҳлӯи дарвозаи асосӣ.', kg: 'Ашкана негизги дарбазанын жанында.' },
+            { en: 'The toilet is behind the packing shed. The first aid box is on the wall.', ru: 'Туалет за упаковочным сараем. Аптечка на стене.', uz: "Hojatxona qadoqlash ombori ortida. Birinchi yordam qutisi devorida.", tj: 'Ҳоҷатхона паси анбори қадоқкунӣ. Доруворӣ ба девор.', kg: 'Ажаткана таңгоолоо сарайынын артында. Дары кутуча дубалда.' },
+            { en: 'Where is the office? — Turn right, go straight. It is opposite the greenhouse.', ru: 'Где офис? — Поверните направо, идите прямо. Он напротив теплицы.', uz: "Ofis qayerda? — O'ngga buriling, to'g'ri boring. U issiqxona ro'parasida.", tj: 'Офис куҷост? — Ба рост гардед, рост равед. Он рӯ ба рӯи гармхона.', kg: 'Кеңсе кайда? — Оңго бур, түз бар. Ал жылуу үйгө каршы жакта.' },
+          ]
+        },
+        words: [
+          { e: '🍽️', en: 'canteen', ru: 'столовая', uz: 'oshxona', tj: 'ошхона', kg: 'ашкана', pn: '/kænˈtiːn/' },
+          { e: '🚪', en: 'main gate', ru: 'главные ворота', uz: "asosiy darvoza", tj: 'дарвозаи асосӣ', kg: 'негизги дарбаза', pn: '/meɪn ɡeɪt/' },
+          { e: '🚽', en: 'toilet / WC', ru: 'туалет', uz: "hojatxona", tj: 'ҳоҷатхона', kg: 'ажаткана', pn: '/ˈtɔɪlɪt/' },
+          { e: '🏥', en: 'first aid point', ru: 'пункт первой помощи', uz: "birinchi yordam nuqtasi", tj: 'нуқтаи кӯмаки аввал', kg: 'биринчи жардам пункту', pn: "/fɜːst eɪd pɔɪnt/" },
+          { e: '🅿️', en: 'car park', ru: 'парковка', uz: "avtoturargoh", tj: 'паркинг', kg: 'унаа токтотуу жери', pn: '/kɑː pɑːk/' },
+          { e: '🏗️', en: 'packing shed', ru: 'упаковочный сарай', uz: "qadoqlash ombori", tj: 'анбори қадоқкунӣ', kg: 'таңгоолоо сарайы', pn: '/ˈpækɪŋ ʃed/' },
+        ],
+        dialogue: [
+          { s: 'w', en: "Excuse me. Where is the toilet, please?", ru: 'Извините. Где туалет, пожалуйста?', uz: "Kechirasiz. Hojatxona qayerda, iltimos?", tj: 'Бубахшед. Ҳоҷатхона куҷост, лутфан?', kg: 'Кечириңиз. Ажаткана кайда, суранам?' },
+          { s: 'm', en: "The toilet is behind the packing shed. Go straight, then turn left.", ru: 'Туалет за упаковочным сараем. Идите прямо, потом налево.', uz: "Hojatxona qadoqlash ombori ortida. To'g'ri boring, keyin chapga buriling.", tj: 'Ҳоҷатхона паси анбор. Рост равед, баъд ба чап гардед.', kg: 'Ажаткана таңгоолоо сарайынын артында. Түз бар, анан солго бур.' },
+          { s: 'w', en: "And where is the canteen?", ru: 'А где столовая?', uz: "Oshxona qayerda?", tj: 'Ошхона куҷост?', kg: 'Ашкана кайда?' },
+          { s: 'm', en: "The canteen is next to the main gate. It is opposite the car park.", ru: 'Столовая рядом с главными воротами. Она напротив парковки.', uz: "Oshxona asosiy darvoza yonida. U avtoturargoh ro'parasida.", tj: 'Ошхона паҳлӯи дарвозаи асосӣ. Он рӯ ба рӯи паркинг.', kg: 'Ашкана негизги дарбазанын жанында. Ал унаа токтотуу жерине каршы.' },
+          { s: 'w', en: "Thank you! And where is the first aid point?", ru: 'Спасибо! А где пункт первой помощи?', uz: "Rahmat! Birinchi yordam nuqtasi qayerda?", tj: 'Ташаккур! Нуқтаи кӯмаки аввал куҷост?', kg: 'Рахмат! Биринчи жардам пункту кайда?' },
+        ],
+        quiz: [
+          { q: "'The canteen is ___ the main gate.' (рядом с)", opts: ["behind", "opposite", "next to", "in front"], c: 2 },
+          { q: "How do you ask 'Где туалет?' in English?", opts: ["What is the toilet?", "Where is the toilet?", "Is the toilet?", "Where the toilet is?"], c: 1 },
+          { q: "'Turn right, go straight.' means...", opts: ["Налево и назад", "Направо и прямо", "Прямо и налево", "Назад и направо"], c: 1 },
+        ]
+      },
+      {
+        id: 6, mod: 3,
+        name_ru: 'Я собираю клубнику', name_uz: "Men qulupnay teraman", name_tj: 'Ман тӯт мечинам', name_kg: 'Мен кулпунай жыям',
+        cefr: 'Present Simple (all forms) · Farm verbs · Adverbs of frequency',
+        grammar: {
+          title_ru: 'Present Simple — всё формы + наречия частоты', title_uz: "Present Simple — barcha shakllari + chastota ravishlar", title_tj: 'Present Simple — ҳамаи шаклҳо + зарфҳои басомад', title_kg: 'Present Simple — бардык формалары + жыштык тактоочтору',
+          rule_ru: '(+) <code>I/You/We/They pick</code> · <code>He/She/It pick<b>s</b></code><br>(–) <code>I don\'t pick</code> · <code>She doesn\'t pick</code><br>(?) <code>Do you pick?</code> · <code>Does she pick?</code>',
+          rule_uz: "(+) <code>I/You/We/They pick</code> · <code>He/She/It picks</code><br>(–) <code>I don't pick</code> · <code>She doesn't pick</code><br>(?) <code>Do you pick?</code> · <code>Does she pick?</code>",
+          rule_tj: '(+) <code>I pick</code> · <code>He picks</code><br>(–) <code>I don\'t pick</code> · <code>She doesn\'t pick</code><br>(?) <code>Do you pick?</code> · <code>Does she pick?</code>',
+          rule_kg: '(+) <code>I pick</code> · <code>He picks</code><br>(–) <code>I don\'t pick</code> · <code>She doesn\'t pick</code><br>(?) <code>Do you pick?</code> · <code>Does she pick?</code>',
+          note_ru: 'Наречия частоты: <b>always</b> (всегда) · <b>usually</b> (обычно) · <b>often</b> (часто) · <b>sometimes</b> (иногда) · <b>never</b> (никогда)',
+          note_uz: "Chastota ravishlar: <b>always</b> · <b>usually</b> · <b>often</b> · <b>sometimes</b> · <b>never</b>",
+          note_tj: 'Зарфҳои басомад: <b>always</b> · <b>usually</b> · <b>often</b> · <b>sometimes</b> · <b>never</b>',
+          note_kg: 'Жыштык тактоочтор: <b>always</b> · <b>usually</b> · <b>often</b> · <b>sometimes</b> · <b>never</b>',
+          examples: [
+            { en: "I always start work at six. She usually picks two rows per day.", ru: 'Я всегда начинаю в шесть. Обычно она собирает два ряда в день.', uz: "Men har doim soat oltida ishni boshlayman. U odatda kuniga ikki qator teradi.", tj: 'Ман ҳамеша дар соати шаш шурӯъ мекунам. Вай одатан рӯзона ду қатор мечинад.', kg: 'Мен дайыма алтыда иштей баштайм. Ал адатта күнүнө эки катар жыят.' },
+            { en: "He doesn't pack. He drives the tractor. Do you sometimes work overtime?", ru: 'Он не упаковывает. Он водит трактор. Вы иногда работаете сверхурочно?', uz: "U qadoqlamaydi. U traktor haydaydi. Siz ba'zan qo'shimcha ishlaysizmi?", tj: 'Ӯ қадоқ намекунад. Ӯ трактор меронад. Оё шумо гоҳо вақти иловагӣ кор мекунед?', kg: 'Ал таңгоолобойт. Ал трактор айдайт. Сиз кээде кошумча иштейсизби?' },
+          ]
+        },
+        words: [
+          { e: '🍓', en: 'pick (berries)', ru: 'собирать (ягоды)', uz: "termak", tj: 'чидан', kg: 'жыйуу', pn: '/pɪk/' },
+          { e: '📦', en: 'pack', ru: 'упаковывать', uz: 'qadoqlash', tj: 'қадоқ кардан', kg: 'таңгоолоо', pn: '/pæk/' },
+          { e: '🏋️', en: 'carry / lift', ru: 'нести / поднимать', uz: "ko'tarish", tj: 'бурдан / бардоштан', kg: 'алып жүрүү', pn: '/ˈkæri/' },
+          { e: '⚖️', en: 'weigh', ru: 'взвешивать', uz: 'tortish', tj: 'вазн кардан', kg: 'өлчөө', pn: '/weɪ/' },
+          { e: '🔍', en: 'check / sort', ru: 'проверять / сортировать', uz: "tekshirish / saralash", tj: 'санҷидан / ҷудо кардан', kg: 'текшерүү / иргөө', pn: '/tʃek/' },
+          { e: '🚚', en: 'load the truck', ru: 'загружать грузовик', uz: "mashinani yuklash", tj: 'мошинро бор кардан', kg: 'унааны жүктөө', pn: '/ləʊd/' },
+        ],
+        dialogue: [
+          { s: 'm', en: "Ahmad, what do you do every day on the farm?", ru: 'Ахмад, что вы делаете каждый день на ферме?', uz: "Ahmad, siz fermada har kuni nima qilasiz?", tj: 'Аҳмад, шумо ҳар рӯз дар ферма чӣ мекунед?', kg: 'Ахмад, сиз фермада ар күн эмне кыласыз?' },
+          { s: 'w', en: "I always pick strawberries. I usually pick thirty boxes a day.", ru: 'Я всегда собираю клубнику. Обычно я собираю тридцать ящиков в день.', uz: "Men har doim qulupnay teraman. Odatda kuniga o'ttiz quti teraman.", tj: 'Ман ҳамеша тӯт мечинам. Одатан рӯзона сӣ қуттӣ мечинам.', kg: 'Мен дайыма кулпунай жыйам. Адатта күнүнө отуз кутуча жыйам.' },
+          { s: 'm', en: "Does Fatima pick too, or does she sort and pack?", ru: 'Фатима тоже собирает, или она сортирует и упаковывает?', uz: "Fatima ham teradimi, yo u saralab qadoqlaydimi?", tj: 'Фотима ҳам мечинад, ё вай ҷудо карда қадоқ мекунад?', kg: 'Фатима да жыйабы, же ал ирип, таңгоолойбу?' },
+          { s: 'w', en: "She doesn't pick. She always sorts and packs the boxes.", ru: 'Она не собирает. Она всегда сортирует и упаковывает ящики.', uz: "U termaydi. U har doim qutilari saralab, qadoqlaydi.", tj: 'Вай намечинад. Вай ҳамеша ҷудо карда қадоқ мекунад.', kg: 'Ал жыйбайт. Ал дайыма кутучаларды ирип, таңгоолойт.' },
+          { s: 'm', en: "Good. Do you sometimes work overtime on Saturdays?", ru: 'Хорошо. Вы иногда работаете сверхурочно по субботам?', uz: "Yaxshi. Ba'zan shanba kuni qo'shimcha ishlaysizmi?", tj: 'Хуб. Оё шумо гоҳо шанбеҳо вақти иловагӣ кор мекунед?', kg: 'Жакшы. Сиз кээде ишембиде кошумча иштейсизби?' },
+        ],
+        quiz: [
+          { q: "'She ___ raspberries every day.' (He/She needs -s)", opts: ["pick", "picks", "are picking", "do pick"], c: 1 },
+          { q: "'He packs boxes.' Make it NEGATIVE.", opts: ["He not packs boxes", "He doesn't packs boxes", "He doesn't pack boxes", "He don't pack boxes"], c: 2 },
+          { q: "Which means 'всегда / ҳамеша'?", opts: ["Sometimes", "Never", "Often", "Always"], c: 3 },
+        ]
+      },
+      {
+        id: 7, mod: 3,
+        name_ru: 'Я сейчас собираю!', name_uz: "Men hozir termoqdaman!", name_tj: 'Ман ҳоло мечинам!', name_kg: 'Мен азыр жыйып жатам!',
+        cefr: 'Present Continuous · Contrast with Present Simple · Future plans',
+        grammar: {
+          title_ru: 'Present Continuous = действие ПРЯМО СЕЙЧАС', title_uz: "Present Continuous = HOZIR bo'layotgan harakat", title_tj: 'Present Continuous = амали ҲОЛО', title_kg: 'Present Continuous = АЗЫР болуп жаткан аракет',
+          rule_ru: '<code>I am pick<b>ing</b></code> · <code>She is pack<b>ing</b></code> · <code>They are work<b>ing</b></code><br>(–) <code>I am not picking</code> · <code>She isn\'t packing</code><br>(?) <code>Are you picking?</code> · <code>Is she working?</code><br>Для ПЛАНОВ на будущее: <code>I am working tomorrow.</code>',
+          rule_uz: "<code>I am picking</code> · <code>She is packing</code> · <code>They are working</code><br>(–) <code>I am not picking</code> · <code>She isn't packing</code><br>(?) <code>Are you picking?</code><br>Kelajak: <code>I am working tomorrow.</code>",
+          rule_tj: '<code>I am picking</code> · <code>She is packing</code> · <code>They are working</code><br>(–) <code>I am not picking</code><br>(?) <code>Are you picking?</code><br>Барои оянда: <code>I am working tomorrow.</code>',
+          rule_kg: '<code>I am picking</code> · <code>She is packing</code> · <code>They are working</code><br>(–) <code>I am not picking</code><br>(?) <code>Are you picking?</code><br>Келечек: <code>I am working tomorrow.</code>',
+          note_ru: 'Present Simple = ВСЕГДА/ОБЫЧНО. Present Continuous = ПРЯМО СЕЙЧАС.<br>Пример: "I pick strawberries" (обычно) vs "I am picking strawberries" (сейчас).',
+          note_uz: "Present Simple = ODATDA. Present Continuous = HOZIR.<br>Misol: 'I pick' (odatda) vs 'I am picking' (hozir).",
+          note_tj: 'Present Simple = ОДАТАН. Present Continuous = ҲОЛО.<br>Мисол: "I pick" (одатан) vs "I am picking" (ҳоло).',
+          note_kg: 'Present Simple = АДАТТА. Present Continuous = АЗЫР.<br>Мисал: "I pick" (адатта) vs "I am picking" (азыр).',
+          examples: [
+            { en: "Where are you? — I am picking in row 7 right now. I am not resting!", ru: 'Вы где? — Я сейчас собираю в ряду 7. Я не отдыхаю!', uz: "Qayerdasiz? — Men hozir 7-qatorda termoqdaman. Men dam olmayapman!", tj: 'Куҷоед? — Ман ҳоло дар қатори 7 мечинам. Ман истироҳат намекунам!', kg: 'Кайдасыз? — Мен азыр 7-катарда жыйып жатам. Мен эс алып жатпаймын!' },
+            { en: "She is not picking today — she is training new workers. I am working on Saturday.", ru: 'Она сегодня не собирает — она обучает новых рабочих. Я работаю в субботу.', uz: "U bugun termayapti — u yangi ishchilarni o'qitmoqda. Men shanba kuni ishlayapman.", tj: 'Вай имрӯз намечинад — вай коргарони навро таълим медиҳад. Ман шанбе кор мекунам.', kg: 'Ал бүгүн жыйбайт — ал жаңы жумушчуларды окутуп жатат. Мен ишембиде иштейм.' },
+          ]
+        },
+        words: [
+          { e: '🏃', en: 'running (to the field)', ru: 'бегу (к полю)', uz: "dalaga yugurmoqda", tj: 'давидан ба замин', kg: 'талаага жүгүрүп жатат', pn: '/ˈrʌnɪŋ/' },
+          { e: '🛑', en: 'waiting', ru: 'жду / ожидаю', uz: "kutmoqda", tj: 'интизор шудан', kg: 'күтүп жатат', pn: '/ˈweɪtɪŋ/' },
+          { e: '🔧', en: 'fixing / repairing', ru: 'чиню / ремонтирую', uz: "ta'mirlamoqda", tj: 'таъмир кардан', kg: 'оңдоп жатат', pn: '/ˈfɪksɪŋ/' },
+          { e: '📱', en: 'calling / phoning', ru: 'звоню по телефону', uz: "qo'ng'iroq qilmoqda", tj: 'занг задан', kg: 'чалып жатат', pn: '/ˈkɔːlɪŋ/' },
+          { e: '🍵', en: 'having a break', ru: 'делаю перерыв', uz: "tanaffus qilmoqda", tj: 'истироҳат доштан', kg: 'тыным алып жатат', pn: '/ˈhævɪŋ ə breɪk/' },
+          { e: '📝', en: 'training / learning', ru: 'обучаюсь', uz: "o'qimoqda", tj: 'таълим гирифтан', kg: 'үйрөнүп жатат', pn: '/ˈtreɪnɪŋ/' },
+        ],
+        dialogue: [
+          { s: 'm', en: "Ahmad! Where are you? I am looking for you!", ru: 'Ахмад! Вы где? Я вас ищу!', uz: "Ahmad! Qayerdasiz? Men sizni izlayapman!", tj: 'Аҳмад! Куҷоед? Ман шуморо меҷӯям!', kg: 'Ахмад! Кайдасыз? Мен сизди издеп жатам!' },
+          { s: 'w', en: "I am here, Tom! I am picking in row 12. I am not resting!", ru: 'Я здесь, Том! Я собираю в ряду 12. Я не отдыхаю!', uz: "Men bu yerdaman, Tom! Men 12-qatorda termoqdaman. Men dam olmayapman!", tj: 'Ман ин ҷоям, Том! Ман дар қатори 12 мечинам. Ман истироҳат намекунам!', kg: 'Мен бул жердемин, Том! Мен 12-катарда жыйып жатам. Мен эс алып жатпаймын!' },
+          { s: 'm', en: "Good! What is Fatima doing right now?", ru: 'Хорошо! Что делает Фатима прямо сейчас?', uz: "Yaxshi! Fatima hozir nima qilyapti?", tj: 'Хуб! Фотима ҳоло чӣ мекунад?', kg: 'Жакшы! Фатима азыр эмне кылып жатат?' },
+          { s: 'w', en: "She is packing boxes in the shed. Rustam is driving the tractor.", ru: 'Она упаковывает ящики в сарае. Рустам ведёт трактор.', uz: "U omborxonada qutilari qadoqlayapti. Rustam traktor haydayapti.", tj: 'Вай дар анбор қуттиҳоро қадоқ мекунад. Рустам трактор меронад.', kg: 'Ал сарайда кутучаларды таңгоолоп жатат. Рустам трактор айдап жатат.' },
+          { s: 'm', en: "Are you working this Saturday? I am planning the schedule.", ru: 'Вы работаете в эту субботу? Я составляю расписание.', uz: "Siz shu shanba kuni ishlayapsizmi? Men jadval tuzmoqdaman.", tj: 'Оё шумо ин шанбе кор мекунед? Ман ҷадвал тартиб медиҳам.', kg: 'Сиз бул ишембиде иштейсизби? Мен графикти пландап жатам.' },
+        ],
+        quiz: [
+          { q: "'I ___ (pick) right now in row 7.'", opts: ["pick", "picks", "am picking", "picking"], c: 2 },
+          { q: "'She ___ (not pack) today. She ___ (train) new staff.'", opts: ["isn't packing / is training", "doesn't packing / trains", "not packing / training", "isn't pack / is train"], c: 0 },
+          { q: "'I am working on Saturday.' This means...", opts: ["I worked on Saturday", "I usually work on Saturday", "It is my plan for Saturday", "Saturday I worked"], c: 2 },
+        ]
+      },
+      {
+        id: 8, mod: 4,
+        name_ru: 'Мой СИЗ — моя защита', name_uz: "Mening PPE — mening himoyam", name_tj: 'PPE-и ман — ҳимояи ман', name_kg: 'Менин PPE — менин коргоом',
+        cefr: "have/has · have got · Adjectives · Colours · Clothing (PPE)",
+        grammar: {
+          title_ru: 'HAVE / HAS · HAVE GOT + прилагательные и цвета', title_uz: "HAVE / HAS · HAVE GOT + sifatlar va ranglar", title_tj: 'HAVE / HAS · HAVE GOT + сифатҳо ва рангҳо', title_kg: 'HAVE / HAS · HAVE GOT + сын атооч жана түстөр',
+          rule_ru: '<code>I have</code> gloves. / <code>I have got</code> gloves. (одно и то же)<br><code>He has</code> a vest. / <code>She hasn\'t got</code> boots.<br>(?) <code>Have you got your PPE?</code> — <code>Yes, I have.</code>',
+          rule_uz: "<code>I have</code> gloves. / <code>I have got</code> gloves. (bir xil ma'no)<br><code>He has</code> a vest. / <code>She hasn't got</code> boots.<br>(?) <code>Have you got your PPE?</code> — <code>Yes, I have.</code>",
+          rule_tj: '<code>I have</code> gloves. / <code>I have got</code> gloves. (як маъно)<br><code>He has</code> a vest. / <code>She hasn\'t got</code> boots.<br>(?) <code>Have you got your PPE?</code> — <code>Yes, I have.</code>',
+          rule_kg: '<code>I have</code> gloves. / <code>I have got</code> gloves. (бир маани)<br><code>He has</code> a vest. / <code>She hasn\'t got</code> boots.<br>(?) <code>Have you got your PPE?</code> — <code>Yes, I have.</code>',
+          note_ru: 'Цвета: <b>orange</b> (оранжевый) · <b>yellow</b> (жёлтый) · <b>green</b> (зелёный) · <b>red</b> (красный) · <b>black</b> (чёрный) · <b>white</b> (белый)<br>Прилагательное ПЕРЕД существительным: a <b>heavy</b> boot · an <b>orange</b> vest',
+          note_uz: "Ranglar: <b>orange</b> · <b>yellow</b> · <b>green</b> · <b>red</b> · <b>black</b> · <b>white</b><br>Sifat otdan OLDIN: a <b>heavy</b> boot · an <b>orange</b> vest",
+          note_tj: 'Рангҳо: <b>orange</b> · <b>yellow</b> · <b>green</b> · <b>red</b> · <b>black</b> · <b>white</b><br>Сифат ПЕШ аз исм: a <b>heavy</b> boot · an <b>orange</b> vest',
+          note_kg: 'Түстөр: <b>orange</b> · <b>yellow</b> · <b>green</b> · <b>red</b> · <b>black</b> · <b>white</b><br>Сын атооч атоочтун алдында: a <b>heavy</b> boot · an <b>orange</b> vest',
+          examples: [
+            { en: "I have got my gloves. He has a high-visibility orange vest.", ru: 'У меня есть перчатки. У него есть оранжевый сигнальный жилет.', uz: "Menda qo'lqop bor. Unda ko'rinuvchan to'q sariq vest bor.", tj: 'Дастпӯшакам ҳаст. Ӯ жилети баланддиди норанҷӣ дорад.', kg: 'Менде колгабым бар. Анда жогорку көрүнүм апельсин жилети бар.' },
+            { en: "She hasn't got heavy boots. Can you give her a pair?", ru: 'У неё нет тяжёлых ботинок. Вы можете дать ей пару?', uz: "Unda og'ir etiklar yo'q. Unga bir juft bera olasizmi?", tj: 'Вай мӯзаи вазнин надорад. Метавонед ба вай як ҷуфт диҳед?', kg: 'Анда оор ботинкалар жок. Ага бир жуп бере аласызбы?' },
+          ]
+        },
+        words: [
+          { e: '🧤', en: 'gloves', ru: 'перчатки', uz: "qo'lqoplar", tj: 'дастпӯшакҳо', kg: 'колгаптар', pn: '/ɡlʌvz/' },
+          { e: '🥾', en: 'boots', ru: 'ботинки (рабочие)', uz: 'etiklar', tj: 'мӯзаҳои корӣ', kg: 'жумуш ботинкалары', pn: '/buːts/' },
+          { e: '🦺', en: 'high-vis (orange) vest', ru: 'сигнальный жилет', uz: "ko'rinuvchan to'q sariq vest", tj: 'жилети норанҷии баланддид', kg: 'жогорку көрүнүм жилети', pn: '/haɪ vɪz vest/' },
+          { e: '⛑️', en: 'hard hat', ru: 'каска', uz: 'kaska', tj: 'каска', kg: 'каска', pn: '/hɑːd hæt/' },
+          { e: '🧥', en: 'waterproof jacket', ru: 'непромокаемая куртка', uz: "suv o'tkazmaydigan ko'ylak", tj: 'куртаи обногузар', kg: 'суу өтпөйт күртө', pn: '/ˈwɔːtəpruːf ˈdʒækɪt/' },
+          { e: '👓', en: 'safety glasses', ru: 'защитные очки', uz: "himoya ko'zoynak", tj: 'айнаки ҳифозатӣ', kg: 'коргоочу көзайнек', pn: '/ˈseɪfti ˈɡlɑːsɪz/' },
+        ],
+        dialogue: [
+          { s: 'm', en: "Good morning! Before you start — have you got all your PPE today?", ru: 'Доброе утро! Прежде чем начать — у вас сегодня весь ваш СИЗ?', uz: "Xayrli tong! Boshlashdan oldin — bugun barcha PPE sizda bormi?", tj: 'Субҳ бахайр! Пеш аз оғоз — оё имрӯз ҳамаи PPE-и шумо ҳаст?', kg: 'Кутман эртең! Башталардан мурун — бүгүн бардык PPE сизде барбы?' },
+          { s: 'w', en: "I have my gloves and my orange vest. But I haven't got boots today.", ru: 'У меня есть перчатки и оранжевый жилет. Но сегодня нет ботинок.', uz: "Menda qo'lqoplar va to'q sariq vest bor. Lekin bugun etiklarim yo'q.", tj: 'Дастпӯшак ва жилети норанҷиам ҳаст. Аммо имрӯз мӯзаам нест.', kg: 'Менде колгаптарым жана апельсин жилетим бар. Бирок бүгүн ботинкаларым жок.' },
+          { s: 'm', en: "You cannot work without boots. It is the law. Safety first!", ru: 'Без ботинок работать нельзя. Это закон. Безопасность — прежде всего!', uz: "Etiksiz ishlash mumkin emas. Bu qonun. Xavfsizlik birinchi!", tj: 'Бе мӯза кор кардан мумкин нест. Ин қонун. Аввал бехатарӣ!', kg: 'Ботинкасыз иштей албайсыз. Бул мыйзам. Коопсуздук биринчи!' },
+          { s: 'w', en: "Can you give me heavy black boots? My size is forty-two.", ru: 'Можете дать мне тяжёлые чёрные ботинки? Мой размер — сорок два.', uz: "Menga og'ir qora etiklar bera olasizmi? Mening o'lchamim qirq ikki.", tj: 'Метавонед ба ман мӯзаи вазнини сиёҳ диҳед? Андозаам чилу ду.', kg: 'Мага оор кара ботинка бере аласызбы? Өлчөмүм кырк эки.' },
+          { s: 'm', en: "Here you are — size forty-two, heavy black waterproof boots. Put them on now.", ru: 'Пожалуйста — размер сорок два, тяжёлые чёрные непромокаемые ботинки. Наденьте.', uz: "Mana — o'lcham qirq ikki, og'ir qora suv o'tkazmaydigan etiklar. Hozir kiyib oling.", tj: 'Бфармоед — андозаи чилу ду, мӯзаи вазнини сиёҳи обногузар. Ҳоло пӯшед.', kg: 'Мине — өлчөмү кырк эки, оор кара суу өтпөйт ботинкалар. Азыр кийиңиз.' },
+        ],
+        quiz: [
+          { q: "'I ___ got my gloves today.'", opts: ["has", "am", "have", "does"], c: 2 },
+          { q: "Adjective order: 'a ___ jacket'", opts: ["waterproof heavy black", "black waterproof heavy", "heavy black waterproof", "heavy waterproof black"], c: 2 },
+          { q: "'She ___ got heavy boots.' (negative)", opts: ["has", "haven't", "hasn't", "have"], c: 2 },
+        ]
+      },
+      {
+        id: 9, mod: 5,
+        name_ru: 'Мой вагончик (caravan)', name_uz: "Mening karavonim", name_tj: 'Кабинаи ман', name_kg: 'Менин кабинам',
+        cefr: 'There is/are · some/any · Rooms & furniture · Reporting problems',
+        grammar: {
+          title_ru: 'THERE IS / THERE ARE + some / any', title_uz: "THERE IS / THERE ARE + some / any", title_tj: 'THERE IS / THERE ARE + some / any', title_kg: 'THERE IS / THERE ARE + some / any',
+          rule_ru: '(+) <code>There is</code> a heater. <code>There are</code> four beds.<br>(–) <code>There isn\'t</code> any hot water. <code>There aren\'t</code> any towels.<br>(?) <code>Is there</code> a shower? <code>Are there</code> any blankets?<br><code>some</code> = в утверждениях · <code>any</code> = в отрицаниях и вопросах',
+          rule_uz: "(+) <code>There is</code> a heater. <code>There are</code> four beds.<br>(–) <code>There isn't</code> any hot water.<br>(?) <code>Is there</code> a shower? <code>Are there</code> any blankets?<br><code>some</code> = tasdiqda · <code>any</code> = inkor va savolda",
+          rule_tj: '(+) <code>There is</code> a heater. <code>There are</code> four beds.<br>(–) <code>There isn\'t</code> any hot water.<br>(?) <code>Is there</code> a shower?<br><code>some</code> = дар тасдиқ · <code>any</code> = дар инкор ва савол',
+          rule_kg: '(+) <code>There is</code> a heater. <code>There are</code> four beds.<br>(–) <code>There isn\'t</code> any hot water.<br>(?) <code>Is there</code> a shower?<br><code>some</code> = тастыкта · <code>any</code> = терс жана суроодо',
+          note_ru: 'ОШИБКА: "There is four beds" ✗ → ПРАВИЛЬНО: "There ARE four beds" ✓ (beds = много → ARE!)',
+          note_uz: "XATO: 'There is four beds' ✗ → TO'G'RI: 'There ARE four beds' ✓",
+          note_tj: 'ХАТО: «There is four beds» ✗ → ДУРУСТ: «There ARE four beds» ✓',
+          note_kg: 'КАТА: "There is four beds" ✗ → ТУУРА: "There ARE four beds" ✓',
+          examples: [
+            { en: "There is a bed and a heater in my caravan. There are four workers in my room.", ru: 'В моём вагончике есть кровать и обогреватель. В моей комнате четыре рабочих.', uz: "Mening karavonimda karavot va isitgich bor. Xonamda to'rt ishchi bor.", tj: 'Дар кабинаам катт ва гармкунак ҳаст. Дар хонаам чор коргар.', kg: 'Менин кабинамда керебет жана жылыткыч бар. Менин бөлмөмдө төрт жумушчу.' },
+            { en: "There isn't any hot water. Are there any extra blankets?", ru: 'Нет горячей воды. Есть дополнительные одеяла?', uz: "Issiq suv yo'q. Qo'shimcha ko'rpacha bormi?", tj: 'Оби гарм нест. Оё кӯрпаи иловагӣ ҳаст?', kg: 'Ысык суу жок. Кошумча одеял барбы?' },
+          ]
+        },
+        words: [
+          { e: '🛏️', en: 'bed', ru: 'кровать', uz: 'karavot', tj: 'катт', kg: 'керебет', pn: '/bed/' },
+          { e: '🔥', en: 'heater', ru: 'обогреватель', uz: 'isitgich', tj: 'гармкунак', kg: 'жылыткыч', pn: '/ˈhiːtər/' },
+          { e: '🚿', en: 'shower', ru: 'душ', uz: 'dush', tj: 'душ', kg: 'душ', pn: '/ˈʃaʊər/' },
+          { e: '🧹', en: 'cleaning supplies', ru: 'средства для уборки', uz: "tozalash vositalari", tj: 'воситаҳои тозакунӣ', kg: 'тазалоо каражаттары', pn: '/ˈkliːnɪŋ səˈplaɪz/' },
+          { e: '📶', en: 'Wi-Fi', ru: 'Вай-Фай', uz: 'Wi-Fi', tj: 'Wi-Fi', kg: 'Wi-Fi', pn: '/ˈwaɪfaɪ/' },
+          { e: '🔑', en: 'key / lock', ru: 'ключ / замок', uz: "kalit / qulf", tj: 'калид / қулф', kg: 'ачкыч / кулпу', pn: '/kiː/' },
+        ],
+        dialogue: [
+          { s: 'w', en: "Excuse me. Can I report a problem with my caravan?", ru: 'Извините. Можно сообщить о проблеме с вагончиком?', uz: "Kechirasiz. Mening karavonim muammosi haqida aytishim mumkinmi?", tj: 'Бубахшед. Оё метавонам дар бораи мушкили кабинаам хабар диҳам?', kg: 'Кечириңиз. Кабинамдагы маселе жөнүндө айта аламбы?' },
+          { s: 'm', en: "Of course. What is the problem?", ru: 'Конечно. В чём проблема?', uz: "Albatta. Muammo nima?", tj: 'Албатта. Мушкилот чист?', kg: 'Албетте. Маселе эмне?' },
+          { s: 'w', en: "There isn't any hot water. There isn't a heater. And there aren't any clean towels.", ru: 'Нет горячей воды. Нет обогревателя. И нет чистых полотенец.', uz: "Issiq suv yo'q. Isitgich yo'q. Va toza sochiqlar yo'q.", tj: 'Оби гарм нест. Гармкунак нест. Ва дастмолҳои тоза нест.', kg: 'Ысык суу жок. Жылыткыч жок. Жана таза сүлгүлөр жок.' },
+          { s: 'm', en: "I am very sorry! Is there a shower at least?", ru: 'Очень жаль! Душ хотя бы есть?', uz: "Juda uzr! Hech bo'lmasa dush bormi?", tj: 'Хеле бахшед! Ҳадди аққал душ ҳаст?', kg: 'Абдан кечирим! Жок дегенде душ барбы?' },
+          { s: 'w', en: "Yes, there is a shower but the water is very cold. There are some problems with the heating system.", ru: 'Да, душ есть, но вода очень холодная. Есть проблемы с системой отопления.', uz: "Ha, dush bor, lekin suv juda sovuq. Isitish tizimi bilan muammolar bor.", tj: 'Ҳа, душ ҳаст аммо об хеле хунук. Бо системаи гармкунак мушкилот ҳаст.', kg: 'Ооба, душ бар, бирок суу абдан суук. Жылытуу системасы менен маселе бар.' },
+        ],
+        quiz: [
+          { q: "'___ a heater in my caravan.' (1 thing)", opts: ["There are", "Is there", "There is", "Are there"], c: 2 },
+          { q: "'___ any hot water.' (negative)", opts: ["There is any", "There isn't some", "There isn't any", "There aren't any"], c: 2 },
+          { q: "'Are there ___ blankets?' (question, uncertain)", opts: ["some", "any", "a", "the"], c: 1 },
+        ]
+      },
+      {
+        id: 10, mod: 5,
+        name_ru: 'В магазине Tesco', name_uz: "Tesco do'konida", name_tj: 'Дар дӯкони Tesco', name_kg: 'Tesco дүкөнүндө',
+        cefr: 'Food & drink vocabulary · Shopping · How much/many · want/would like',
+        grammar: {
+          title_ru: 'HOW MUCH / HOW MANY · WANT / WOULD LIKE', title_uz: "HOW MUCH / HOW MANY · WANT / WOULD LIKE", title_tj: 'HOW MUCH / HOW MANY · WANT / WOULD LIKE', title_kg: 'HOW MUCH / HOW MANY · WANT / WOULD LIKE',
+          rule_ru: '<code>How much</code> = сколько (для неисчисляемых: milk, bread, rice, money)<br><code>How many</code> = сколько (для исчисляемых: apples, eggs, boxes)<br><code>I want</code> tea. (прямо) · <code>I\'d like</code> tea, please. (ВЕЖЛИВО ✓)',
+          rule_uz: "<code>How much</code> = qancha (sanalmaydigan: milk, bread, rice)<br><code>How many</code> = nechta (sanaladigan: apples, eggs, boxes)<br><code>I want</code> tea. (to'g'ri) · <code>I'd like</code> tea, please. (muloyim ✓)",
+          rule_tj: '<code>How much</code> = чанд (ҳисобнашаванда: milk, bread, rice)<br><code>How many</code> = чанд (ҳисобшаванда: apples, eggs, boxes)<br><code>I want</code> tea. (мустақим) · <code>I\'d like</code> tea, please. (муассаб ✓)',
+          rule_kg: '<code>How much</code> = канча (эсептелбейт: milk, bread, rice)<br><code>How many</code> = канча (эсептелет: apples, eggs, boxes)<br><code>I want</code> tea. (түз) · <code>I\'d like</code> tea, please. (сылык ✓)',
+          note_ru: 'В британском магазине ВСЕГДА используйте "I\'d like..." — это вежливо и профессионально!',
+          note_uz: "Britaniya do'konida har doim 'I'd like...' deying — bu muloyim va professional!",
+          note_tj: 'Дар дӯкони Бритониё ҳамеша «I\'d like...» гӯед — ин муассабона!',
+          note_kg: 'Британиялык дүкөндө дайыма "I\'d like..." деп айтыңыз — бул сылык!',
+          examples: [
+            { en: "How much is this bread? — It's one pound fifty (£1.50).", ru: 'Сколько стоит этот хлеб? — Один фунт пятьдесят (£1.50).', uz: "Bu non qancha? — Bir funt ellik (£1.50).", tj: 'Ин нон чанд аст? — Як фунту панҷоҳ (£1.50).', kg: 'Бул нан канча? — Бир фунт элүү (£1.50).' },
+            { en: "How many eggs would you like? — I'd like six, please.", ru: 'Сколько яиц вы хотите? — Шесть, пожалуйста.', uz: "Necha tuxum olmoqchisiz? — Oltita, iltimos.", tj: 'Чанд тухм мехоҳед? — Шашто, лутфан.', kg: 'Канча жумуртка каалайсыз? — Алтоо, суранам.' },
+          ]
+        },
+        words: [
+          { e: '🍞', en: 'bread', ru: 'хлеб', uz: 'non', tj: 'нон', kg: 'нан', pn: '/bred/' },
+          { e: '🥛', en: 'milk', ru: 'молоко', uz: 'sut', tj: 'шир', kg: 'сүт', pn: '/mɪlk/' },
+          { e: '🍚', en: 'rice', ru: 'рис', uz: 'guruch', tj: 'биринҷ', kg: 'күрүч', pn: '/raɪs/' },
+          { e: '🥚', en: 'eggs', ru: 'яйца', uz: 'tuxumlar', tj: 'тухмҳо', kg: 'жумуртка', pn: '/eɡz/' },
+          { e: '🧾', en: 'receipt', ru: 'чек', uz: 'kvitansiya', tj: 'квитансия', kg: 'чек', pn: '/rɪˈsiːt/' },
+          { e: '💷', en: 'pound (£) / pence (p)', ru: 'фунт / пенс', uz: "funt / pens", tj: 'фунт / пенс', kg: 'фунт / пенс', pn: '/paʊnd/' },
+        ],
+        dialogue: [
+          { s: 'w', en: "Excuse me. How much is this bag of rice?", ru: 'Извините. Сколько стоит этот пакет риса?', uz: "Kechirasiz. Bu guruch xaltasi qancha?", tj: 'Бубахшед. Ин халтаи биринҷ чанд аст?', kg: 'Кечириңиз. Бул күрүч баштыгы канча?' },
+          { s: 'm', en: "That is one pound twenty. It is very good value!", ru: 'Один фунт двадцать. Очень выгодно!', uz: "Bu bir funt yigirma. Juda arzon!", tj: 'Як фунту бист. Хеле арзон!', kg: 'Бул бир фунт жыйырма. Абдан арзан!' },
+          { s: 'w', en: "I'd like two bags of rice and some bread, please.", ru: 'Я хочу два пакета риса и немного хлеба, пожалуйста.', uz: "Iltimos, ikki xalta guruch va ozgina non olmoqchiman.", tj: 'Лутфан, ду халтаи биринҷ ва каме нон мехоҳам.', kg: 'Суранам, эки баштык күрүч жана бир аз нан алгым келет.' },
+          { s: 'm', en: "How many bags of rice? Two or three?", ru: 'Сколько пакетов риса? Два или три?', uz: "Necha xalta guruch? Ikki yoki uch?", tj: 'Чанд халтаи биринҷ? Ду ё се?', kg: 'Канча баштык күрүч? Эки же үч?' },
+          { s: 'w', en: "Two bags please. And how much is the total?", ru: 'Два пакета, пожалуйста. И сколько всего?', uz: "Ikki xalta, iltimos. Va jami qancha?", tj: 'Ду халта, лутфан. Ва ҳамааш чанд?', kg: 'Эки баштык суранам. Жана баары канча?' },
+        ],
+        quiz: [
+          { q: "'How ___ milk do you want?' (milk = uncountable)", opts: ["many", "much", "any", "some"], c: 1 },
+          { q: "'How ___ eggs do you need?' (eggs = countable)", opts: ["much", "some", "many", "any"], c: 2 },
+          { q: "The MOST POLITE way to order in a shop:", opts: ["I want six eggs", "Give me six eggs", "I'd like six eggs, please", "Six eggs!"], c: 2 },
+        ]
+      },
+      {
+        id: 11, mod: 5,
+        name_ru: 'Автобус в город', name_uz: "Shaharga avtobus", name_tj: 'Автобус ба шаҳр', name_kg: 'Шаарга автобус',
+        cefr: 'Transport & travel · Places in town · Asking for directions',
+        grammar: {
+          title_ru: 'Транспорт + предлоги движения + места в городе', title_uz: "Transport + harakat predloglari + shahar joylari", title_tj: 'Нақлиёт + пешоянди ҳаракат + ҷойҳои шаҳр', title_kg: 'Транспорт + кыймыл байламачтары + шаардагы жайлар',
+          rule_ru: '<code>get on</code> = сесть на автобус/поезд · <code>get off</code> = выйти из<br><code>go by bus</code> / <code>by train</code> / <code>by taxi</code> / <code>walk</code><br>Направления: <code>Turn left/right</code> · <code>Go straight</code> · <code>Take the first turning</code>',
+          rule_uz: "<code>get on</code> = avtobus/poezdga minish · <code>get off</code> = tushish<br><code>go by bus</code> / <code>by train</code> / <code>by taxi</code> / <code>walk</code><br>Yo'nalish: <code>Turn left/right</code> · <code>Go straight</code>",
+          rule_tj: '<code>get on</code> = савор шудан ба автобус · <code>get off</code> = фаромадан<br><code>go by bus/train/taxi</code> · <code>walk</code> = пиёда<br>Самт: <code>Turn left/right</code> · <code>Go straight</code>',
+          rule_kg: '<code>get on</code> = автобуска мингүү · <code>get off</code> = түшүү<br><code>go by bus/train/taxi</code> · <code>walk</code> = жөө<br>Багыт: <code>Turn left/right</code> · <code>Go straight</code>',
+          note_ru: 'single = билет в одну сторону · return = туда и обратно<br>В Великобритании платите водителю или покупайте билет на остановке.',
+          note_uz: "single = bir tomonga · return = borib-qaytish<br>Britaniyada haydovchiga to'lang yoki bekatda bilet oling.",
+          note_tj: 'single = як тараф · return = рафт-баргашт<br>Дар Бритониё ба ронанда пардохт кунед.',
+          note_kg: 'single = бир тараптуу · return = эки тараптуу<br>Британияда айдоочуга төлөңүз.',
+          examples: [
+            { en: "I go to town by bus on Sundays. I get on at the farm gate and get off at the town centre.", ru: 'В воскресенье я еду в город на автобусе. Сажусь у ворот фермы и выхожу в центре.', uz: "Yakshanba kuni shaharga avtobus bilan boraman. Ferma darvozasida minaman va shahar markazida tushaman.", tj: 'Якшанбе бо автобус ба шаҳр мераво. Дар дарвозаи ферма савор мешавам ва дар марказ фаромедам.', kg: 'Жекшембиде шаарга автобус менен барам. Ферма дарбазасынан минем, шаар борборунан түшөм.' },
+          ]
+        },
+        words: [
+          { e: '🚌', en: 'bus / bus stop', ru: 'автобус / остановка', uz: "avtobus / avtobus bekati", tj: 'автобус / бекати автобус', kg: 'автобус / аялдама', pn: '/bʌs stɒp/' },
+          { e: '🚂', en: 'train station', ru: 'вокзал', uz: "temir yo'l stantsiyasi", tj: 'вокзал', kg: 'вокзал', pn: '/treɪn ˈsteɪʃən/' },
+          { e: '🏥', en: 'pharmacy / chemist', ru: 'аптека', uz: 'dorixona', tj: 'дорухона', kg: 'аптека', pn: '/ˈfɑːməsi/' },
+          { e: '🏦', en: 'bank / cash machine', ru: 'банк / банкомат', uz: "bank / bankomat", tj: 'бонк / банкомат', kg: 'банк / банкомат', pn: '/bæŋk/' },
+          { e: '🛒', en: 'supermarket (Tesco/Asda)', ru: 'супермаркет', uz: 'supermarket', tj: 'супермаркет', kg: 'супермаркет', pn: '/ˈsuːpəmɑːkɪt/' },
+          { e: '🎫', en: 'ticket: single / return', ru: 'билет: туда / туда-обратно', uz: "chipta: bir tomon / borib-qaytish", tj: 'билет: як тараф / рафт-баргашт', kg: 'билет: бир / эки тараптуу', pn: '/ˈtɪkɪt/' },
+        ],
+        dialogue: [
+          { s: 'w', en: "Excuse me. Is there a bus to town from the farm?", ru: 'Извините. Есть автобус в город с фермы?', uz: "Kechirasiz. Fermadan shaharga avtobus bormi?", tj: 'Бубахшед. Аз ферма ба шаҳр автобус ҳаст?', kg: 'Кечириңиз. Фермадан шаарга автобус барбы?' },
+          { s: 'm', en: "Yes! The number 12 bus. The bus stop is opposite the main gate.", ru: 'Да! Автобус номер 12. Остановка напротив главных ворот.', uz: "Ha! 12-avtobus. Avtobus bekati asosiy darvoza ro'parasida.", tj: 'Ҳа! Автобуси рақами 12. Бекат рӯ ба рӯи дарвозаи асосӣ.', kg: 'Ооба! 12-автобус. Аялдама башкы дарбазага каршы.' },
+          { s: 'w', en: "How much is a single ticket to the town centre?", ru: 'Сколько стоит билет в одну сторону до центра?', uz: "Shahar markaziga bir tomonlama chipta qancha?", tj: 'Билети як тарафа ба маркази шаҳр чанд аст?', kg: 'Шаардын борборуна бир тараптуу билет канча?' },
+          { s: 'm', en: "Two pounds fifty for a single. Four pounds for a return ticket.", ru: 'Два фунта пятьдесят — в одну сторону. Четыре фунта — туда-обратно.', uz: "Bir tomon uchun ikki funt ellik. Borib-qaytish uchun to'rt funt.", tj: 'Як тараф ду фунту панҷоҳ. Рафт-баргашт чор фунт.', kg: 'Бир тараптуу эки фунт элүү. Эки тараптуу төрт фунт.' },
+          { s: 'w', en: "Thank you! What time is the last bus back in the evening?", ru: 'Спасибо! Когда последний автобус обратно вечером?', uz: "Rahmat! Kechqurun oxirgi qaytish avtobus qachon?", tj: 'Ташаккур! Шом охирин автобуси баргашт кай вақт аст?', kg: 'Рахмат! Кечинде акыркы кайра автобус качан?' },
+        ],
+        quiz: [
+          { q: "'I get ___ the bus at the farm gate.' (= board the bus)", opts: ["off", "from", "on", "in"], c: 2 },
+          { q: "You want to go TO town AND come BACK. You need a...", opts: ["single ticket", "return ticket", "bus pass", "platform ticket"], c: 1 },
+          { q: "'Turn right and go ___.' (идти прямо)", opts: ["ahead", "straight", "forward", "across"], c: 1 },
+        ]
+      },
+      {
+        id: 12, mod: 6,
+        name_ru: 'Заполняю форму', name_uz: "Forma to'ldirish", name_tj: 'Анкета пур мекунам', name_kg: 'Форма толтурам',
+        cefr: 'was/were born · Personal information · Filling in forms',
+        grammar: {
+          title_ru: 'WAS / WERE BORN + личная информация', title_uz: "WAS / WERE BORN + shaxsiy ma'lumotlar", title_tj: 'WAS / WERE BORN + маълумоти шахсӣ', title_kg: 'WAS / WERE BORN + жеке маалымат',
+          rule_ru: '<code>I was born</code> in 1995. · <code>She was born</code> in Tashkent.<br><code>They were born</code> in Tajikistan.<br>Дата: <b>15th March 1995</b> = the fifteenth of March, nineteen ninety-five.',
+          rule_uz: "<code>I was born</code> in 1995. · <code>She was born</code> in Tashkent.<br><code>They were born</code> in Tajikistan.<br>Sana: <b>15th March 1995</b> = the fifteenth of March, nineteen ninety-five.",
+          rule_tj: '<code>I was born</code> in 1995. · <code>She was born</code> in Tashkent.<br><code>They were born</code> in Tajikistan.<br>Сана: <b>15th March 1995</b> = the fifteenth of March, nineteen ninety-five.',
+          rule_kg: '<code>I was born</code> in 1995. · <code>She was born</code> in Tashkent.<br><code>They were born</code> in Tajikistan.<br>Дата: <b>15th March 1995</b> = the fifteenth of March, nineteen ninety-five.',
+          note_ru: 'Год 1995 = nineteen ninety-five · 2000 = two thousand · 2005 = two thousand and five · 2024 = twenty twenty-four',
+          note_uz: "Yil: 1995 = nineteen ninety-five · 2000 = two thousand · 2024 = twenty twenty-four",
+          note_tj: 'Сол: 1995 = nineteen ninety-five · 2000 = two thousand · 2024 = twenty twenty-four',
+          note_kg: 'Жыл: 1995 = nineteen ninety-five · 2000 = two thousand · 2024 = twenty twenty-four',
+          examples: [
+            { en: "I was born on the fifteenth of March, nineteen ninety-five, in Dushanbe, Tajikistan.", ru: 'Я родился 15 марта 1995 года в Душанбе, Таджикистан.', uz: "Men 1995 yil 15 martda Tojikiston, Dushanbeda tug'ilganman.", tj: 'Ман 15 марти 1995 дар Душанбе, Тоҷикистон таваллуд шудаам.', kg: 'Мен 1995-жылдын 15-мартында Тажикстандын Дүйшөмбүсүндө туулганмын.' },
+            { en: "She arrived in the UK on the first of April. She started work on the third.", ru: 'Она приехала в Великобританию 1 апреля. Начала работу 3-го.', uz: "U 1-aprelda Buyuk Britaniyaga keldi. 3-kuni ishni boshladi.", tj: 'Вай 1 апрел ба Бритониё омад. 3-ум кор оғоз кард.', kg: 'Ал 1-апрелде Улуу Британияга келди. 3-күнү иштей баштады.' },
+          ]
+        },
+        words: [
+          { e: '📅', en: 'date of birth (DOB)', ru: 'дата рождения', uz: "tug'ilgan sana", tj: 'санаи таваллуд', kg: 'туулган күнү', pn: '/deɪt əv bɜːθ/' },
+          { e: '🆔', en: 'passport number', ru: 'номер паспорта', uz: 'pasport raqami', tj: 'рақами паспорт', kg: 'паспорт номери', pn: '/ˈpɑːspɔːt ˈnʌmbər/' },
+          { e: '📍', en: 'home address', ru: 'домашний адрес', uz: "uy manzili", tj: 'суроғаи хона', kg: 'үй дареги', pn: '/həʊm əˈdres/' },
+          { e: '🏥', en: 'National Insurance (NI) number', ru: 'номер соц. страховки', uz: "NI raqami", tj: 'рақами NI', kg: 'NI номери', pn: '/ˈnæʃənl ɪnˈʃʊərəns/' },
+          { e: '📞', en: 'emergency contact', ru: 'контакт для экстренной связи', uz: "favqulodda aloqa", tj: 'рақами алоқаи фаврӣ', kg: 'шашылыш байланыш', pn: '/ɪˈmɜːdʒənsi ˈkɒntækt/' },
+          { e: '🌍', en: 'nationality', ru: 'гражданство / национальность', uz: 'millat / fuqarolik', tj: 'миллат / шаҳрвандӣ', kg: 'улут / жарандык', pn: '/ˌnæʃəˈnælɪti/' },
+        ],
+        dialogue: [
+          { s: 'm', en: "Ahmad, please fill in this worker registration form.", ru: 'Ахмад, пожалуйста, заполните форму регистрации работника.', uz: "Ahmad, iltimos, ishchi ro'yxatga olish formasini to'ldiring.", tj: 'Аҳмад, лутфан анкетаи сабти номи коргарро пур кунед.', kg: 'Ахмад, суранам, жумушчуну каттоо формасын толтуруңуз.' },
+          { s: 'w', en: "Of course. My full name is Ahmad Karimov. I was born on the fifth of May, nineteen ninety-two.", ru: 'Конечно. Моё полное имя — Ахмад Каримов. Я родился 5 мая 1992 года.', uz: "Albatta. To'liq ismim Ahmad Karimov. Men 1992 yil 5 mayda tug'ilganman.", tj: 'Албатта. Номи пурраам Аҳмад Каримов. Ман 5 майи 1992 таваллуд шудаам.', kg: 'Албетте. Толук атым Ахмад Каримов. Мен 1992-жылдын 5-майында туулганмын.' },
+          { s: 'm', en: "Your nationality?", ru: 'Ваше гражданство?', uz: "Fuqaroligingiz?", tj: 'Шаҳрвандии шумо?', kg: 'Жарандыгыңыз?' },
+          { s: 'w', en: "I am Tajikistani. My passport number is TJ 123456.", ru: 'Я гражданин Таджикистана. Номер паспорта: TJ 123456.', uz: "Men tojikistonlikman. Pasport raqamim TJ 123456.", tj: 'Ман тоҷикистонӣ ҳастам. Рақами паспортам TJ 123456.', kg: 'Мен тажикстандыкмын. Паспорт номерим TJ 123456.' },
+          { s: 'm', en: "And your emergency contact in the UK?", ru: 'Ваш контакт для экстренной связи в Великобритании?', uz: "Buyuk Britaniyadagi favqulodda aloqa raqamingiz?", tj: 'Рақами алоқаи фавриатон дар Бритониё?', kg: 'Улуу Британиядагы шашылыш байланышыңыз?' },
+        ],
+        quiz: [
+          { q: "'She ___ born in Tashkent.' (она = she = singular)", opts: ["were", "was", "is", "be"], c: 1 },
+          { q: "How do you say '15th March 1995'?", opts: ["March fifteen nineteen ninety-five", "The fifteenth of March, nineteen ninety-five", "Fifteen March ninety-five", "March the fifteen"], c: 1 },
+          { q: "'They ___ born in Kyrgyzstan.' (they = plural)", opts: ["was", "is", "were", "are"], c: 2 },
+        ]
+      },
+      {
+        id: 13, mod: 6,
+        name_ru: 'Вчера я собрал 60 ящиков', name_uz: "Kecha men 60 quti terdim", name_tj: 'Дирӯз ман 60 қуттӣ чидам', name_kg: 'Кечээ 60 кутуча жыйдым',
+        cefr: 'Past Simple regular & irregular · Time expressions · Reporting incidents',
+        grammar: {
+          title_ru: 'Past Simple — правильные и неправильные глаголы', title_uz: "Past Simple — to'g'ri va noto'g'ri fe'llar", title_tj: 'Past Simple — феълҳои мунтазам ва ғайримунтазам', title_kg: 'Past Simple — туура жана туура эмес этиштер',
+          rule_ru: 'Правильные (+ed): <code>work→worked</code> · <code>pick→picked</code> · <code>start→started</code><br>Неправильные: <code>go→went</code> · <code>come→came</code> · <code>break→broke</code> · <code>have→had</code> · <code>feel→felt</code><br>(–) <code>I didn\'t work.</code> · (?) <code>Did you work?</code>',
+          rule_uz: "To'g'ri (+ed): <code>work→worked</code> · <code>pick→picked</code><br>Noto'g'ri: <code>go→went</code> · <code>come→came</code> · <code>break→broke</code> · <code>have→had</code> · <code>feel→felt</code><br>(–) <code>I didn't work.</code> · (?) <code>Did you work?</code>",
+          rule_tj: 'Мунтазам (+ed): <code>work→worked</code> · <code>pick→picked</code><br>Ғайримунтазам: <code>go→went</code> · <code>break→broke</code> · <code>have→had</code> · <code>feel→felt</code><br>(–) <code>I didn\'t work.</code> · (?) <code>Did you work?</code>',
+          rule_kg: 'Туура (+ed): <code>work→worked</code> · <code>pick→picked</code><br>Туура эмес: <code>go→went</code> · <code>break→broke</code> · <code>have→had</code> · <code>feel→felt</code><br>(–) <code>I didn\'t work.</code> · (?) <code>Did you work?</code>',
+          note_ru: 'Время: <b>yesterday</b> · <b>last week</b> · <b>this morning</b> · <b>on Monday</b> · <b>two days ago</b> · <b>in June</b>',
+          note_uz: "Vaqt: <b>yesterday</b> · <b>last week</b> · <b>this morning</b> · <b>on Monday</b> · <b>two days ago</b>",
+          note_tj: 'Вақт: <b>yesterday</b> · <b>last week</b> · <b>this morning</b> · <b>on Monday</b>',
+          note_kg: 'Убакыт: <b>yesterday</b> · <b>last week</b> · <b>this morning</b> · <b>on Monday</b>',
+          examples: [
+            { en: "Yesterday I picked sixty boxes. I worked from six to two.", ru: 'Вчера я собрал шестьдесят ящиков. Я работал с шести до двух.', uz: "Kecha men oltmish quti terdim. Men soat oltidan ikkigacha ishladim.", tj: 'Дирӯз ман шаст қуттӣ чидам. Ман аз соати шаш то ду кор кардам.', kg: 'Кечээ мен алтымыш кутуча жыйдым. Алтыдан экиге чейин иштедим.' },
+            { en: "The machine broke down this morning. I didn't work for one hour. Did you report it?", ru: 'Машина сломалась сегодня утром. Я не работал один час. Вы сообщили об этом?', uz: "Mashina bu ertalab buzildi. Men bir soat ishlamadim. Siz bu haqda xabar berdingizmi?", tj: 'Мошина имрӯз субҳ вайрон шуд. Ман як соат кор накардам. Оё шумо хабар додед?', kg: 'Машина бүгүн эртеңде бузулду. Мен бир саат иштебедим. Сиз кабарладыңызбы?' },
+          ]
+        },
+        words: [
+          { e: '📅', en: 'yesterday / last week', ru: 'вчера / на прошлой неделе', uz: "kecha / o'tgan hafta", tj: 'дирӯз / ҳафтаи гузашта', kg: 'кечээ / өткөн жума', pn: '/ˈjestədeɪ/' },
+          { e: '🚨', en: 'accident / incident', ru: 'несчастный случай', uz: "baxtsiz hodisa", tj: 'ҳодисаи нохуш', kg: 'кырсык / окуя', pn: '/ˈæksɪdənt/' },
+          { e: '🔨', en: 'broke down', ru: 'сломалась (машина)', uz: "buzildi", tj: 'вайрон шуд', kg: 'бузулду', pn: '/brəʊk daʊn/' },
+          { e: '😷', en: 'felt sick / ill', ru: 'почувствовал себя плохо', uz: "yomon his qildim", tj: 'бад ҳис кардам', kg: 'начарладым', pn: '/felt sɪk/' },
+          { e: '⏱️', en: 'this morning / last night', ru: 'сегодня утром / вчера вечером', uz: "bu ertalab / kecha kechasi", tj: 'имрӯз субҳ / дирӯз шаб', kg: 'бүгүн эртеңде / кечеги кечте', pn: '/ðɪs ˈmɔːnɪŋ/' },
+          { e: '📊', en: 'timesheet / daily report', ru: 'табель / ежедневный отчёт', uz: "vaqt jadvali / kunlik hisobot", tj: 'ҷадвали вақт / ҳисоботи рӯзона', kg: 'убакыт таблицасы / күнүмдүк отчёт', pn: '/ˈtaɪmʃiːt/' },
+        ],
+        dialogue: [
+          { s: 'm', en: "Ahmad, can you give me your daily report for yesterday?", ru: 'Ахмад, можете дать мне ваш ежедневный отчёт за вчера?', uz: "Ahmad, kechagi kunlik hisobotingizni bera olasizmi?", tj: 'Аҳмад, метавонед ҳисоботи рӯзонаи дирӯзатонро диҳед?', kg: 'Ахмад, кечеги күнүмдүк отчётуңузду бере аласызбы?' },
+          { s: 'w', en: "Yes. Yesterday I picked forty-five boxes. But the machine broke down at eleven.", ru: 'Да. Вчера я собрал сорок пять ящиков. Но машина сломалась в одиннадцать.', uz: "Ha. Kecha men qirq besh quti terdim. Lekin mashina soat o'n birda buzildi.", tj: 'Ҳа. Дирӯз ман чилу панҷ қуттӣ чидам. Аммо мошина дар соати ёздаҳ вайрон шуд.', kg: 'Ооба. Кечээ кырк беш кутуча жыйдым. Бирок машина он бирде бузулду.' },
+          { s: 'm', en: "Did you report the breakdown? Who fixed it?", ru: 'Вы сообщили о поломке? Кто починил?', uz: "Siz buzilib qolganini xabar qildingizmi? Kim tuzatdi?", tj: 'Оё шумо дар бораи вайроншавӣ хабар додед? Кӣ таъмир кард?', kg: 'Бузулганы жөнүндө кабарладыңызбы? Ким оңдоду?' },
+          { s: 'w', en: "Yes. I told the line leader. The mechanic came and fixed it in one hour.", ru: 'Да. Я сказал бригадиру. Механик пришёл и починил за час.', uz: "Ha. Men brigadirga aytdim. Mexanik keldi va bir soatda tuzatdi.", tj: 'Ҳа. Ба бригадир гуфтам. Механик омад ва дар як соат таъмир кард.', kg: 'Ооба. Бригадирге айттым. Механик келди жана бир саатта оңдоду.' },
+          { s: 'm', en: "Good. Did you feel OK? You didn't have any injury?", ru: 'Хорошо. Вы чувствовали себя нормально? Травмы не было?', uz: "Yaxshi. O'zingizni yaxshi his qildingizmi? Jarohat olmadingizmi?", tj: 'Хуб. Ҳол чӣ буд? Осеб надидед?', kg: 'Жакшы. Өзүңүздү жакшы сездиңизби? Жарат алгансызбы?' },
+        ],
+        quiz: [
+          { q: "Past form of 'go' (irregular verb)", opts: ["goed", "gone", "went", "goes"], c: 2 },
+          { q: "'I ___ work yesterday.' (negative past)", opts: ["didn't worked", "didn't work", "don't work", "wasn't work"], c: 1 },
+          { q: "'The machine ___ down this morning.' (break → broke)", opts: ["broken", "breaked", "broke", "was break"], c: 2 },
+        ]
+      },
+      {
+        id: 14, mod: 6,
+        name_ru: 'Могу я помочь вам?', name_uz: "Yordam bera olamanmi?", name_tj: 'Оё метавонам кӯмак кунам?', name_kg: 'Жардам бере аламбы?',
+        cefr: "can/can't · Requests & offers · Using the phone · Health vocabulary",
+        grammar: {
+          title_ru: "CAN / CAN'T — способность, просьбы, предложения", title_uz: "CAN / CAN'T — qobiliyat, iltimoslar, takliflar", title_tj: "CAN / CAN'T — тавоноӣ, илтимосҳо, пешниҳодҳо", title_kg: "CAN / CAN'T — жөндөмдүүлүк, өтүнүчтөр, сунуштар",
+          rule_ru: 'Способность: <code>I can pick fast.</code> · <code>She can\'t drive.</code><br>Просьба: <code>Can you help me?</code> · <code>Could you call a doctor?</code> (вежливее!)<br>Предложение: <code>Can I help you?</code> · <code>Shall I call someone?</code>',
+          rule_uz: "Qobiliyat: <code>I can pick fast.</code> · <code>She can't drive.</code><br>Iltimos: <code>Can you help me?</code> · <code>Could you call a doctor?</code> (muloyim!)<br>Taklif: <code>Can I help you?</code>",
+          rule_tj: 'Тавоноӣ: <code>I can pick fast.</code> · <code>She can\'t drive.</code><br>Илтимос: <code>Can you help me?</code> · <code>Could you call a doctor?</code> (муассаб!)<br>Пешниҳод: <code>Can I help you?</code>',
+          rule_kg: 'Жөндөмдүүлүк: <code>I can pick fast.</code> · <code>She can\'t drive.</code><br>Өтүнүч: <code>Can you help me?</code> · <code>Could you call a doctor?</code> (сылык!)<br>Сунуш: <code>Can I help you?</code>',
+          note_ru: 'Звонок когда заболел: "Hello, this is Ahmad. I cannot come in today. I feel sick."<br>Это фраза, которую ОБЯЗАТЕЛЬНО нужно знать!',
+          note_uz: "Kasal bo'lganda qo'ng'iroq: 'Hello, this is Ahmad. I cannot come in today. I feel sick.'",
+          note_tj: 'Занги беморӣ: «Hello, this is Ahmad. I cannot come in today. I feel sick.»',
+          note_kg: 'Ооруп калганда чалуу: "Hello, this is Ahmad. I cannot come in today. I feel sick."',
+          examples: [
+            { en: "Can you help me? My back hurts and I can't carry this box.", ru: 'Вы можете помочь мне? У меня болит спина и я не могу нести этот ящик.', uz: "Menga yordam bera olasizmi? Belim og'riyapti va bu qutini ko'tara olmayapman.", tj: 'Оё метавонед ба ман кӯмак кунед? Пуштам дард мекунад ва ин қуттиро бурда наметавонам.', kg: 'Мага жардам бере аласызбы? Белим ооруйт жана бул кутучаны алып жүрө албайм.' },
+            { en: "Could you call the supervisor, please? I feel very sick.", ru: 'Не могли бы вы позвонить супервайзеру? Мне очень плохо.', uz: "Iltimos, nazoratchi ga qo'ng'iroq qila olasizmi? Juda yomon his qilyapman.", tj: 'Лутфан, метавонед ба назоратчӣ занг занед? Ман хеле бад ҳис мекунам.', kg: 'Суранам, жетекчиге чалып бере аласызбы? Абдан начарлап жатам.' },
+          ]
+        },
+        words: [
+          { e: '😷', en: 'I feel sick', ru: 'Мне плохо / я болен', uz: "Yomon his qilyapman", tj: 'Ман бад ҳис мекунам', kg: 'Начарлап жатам', pn: '/aɪ fiːl sɪk/' },
+          { e: '🤒', en: 'temperature / fever', ru: 'температура / жар', uz: "harorat / isitma", tj: 'ҳарорат / табларза', kg: 'температура / ысыма', pn: "/ˈtemprətʃər/" },
+          { e: '😣', en: 'My back / head hurts', ru: 'Болит спина / голова', uz: "Belim / boshim og'riyapti", tj: 'Пуштам / сарам дард мекунад', kg: 'Белим / башым ооруйт', pn: '/maɪ bæk hɜːts/' },
+          { e: '🩺', en: 'doctor / GP surgery', ru: 'врач / поликлиника', uz: "doktor / poliklinika", tj: 'духтур / поликлиника', kg: 'дарыгер / поликлиника', pn: '/ˈdɒktər/' },
+          { e: '💊', en: 'medicine / paracetamol', ru: 'лекарство / парацетамол', uz: "dori / paracetamol", tj: 'дору / парацетамол', kg: 'дары / парацетамол', pn: '/ˈmedɪsɪn/' },
+          { e: '📞', en: 'call in sick', ru: 'позвонить что заболел', uz: "kasal ekanligini qo'ng'iroq qilish", tj: 'занг задан ки бемор', kg: 'ооруп калганын чалуу', pn: '/kɔːl ɪn sɪk/' },
+        ],
+        dialogue: [
+          { s: 'w', en: "Hello, this is Ahmad Karimov. Can I speak to Tom, please?", ru: 'Здравствуйте, это Ахмад Каримов. Можно поговорить с Томом?', uz: "Salom, bu Ahmad Karimov. Tom bilan gaplasha olamanmi, iltimos?", tj: 'Алло, ин Аҳмад Каримов аст. Лутфан бо Том сӯҳбат кунам?', kg: 'Салам, бул Ахмад Каримов. Том менен сүйлөшө аламбы, суранам?' },
+          { s: 'm', en: "Hello Ahmad. Yes, this is Tom. What's the matter?", ru: 'Привет Ахмад. Да, это Том. В чём дело?', uz: "Salom Ahmad. Ha, bu Tom. Nima bo'ldi?", tj: 'Салом Аҳмад. Ҳа, ин Том. Чӣ шуд?', kg: 'Салам Ахмад. Ооба, бул Том. Эмне болду?' },
+          { s: 'w', en: "I am very sorry but I cannot come in today. I feel sick. I have a temperature.", ru: 'Извините, но я не могу прийти сегодня. Мне плохо. У меня температура.', uz: "Juda uzr, lekin bugun kela olmayapman. Yomon his qilyapman. Haroratim bor.", tj: 'Бисёр бахшед, аммо имрӯз омада наметавонам. Бад ҳастам. Ҳарорат дорам.', kg: 'Абдан кечирим, бирок бүгүн кела албайм. Начарлап жатам. Температурам бар.' },
+          { s: 'm', en: "I'm sorry to hear that. Can you see a doctor today?", ru: 'Сочувствую. Сможете сегодня пойти к врачу?', uz: "Buni eshitib xafa bo'ldim. Bugun doktorga bora olasizmi?", tj: 'Бахшед. Оё имрӯз ба духтур рафта метавонед?', kg: 'Муңайдым. Бүгүн дарыгерге бара аласызбы?' },
+          { s: 'w', en: "Yes, I can. Could you give me the address of the nearest GP surgery?", ru: 'Да. Не могли бы вы дать мне адрес ближайшей поликлиники?', uz: "Ha. Eng yaqin poliklinika manzilini bera olasizmi?", tj: 'Ҳа. Лутфан суроғаи наздиктарин поликлиникаро гӯед?', kg: 'Ооба. Эң жакын поликлиниканын дарегин бере аласызбы?' },
+        ],
+        quiz: [
+          { q: "'___ you help me? My back hurts.' (polite request)", opts: ["Could", "Would you like", "Will", "Are"], c: 0 },
+          { q: "You phone work because you are sick. You say:", opts: ["I am not come today", "I cannot come in today. I feel sick.", "I don't came today", "Tomorrow I sick"], c: 1 },
+          { q: "'She ___ drive the tractor.' (no ability)", opts: ["can", "can't", "couldn't", "don't"], c: 1 },
+        ]
+      },
+      {
+        id: 15, mod: 6,
+        name_ru: 'Чай? С удовольствием! ☕', name_uz: "Choy? Xursandman! ☕", name_tj: 'Чой? Бо хурсандӣ! ☕', name_kg: 'Чай? Кубанычта! ☕',
+        cefr: "want/like/would like · Social expressions · British culture · Requests & offers",
+        grammar: {
+          title_ru: 'WANT / LIKE / WOULD LIKE + британские социальные выражения', title_uz: "WANT / LIKE / WOULD LIKE + Britaniya ijtimoiy iboralari", title_tj: 'WANT / LIKE / WOULD LIKE + ибораҳои иҷтимоии Бритониё', title_kg: 'WANT / LIKE / WOULD LIKE + британиялык коомдук сүйлөмдөр',
+          rule_ru: '<code>I want</code> tea. (прямо, иногда грубовато)<br><code>I like</code> tea. (нравится вообще, постоянно)<br><code>I would like</code> = <code>I\'d like</code> tea, please. (ВЕЖЛИВАЯ просьба ✓)<br>Предложение: <code>Would you like</code> some tea? · <code>Can I get you anything?</code>',
+          rule_uz: "<code>I want</code> tea. (to'g'ridan-to'g'ri)<br><code>I like</code> tea. (umuman yoqadi)<br><code>I would like</code> = <code>I'd like</code> tea, please. (MULOYIM ✓)<br>Taklif: <code>Would you like</code> some tea?",
+          rule_tj: '<code>I want</code> tea. (мустақим)<br><code>I like</code> tea. (умуман дӯст доштан)<br><code>I would like</code> = <code>I\'d like</code> tea, please. (МУАССАБ ✓)<br>Пешниҳод: <code>Would you like</code> some tea?',
+          rule_kg: '<code>I want</code> tea. (түз)<br><code>I like</code> tea. (жалпы жактыруу)<br><code>I would like</code> = <code>I\'d like</code> tea, please. (СЫЛЫК ✓)<br>Сунуш: <code>Would you like</code> some tea?',
+          note_ru: '🇬🇧 Британский сленг на ферме:<br><b>Cheers!</b> = Спасибо! (неформально) · <b>Lovely!</b> = Замечательно! · <b>Brilliant!</b> = Здорово! · <b>Alright, mate?</b> = Как дела, приятель? · <b>Not bad!</b> = Ничего! · <b>Ta!</b> = Спасибо (очень неформально)',
+          note_uz: "🇬🇧 Britaniya slengi: <b>Cheers!</b> = Rahmat! (norasmiy) · <b>Lovely!</b> = Ajoyib! · <b>Brilliant!</b> = Zo'r! · <b>Alright, mate?</b> = Yaxshimisiz? · <b>Ta!</b> = Rahmat",
+          note_tj: '🇬🇧 Сленги Бритониё: <b>Cheers!</b> = Ташаккур! · <b>Lovely!</b> = Аҷоиб! · <b>Brilliant!</b> = Бандагӣ! · <b>Alright, mate?</b> = Хол чӣ? · <b>Ta!</b> = Ташаккур',
+          note_kg: '🇬🇧 Британиялык сленг: <b>Cheers!</b> = Рахмат! · <b>Lovely!</b> = Сонун! · <b>Brilliant!</b> = Мыкты! · <b>Alright, mate?</b> = Кандайсың? · <b>Ta!</b> = Рахмат',
+          examples: [
+            { en: "Would you like some tea? — Yes please, I'd like milk and no sugar. Cheers!", ru: 'Хотите чаю? — Да пожалуйста, с молоком и без сахара. Спасибо!', uz: "Choy ichmoqchimisiz? — Ha iltimos, sutli va qandsiz. Rahmat!", tj: 'Оё чой мехоҳед? — Ҳа лутфан, бо шир ва бе қанд. Ташаккур!', kg: 'Чай ичкиңиз барбы? — Ооба суранам, сүт менен кант жок. Рахмат!' },
+            { en: "Alright, mate? — Not bad, cheers! I like this break. It's lovely!", ru: 'Как дела, приятель? — Ничего, спасибо! Мне нравится этот перерыв. Замечательно!', uz: "Yaxshimisiz, do'stim? — Yomon emas, rahmat! Bu tanaffusni yoqtiraman. Ajoyib!", tj: 'Хол чӣ, дӯст? — Наку, ташаккур! Ин истироҳатро дӯст медорам. Аҷоиб!', kg: 'Кандайсың, дос? — Жаман эмес, рахмат! Бул тыным жагат. Сонун!' },
+          ]
+        },
+        words: [
+          { e: '☕', en: 'tea / coffee', ru: 'чай / кофе', uz: "choy / qahva", tj: 'чой / қаҳва', kg: 'чай / кофе', pn: '/tiː/ /ˈkɒfi/' },
+          { e: '🍪', en: 'biscuit', ru: 'печенье', uz: 'pechenye', tj: 'печенье', kg: 'бисквит', pn: '/ˈbɪskɪt/' },
+          { e: '😊', en: 'Cheers! (Thank you)', ru: 'Спасибо! (неформально)', uz: "Rahmat! (norasmiy)", tj: 'Ташаккур! (ғайрирасмӣ)', kg: 'Рахмат! (расмий эмес)', pn: '/tʃɪərz/' },
+          { e: '👍', en: 'Lovely! / Brilliant!', ru: 'Замечательно! / Здорово!', uz: "Ajoyib! / Zo'r!", tj: 'Аҷоиб! / Бандагӣ!', kg: 'Сонун! / Мыкты!', pn: '/ˈlʌvli/' },
+          { e: '🤝', en: 'Alright, mate?', ru: 'Как дела, приятель?', uz: "Yaxshimisiz, do'stim?", tj: 'Хол чӣ, дӯст?', kg: 'Кандайсың, дос?', pn: '/ɔːlˈraɪt meɪt/' },
+          { e: '🚫', en: 'No thank you / No, cheers', ru: 'Нет, спасибо', uz: "Yo'q, rahmat", tj: 'Не, ташаккур', kg: 'Жок, рахмат', pn: '/nəʊ θæŋk juː/' },
+        ],
+        dialogue: [
+          { s: 'm', en: "Break time! Would you like some tea or coffee, Ahmad?", ru: 'Перерыв! Хотите чай или кофе, Ахмад?', uz: "Tanaffus! Ahmad, choy yoki qahva ichmoqchimisiz?", tj: 'Истироҳат! Аҳмад, чой ё қаҳва мехоҳед?', kg: 'Тыным! Ахмад, чай же кофе ичкиңиз барбы?' },
+          { s: 'w', en: "Yes please! I'd like tea with milk, no sugar. Cheers, Tom!", ru: 'Да, пожалуйста! Чай с молоком, без сахара. Спасибо, Том!', uz: "Ha, iltimos! Sutli choy, qandsiz. Rahmat, Tom!", tj: 'Ҳа, лутфан! Чой бо шир, бе қанд. Ташаккур, Том!', kg: 'Ооба, суранам! Сүт менен чай, канты жок. Рахмат, Том!' },
+          { s: 'm', en: "Would you like a biscuit? There are some chocolate ones.", ru: 'Хотите печенье? Есть шоколадные.', uz: "Pechenye olmoqchimisiz? Shokoladli pechenyeler bor.", tj: 'Оё печенье мехоҳед? Шоколадиҳо ҳастанд.', kg: 'Бисквит алгыңыз барбы? Шоколаддуу бисквиттер бар.' },
+          { s: 'w', en: "Lovely! Yes please. — Alright, mate? (to Rustam) How are you today?", ru: 'Замечательно! Да, пожалуйста. — Как дела, приятель? (Рустаму) Как ты сегодня?', uz: "Ajoyib! Ha iltimos. — Yaxshimisiz, do'stim? (Rustamga) Bugun qandaysiz?", tj: 'Аҷоиб! Ҳа лутфан. — Хол чӣ, дӯст? (ба Рустам) Имрӯз чӣ ҳол?', kg: 'Сонун! Ооба суранам. — Кандайсың, дос? (Рустамга) Бүгүн кандайсың?' },
+          { s: 'w', en: "Not bad, cheers! I like this break. It's my favourite part of the day — brilliant!", ru: 'Ничего, спасибо! Мне нравится этот перерыв. Это моя любимая часть дня — здорово!', uz: "Yomon emas, rahmat! Bu tanaffusni yoqtiraman. Bu mening kunning eng sevimli qismi — zo'r!", tj: 'Наку, ташаккур! Ин истироҳатро дӯст медорам. Ин қисми дилхоҳи рӯзи ман аст — бандагӣ!', kg: 'Жаман эмес, рахмат! Бул тыным жагат. Бул менин күндүн эң жаккан бөлүгү — мыкты!' },
+        ],
+        quiz: [
+          { q: "The MOST POLITE way to ask for tea:", opts: ["I want tea.", "Give me tea.", "I'd like some tea, please.", "Tea now."], c: 2, expl: "«I would like» (или «I'd like») — это вежливая форма «я бы хотел». «I want» звучит слишком прямо и иногда грубовато." },
+          { q: "'I ___ coffee.' (general preference — нравится вообще)", opts: ["would like", "want", "like", "'d like"], c: 2, expl: "«Like» означает, что вам что-то нравится вообще, постоянно. «Would like» используется для конкретной вежливой просьбы прямо сейчас." },
+          { q: "In British culture, 'Cheers!' most commonly means:", opts: ["Goodbye only", "Thank you (informal)", "Yes please", "Brilliant!"], c: 1, expl: "В Великобритании «Cheers!» очень часто говорят вместо «Thank you» в неформальной обстановке." },
+        ]
+      },
+    ];
+  </script>
+  <script>
+    // ── PHRASEBOOK ────────────────────────────────────────────────────────────────
+    const PHRASES = [
+      { cat: 'work', en: "Where is my row?", ru: "Где мой ряд?", uz: "Qatorim qayerda?", tj: "Қатори ман куҷост?", kg: "Катарым кайда?" },
+      { cat: 'work', en: "The machine is broken.", ru: "Машина сломана.", uz: "Mashina buzilgan.", tj: "Мошина вайрон аст.", kg: "Машина бузулду." },
+      { cat: 'work', en: "I have finished my row.", ru: "Я закончил свой ряд.", uz: "Qatorimni tugatdim.", tj: "Қаторамро тамом кардам.", kg: "Катарымды аяктадым." },
+      { cat: 'work', en: "What time does the shift end?", ru: "Когда заканчивается смена?", uz: "Smena qachon tugaydi?", tj: "Навбат кай тамом мешавад?", kg: "Навбат качан бүтөт?" },
+      { cat: 'work', en: "I need more trays / punnets.", ru: "Мне нужны ещё лотки.", uz: "Menga ko'proq qutila kerak.", tj: "Ман боз қуттиҳо лозим.", kg: "Мага дагы кутучалар керек." },
+      { cat: 'work', en: "Could you fix the heater / gas please?", ru: "Не могли бы вы починить обогреватель / газ?", uz: "Isitgich / gazni tuzata olasizmi?", tj: "Гармкунак / газро таъмир мекунед?", kg: "Жылыткычты / газды оңдой аласызбы?" },
+      { cat: 'health', en: "I feel sick. I need a doctor.", ru: "Мне плохо. Нужен врач.", uz: "Yomon his qilyapman. Doktor kerak.", tj: "Бад ҳастам. Духтур лозим.", kg: "Начарлап жатам. Дарыгер керек." },
+      { cat: 'health', en: "My back / knee / hand hurts.", ru: "У меня болит спина / колено / рука.", uz: "Belim / tizzam / qo'lim og'riyapti.", tj: "Пуштам / зонуам / дастам дард мекунад.", kg: "Белим / тизем / колум ооруйт." },
+      { cat: 'health', en: "I need to go to hospital.", ru: "Мне нужно в больницу.", uz: "Menga kasalxonaga borish kerak.", tj: "Ман бояд ба беморхона равам.", kg: "Мага оорукана барышым керек." },
+      { cat: 'health', en: "I have a temperature / headache.", ru: "У меня температура / болит голова.", uz: "Haroratim bor / boshim og'riyapti.", tj: "Ҳарорат дорам / сарам дард мекунад.", kg: "Температурам бар / башым ооруйт." },
+      { cat: 'pay', en: "My payslip is incorrect.", ru: "В расчётном листе ошибка.", uz: "Maosh varaqam noto'g'ri.", tj: "Варақаи маошам нодуруст.", kg: "Маош барагым туура эмес." },
+      { cat: 'pay', en: "I am missing hours on my payslip.", ru: "У меня не хватает часов в листе.", uz: "Maosh varaqamda soatlar yetishmayapti.", tj: "Варақаи маошам соатҳо кам.", kg: "Маош барагымда саатtar жетишпейт." },
+      { cat: 'pay', en: "When is payday?", ru: "Когда день выплаты зарплаты?", uz: "Maosh kuni qachon?", tj: "Рӯзи маош кай аст?", kg: "Эмгек акы берилүүчү күн качан?" },
+      { cat: 'pay', en: "What is the minimum wage this year?", ru: "Какой минимальный размер оплаты труда в этом году?", uz: "Bu yil minimal ish haqi qancha?", tj: "Ин сол ҳадди ақали маош чанд аст?", kg: "Бул жыл минималдык эмгек акы канча?" },
+      { cat: 'shop', en: "How much is this?", ru: "Сколько это стоит?", uz: "Bu qancha?", tj: "Ин чанд аст?", kg: "Бул канча?" },
+      { cat: 'shop', en: "I'd like two of these, please.", ru: "Дайте два, пожалуйста.", uz: "Iltimos, ikki dona.", tj: "Лутфан, дутои инҳо.", kg: "Суранам, булардан эки данасын." },
+      { cat: 'shop', en: "Where is the nearest pharmacy?", ru: "Где ближайшая аптека?", uz: "Eng yaqin dorixona qayerda?", tj: "Наздиктарин дорухона куҷост?", kg: "Эң жакын аптека кайда?" },
+      { cat: 'social', en: "Good morning! How are you?", ru: "Доброе утро! Как дела?", uz: "Xayrli tong! Qandaysiz?", tj: "Субҳ бахайр! Ҳол чӣ?", kg: "Кутман эртең! Кандайсыз?" },
+      { cat: 'social', en: "Cheers! / Thank you very much.", ru: "Спасибо большое!", uz: "Katta rahmat!", tj: "Ташаккури зиёд!", kg: "Чоң рахмат!" },
+      { cat: 'social', en: "Sorry, I don't understand. Can you repeat slowly?", ru: "Извините, не понимаю. Можете повторить медленно?", uz: "Kechirasiz, tushunmadim. Sekin takrorlaysizmi?", tj: "Бубахшед, намефаҳмам. Оҳиста такрор мекунед?", kg: "Кечириңиз, түшүнбөдүм. Жай кайталайсызбы?" },
+      { cat: 'social', en: "Alright, mate? — Not bad, cheers!", ru: "Как дела, приятель? — Ничего, спасибо!", uz: "Yaxshimisiz, do'stim? — Yomon emas, rahmat!", tj: "Хол чӣ, дӯст? — Наку, ташаккур!", kg: "Кандайсың, дос? — Жаман эмес, рахмат!" },
+      { cat: 'sos', en: "Help! Emergency! Call 999!", ru: "Помогите! Чрезвычайная ситуация! Звоните 999!", uz: "Yordam! Favqulodda! 999 ga qo'ng'iroq qiling!", tj: "Кӯмак! Ёрии фаврӣ! 999 занг занед!", kg: "Жардам! Шашылыш! 999 чалыңыз!" },
+      { cat: 'sos', en: "There has been an accident.", ru: "Произошёл несчастный случай.", uz: "Baxtsiz hodisa yuz berdi.", tj: "Ҳодисаи нохуш рӯй дод.", kg: "Кырсык болду." },
+      { cat: 'sos', en: "I need an ambulance.", ru: "Мне нужна скорая помощь.", uz: "Menga tez yordam kerak.", tj: "Ба ман ёрии таъҷилӣ лозим.", kg: "Мага тез жардам керек." },
+    ];
+
+    // ── RENDER ENGINE ─────────────────────────────────────────────────────────────
+    function saveDone() { localStorage.setItem('fe_a1', JSON.stringify(done)) }
+    function render() {
+      updateHeader();
+      const root = document.getElementById('root');
+      if (curLesson) { renderLesson(root); return; }
+      if (scr === 'home') renderHome(root);
+      else if (scr === 'phrases') renderPhrases(root);
+    }
+    function updateHeader() {
+      const lbl = document.getElementById('backLbl');
+      if (lbl) lbl.textContent = curLesson ? t('back') : t('back');
+    }
+    function gotoScr(s) { stopDlg(); scr = s; curLesson = null; render(); }
+    function setLang(l) { lang = l; localStorage.setItem('fe_lang', l); render(); }
+    function openLesson(id) { stopDlg(); curLesson = LESSONS.find(l => l.id === id); curTab = 'grammar'; curGrammarForm = 'positive'; quizState = {}; render(); }
+    function goBack() { stopDlg(); if (curLesson) { curLesson = null; render(); } else { window.location.href = 'index.html'; } }
+    function backFromLesson() { goBack(); }
+    function setTab(tab) { curTab = tab; render(); }
+    function setGForm(f) { curGrammarForm = f; render(); }
+    function answerQ(qi, oi) { if (!quizState[qi]) quizState[qi] = []; if (!quizState[qi].includes(oi)) quizState[qi].push(oi); render(); }
+    function finishLesson(id) { if (!done.includes(id)) { done.push(id); saveDone(); } curLesson = null; scr = 'home'; render(); }
+    function setPfCat(c) { pfCat = c; render(); }
+
+    // ── HOME ──────────────────────────────────────────────────────────────────────
+    const CH_COLORS = ['#3b82f6', '#e87830', '#f59e0b', '#22a65e', '#1a9cb0', '#8b5cf6', '#c23a82', '#e87830', '#3dba5e', '#6366f1', '#ef4444', '#0ea5e9', '#a855f7', '#14b8a6', '#f97316'];
+    function renderHome(root) {
+      let h = '<div class="scr">';
+      LESSONS.forEach((l, i) => {
+        const isDone = done.includes(l.id);
+        const color = CH_COLORS[i % CH_COLORS.length];
+        const pct = isDone ? 100 : 0;
+        h += `<div class="ch-card" style="border-left-color:${color}" onclick="openLesson(${l.id})">`;
+        h += `<div class="ch-badge" style="color:${color}">CHAPTER ${l.id}</div>`;
+        h += `<div class="ch-title">${gl(l, 'name')}</div>`;
+        h += `<div class="ch-sub">${l.cefr}</div>`;
+        h += `<div class="ch-prog-wrap">`;
+        h += `<div class="ch-prog-bar"><div class="ch-prog-fill" style="width:${pct}%;background:${color}"></div></div>`;
+        h += `<div class="ch-prog-dot${isDone ? ' done' : ''}" style="${isDone ? 'background:' + color + ';color:#fff' : ''}">${isDone ? '✓' : ''}</div>`;
+        h += `</div></div>`;
+      });
+      h += '</div>';
+      root.innerHTML = h;
+    }
+
+    // ── LESSON ────────────────────────────────────────────────────────────────────
+    function renderLesson(root) {
+      const l = curLesson;
+      const tabs = ['grammar', 'words', 'dialogue', 'quiz'];
+      const tl = [t('grammar'), t('words'), t('dialogue'), t('quiz')];
+      let h = `<div class="les-scr">`;
+      h += `<div class="les-hdr"><div class="les-hdr-lvl">${l.id}/15</div><div class="les-hdr-title">${gl(l, 'name')}</div></div>`;
+      h += `<div class="tabs">`;
+      tabs.forEach((tab, i) => h += `<button class="tab${curTab === tab ? ' on' : ''}" onclick="setTab('${tab}')">${tl[i]}</button>`);
+      h += `</div><div class="les-body">`;
+
+      if (curTab === 'grammar') {
+        const g = l.grammar;
+        if (g.forms) {
+          // NEW 3-FORM FORMAT
+          const tPos = g.forms.positive['label_' + lang] || g.forms.positive.label_ru || 'Positive';
+          const tNeg = g.forms.negative['label_' + lang] || g.forms.negative.label_ru || 'Negative';
+          const tQue = g.forms.question['label_' + lang] || g.forms.question.label_ru || 'Question';
+          
+          const intro = gl(g, 'intro');
+          h += `<div class="g-card" style="margin-bottom:12px; padding-bottom:12px;">
+                  <div class="g-title" style="margin-bottom:${intro ? '8px' : '0'}">${gl(g, 'title')}</div>
+                  ${intro ? `<div style="font-size:14px;color:#4a5568;line-height:1.4">${intro}</div>` : ''}
+                </div>`;
+
+          h += `<div class="g-tabs">
+            <button class="g-tab${curGrammarForm === 'positive' ? ' on' : ''}" onclick="setGForm('positive')">${tPos}</button>
+            <button class="g-tab${curGrammarForm === 'negative' ? ' on' : ''}" onclick="setGForm('negative')">${tNeg}</button>
+            <button class="g-tab${curGrammarForm === 'question' ? ' on' : ''}" onclick="setGForm('question')">${tQue}</button>
+          </div>`;
+
+          const form = g.forms[curGrammarForm];
+          h += `<div class="g-card"><div class="g-rule">${gl(form, 'rule')}</div></div>`;
+
+          h += `<div class="g-table-wrap"><table class="g-table">
+          <thead><tr><th>Subject</th><th>Verb</th><th>Example</th><th>🔊</th></tr></thead>
+          <tbody>`;
+          form.table.forEach(r => {
+            const tr = r['tr_' + lang] || r.tr_ru;
+            h += `<tr>
+            <td><b>${r.subj || ''}</b></td>
+            <td style="color:#2a5320;font-weight:700">${r.verb || ''}</td>
+            <td>
+              <div style="font-size:14px;font-weight:600">${r.example}</div>
+              <div class="g-transcr">${r.transcr || ''}</div>
+              <div class="g-tr-cell">${tr || ''}</div>
+            </td>
+            <td style="text-align:right"><button class="d-spk-btn" onclick="spk('${r.example.replace(/'/g, "\\'")}')">🔊</button></td>
+           </tr>`;
+          });
+          h += `</tbody></table></div>`;
+
+          const cult = gl(g, 'cultural');
+          if (cult) h += `<div class="g-cult">🌍 <b>${lang === 'uz' ? 'Eslatma' : lang === 'tj' ? 'Эзоҳ' : lang === 'kg' ? 'Эскертүү' : lang === 'kz' ? 'Ескертпе' : 'Заметка'}:</b> ${cult}</div>`;
+
+          const note = gl(g, 'note');
+          if (note) h += `<div class="g-note">⚠️ ${note}</div>`;
+        } else {
+          // OLD FORMAT FALLBACK
+          h += `<div class="g-card"><div class="g-title">${gl(g, 'title')}</div><div class="g-rule">${gl(g, 'rule')}</div>`;
+          const note = gl(g, 'note');
+          if (note) h += `<div class="g-note">💡 ${note}</div>`;
+          h += `</div>`;
+          g.examples.forEach(ex => {
+            const tr = ex[lang] || ex.ru;
+            h += `<div class="g-card"><div class="g-en">${ex.en}</div><div class="g-transcr">${ex.transcr || ''}</div><div class="g-tr">${tr}</div>`;
+            h += `<button class="speak-btn" onclick="spk('${ex.en.replace(/'/g, "\\'")}')">🔊 ${lang === 'ru' ? 'Слушать' : lang === 'uz' ? 'Tinglash' : lang === 'tj' ? 'Гӯш кунед' : 'Угуу'}</button></div>`;
+          });
+        }
+      }
+
+      if (curTab === 'words') {
+        h += `<div class="w-hint">👇 ${t('tap_word')}</div><div class="w-grid">`;
+        l.words.forEach(w => {
+          const tr = w[lang] || w.ru;
+          h += `<div class="w-card" onclick="spk('${w.en.replace(/'/g, "\\'")}')"><span class="w-em">${w.e}</span><div class="w-en">${w.en}</div>`;
+          if (w.transcr) h += `<div class="g-transcr" style="margin-bottom:3px">${w.transcr}</div>`;
+          h += `<div class="w-ru">${tr}</div></div>`;
+        });
+        h += `</div>`;
+      }
+
+      if (curTab === 'dialogue') {
+        h += `<button class="d-play" onclick="playDlg(LESSONS.find(x=>x.id===${l.id}).dialogue)">▶ ${t('play')}</button>`;
+        l.dialogue.forEach(line => {
+          const tr = line[lang] || line.ru;
+          const isMgr = line.s === 'm';
+          h += `<div class="d-bbl"><div class="${isMgr ? 'd-mgr' : 'd-wkr'}">`;
+          h += `<div class="d-spkr">${isMgr ? t('manager') : t('worker')}</div>`;
+          h += `<div class="d-txt">${line.en}</div>`;
+          if (line.transcr) h += `<div class="g-transcr" style="margin-bottom:3px">${line.transcr}</div>`;
+          h += `<div class="d-tr">${tr}</div>`;
+          h += `<button class="d-spk-btn" onclick="spk('${line.en.replace(/'/g, "\\'")}')">🔊</button>`;
+          h += `</div></div>`;
+        });
+      }
+
+      if (curTab === 'quiz') {
+        let allDone = true, allOk = true;
+        l.quiz.forEach((q, qi) => {
+          const attempts = quizState[qi] || [];
+          const isCorrect = attempts.includes(q.c);
+          if (attempts.length === 0) allDone = false;
+          if (!isCorrect) allOk = false;
+          let qText = q.q;
+          qText = qText.replace('[COMPLETE]', t('q_complete'));
+          qText = qText.replace('[TRANSLATE]', t('q_translate'));
+          qText = qText.replace('[NEGATIVE]', t('q_negative'));
+          qText = qText.replace('[CORRECT]', t('q_correct'));
+          qText = qText.replace('[QUESTION]', t('q_question'));
+
+          let hintHtml = '';
+          const hint = q['hint_' + lang] || q.hint_ru;
+          if (hint) {
+            if (qText.includes('{hint}')) {
+              qText = qText.replace('{hint}', `<span style="font-weight:600;color:var(--text)">${hint}</span>`);
+            } else if (q.q.includes('[TRANSLATE]')) {
+              qText += ` <span style="font-weight:600;color:var(--text)">"${hint}"</span>`;
+            } else {
+              hintHtml = `<div class="q-hint">${hint}</div>`;
+            }
+          }
+
+          h += `<div class="q-card"><div class="q-num">${t('question_of', qi + 1, l.quiz.length)}</div><div class="q-q">${qText}${hintHtml}</div><div class="q-opts">`;
+          q.opts.forEach((opt, oi) => {
+            let cls = 'q-opt';
+            const isClicked = attempts.includes(oi);
+            if (isCorrect) {
+              if (oi === q.c) cls += ' correct';
+            } else {
+              if (isClicked) cls += ' wrong';
+            }
+            const disabled = isCorrect || isClicked ? ' disabled' : '';
+            h += `<button class="${cls}"${disabled} onclick="answerQ(${qi},${oi})">${opt}</button>`;
+          });
+          h += `</div>`;
+          if (attempts.length > 0) {
+            const explHtml = q.expl ? `<div style="margin-top:8px;font-size:13px;font-weight:400;opacity:0.9;text-align:left">${t('quiz_expl')} ${q.expl}</div>` : '';
+            if (isCorrect) {
+              h += `<div class="q-fb ok"><div style="font-weight:bold">${t('quiz_ok_title')}</div>${explHtml}</div>`;
+            } else {
+              const descs = t('quiz_no_desc');
+              const motivation = Array.isArray(descs) ? descs[(qi * 13 + attempts.length * 7) % descs.length] : descs;
+              h += `<div class="q-fb no">
+                <div style="font-weight:bold;margin-bottom:4px">${t('quiz_no_title')}</div>
+                <div style="font-size:13px;font-weight:400;opacity:0.9">${motivation}</div>
+                ${explHtml}
+              </div>`;
+            }
+          }
+          h += `</div>`;
+        });
+        if (allDone && allOk) {
+          h += `<div class="done-banner"><div class="done-emoji">🎉</div><div class="done-title">${t('congrats')}</div><div class="done-sub">${t('score')}</div></div>`;
+        }
+      }
+
+
+      const tabIdx = tabs.indexOf(curTab);
+      if (tabIdx >= 0 && tabIdx < tabs.length - 1) {
+        const nextTab = tabs[tabIdx + 1];
+        const nextName = tl[tabIdx + 1];
+        const nxtTx = lang === 'uz' ? 'Keyingi' : lang === 'tj' ? 'Баъдӣ' : lang === 'kg' ? 'Кийинки' : lang === 'kz' ? 'Келесі' : 'Далее';
+        h += `<div style="margin-top:24px"><button class="finish-btn" style="background:#0075de;color:#fff" onclick="setTab('${nextTab}')">${nxtTx}: ${nextName} ➔</button></div>`;
+      } else if (tabIdx === tabs.length - 1) {
+        const isDone = done.includes(l.id);
+        let allDone = true, allOk = true;
+        l.quiz.forEach((q, qi) => {
+          const attempts = quizState[qi] || [];
+          if (!attempts.includes(q.c)) { allDone = false; allOk = false; }
+        });
+        const disabled = !(allDone && allOk);
+        h += `<div style="margin-top:24px"><button class="finish-btn" style="background:${disabled ? '#e8eaed' : '#0075de'};color:${disabled ? '#8e95a2' : '#fff'};${disabled ? 'box-shadow:none;cursor:not-allowed' : ''}" ${disabled ? 'disabled' : ''} onclick="finishLesson(${l.id})">✓ ${isDone ? t('completed').replace('✓ ', '') : t('complete').replace('✓ ', '')}</button></div>`;
+      }
+
+      h += `</div></div>`;
+      root.innerHTML = h;
+    }
+
+    // ── PHRASES ───────────────────────────────────────────────────────────────────
+    function renderPhrases(root) {
+      const cats = ['all', 'work', 'health', 'pay', 'shop', 'social', 'sos'];
+      const cl = { all: t('all'), work: t('work'), health: t('health'), pay: t('pay'), shop: t('shop'), social: t('social'), sos: t('sos') };
+      let h = '<div class="scr"><div class="pf-row">';
+      cats.forEach(c => h += `<div class="pf-chip${pfCat === c ? ' on' : ''}" onclick="setPfCat('${c}')">${cl[c]}</div>`);
+      h += `</div>`;
+      const list = pfCat === 'all' ? PHRASES : PHRASES.filter(p => p.cat === pfCat);
+      list.forEach(p => {
+        const tr = p[lang] || p.ru;
+        h += `<div class="ph-item"><div class="ph-txt"><div class="ph-en">${p.en}</div><div class="ph-tr">${tr}</div></div>`;
+        h += `<button class="ph-sp" onclick="spk('${p.en.replace(/'/g, "\\'")}')">🔊</button></div>`;
+      });
+      h += `</div>`;
+      root.innerHTML = h;
+    }
+
+    // ── PROGRESS ──────────────────────────────────────────────────────────────────
+
+    // Handle hash navigation from index.html
+    const hash = window.location.hash.replace('#', '');
+    if (hash === 'phrases') scr = 'phrases';
+    else scr = 'home';
+
+    render();
+  </script>
+</body>
+
+</html>
