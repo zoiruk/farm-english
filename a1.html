@@ -3247,22 +3247,6 @@
         note_uz: 'Monday=dushanba · Tuesday=seshanba · Wednesday=chorshanba · Thursday=payshanba · Friday=juma · Saturday=shanba · Sunday=yakshanba',
         note_tj: 'Monday=душанбе · Tuesday=сешанбе · Wednesday=чоршанбе · Thursday=панҷшанбе · Friday=ҷумъа · Saturday=шанбе · Sunday=якшанбе',
         note_kg: 'Monday=дүйшөмбү · Tuesday=шейшемби · Wednesday=шаршемби · Thursday=бейшемби · Friday=жума · Saturday=ишемби · Sunday=жекшемби',
-        examples: [
-          {
-            en: 'Shift starts at six o\'clock (6:00 AM). Finish at two PM (2:00 PM).',
-            ru: 'Смена начинается в шесть утра (6:00). Конец в два часа дня (14:00).',
-            uz: 'Smena ertalab soat oltida (6:00 AM) boshlanadi. Soat 2:00 PM da tugaydi.',
-            tj: 'Навбат дар соати шаши субҳ (6:00 AM) шурӯъ мешавад. Дар 2:00 PM тамом.',
-            kg: 'Навбат эртеңки алтыда (6:00 AM) башталат. Түштөн кийин экиде (2:00 PM) бүтөт.'
-          },
-          {
-            en: 'Break is at ten thirty (10:30) for fifteen minutes. Today is Monday.',
-            ru: 'Перерыв в десять тридцать (10:30), пятнадцать минут. Сегодня понедельник.',
-            uz: 'Tanaffus soat o\'n yarimda (10:30), o\'n besh daqiqa. Bugun dushanba.',
-            tj: 'Истироҳат дар 10:30, понздаҳ дақиқа. Имрӯз душанбе.',
-            kg: 'Тыным он жарымда (10:30), он беш мүнөт. Бүгүн дүйшөмбү.'
-          }
-        ],
         title_kz: 'Days & Time',
         intro_ru: '<div style="line-height:1.6">В английском дни недели пишутся с большой буквы:<br>❌ <b>monday</b><br>✅ <b>Monday</b></div>',
         intro_uz: '<div style="line-height:1.6">Ingliz tilida hafta kunlari bosh harf bilan yoziladi:<br>❌ <b>monday</b><br>✅ <b>Monday</b></div>',
@@ -3274,7 +3258,161 @@
         cultural_tj: 'Дар Британияи Кабир формати 12-соатаи вақт истифода мешавад. <b>AM</b> — аз нисфи шаб то 12:00 рӯз. <b>PM</b> — аз 12:00 рӯз то нисфи шаб.',
         cultural_kg: 'Улуу Британияда 12 сааттык убакыт форматы колдонулат. <b>AM</b> — түн ортосунан күндүзгү 12:00гө чейин. <b>PM</b> — күндүзгү 12:00дөн түн ортосуна чейин.',
         cultural_kz: 'Ұлыбританияда 12 сағаттық уақыт пішімі қолданылады. <b>AM</b> — түн ортасынан күндізгі 12:00-ге дейін. <b>PM</b> — күндізгі 12:00-ден түн ортасына дейін.',
-        note_kz: '⚠️ "at Monday" демеңіз, дұрысы — "on Monday"'
+        note_kz: '⚠️ "at Monday" демеңіз, дұрысы — "on Monday"',
+        forms: {
+          positive: {
+            label_ru: '✅ Утверждение',
+            label_uz: '✅ Tasdiq',
+            label_tj: '✅ Тасдиқ',
+            label_kg: '✅ Ырастоо',
+            label_kz: '✅ Растау',
+            rule_ru: 'Утверждаем время или день: <code>It is Monday.</code> · <code>It is six o\'clock.</code>',
+            rule_uz: 'Vaqt yoki kunni tasdiqlash: <code>It is Monday.</code>',
+            rule_tj: 'Тасдиқи вақт ё рӯз: <code>It is Monday.</code>',
+            rule_kg: 'Убакытты же күндү ырастоо: <code>It is Monday.</code>',
+            rule_kz: 'Уақытты немесе күнді растау: <code>It is Monday.</code>',
+            table: [
+              {
+                subj: 'It',
+                verb: 'is',
+                example: 'It is six o\'clock.',
+                transcr: 'Ит из сикс оклок',
+                tr_ru: 'Сейчас шесть часов',
+                tr_uz: 'Hozir soat olti',
+                tr_tj: 'Ҳоло соати шаш',
+                tr_kg: 'Азыр саат алты',
+                tr_kz: 'Қазір сағат алты'
+              },
+              {
+                subj: 'Today',
+                verb: 'is',
+                example: 'Today is Monday.',
+                transcr: 'Тудэй из манди',
+                tr_ru: 'Сегодня понедельник',
+                tr_uz: 'Bugun dushanba',
+                tr_tj: 'Имрӯз душанбе',
+                tr_kg: 'Бүгүн дүйшөмбү',
+                tr_kz: 'Бүгін дүйсенбі'
+              },
+              {
+                subj: 'Break',
+                verb: 'is at',
+                example: 'Break is at ten thirty.',
+                transcr: 'Брэйк из эт тэн сёрти',
+                tr_ru: 'Перерыв в 10:30',
+                tr_uz: 'Tanaffus 10:30 da',
+                tr_tj: 'Танаффус дар 10:30',
+                tr_kg: 'Тыным 10:30да',
+                tr_kz: 'Үзіліс 10:30-да'
+              },
+              {
+                subj: 'Shift',
+                verb: 'starts at',
+                example: 'Shift starts at two PM.',
+                transcr: 'Шифт стартс эт ту пи-эм',
+                tr_ru: 'Смена начинается в 14:00',
+                tr_uz: 'Smena 14:00 da boshlanadi',
+                tr_tj: 'Навбат дар 14:00 шурӯъ мешавад',
+                tr_kg: 'Смена 14:00дө башталат',
+                tr_kz: 'Ауысым 14:00-де басталады'
+              }
+            ]
+          },
+          negative: {
+            label_ru: '❌ Отрицание',
+            label_uz: '❌ Inkor',
+            label_tj: '❌ Инкор',
+            label_kg: '❌ Терс',
+            label_kz: '❌ Теріс',
+            rule_ru: 'Добавляем <b>not</b>: <code>It is not Sunday.</code>',
+            rule_uz: '<b>not</b> qo\'shamiz: <code>It is not Sunday.</code>',
+            rule_tj: '<b>not</b> илова мекунем: <code>It is not Sunday.</code>',
+            rule_kg: '<b>not</b> кошулат: <code>It is not Sunday.</code>',
+            rule_kz: '<b>not</b> қосамыз: <code>It is not Sunday.</code>',
+            table: [
+              {
+                subj: 'It',
+                verb: 'is not',
+                example: 'It is not Friday.',
+                transcr: 'Ит из нот фрайди',
+                tr_ru: 'Сегодня не пятница',
+                tr_uz: 'Bugun juma emas',
+                tr_tj: 'Имрӯз ҷумъа нест',
+                tr_kg: 'Бүгүн жума эмес',
+                tr_kz: 'Бүгін жұма емес'
+              },
+              {
+                subj: 'It',
+                verb: 'is not',
+                example: 'It is not AM.',
+                transcr: 'Ит из нот эй-эм',
+                tr_ru: 'Сейчас не утро',
+                tr_uz: 'Hozir ertalab emas',
+                tr_tj: 'Ҳоло субҳ нест',
+                tr_kg: 'Азыр эртең менен эмес',
+                tr_kz: 'Қазір таң емес'
+              },
+              {
+                subj: 'Shift',
+                verb: 'does not start at',
+                example: 'Shift does not start at 6:00.',
+                transcr: 'Шифт даз нот старт эт сикс',
+                tr_ru: 'Смена не начинается в 6:00',
+                tr_uz: 'Smena 6:00 da boshlanmaydi',
+                tr_tj: 'Навбат дар 6:00 шурӯъ намешавад',
+                tr_kg: 'Смена 6:00дө башталбайт',
+                tr_kz: 'Ауысым 6:00-де басталмайды'
+              }
+            ]
+          },
+          question: {
+            label_ru: '❓ Вопрос',
+            label_uz: '❓ Savol',
+            label_tj: '❓ Савол',
+            label_kg: '❓ Суроо',
+            label_kz: '❓ Сұрақ',
+            rule_ru: 'Глагол вперёд или What time...: <code>What time is it?</code>',
+            rule_uz: 'Fe\'l oldinga: <code>What time is it?</code>',
+            rule_tj: 'Феъл ба пеш: <code>What time is it?</code>',
+            rule_kg: 'Этиш алдыга: <code>What time is it?</code>',
+            rule_kz: 'Етістік алдыға: <code>What time is it?</code>',
+            table: [
+              {
+                verb: 'What time',
+                subj: 'is',
+                example: 'What time is it?',
+                transcr: 'Уот тайм из ит?',
+                tr_ru: 'Который час?',
+                tr_uz: 'Soat necha?',
+                tr_tj: 'Соат чанд аст?',
+                tr_kg: 'Саат канча болду?',
+                tr_kz: 'Сағат қанша?'
+              },
+              {
+                verb: 'Is',
+                subj: 'it',
+                example: 'Is it half past six?',
+                transcr: 'Из ит хаф паст сикс?',
+                tr_ru: 'Сейчас половина седьмого?',
+                tr_uz: 'Hozir olti yarimmi?',
+                tr_tj: 'Ҳоло шашу ним аст?',
+                tr_kg: 'Азыр алты жарымбы?',
+                tr_kz: 'Қазір алты жарым ба?'
+              },
+              {
+                verb: 'Is',
+                subj: 'today',
+                example: 'Is today Tuesday?',
+                transcr: 'Из тудэй тьюзди?',
+                tr_ru: 'Сегодня вторник?',
+                tr_uz: 'Bugun seshanbami?',
+                tr_tj: 'Имрӯз сешанбе аст?',
+                tr_kg: 'Бүгүн шейшембиби?',
+                tr_kz: 'Бүгін сейсенбі ме?'
+              }
+            ]
+          }
+        }
       },
       words: [
         {
@@ -3895,29 +4033,6 @@
         note_uz: 'Turn LEFT = chapga buring · Turn RIGHT = o\'ngga buring · Go STRAIGHT = to\'g\'ri boring',
         note_tj: 'Turn LEFT = ба чап гардед · Turn RIGHT = ба рост гардед · Go STRAIGHT = рост равед',
         note_kg: 'Turn LEFT = солго бур · Turn RIGHT = оңго бур · Go STRAIGHT = түз бар',
-        examples: [
-          {
-            en: 'The canteen is next to the main gate.',
-            ru: 'Столовая рядом с главными воротами.',
-            uz: 'Oshxona asosiy darvoza yonida.',
-            tj: 'Ошхона паҳлӯи дарвозаи асосӣ.',
-            kg: 'Ашкана негизги дарбазанын жанында.'
-          },
-          {
-            en: 'The toilet is behind the packing shed. The first aid box is on the wall.',
-            ru: 'Туалет за упаковочным сараем. Аптечка на стене.',
-            uz: 'Hojatxona qadoqlash ombori ortida. Birinchi yordam qutisi devorida.',
-            tj: 'Ҳоҷатхона паси анбори қадоқкунӣ. Доруворӣ ба девор.',
-            kg: 'Ажаткана таңгоолоо сарайынын артында. Дары кутуча дубалда.'
-          },
-          {
-            en: 'Where is the office? — Turn right, go straight. It is opposite the greenhouse.',
-            ru: 'Где офис? — Поверните направо, идите прямо. Он напротив теплицы.',
-            uz: 'Ofis qayerda? — O\'ngga buriling, to\'g\'ri boring. U issiqxona ro\'parasida.',
-            tj: 'Офис куҷост? — Ба рост гардед, рост равед. Он рӯ ба рӯи гармхона.',
-            kg: 'Кеңсе кайда? — Оңго бур, түз бар. Ал жылуу үйгө каршы жакта.'
-          }
-        ],
         title_kz: 'HOW MUCH / HOW MANY',
         intro_ru: '<div style="line-height:1.6"><b>How much</b> — для того, что нельзя посчитать (вода, деньги).<br><b>How many</b> — для того, что можно посчитать (лотки, яблоки).</div>',
         intro_uz: '<div style="line-height:1.6"><b>How much</b> — sanab bo\'lmaydigan narsalar uchun (suv, pul).<br><b>How many</b> — sanab bo\'ladigan narsalar uchun (qutilar, olmalar).</div>',
@@ -3929,7 +4044,161 @@
         cultural_tj: 'Дар Британияи Кабир ба ҷои "ташаккур" зуд-зуд "cheers" мегӯянд. Ин ғайрирасмӣ ва дӯстона аст.',
         cultural_kg: 'Улуу Британияда "рахмат" ордуна көп учурда "cheers" дешет. Бул расмий эмес жана достук.',
         cultural_kz: 'Ұлыбританияда "рақмет" орнына жиі "cheers" дейді. Бұл бейресми және достық.',
-        note_kz: '⚠️ "How much apples" демеңіз, дұрысы — "How many apples"'
+        note_kz: '⚠️ "How much apples" демеңіз, дұрысы — "How many apples"',
+        forms: {
+          positive: {
+            label_ru: '✅ Утверждение',
+            label_uz: '✅ Tasdiq',
+            label_tj: '✅ Тасдиқ',
+            label_kg: '✅ Ырастоо',
+            label_kz: '✅ Растау',
+            rule_ru: '<b>Many</b> — исчисляемые (много яблок). <b>Much</b> — неисчисляемые (много воды).',
+            rule_uz: '<b>Many</b> — sanaladigan (ko\'p olmalar). <b>Much</b> — sanalmaydigan (ko\'p suv).',
+            rule_tj: '<b>Many</b> — ҳисобшаванда (себҳои зиёд). <b>Much</b> — ғайриҳисобшаванда (оби зиёд).',
+            rule_kg: '<b>Many</b> — санала тургандар (көп алмалар). <b>Much</b> — саналбай тургандар (көп суу).',
+            rule_kz: '<b>Many</b> — саналатындар (көп алма). <b>Much</b> — саналмайтындар (көп су).',
+            table: [
+              {
+                subj: 'Many',
+                verb: 'apples',
+                example: 'We have many apples.',
+                transcr: 'Уи хэв мэни эплз',
+                tr_ru: 'У нас много яблок',
+                tr_uz: 'Bizda ko\'p olmalar bor',
+                tr_tj: 'Мо себҳои зиёд дорем',
+                tr_kg: 'Бизде көп алмалар бар',
+                tr_kz: 'Бізде көп алмалар бар'
+              },
+              {
+                subj: 'Many',
+                verb: 'punnets',
+                example: 'These are many punnets.',
+                transcr: 'Зиз ар мэни панитс',
+                tr_ru: 'Это много лотков',
+                tr_uz: 'Bu ko\'p qutilar',
+                tr_tj: 'Ин қуттиҳои зиёд аст',
+                tr_kg: 'Бул көп лотоктор',
+                tr_kz: 'Бұл көп лотоктар'
+              },
+              {
+                subj: 'Much',
+                verb: 'water',
+                example: 'I have much water.',
+                transcr: 'Ай хэв мач уотэр',
+                tr_ru: 'У меня много воды',
+                tr_uz: 'Menda ko\'p suv bor',
+                tr_tj: 'Ман оби зиёд дорам',
+                tr_kg: 'Менде көп суу бар',
+                tr_kz: 'Менде көп су бар'
+              }
+            ]
+          },
+          negative: {
+            label_ru: '❌ Отрицание',
+            label_uz: '❌ Inkor',
+            label_tj: '❌ Инкор',
+            label_kg: '❌ Терс',
+            label_kz: '❌ Теріс',
+            rule_ru: 'Отрицания с not: <code>not many</code> (немного шт) · <code>not much</code> (немного жидкости/массы)',
+            rule_uz: 'not bilan inkor: <code>not many</code> (ko\'p dona emas) · <code>not much</code> (ko\'p massa emas)',
+            rule_tj: 'Инкор бо not: <code>not many</code> (донаҳои зиёд не) · <code>not much</code> (массаи зиёд не)',
+            rule_kg: 'not менен терс: <code>not many</code> (көп даана эмес) · <code>not much</code> (көп масса эмес)',
+            rule_kz: 'not арқылы теріске шығару: <code>not many</code> (көп дана емес) · <code>not much</code> (көп масса емес)',
+            table: [
+              {
+                subj: 'Not many',
+                verb: 'blueberries',
+                example: 'Not many blueberries are good.',
+                transcr: 'Нот мэни блюбэриз ар гуд',
+                tr_ru: 'Не так много хорошей голубики',
+                tr_uz: 'Yaxshi ko\'katlar unchalik ko\'p emas',
+                tr_tj: 'Берриҳои кабуди хуб он қадар зиёд нест',
+                tr_kg: 'Жакшы черника анча көп эмес',
+                tr_kz: 'Жақсы қарақат сонша көп емес'
+              },
+              {
+                subj: 'Not much',
+                verb: 'juice',
+                example: 'There is not much juice.',
+                transcr: 'Зеа из нот мач джус',
+                tr_ru: 'Там не много сока',
+                tr_uz: 'U yerda sharbat unchalik ko\'p emas',
+                tr_tj: 'Дар он ҷо шарбати зиёд нест',
+                tr_kg: 'Ал жерде шире анча көп эмес',
+                tr_kz: 'Ол жерде шырын сонша көп емес'
+              },
+              {
+                subj: 'Not much',
+                verb: 'money',
+                example: 'That is not much money.',
+                transcr: 'Зэт из нот мач мани',
+                tr_ru: 'Это немного денег',
+                tr_uz: 'Bu unchalik ko\'p pul emas',
+                tr_tj: 'Ин пули зиёд нест',
+                tr_kg: 'Бул анча көп акча эмес',
+                tr_kz: 'Бұл сонша көп ақша емес'
+              }
+            ]
+          },
+          question: {
+            label_ru: '❓ Вопрос',
+            label_uz: '❓ Savol',
+            label_tj: '❓ Савол',
+            label_kg: '❓ Суроо',
+            label_kz: '❓ Сұрақ',
+            rule_ru: 'Спрашиваем количество: <code>How many...?</code> (шт) · <code>How much...?</code> (вес, цена, жидкости)',
+            rule_uz: 'Miqdorni so\'rash: <code>How many...?</code> (dona) · <code>How much...?</code> (vazn, narx, suyuqlik)',
+            rule_tj: 'Пурсидани миқдор: <code>How many...?</code> (дона) · <code>How much...?</code> (вазн, нарх, моеъ)',
+            rule_kg: 'Санын суроо: <code>How many...?</code> (даана) · <code>How much...?</code> (салмак, баа, суюктук)',
+            rule_kz: 'Мөлшерін сұрау: <code>How many...?</code> (дана) · <code>How much...?</code> (салмақ, баға, сұйықтық)',
+            table: [
+              {
+                verb: 'How many',
+                subj: 'trays',
+                example: 'How many trays?',
+                transcr: 'Хау мэни трэйз?',
+                tr_ru: 'Сколько поддонов?',
+                tr_uz: 'Nechta taglik?',
+                tr_tj: 'Чанд табақча?',
+                tr_kg: 'Канча поддон?',
+                tr_kz: 'Қанша поддон?'
+              },
+              {
+                verb: 'How many',
+                subj: 'cherries',
+                example: 'How many cherries are red?',
+                transcr: 'Хау мэни чэриз ар рэд?',
+                tr_ru: 'Сколько красной черешни?',
+                tr_uz: 'Qancha qizil gilos bor?',
+                tr_tj: 'Чанд гелоси сурх ҳаст?',
+                tr_kg: 'Канча кызыл алча бар?',
+                tr_kz: 'Қанша қызыл шие бар?'
+              },
+              {
+                verb: 'How much',
+                subj: 'weight',
+                example: 'How much weight?',
+                transcr: 'Хау мач уэйт?',
+                tr_ru: 'Какой вес?',
+                tr_uz: 'Qanday vazn?',
+                tr_tj: 'Чанд вазн?',
+                tr_kg: 'Салмагы канча?',
+                tr_kz: 'Салмағы қанша?'
+              },
+              {
+                verb: 'How much',
+                subj: 'money',
+                example: 'How much money?',
+                transcr: 'Хау мач мани?',
+                tr_ru: 'Сколько денег?',
+                tr_uz: 'Qancha pul?',
+                tr_tj: 'Чанд пул?',
+                tr_kg: 'Канча акча?',
+                tr_kz: 'Қанша ақша?'
+              }
+            ]
+          }
+        }
       },
       words: [
         {
@@ -4540,22 +4809,6 @@
         note_uz: 'Chastota ravishlar: <b>always</b> · <b>usually</b> · <b>often</b> · <b>sometimes</b> · <b>never</b>',
         note_tj: 'Зарфҳои басомад: <b>always</b> · <b>usually</b> · <b>often</b> · <b>sometimes</b> · <b>never</b>',
         note_kg: 'Жыштык тактоочтор: <b>always</b> · <b>usually</b> · <b>often</b> · <b>sometimes</b> · <b>never</b>',
-        examples: [
-          {
-            en: 'I always start work at six. She usually picks two rows per day.',
-            ru: 'Я всегда начинаю в шесть. Обычно она собирает два ряда в день.',
-            uz: 'Men har doim soat oltida ishni boshlayman. U odatda kuniga ikki qator teradi.',
-            tj: 'Ман ҳамеша дар соати шаш шурӯъ мекунам. Вай одатан рӯзона ду қатор мечинад.',
-            kg: 'Мен дайыма алтыда иштей баштайм. Ал адатта күнүнө эки катар жыят.'
-          },
-          {
-            en: 'He doesn\'t pack. He drives the tractor. Do you sometimes work overtime?',
-            ru: 'Он не упаковывает. Он водит трактор. Вы иногда работаете сверхурочно?',
-            uz: 'U qadoqlamaydi. U traktor haydaydi. Siz ba\'zan qo\'shimcha ishlaysizmi?',
-            tj: 'Ӯ қадоқ намекунад. Ӯ трактор меронад. Оё шумо гоҳо вақти иловагӣ кор мекунед?',
-            kg: 'Ал таңгоолобойт. Ал трактор айдайт. Сиз кээде кошумча иштейсизби?'
-          }
-        ],
         title_kz: 'PRESENT SIMPLE (I/You/We/They)',
         intro_ru: '<div style="line-height:1.6"><b>Present Simple</b> — для регулярных действий (каждый день).<br>✅ I work everyday.</div>',
         intro_uz: '<div style="line-height:1.6"><b>Present Simple</b> — muntazam harakatlar uchun (har kuni).<br>✅ I work everyday.</div>',
@@ -4567,7 +4820,161 @@
         cultural_tj: 'Бритониёиҳо "please" ва "thank you"-ро бисёр истифода мебаранд. Онҳоро зуд-зуд истифода баред!',
         cultural_kg: 'Британиялыктар "please" жана "thank you" сөздөрүн көп колдонушат. Аларды көп колдонуңуз!',
         cultural_kz: 'Британдықтар "please" және "thank you" сөздерін жиі қолданады. Оларды жиі қолданыңыз!',
-        note_kz: '⚠️ "I am work" демеңіз, дұрысы — "I work"'
+        note_kz: '⚠️ "I am work" демеңіз, дұрысы — "I work"',
+        forms: {
+          positive: {
+            label_ru: '✅ Утверждение',
+            label_uz: '✅ Tasdiq',
+            label_tj: '✅ Тасдиқ',
+            label_kg: '✅ Ырастоо',
+            label_kz: '✅ Растау',
+            rule_ru: 'Для <b>I / You / We / They</b> глагол не меняется: <code>We work.</code> · <code>They pick apples.</code>',
+            rule_uz: '<b>I / You / We / They</b> uchun fe\'l o\'zgarmaydi: <code>We work.</code>',
+            rule_tj: 'Барои <b>I / You / We / They</b> феъл тағйир намеёбад: <code>We work.</code>',
+            rule_kg: '<b>I / You / We / They</b> үчүн этиш өзгөрбөйт: <code>We work.</code>',
+            rule_kz: '<b>I / You / We / They</b> үшін етістік өзгермейді: <code>We work.</code>',
+            table: [
+              {
+                subj: 'I',
+                verb: 'start',
+                example: 'I start work early.',
+                transcr: 'Ай старт уорк ёрли',
+                tr_ru: 'Я начинаю работу рано',
+                tr_uz: 'Men ishni erta boshlayman',
+                tr_tj: 'Ман корро барвақт сар мекунам',
+                tr_kg: 'Мен жумушту эрте баштайм',
+                tr_kz: 'Мен жұмысты ерте бастаймын'
+              },
+              {
+                subj: 'We',
+                verb: 'pick',
+                example: 'We pick strawberries every day.',
+                transcr: 'Уи пик стробериз эври дэй',
+                tr_ru: 'Мы собираем клубнику каждый день',
+                tr_uz: 'Biz har kuni qulupnay teramiz',
+                tr_tj: 'Мо ҳар рӯз тӯтиҳо мечинем',
+                tr_kg: 'Биз күн сайын кулпунай теребиз',
+                tr_kz: 'Біз күн сайын құлпынай тереміз'
+              },
+              {
+                subj: 'They',
+                verb: 'clean',
+                example: 'They clean the tray.',
+                transcr: 'Зэй клин зэ трэй',
+                tr_ru: 'Они чистят поддон',
+                tr_uz: 'Ular taglikni tozalaydilar',
+                tr_tj: 'Онҳо табақчаро тоза мекунанд',
+                tr_kg: 'Алар поддонду тазалашат',
+                tr_kz: 'Олар поддонды тазалайды'
+              }
+            ]
+          },
+          negative: {
+            label_ru: '❌ Отрицание',
+            label_uz: '❌ Inkor',
+            label_tj: '❌ Инкор',
+            label_kg: '❌ Терс',
+            label_kz: '❌ Теріс',
+            rule_ru: 'Добавляем <b>do not (don\'t)</b>: <code>We do not start late.</code>',
+            rule_uz: '<b>do not (don\'t)</b> qo\'shamiz: <code>We do not start late.</code>',
+            rule_tj: '<b>do not (don\'t)</b> илова мекунем: <code>We do not start late.</code>',
+            rule_kg: '<b>do not (don\'t)</b> кошулат: <code>We do not start late.</code>',
+            rule_kz: '<b>do not (don\'t)</b> қосамыз: <code>We do not start late.</code>',
+            table: [
+              {
+                subj: 'I',
+                verb: 'do not know',
+                example: 'I do not know.',
+                transcr: 'Ай ду нот ноу',
+                tr_ru: 'Я не знаю',
+                tr_uz: 'Men bilmayman',
+                tr_tj: 'Ман намедонам',
+                tr_kg: 'Мен билбейм',
+                tr_kz: 'Мен білмеймін'
+              },
+              {
+                subj: 'You',
+                verb: 'do not need',
+                example: 'You do not need money.',
+                transcr: 'Ю ду нот нид мани',
+                tr_ru: 'Тебе не нужны деньги',
+                tr_uz: 'Senga pul kerak emas',
+                tr_tj: 'Ба ту пул лозим нест',
+                tr_kg: 'Сага акча керек эмес',
+                tr_kz: 'Саған ақша керек емес'
+              },
+              {
+                subj: 'They',
+                verb: 'do not work',
+                example: 'They do not work on Sunday.',
+                transcr: 'Зэй ду нот уорк он санди',
+                tr_ru: 'Они не работают в воскресенье',
+                tr_uz: 'Ular yakshanba kuni ishlamaydi',
+                tr_tj: 'Онҳо рӯзи якшанбе кор намекунанд',
+                tr_kg: 'Алар жекшемби күнү иштебейт',
+                tr_kz: 'Олар жексенбі күні жұмыс істемейді'
+              }
+            ]
+          },
+          question: {
+            label_ru: '❓ Вопрос',
+            label_uz: '❓ Savol',
+            label_tj: '❓ Савол',
+            label_kg: '❓ Суроо',
+            label_kz: '❓ Сұрақ',
+            rule_ru: '<b>Do</b> ставится перед подлежащим: <code>Do you want water?</code>',
+            rule_uz: '<b>Do</b> egadan oldin qo\'yiladi: <code>Do you want water?</code>',
+            rule_tj: '<b>Do</b> пеш аз мубтадо меояд: <code>Do you want water?</code>',
+            rule_kg: '<b>Do</b> ээден мурда коюлат: <code>Do you want water?</code>',
+            rule_kz: '<b>Do</b> бастауыштан бұрын қойылады: <code>Do you want water?</code>',
+            table: [
+              {
+                verb: 'Do',
+                subj: 'you',
+                example: 'Do you need help?',
+                transcr: 'Ду ю нид хэлп?',
+                tr_ru: 'Вам нужна помощь?',
+                tr_uz: 'Sizga yordam kerakmi?',
+                tr_tj: 'Ба шумо кӯмак лозим аст?',
+                tr_kg: 'Сизге жардам керекпи?',
+                tr_kz: 'Сізге көмек керек пе?'
+              },
+              {
+                verb: 'Do',
+                subj: 'they',
+                example: 'Do they wash the apples?',
+                transcr: 'Ду зэй уош зи эплз?',
+                tr_ru: 'Они моют яблоки?',
+                tr_uz: 'Ular olmalarni yuvadilarmi?',
+                tr_tj: 'Оё онҳо себҳоро мешӯянд?',
+                tr_kg: 'Алар алмаларды жуушабы?',
+                tr_kz: 'Олар алмаларды жуа ма?'
+              },
+              {
+                verb: 'Do',
+                subj: 'we',
+                example: 'Do we finish early?',
+                transcr: 'Ду уи финиш ёрли?',
+                tr_ru: 'Мы заканчиваем рано?',
+                tr_uz: 'Biz erta tugatamizmi?',
+                tr_tj: 'Оё мо барвақт тамом мекунем?',
+                tr_kg: 'Биз эрте бүтөбүзбү?',
+                tr_kz: 'Біз ерте бітіреміз бе?'
+              },
+              {
+                verb: 'Do',
+                subj: 'you',
+                example: 'Do you live in the camp?',
+                transcr: 'Ду ю лив ин зэ кэмп?',
+                tr_ru: 'Вы живете в лагере?',
+                tr_uz: 'Siz lagerda yashaysizmi?',
+                tr_tj: 'Оё шумо дар лагер зиндагӣ мекунед?',
+                tr_kg: 'Сиз лагерде жашайсызбы?',
+                tr_kz: 'Сіз лагерьде тұрасыз ба?'
+              }
+            ]
+          }
+        }
       },
       words: [
         {
@@ -5178,22 +5585,6 @@
         note_uz: 'Present Simple = ODATDA. Present Continuous = HOZIR.<br>Misol: \'I pick\' (odatda) vs \'I am picking\' (hozir).',
         note_tj: 'Present Simple = ОДАТАН. Present Continuous = ҲОЛО.<br>Мисол: "I pick" (одатан) vs "I am picking" (ҳоло).',
         note_kg: 'Present Simple = АДАТТА. Present Continuous = АЗЫР.<br>Мисал: "I pick" (адатта) vs "I am picking" (азыр).',
-        examples: [
-          {
-            en: 'Where are you? — I am picking in row 7 right now. I am not resting!',
-            ru: 'Вы где? — Я сейчас собираю в ряду 7. Я не отдыхаю!',
-            uz: 'Qayerdasiz? — Men hozir 7-qatorda termoqdaman. Men dam olmayapman!',
-            tj: 'Куҷоед? — Ман ҳоло дар қатори 7 мечинам. Ман истироҳат намекунам!',
-            kg: 'Кайдасыз? — Мен азыр 7-катарда жыйып жатам. Мен эс алып жатпаймын!'
-          },
-          {
-            en: 'She is not picking today — she is training new workers. I am working on Saturday.',
-            ru: 'Она сегодня не собирает — она обучает новых рабочих. Я работаю в субботу.',
-            uz: 'U bugun termayapti — u yangi ishchilarni o\'qitmoqda. Men shanba kuni ishlayapman.',
-            tj: 'Вай имрӯз намечинад — вай коргарони навро таълим медиҳад. Ман шанбе кор мекунам.',
-            kg: 'Ал бүгүн жыйбайт — ал жаңы жумушчуларды окутуп жатат. Мен ишембиде иштейм.'
-          }
-        ],
         title_kz: 'PRESENT SIMPLE (He/She/It)',
         intro_ru: '<div style="line-height:1.6"><b>He/She/It</b> в Present Simple добавляет <b>-s</b> или <b>-es</b> к глаголу.<br>✅ He work<b>s</b>. She wash<b>es</b>.</div>',
         intro_uz: '<div style="line-height:1.6"><b>He/She/It</b> Present Simple\'da fe\'lga <b>-s</b> yoki <b>-es</b> qo\'shadi.<br>✅ He work<b>s</b>. She wash<b>es</b>.</div>',
@@ -5205,7 +5596,161 @@
         cultural_tj: 'Барои инкор бо he, she, it ҳамеша "doesn\'t"-ро истифода баред.',
         cultural_kg: 'He, she, it менен жокко чыгаруу үчүн дайыма "doesn\'t" колдонуңуз.',
         cultural_kz: 'He, she, it үшін терістеуде әрқашан "doesn\'t" қолданыңыз.',
-        note_kz: '⚠️ "He don\'t work" демеңіз, дұрысы — "He doesn\'t work"'
+        note_kz: '⚠️ "He don\'t work" демеңіз, дұрысы — "He doesn\'t work"',
+        forms: {
+          positive: {
+            label_ru: '✅ Утверждение',
+            label_uz: '✅ Tasdiq',
+            label_tj: '✅ Тасдиқ',
+            label_kg: '✅ Ырастоо',
+            label_kz: '✅ Растау',
+            rule_ru: 'Для <b>He / She / It</b> добавляем <b>-s</b> или <b>-es</b> к глаголу: <code>He works.</code> · <code>She washes.</code>',
+            rule_uz: '<b>He / She / It</b> uchun fe\'lga <b>-s</b> yoki <b>-es</b> qo\'shamiz: <code>He works.</code>',
+            rule_tj: 'Барои <b>He / She / It</b> ба феъл <b>-s</b> ё <b>-es</b> илова мекунем: <code>He works.</code>',
+            rule_kg: '<b>He / She / It</b> үчүн этишке <b>-s</b> же <b>-es</b> кошулат: <code>He works.</code>',
+            rule_kz: '<b>He / She / It</b> үшін етістікке <b>-s</b> немесе <b>-es</b> қосамыз: <code>He works.</code>',
+            table: [
+              {
+                subj: 'He',
+                verb: 'drives',
+                example: 'He drives a tractor.',
+                transcr: 'Хи драйвз э трэктэр',
+                tr_ru: 'Он водит трактор',
+                tr_uz: 'U traktor haydaydi',
+                tr_tj: 'Ӯ трактор меронад',
+                tr_kg: 'Ал трактор айдайт',
+                tr_kz: 'Ол трактор жүргізеді'
+              },
+              {
+                subj: 'She',
+                verb: 'wears',
+                example: 'She wears a vest.',
+                transcr: 'Ши уэарз э вэст',
+                tr_ru: 'Она носит жилет',
+                tr_uz: 'U jilet kiyadi',
+                tr_tj: 'Вай жилет мепӯшад',
+                tr_kg: 'Ал жилет киет',
+                tr_kz: 'Ол жилет киеді'
+              },
+              {
+                subj: 'The boss',
+                verb: 'checks',
+                example: 'The boss checks the apples.',
+                transcr: 'Зэ бос чэкс зи эплз',
+                tr_ru: 'Начальник проверяет яблоки',
+                tr_uz: 'Boshliq olmalarni tekshiradi',
+                tr_tj: 'Сардор себҳоро месанҷад',
+                tr_kg: 'Башчы алмаларды текшерет',
+                tr_kz: 'Бастық алмаларды тексереді'
+              }
+            ]
+          },
+          negative: {
+            label_ru: '❌ Отрицание',
+            label_uz: '❌ Inkor',
+            label_tj: '❌ Инкор',
+            label_kg: '❌ Терс',
+            label_kz: '❌ Теріс',
+            rule_ru: 'Используем <b>does not (doesn\'t)</b>. Глагол теряет <b>-s</b>: <code>He does not work.</code>',
+            rule_uz: '<b>does not (doesn\'t)</b> ishlatamiz. Fe\'ldan <b>-s</b> olib tashlanadi: <code>He does not work.</code>',
+            rule_tj: '<b>does not (doesn\'t)</b> истифода мебарем. Феъл <b>-s</b>-ро гум мекунад: <code>He does not work.</code>',
+            rule_kg: '<b>does not (doesn\'t)</b> колдонобуз. Этиштен <b>-s</b> түшүп калат: <code>He does not work.</code>',
+            rule_kz: '<b>does not (doesn\'t)</b> қолданамыз. Етістіктен <b>-s</b> түсіп қалады: <code>He does not work.</code>',
+            table: [
+              {
+                subj: 'He',
+                verb: 'does not sleep',
+                example: 'He does not sleep at work.',
+                transcr: 'Хи даз нот слип эт уорк',
+                tr_ru: 'Он не спит на работе',
+                tr_uz: 'U ishda uxlamaydi',
+                tr_tj: 'Ӯ дар кор хоб намеравад',
+                tr_kg: 'Ал жумушта уктабайт',
+                tr_kz: 'Ол жұмыста ұйықтамайды'
+              },
+              {
+                subj: 'She',
+                verb: 'does not drink',
+                example: 'She does not drink coffee.',
+                transcr: 'Ши даз нот дринк кофи',
+                tr_ru: 'Она не пьет кофе',
+                tr_uz: 'U qahva ichmaydi',
+                tr_tj: 'Вай қаҳва наменӯшад',
+                tr_kg: 'Ал кофе ичпейт',
+                tr_kz: 'Ол кофе ішпейді'
+              },
+              {
+                subj: 'It',
+                verb: 'does not drop',
+                example: 'It does not drop.',
+                transcr: 'Ит даз нот дроп',
+                tr_ru: 'Оно не падает',
+                tr_uz: 'U tushib ketmaydi',
+                tr_tj: 'Он намеафтад',
+                tr_kg: 'Ал түшпөйт',
+                tr_kz: 'Ол түспейді'
+              }
+            ]
+          },
+          question: {
+            label_ru: '❓ Вопрос',
+            label_uz: '❓ Savol',
+            label_tj: '❓ Савол',
+            label_kg: '❓ Суроо',
+            label_kz: '❓ Сұрақ',
+            rule_ru: '<b>Does</b> ставится перед подлежащим. Глагол без <b>-s</b>: <code>Does she run?</code>',
+            rule_uz: '<b>Does</b> egadan oldin. Fe\'l <b>-s</b>siz: <code>Does she run?</code>',
+            rule_tj: '<b>Does</b> пеш аз мубтадо. Феъл бе <b>-s</b>: <code>Does she run?</code>',
+            rule_kg: '<b>Does</b> ээден мурда. Этиш <b>-s</b>сиз: <code>Does she run?</code>',
+            rule_kz: '<b>Does</b> бастауыштан бұрын. Етістік <b>-s</b>сіз: <code>Does she run?</code>',
+            table: [
+              {
+                verb: 'Does',
+                subj: 'he',
+                example: 'Does he carry the box?',
+                transcr: 'Даз хи кэри зэ бокс?',
+                tr_ru: 'Он несет коробку?',
+                tr_uz: 'U qutini ko\'taradimi?',
+                tr_tj: 'Оё ӯ қуттиро мебардорад?',
+                tr_kg: 'Ал кутуну көтөрөбү?',
+                tr_kz: 'Ол қорапты көтереді ме?'
+              },
+              {
+                verb: 'Does',
+                subj: 'she',
+                example: 'Does she count the apples?',
+                transcr: 'Даз ши каунт зи эплз?',
+                tr_ru: 'Она считает яблоки?',
+                tr_uz: 'U olmalarni sanaydimi?',
+                tr_tj: 'Оё вай себҳоро ҳисоб мекунад?',
+                tr_kg: 'Ал алмаларды санайбы?',
+                tr_kz: 'Ол алмаларды санай ма?'
+              },
+              {
+                verb: 'Does',
+                subj: 'it',
+                example: 'Does it work?',
+                transcr: 'Даз ит уорк?',
+                tr_ru: 'Оно работает?',
+                tr_uz: 'U ishlaydimi?',
+                tr_tj: 'Оё он кор мекунад?',
+                tr_kg: 'Ал иштейби?',
+                tr_kz: 'Ол жұмыс істейді ме?'
+              },
+              {
+                verb: 'Does',
+                subj: 'the tractor',
+                example: 'Does the tractor stop?',
+                transcr: 'Даз зэ трэктэр стоп?',
+                tr_ru: 'Трактор останавливается?',
+                tr_uz: 'Traktor to\'xtaydimi?',
+                tr_tj: 'Оё трактор меистад?',
+                tr_kg: 'Трактор токтойбу?',
+                tr_kz: 'Трактор тоқтай ма?'
+              }
+            ]
+          }
+        }
       },
       words: [
         {
