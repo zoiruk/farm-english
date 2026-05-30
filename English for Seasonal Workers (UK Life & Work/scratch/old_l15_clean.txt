@@ -1,0 +1,172 @@
+    {
+      id: 15,
+      mod: 6,
+      name_ru: 'Чай? С удовольствием! ☕',
+      name_uz: 'Choy? Xursandman! ☕',
+      name_tj: 'Чой? Бо хурсандӣ! ☕',
+      name_kg: 'Чай? Кубанычта! ☕',
+      cefr: 'want/like/would like · Social expressions · British culture · Requests & offers',
+      grammar: {
+        title_ru: 'WANT / LIKE / WOULD LIKE + британские социальные выражения',
+        title_uz: 'WANT / LIKE / WOULD LIKE + Britaniya ijtimoiy iboralari',
+        title_tj: 'WANT / LIKE / WOULD LIKE + ибораҳои иҷтимоии Бритониё',
+        title_kg: 'WANT / LIKE / WOULD LIKE + британиялык коомдук сүйлөмдөр',
+        rule_ru: '<code>I want</code> tea. (прямо, иногда грубовато)<br><code>I like</code> tea. (нравится вообще, постоянно)<br><code>I would like</code> = <code>I\'d like</code> tea, please. (ВЕЖЛИВАЯ просьба ✓)<br>Предложение: <code>Would you like</code> some tea? · <code>Can I get you anything?</code>',
+        rule_uz: '<code>I want</code> tea. (to\'g\'ridan-to\'g\'ri)<br><code>I like</code> tea. (umuman yoqadi)<br><code>I would like</code> = <code>I\'d like</code> tea, please. (MULOYIM ✓)<br>Taklif: <code>Would you like</code> some tea?',
+        rule_tj: '<code>I want</code> tea. (мустақим)<br><code>I like</code> tea. (умуман дӯст доштан)<br><code>I would like</code> = <code>I\'d like</code> tea, please. (МУАССАБ ✓)<br>Пешниҳод: <code>Would you like</code> some tea?',
+        rule_kg: '<code>I want</code> tea. (түз)<br><code>I like</code> tea. (жалпы жактыруу)<br><code>I would like</code> = <code>I\'d like</code> tea, please. (СЫЛЫК ✓)<br>Сунуш: <code>Would you like</code> some tea?',
+        note_ru: '🇬🇧 Британский сленг на ферме:<br><b>Cheers!</b> = Спасибо! (неформально) · <b>Lovely!</b> = Замечательно! · <b>Brilliant!</b> = Здорово! · <b>Alright, mate?</b> = Как дела, приятель? · <b>Not bad!</b> = Ничего! · <b>Ta!</b> = Спасибо (очень неформально)',
+        note_uz: '🇬🇧 Britaniya slengi: <b>Cheers!</b> = Rahmat! (norasmiy) · <b>Lovely!</b> = Ajoyib! · <b>Brilliant!</b> = Zo\'r! · <b>Alright, mate?</b> = Yaxshimisiz? · <b>Ta!</b> = Rahmat',
+        note_tj: '🇬🇧 Сленги Бритониё: <b>Cheers!</b> = Ташаккур! · <b>Lovely!</b> = Аҷоиб! · <b>Brilliant!</b> = Бандагӣ! · <b>Alright, mate?</b> = Хол чӣ? · <b>Ta!</b> = Ташаккур',
+        note_kg: '🇬🇧 Британиялык сленг: <b>Cheers!</b> = Рахмат! · <b>Lovely!</b> = Сонун! · <b>Brilliant!</b> = Мыкты! · <b>Alright, mate?</b> = Кандайсың? · <b>Ta!</b> = Рахмат',
+        examples: [
+          {
+            en: 'Would you like some tea? — Yes please, I\'d like milk and no sugar. Cheers!',
+            ru: 'Хотите чаю? — Да пожалуйста, с молоком и без сахара. Спасибо!',
+            uz: 'Choy ichmoqchimisiz? — Ha iltimos, sutli va qandsiz. Rahmat!',
+            tj: 'Оё чой мехоҳед? — Ҳа лутфан, бо шир ва бе қанд. Ташаккур!',
+            kg: 'Чай ичкиңиз барбы? — Ооба суранам, сүт менен кант жок. Рахмат!'
+          },
+          {
+            en: 'Alright, mate? — Not bad, cheers! I like this break. It\'s lovely!',
+            ru: 'Как дела, приятель? — Ничего, спасибо! Мне нравится этот перерыв. Замечательно!',
+            uz: 'Yaxshimisiz, do\'stim? — Yomon emas, rahmat! Bu tanaffusni yoqtiraman. Ajoyib!',
+            tj: 'Хол чӣ, дӯст? — Наку, ташаккур! Ин истироҳатро дӯст медорам. Аҷоиб!',
+            kg: 'Кандайсың, дос? — Жаман эмес, рахмат! Бул тыным жагат. Сонун!'
+          }
+        ]
+      },
+      words: [
+        {
+          e: '☕',
+          en: 'tea / coffee',
+          ru: 'чай / кофе',
+          uz: 'choy / qahva',
+          tj: 'чой / қаҳва',
+          kg: 'чай / кофе',
+          pn: '/tiː/ /ˈkɒfi/'
+        },
+        {
+          e: '🍪',
+          en: 'biscuit',
+          ru: 'печенье',
+          uz: 'pechenye',
+          tj: 'печенье',
+          kg: 'бисквит',
+          pn: '/ˈbɪskɪt/'
+        },
+        {
+          e: '😊',
+          en: 'Cheers! (Thank you)',
+          ru: 'Спасибо! (неформально)',
+          uz: 'Rahmat! (norasmiy)',
+          tj: 'Ташаккур! (ғайрирасмӣ)',
+          kg: 'Рахмат! (расмий эмес)',
+          pn: '/tʃɪərz/'
+        },
+        {
+          e: '👍',
+          en: 'Lovely! / Brilliant!',
+          ru: 'Замечательно! / Здорово!',
+          uz: 'Ajoyib! / Zo\'r!',
+          tj: 'Аҷоиб! / Бандагӣ!',
+          kg: 'Сонун! / Мыкты!',
+          pn: '/ˈlʌvli/'
+        },
+        {
+          e: '🤝',
+          en: 'Alright, mate?',
+          ru: 'Как дела, приятель?',
+          uz: 'Yaxshimisiz, do\'stim?',
+          tj: 'Хол чӣ, дӯст?',
+          kg: 'Кандайсың, дос?',
+          pn: '/ɔːlˈraɪt meɪt/'
+        },
+        {
+          e: '🚫',
+          en: 'No thank you / No, cheers',
+          ru: 'Нет, спасибо',
+          uz: 'Yo\'q, rahmat',
+          tj: 'Не, ташаккур',
+          kg: 'Жок, рахмат',
+          pn: '/nəʊ θæŋk juː/'
+        }
+      ],
+      dialogue: [
+        {
+          s: 'm',
+          en: 'Break time! Would you like some tea or coffee, Ahmad?',
+          ru: 'Перерыв! Хотите чай или кофе, Ахмад?',
+          uz: 'Tanaffus! Ahmad, choy yoki qahva ichmoqchimisiz?',
+          tj: 'Истироҳат! Аҳмад, чой ё қаҳва мехоҳед?',
+          kg: 'Тыным! Ахмад, чай же кофе ичкиңиз барбы?'
+        },
+        {
+          s: 'w',
+          en: 'Yes please! I\'d like tea with milk, no sugar. Cheers, Tom!',
+          ru: 'Да, пожалуйста! Чай с молоком, без сахара. Спасибо, Том!',
+          uz: 'Ha, iltimos! Sutli choy, qandsiz. Rahmat, Tom!',
+          tj: 'Ҳа, лутфан! Чой бо шир, бе қанд. Ташаккур, Том!',
+          kg: 'Ооба, суранам! Сүт менен чай, канты жок. Рахмат, Том!'
+        },
+        {
+          s: 'm',
+          en: 'Would you like a biscuit? There are some chocolate ones.',
+          ru: 'Хотите печенье? Есть шоколадные.',
+          uz: 'Pechenye olmoqchimisiz? Shokoladli pechenyeler bor.',
+          tj: 'Оё печенье мехоҳед? Шоколадиҳо ҳастанд.',
+          kg: 'Бисквит алгыңыз барбы? Шоколаддуу бисквиттер бар.'
+        },
+        {
+          s: 'w',
+          en: 'Lovely! Yes please. — Alright, mate? (to Rustam) How are you today?',
+          ru: 'Замечательно! Да, пожалуйста. — Как дела, приятель? (Рустаму) Как ты сегодня?',
+          uz: 'Ajoyib! Ha iltimos. — Yaxshimisiz, do\'stim? (Rustamga) Bugun qandaysiz?',
+          tj: 'Аҷоиб! Ҳа лутфан. — Хол чӣ, дӯст? (ба Рустам) Имрӯз чӣ ҳол?',
+          kg: 'Сонун! Ооба суранам. — Кандайсың, дос? (Рустамга) Бүгүн кандайсың?'
+        },
+        {
+          s: 'w',
+          en: 'Not bad, cheers! I like this break. It\'s my favourite part of the day — brilliant!',
+          ru: 'Ничего, спасибо! Мне нравится этот перерыв. Это моя любимая часть дня — здорово!',
+          uz: 'Yomon emas, rahmat! Bu tanaffusni yoqtiraman. Bu mening kunning eng sevimli qismi — zo\'r!',
+          tj: 'Наку, ташаккур! Ин истироҳатро дӯст медорам. Ин қисми дилхоҳи рӯзи ман аст — бандагӣ!',
+          kg: 'Жаман эмес, рахмат! Бул тыным жагат. Бул менин күндүн эң жаккан бөлүгү — мыкты!'
+        }
+      ],
+      quiz: [
+        {
+          q: 'The MOST POLITE way to ask for tea:',
+          opts: [
+            'I want tea.',
+            'Give me tea.',
+            'I\'d like some tea, please.',
+            'Tea now.'
+          ],
+          c: 2,
+          expl: '«I would like» (или «I\'d like») — это вежливая форма «я бы хотел». «I want» звучит слишком прямо и иногда грубовато.'
+        },
+        {
+          q: '\'I ___ coffee.\' (general preference — нравится вообще)',
+          opts: [
+            'would like',
+            'want',
+            'like',
+            '\'d like'
+          ],
+          c: 2,
+          expl: '«Like» означает, что вам что-то нравится вообще, постоянно. «Would like» используется для конкретной вежливой просьбы прямо сейчас.'
+        },
+        {
+          q: 'In British culture, \'Cheers!\' most commonly means:',
+          opts: [
+            'Goodbye only',
+            'Thank you (informal)',
+            'Yes please',
+            'Brilliant!'
+          ],
+          c: 1,
+          expl: 'В Великобритании «Cheers!» очень часто говорят вместо «Thank you» в неформальной обстановке.'
+        }
+      ]
+    }
