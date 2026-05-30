@@ -6,6 +6,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>FarmEnglish — A0-A1</title>
   <style>
+    :root {
+      --bg: #eef3fb;
+      --bg-top: linear-gradient(180deg, #f7faff 0%, #eef3fb 42%, #ffffff 100%);
+      --card: rgba(255, 255, 255, 0.9);
+      --card-solid: #ffffff;
+      --card-shadow:
+        0 1px 2px rgba(60, 64, 67, 0.06),
+        0 10px 28px rgba(66, 133, 244, 0.10);
+      --card-shadow-hover:
+        0 2px 8px rgba(60, 64, 67, 0.08),
+        0 16px 38px rgba(66, 133, 244, 0.16);
+      --text: #1b1b1f;
+      --text2: #4a4d52;
+      --text3: #69707c;
+      --border: rgba(26, 115, 232, 0.14);
+      --radius: 22px;
+      --ne-primary: #1a73e8;
+      --ne-primary-2: #8ab4f8;
+      --ne-violet: #7c4dff;
+      --ne-cyan: #12b5cb;
+      --ne-green: #1aae39;
+      --ne-amber: #f9ab00;
+      --ne-coral: var(--c-accent);
+      --ne-ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --ne-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --c-a1: var(--c-accent);
+      --c-a2: #1aae39;
+      --c-b1: #12b5cb;
+      --c-b2: #1a73e8;
+      --c-c1: #7c4dff;
+      --c-c2: #5f6368;
+
+      --c-accent: var(--c-a1);
+
+      /* Aliases to bridge standard and ne- prefixed variables */
+      --ne-bg: var(--bg);
+      --ne-surface: var(--card);
+      --ne-ink: var(--text);
+      --ne-muted: var(--text2);
+      --ne-hint: var(--text3);
+      --ne-line: var(--border);
+      --ne-shadow: var(--card-shadow);
+      --ne-shadow-strong: var(--card-shadow-hover);
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -15,7 +60,7 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: #f0f2f5;
-      color: #1a1a2e;
+      color: var(--ne-ink);
       min-height: 100vh;
       line-height: 1.5
     }
@@ -45,7 +90,7 @@
       border-radius: 99px;
       font-size: 13px;
       font-weight: 600;
-      color: #1a1a2e;
+      color: var(--ne-ink);
       cursor: pointer;
       font-family: inherit;
       box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
@@ -59,7 +104,7 @@
 
     .float-back .fb-arrow {
       font-size: 15px;
-      color: #e87830
+      color: var(--c-accent)
     }
 
     .scr {
@@ -100,7 +145,7 @@
     .ch-title {
       font-size: 18px;
       font-weight: 800;
-      color: #1a1a2e;
+      color: var(--ne-ink);
       margin-bottom: 4px;
       line-height: 1.25;
       letter-spacing: -.2px
@@ -173,7 +218,7 @@
       border-radius: 10px;
       padding: 7px 14px;
       font-size: 13px;
-      color: #1a1a2e;
+      color: var(--ne-ink);
       cursor: pointer;
       font-weight: 600;
       white-space: nowrap;
@@ -183,7 +228,7 @@
     .les-hdr-title {
       font-size: 15px;
       font-weight: 700;
-      color: #1a1a2e;
+      color: var(--ne-ink);
       flex: 1;
       line-height: 1.3
     }
@@ -192,7 +237,7 @@
       font-size: 11px;
       font-weight: 700;
       color: #fff;
-      background: #e87830;
+      background: var(--c-accent);
       border-radius: 8px;
       padding: 3px 10px;
       white-space: nowrap
@@ -222,7 +267,7 @@
 
     .tab.on {
       background: #fff;
-      color: #1a1a2e;
+      color: var(--ne-ink);
       box-shadow: 0 1px 3px rgba(0, 0, 0, .08)
     }
 
@@ -230,7 +275,7 @@
     .ch-card:focus-visible,
     .pf-chip:focus-visible,
     .w-card:focus-visible {
-      outline: 2px solid #0075de;
+      outline: 2px solid var(--ne-primary);
       outline-offset: 2px
     }
 
@@ -250,7 +295,7 @@
     .g-title {
       font-size: 13px;
       font-weight: 700;
-      color: #e87830;
+      color: var(--c-accent);
       margin-bottom: 6px
     }
 
@@ -267,11 +312,11 @@
     .g-rule code {
       font-family: inherit;
       font-weight: 700;
-      color: #1a1a2e
+      color: var(--ne-ink)
     }
 
     .g-ex-box {
-      border-left: 3px solid #e87830;
+      border-left: 3px solid var(--c-accent);
       padding: 10px 14px;
       background: #fef7f0;
       border-radius: 0 10px 10px 0;
@@ -281,7 +326,7 @@
     .g-en {
       font-size: 15px;
       font-weight: 600;
-      color: #1a1a2e;
+      color: var(--ne-ink);
       margin-bottom: 4px
     }
 
@@ -301,7 +346,7 @@
     }
 
     .speak-btn {
-      background: #e87830;
+      background: var(--c-accent);
       color: #fff;
       border: none;
       border-radius: 8px;
@@ -351,7 +396,7 @@
 
     .w-card:active {
       background: #fef7f0;
-      border-color: #e87830
+      border-color: var(--c-accent)
     }
 
     .w-em {
@@ -363,7 +408,7 @@
     .w-en {
       font-size: 13px;
       font-weight: 700;
-      color: #1a1a2e
+      color: var(--ne-ink)
     }
 
     .w-ru {
@@ -373,14 +418,14 @@
     }
 
     .w-pn {
-      font-size: 11px;
-      color: #e87830;
+      font-size: 14px;
+      color: var(--c-accent);
       margin-top: 3px;
       font-style: italic
     }
 
     .d-play {
-      background: #e87830;
+      background: var(--c-accent);
       color: #fff;
       border: none;
       border-radius: 12px;
@@ -422,7 +467,7 @@
 
     .d-txt {
       font-size: 14px;
-      color: #1a1a2e;
+      color: var(--ne-ink);
       line-height: 1.5;
       font-weight: 500
     }
@@ -453,14 +498,14 @@
     .q-num {
       font-size: 11px;
       font-weight: 700;
-      color: #e87830;
+      color: var(--c-accent);
       margin-bottom: 6px
     }
 
     .q-q {
       font-size: 15px;
       font-weight: 600;
-      color: #1a1a2e;
+      color: var(--ne-ink);
       margin-bottom: 12px;
       line-height: 1.4
     }
@@ -520,7 +565,7 @@
     }
 
     .done-banner {
-      background: linear-gradient(135deg, #e87830, #f59e0b);
+      background: linear-gradient(135deg, var(--c-accent), #f59e0b);
       border-radius: 14px;
       padding: 22px;
       text-align: center;
@@ -548,7 +593,7 @@
 
     .finish-btn {
       background: #fff;
-      color: #e87830;
+      color: var(--c-accent);
       border: none;
       border-radius: 12px;
       padding: 14px;
@@ -583,8 +628,8 @@
     }
 
     .pf-chip.on {
-      background: #e87830;
-      border-color: #e87830;
+      background: var(--c-accent);
+      border-color: var(--c-accent);
       color: #fff
     }
 
@@ -606,7 +651,7 @@
     .ph-en {
       font-size: 14px;
       font-weight: 600;
-      color: #1a1a2e
+      color: var(--ne-ink)
     }
 
     .ph-tr {
@@ -626,7 +671,7 @@
     }
 
     .str-card {
-      background: linear-gradient(135deg, #e87830, #f59e0b);
+      background: linear-gradient(135deg, var(--c-accent), #f59e0b);
       border-radius: 14px;
       padding: 18px;
       margin-bottom: 14px;
@@ -671,7 +716,7 @@
     .st-n {
       font-size: 28px;
       font-weight: 800;
-      color: #e87830
+      color: var(--c-accent)
     }
 
     .st-l {
@@ -689,7 +734,7 @@
     }
 
     .prog-bar-lg-fill {
-      background: #e87830;
+      background: var(--c-accent);
       height: 8px;
       border-radius: 99px;
       transition: width .5s
@@ -763,8 +808,8 @@
     }
 
     .g-transcr {
-      font-size: 11px;
-      color: #e87830;
+      font-size: 14px;
+      color: var(--c-accent);
       margin-top: 2px
     }
 
@@ -807,7 +852,7 @@
     .summary-title {
       font-size: 17px;
       font-weight: 800;
-      color: #1a1a2e;
+      color: var(--ne-ink);
       line-height: 1.2
     }
 
@@ -819,7 +864,7 @@
 
     .summary-pill {
       background: #fef7f0;
-      color: #e87830;
+      color: var(--c-accent);
       border-radius: 999px;
       padding: 6px 10px;
       font-size: 12px;
@@ -839,7 +884,7 @@
       border-radius: 12px;
       padding: 11px 12px;
       background: #fff;
-      color: #1a1a2e;
+      color: var(--ne-ink);
       font-size: 13px;
       font-weight: 600;
       text-align: center;
@@ -849,7 +894,7 @@
 
     .summary-link.primary {
       background: #fef7f0;
-      color: #e87830;
+      color: var(--c-accent);
       border-color: #f7d9c2
     }
 
@@ -954,7 +999,7 @@
     .lesson-mini-title {
       font-size: 13px;
       font-weight: 700;
-      color: #1a1a2e
+      color: var(--ne-ink)
     }
 
     .lesson-mini-sub {
@@ -1008,7 +1053,7 @@
     .cert-modal-title {
       font-size: 20px;
       font-weight: 800;
-      color: #1a1a2e;
+      color: var(--ne-ink);
       margin-bottom: 8px
     }
 
@@ -1026,12 +1071,12 @@
       padding: 13px 14px;
       font-size: 15px;
       font-family: inherit;
-      color: #1a1a2e;
+      color: var(--ne-ink);
       background: #fff
     }
 
     .cert-input:focus {
-      border-color: #e87830;
+      border-color: var(--c-accent);
       box-shadow: 0 0 0 3px rgba(232, 120, 48, .12)
     }
 
@@ -1050,14 +1095,14 @@
       cursor: pointer;
       border: 1px solid #e8eaed;
       background: #fff;
-      color: #1a1a2e;
+      color: var(--ne-ink);
       font-family: inherit
     }
 
     .cert-modal-btn.primary {
-      background: #e87830;
+      background: var(--c-accent);
       color: #fff;
-      border-color: #e87830
+      border-color: var(--c-accent)
     }
 
     .cert-error {
@@ -1239,29 +1284,7 @@
       }
     }
     /* Material 3 Expressive + Neural Expressive skin */
-    :root {
-      --ne-primary: #1a73e8;
-      --ne-primary-2: #8ab4f8;
-      --ne-violet: #7c4dff;
-      --ne-cyan: #12b5cb;
-      --ne-green: #1aae39;
-      --ne-amber: #f9ab00;
-      --ne-coral: #e87830;
-      --ne-ink: #1b1b1f;
-      --ne-muted: #4a4d52;
-      --ne-hint: #69707c;
-      --ne-bg: #eef3fb;
-      --ne-surface: rgba(255, 255, 255, 0.9);
-      --ne-line: rgba(26, 115, 232, 0.14);
-      --ne-shadow:
-        0 1px 2px rgba(60, 64, 67, 0.06),
-        0 10px 28px rgba(66, 133, 244, 0.10);
-      --ne-shadow-strong:
-        0 2px 8px rgba(60, 64, 67, 0.08),
-        0 18px 42px rgba(66, 133, 244, 0.18);
-      --ne-ease: cubic-bezier(0.22, 1, 0.36, 1);
-      --ne-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
+    
 
     body {
       background:
@@ -1592,7 +1615,7 @@
 <body>
   <div class="app" id="app">
     <button class="float-back" type="button" onclick="goBack()" aria-label="Back"><svg class="fb-arrow" width="16" height="16" viewBox="0 0 24 24"
-        fill="none" stroke="#e87830" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="15 18 9 12 15 6" />
       </svg> <span id="backLbl">Назад</span></button>
     <div id="root" style="flex:1;overflow:hidden;display:flex;flex-direction:column"></div>
@@ -1663,7 +1686,7 @@
         all: 'Все', work: 'Работа', health: 'Здоровье', pay: 'Зарплата', shop: 'Магазин', social: 'Общение', sos: 'SOS',
         correct: '✓ Правильно!', wrong: '✗ Неверно — попробуйте снова',
         congrats: 'Урок пройден! 🎉', score: 'Все ответы верны!',
-        lessons_done: 'уроков завершено', words_learned: 'слов изучено', pts: 'баллов',
+        lessons_done: 'уроков завершено', words_learned: 'слов изучено', pts: 'баллов', storage_full_error: 'Не удалось сохранить прогресс. Хранилище заполнено.',
         q_complete: '✍️ Заполните пропуск:', q_translate: '🗣️ Переведите:', q_negative: '❌ Найдите отрицание:', q_correct: '✅ Какое предложение правильное?', q_question: '❓ Какой вопрос подходит к ответу:',
         question_of: (q, t) => `Вопрос ${q} из ${t}`,
         quiz_expl: '💡 <b>Объяснение:</b>',
@@ -1681,7 +1704,7 @@
         all: 'Барлығы', work: 'Жұмыс', health: 'Денсаулық', pay: 'Жалақы', shop: 'Дүкен', social: 'Қарым-қатынас', sos: 'SOS',
         correct: '✓ Дұрыс!', wrong: '✗ Қате — қайталаңыз',
         congrats: 'Сабақ аяқталды! 🎉', score: 'Барлық жауаптар дұрыс!',
-        lessons_done: 'сабақ аяқталды', words_learned: 'сөз үйренілді', pts: 'ұпай',
+        lessons_done: 'сабақ аяқталды', words_learned: 'сөз үйренілді', pts: 'ұпай', storage_full_error: 'Прогресті сақтау мүмкін болмады. Жад толып қалды.',
         q_complete: '✍️ Бос орынды толтырыңыз:', q_translate: '🗣️ Аударыңыз:', q_negative: '❌ Болымсыз түрді табыңыз:', q_correct: '✅ Қай сөйлем дұрыс?', q_question: '❓ Жауапқа қай сұрақ сәйкес келеді:',
         question_of: (q, t) => `Сұрақ ${q} / ${t}`,
         quiz_expl: '💡 <b>Түсіндірме:</b>',
@@ -1699,7 +1722,7 @@
         all: 'Barchasi', work: 'Ish', health: 'Salomatlik', pay: 'Maosh', shop: "Do\'kon", social: 'Muloqot', sos: 'SOS',
         correct: "✓ To\'g'ri!", wrong: "✗ Noto\'g'ri — qayta urining",
         congrats: "Dars tugallandi! 🎉", score: "Barcha javoblar to\'g'ri!",
-        lessons_done: 'dars tugallandi', words_learned: "so\'z o\'rganildi", pts: 'ball',
+        lessons_done: 'dars tugallandi', words_learned: "so\'z o\'rganildi", pts: 'ball', storage_full_error: "Progressni saqlab bo'lmadi. Xotira to'la.",
         q_complete: '✍️ Bo\'sh joyni to\'ldiring:', q_translate: '🗣️ Tarjima qiling:', q_negative: '❌ Inkor shaklni toping:', q_correct: '✅ Qaysi gap to\'g\'ri?', q_question: '❓ Javobga qaysi savol mos keladi:',
         question_of: (q, t) => `Savol ${q} / ${t}`,
         quiz_expl: '💡 <b>Tushuntirish:</b>',
@@ -1717,7 +1740,7 @@
         all: 'Ҳама', work: 'Кор', health: 'Саломатӣ', pay: 'Маош', shop: 'Дӯкон', social: 'Муошират', sos: 'SOS',
         correct: '✓ Дуруст!', wrong: '✗ Нодуруст — бори дигар',
         congrats: 'Дарс гузашт! 🎉', score: 'Ҳамаи ҷавобҳо дуруст!',
-        lessons_done: 'дарс тамом шуд', words_learned: 'калима омӯхта шуд', pts: 'хол',
+        lessons_done: 'дарс тамом шуд', words_learned: 'калима омӯхта шуд', pts: 'хол', storage_full_error: 'Пешрафтро сабт кардан нашуд. Захирагоҳ пур аст.',
         q_complete: '✍️ Холиро пур кунед:', q_translate: '🗣️ Тарҷума кунед:', q_negative: '❌ Шакли инкориро ёбед:', q_correct: '✅ Кадом ҷумла дуруст аст?', q_question: '❓ Ба ҷавоб кадом савол мувофиқ аст:',
         question_of: (q, t) => `Саволи ${q} аз ${t}`,
         quiz_expl: '💡 <b>Шарҳ:</b>',
@@ -1735,7 +1758,7 @@
         all: 'Баары', work: 'Иш', health: 'Саламаттык', pay: 'Эмгек акы', shop: 'Дүкөн', social: 'Баарлашуу', sos: 'SOS',
         correct: '✓ Туура!', wrong: '✗ Туура эмес — кайра',
         congrats: 'Сабак аяктады! 🎉', score: 'Бардык жооптор туура!',
-        lessons_done: 'сабак аяктады', words_learned: 'сөз үйрөнүлдү', pts: 'упай',
+        lessons_done: 'сабак аяктады', words_learned: 'сөз үйрөнүлдү', pts: 'упай', storage_full_error: 'Прогрессти сактоо мүмкүн болгон жок. Сактагыч толуп калды.',
         q_complete: '✍️ Боштукту толтуруңуз:', q_translate: '🗣️ Которуңуз:', q_negative: '❌ Жокко чыгарууну табыңыз:', q_correct: '✅ Кайсы сүйлөм туура?', q_question: '❓ Жоопко кайсы суроо туура келет:',
         question_of: (q, t) => `Суроо ${q} / ${t}`,
         quiz_expl: '💡 <b>Түшүндүрмө:</b>',
@@ -1744,8 +1767,42 @@
         quiz_no_desc: ["Ката — ийгиликке кадам! Дагы бир жолу аракет кылып көрүңүз. 💪", "Багынбаңыз! Ар бир аракет менен сиз жакшыраак болуп жатасыз. 🌟", "Ката кетирүү пайдалуу, ошентип биз тезирээк үйрөнөбүз! 🔥", "Сиз туура жолдосуз! Дагы бир жолу ойлонуп көрүңүз. 🧠", "Эч ким биринчи жолкусунда идеалдуу болбойт. Уланта бериңиз! 🚀", "Ар бир ката сизди акылдуураак кылат. Дагы аракет кылыңыз! 💡", "Өжөрлүк — билимдин ачкычы. Колуңуздан келет! 🔑", "Ката кетирүүдөн коркпоңуз, токтоп калуудан коркуңуз. Алга! 🏃‍♂️", "Жакшы аракет! Эми кандай кылбоо керектигин билесиз. Дагы көрөлүбү? 😉", "Мээңиз азыр активдүү иштеп, үйрөнүп жатат. Улантыңыз! 🏋️‍♂️", "Багынбаңыз! Ар бир жолу оңой болот. 📈", "Ийгиликтин сыры — биринчи катадан кийин багынбоо. 🏆", "Тилди билгендер деле кээде ката кетиришет. Дагы аракет кылып көрүңүз! 🗣️", "Бул ката эрежени түбөлүккө эстеп калууга жардам берет! 📌", "Сабыр жана эмгек баарын жеңет. Дагы бир аракет! 🛠️", "Окуу бул процесс. Сиз жакшы кылып жатасыз, улантыңыз! 🌱", "Бир аз ойлонуп, башка жоопту тандап көрүңүз. 🤔", "Капа болбоңуз! Эң негизгиси эрежени түшүнүү. 🎯", "Сиз ойлогондон да туура жоопко жакынсыз! 🌈", "Каталар сиздин аракет кылып жатканыңызды көрсөтөт. Азаматсыз! 👏", "Англис тили эр жүрөктөрдү жакшы көрөт. Коркпой дагы аракет кылыңыз! 🦁", "Эч нерсе эмес! Түшүндүрмөнү окуп, кайра аракет кылыңыз. 📖", "Эсиңизде болсун: окууда кыйын, жумушта оңой. 💼", "Сиздин өсүүңүз байкалып турат, бир ката үчүн токтобоңуз! 🧗‍♂️", "Каталарды анализдеңиз, алар сиздин күчүңүзгө айланат. 🔋", "Өзүңүзгө ишениңиз! Сөзсүз колуңуздан келет. ✨", "Негизгиси — үйрөнүүгө болгон каалоо. Туура жоопту табабыз! 🔍", "Аракеттен зыян жок. Келиңиз дагы аракет кылып көрөлү! 🎯", "Сиз көп нерсени үйрөндүңүз, бул тапшырманы да аткара аласыз! 🐘", "Терең дем алып, башка вариантын тандаңыз. 🌬️"]
       }
     };
-    let lang = localStorage.getItem('fe_lang') || 'ru', scr = 'home', curLesson = null, curTab = 'grammar', curGrammarForm = 'positive', quizState = {};
-    let done = JSON.parse(localStorage.getItem('fe_a1') || '[]');
+    // Safe storage helpers
+    function safeGetItem(key, fallback = '') {
+      try {
+        return localStorage.getItem(key) || fallback;
+      } catch (e) {
+        return fallback;
+      }
+    }
+
+    function safeGetJSON(key, fallback = []) {
+      try {
+        const val = localStorage.getItem(key);
+        if (!val) return fallback;
+        const parsed = JSON.parse(val);
+        if (Array.isArray(fallback) && !Array.isArray(parsed)) return fallback;
+        return parsed;
+      } catch (e) {
+        return fallback;
+      }
+    }
+
+    function safeSetItem(key, value) {
+      try {
+        localStorage.setItem(key, value);
+        return true;
+      } catch (e) {
+        console.error('LocalStorage write failed:', e);
+        if (typeof showToast === 'function') {
+          showToast(t('storage_full_error') || 'Не удалось сохранить прогресс. Хранилище заполнено.');
+        }
+        return false;
+      }
+    }
+
+    let lang = safeGetItem('fe_lang', 'ru'), scr = 'home', curLesson = null, curTab = 'grammar', curGrammarForm = 'positive', quizState = {};
+    let done = safeGetJSON('fe_a1', []);
     let pfCat = 'all';
     let showCourseCongrats = false;
     const t = (k, ...a) => { const v = (TR[lang] || TR['ru'])[k] || (TR['ru'] || {})[k]; return typeof v === 'function' ? v(...a) : (v ?? k) };
@@ -2307,14 +2364,14 @@
     }
     function updateStreak() {
       const today = getTodayKey();
-      const last = localStorage.getItem('fe_last_date');
-      let streak = Number(localStorage.getItem('fe_streak') || '0');
+      const last = safeGetItem('fe_last_date');
+      let streak = Number(safeGetItem('fe_streak') || '0');
       if (!last) streak = 1;
       else if (last === today) streak = Math.max(streak, 1);
       else if (last === shiftDateKey(today, -1)) streak += 1;
       else streak = 1;
-      localStorage.setItem('fe_last_date', today);
-      localStorage.setItem('fe_streak', String(streak));
+      safeSetItem('fe_last_date', today);
+      safeSetItem('fe_streak', String(streak));
       return streak;
     }
     function getCompletedLessonsData() {
@@ -2332,14 +2389,14 @@
         wordsLearned: getCompletedWordsCount(),
         phraseCount: PHRASES.length,
         points: lessonsDone * 10,
-        streak: Number(localStorage.getItem('fe_streak') || '0'),
+        streak: Number(safeGetItem('fe_streak') || '0'),
         percent: Math.round((lessonsDone / totalLessons) * 100)
       };
     }
     function syncDerivedStats() {
-      localStorage.setItem('fe_words', String(getCompletedWordsCount()));
-      localStorage.setItem('fe_phrasebook_count', String(PHRASES.length));
-      localStorage.setItem('fe_points', String(done.length * 10));
+      safeSetItem('fe_words', String(getCompletedWordsCount()));
+      safeSetItem('fe_phrasebook_count', String(PHRASES.length));
+      safeSetItem('fe_points', String(done.length * 10));
     }
     function setScreenHash(screen) {
       if (screen === 'phrases') window.location.hash = 'phrases';
@@ -3950,7 +4007,7 @@
             ],
             "quiz": [
                   {
-                        "q": "Which sentence is correct?",
+                        "q": "[TRANSLATE] Which sentence is correct?",
                         "opts": [
                               "His name is Rustam. Her name is Fatima.",
                               "His name is Rustam. Her name is he.",
@@ -3971,7 +4028,7 @@
                         "expl": "Правильный ответ: \"His name is Rustam. Her name is Fatima.\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "Translate: 'Её работа — упаковка. Его работа — сбор ягод.'",
+                        "q": "[TRANSLATE] Translate: 'Её работа — упаковка. Его работа — сбор ягод.'",
                         "opts": [
                               "His job is packing. Her job is picking.",
                               "Her job is packing. His job is picking.",
@@ -3992,7 +4049,7 @@
                         "expl": "Правильный ответ: \"Her job is packing. His job is picking.\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "'The farm belongs to Tom.' How do we say 'ферма Тома'?",
+                        "q": "[TRANSLATE] 'The farm belongs to Tom.' How do we say 'ферма Тома'?",
                         "opts": [
                               "Tom farm",
                               "Toms farm",
@@ -4013,7 +4070,7 @@
                         "expl": "Правильный ответ: \"Tom's farm\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "'___ gloves are in the locker.' (his — мужчина)",
+                        "q": "[COMPLETE] '___ gloves are in the locker.' (his — мужчина)",
                         "opts": [
                               "Her",
                               "His",
@@ -4034,7 +4091,7 @@
                         "expl": "Правильный ответ: \"His\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "'___ shift starts at 6 AM.' (мы)",
+                        "q": "[COMPLETE] '___ shift starts at 6 AM.' (мы)",
                         "opts": [
                               "Their",
                               "Your",
@@ -4055,7 +4112,7 @@
                         "expl": "Правильный ответ: \"Our\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "'Where is ___ name badge?' (she — женщина)",
+                        "q": "[COMPLETE] 'Where is ___ name badge?' (she — женщина)",
                         "opts": [
                               "his",
                               "she",
@@ -4076,7 +4133,7 @@
                         "expl": "Правильный ответ: \"her\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "'___ locker is number 12.' (he — мужчина)",
+                        "q": "[COMPLETE] '___ locker is number 12.' (he — мужчина)",
                         "opts": [
                               "Her",
                               "His",
@@ -4097,7 +4154,7 @@
                         "expl": "Правильный ответ: \"His\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "Translate: 'Наша команда — 8 сборщиков'",
+                        "q": "[TRANSLATE] Translate: 'Наша команда — 8 сборщиков'",
                         "opts": [
                               "Their team has 8 pickers.",
                               "Our team has 8 pickers.",
@@ -4118,7 +4175,7 @@
                         "expl": "Правильный ответ: \"Our team has 8 pickers.\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "'Anna's job' means:",
+                        "q": "[TRANSLATE] 'Anna's job' means:",
                         "opts": [
                               "Anna owns a job",
                               "The job OF Anna",
@@ -4139,7 +4196,7 @@
                         "expl": "Правильный ответ: \"The job OF Anna\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "'What is ___ phone number?' — asking about the supervisor (she)",
+                        "q": "[COMPLETE] 'What is ___ phone number?' — asking about the supervisor (she)",
                         "opts": [
                               "his",
                               "her",
@@ -8972,7 +9029,7 @@
             ],
             "quiz": [
                   {
-                        "q": "'I ___ got my new rubber boots.'",
+                        "q": "[COMPLETE] 'I ___ got my new rubber boots.'",
                         "opts": [
                               "has",
                               "am",
@@ -8989,7 +9046,7 @@
                         "expl": "Правильный ответ: \"have\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "Adjective order: 'a ___ jacket'",
+                        "q": "[COMPLETE] Adjective order: 'a ___ jacket'",
                         "opts": [
                               "waterproof heavy black",
                               "black waterproof heavy",
@@ -9006,7 +9063,7 @@
                         "expl": "Правильный ответ: \"heavy black waterproof\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "'She ___ got heavy boots.' (negative)",
+                        "q": "[COMPLETE] 'She ___ got heavy boots.' (negative)",
                         "opts": [
                               "has",
                               "haven't",
@@ -9023,7 +9080,7 @@
                         "expl": "Правильный ответ: \"hasn't\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "How to translate 'удобный'? (comfortable)",
+                        "q": "[TRANSLATE] How to translate 'удобный'? (comfortable)",
                         "opts": [
                               "dangerous",
                               "comfortable",
@@ -9040,7 +9097,7 @@
                         "expl": "Правильный ответ: \"comfortable\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "'___ he got a clean apron?' (question)",
+                        "q": "[COMPLETE] '___ he got a clean apron?' (question)",
                         "opts": [
                               "Have",
                               "Has",
@@ -9057,7 +9114,7 @@
                         "expl": "Правильный ответ: \"Has\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "What is the opposite of 'wet'? (мокрый)",
+                        "q": "[TRANSLATE] What is the opposite of 'wet'? (мокрый)",
                         "opts": [
                               "heavy",
                               "dry",
@@ -9074,7 +9131,7 @@
                         "expl": "Правильный ответ: \"dry\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "What is 'hairnet'? (сеточка)",
+                        "q": "[TRANSLATE] What is 'hairnet'? (сеточка)",
                         "opts": [
                               "Сеточка для волос",
                               "Наколенники",
@@ -9091,7 +9148,7 @@
                         "expl": "Правильный ответ: \"Сеточка для волос\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "'My shoes are very ___, they hurt my feet.' (тесные)",
+                        "q": "[COMPLETE] 'My shoes are very ___, they hurt my feet.' (тесные)",
                         "opts": [
                               "loose",
                               "comfortable",
@@ -9108,7 +9165,7 @@
                         "expl": "Правильный ответ: \"tight\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "'We ___ got knee pads.' (negative)",
+                        "q": "[COMPLETE] 'We ___ got knee pads.' (negative)",
                         "opts": [
                               "hasn't",
                               "don't",
@@ -9125,7 +9182,7 @@
                         "expl": "Правильный ответ: \"haven't\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "'Always wear a hard hat. It is ___!' (безопасный)",
+                        "q": "[COMPLETE] 'Always wear a hard hat. It is ___!' (безопасный)",
                         "opts": [
                               "dangerous",
                               "safe",
@@ -9765,7 +9822,7 @@
             ],
             "quiz": [
                   {
-                        "q": "'___ a heater in my caravan.' (1 thing)",
+                        "q": "[COMPLETE] '___ a heater in my caravan.' (1 thing)",
                         "opts": [
                               "There are",
                               "Is there",
@@ -9782,7 +9839,7 @@
                         "expl": "Правильный ответ: \"There is\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "'___ any hot water.' (negative)",
+                        "q": "[COMPLETE] '___ any hot water.' (negative)",
                         "opts": [
                               "There is any",
                               "There isn't some",
@@ -9799,7 +9856,7 @@
                         "expl": "Правильный ответ: \"There isn't any\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "'Are there ___ blankets?' (question)",
+                        "q": "[COMPLETE] 'Are there ___ blankets?' (question)",
                         "opts": [
                               "some",
                               "any",
@@ -9816,7 +9873,7 @@
                         "expl": "Правильный ответ: \"any\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "How to translate 'холодильник'? (fridge)",
+                        "q": "[TRANSLATE] How to translate 'холодильник'? (fridge)",
                         "opts": [
                               "fridge",
                               "cooker",
@@ -9833,7 +9890,7 @@
                         "expl": "Правильный ответ: \"fridge\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "'There are ___ noisy people in the corridor.' (affirmative)",
+                        "q": "[COMPLETE] 'There are ___ noisy people in the corridor.' (affirmative)",
                         "opts": [
                               "some",
                               "any",
@@ -9850,7 +9907,7 @@
                         "expl": "Правильный ответ: \"some\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "What is the opposite of 'full'? (полный)",
+                        "q": "[TRANSLATE] What is the opposite of 'full'? (полный)",
                         "opts": [
                               "noisy",
                               "empty",
@@ -9867,7 +9924,7 @@
                         "expl": "Правильный ответ: \"empty\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "'___ any chairs in the kitchen?' (question, plural)",
+                        "q": "[COMPLETE] '___ any chairs in the kitchen?' (question, plural)",
                         "opts": [
                               "Is there",
                               "Are there",
@@ -9884,7 +9941,7 @@
                         "expl": "Правильный ответ: \"Are there\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "Where do you wash your clothes? (стирать)",
+                        "q": "[TRANSLATE] Where do you wash your clothes? (стирать)",
                         "opts": [
                               "kitchen",
                               "bedroom",
@@ -9901,7 +9958,7 @@
                         "expl": "Правильный ответ: \"laundry\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "'The room is not quiet, it is very ___!' (шумно)",
+                        "q": "[COMPLETE] 'The room is not quiet, it is very ___!' (шумно)",
                         "opts": [
                               "empty",
                               "clean",
@@ -9918,7 +9975,7 @@
                         "expl": "Правильный ответ: \"noisy\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "'I need a repair. The cooker is ___!' (сломана)",
+                        "q": "[COMPLETE] 'I need a repair. The cooker is ___!' (сломана)",
                         "opts": [
                               "broken",
                               "full",
@@ -10536,7 +10593,7 @@
             ],
             "quiz": [
                   {
-                        "q": "'How ___ milk do you want?' (milk = uncountable)",
+                        "q": "[COMPLETE] 'How ___ milk do you want?' (milk = uncountable)",
                         "opts": [
                               "many",
                               "much",
@@ -10553,7 +10610,7 @@
                         "expl": "Правильный ответ: \"much\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "'How ___ eggs do you need?' (eggs = countable)",
+                        "q": "[COMPLETE] 'How ___ eggs do you need?' (eggs = countable)",
                         "opts": [
                               "much",
                               "some",
@@ -10570,7 +10627,7 @@
                         "expl": "Правильный ответ: \"many\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "The MOST POLITE way to order in a shop:",
+                        "q": "[TRANSLATE] The MOST POLITE way to order in a shop:",
                         "opts": [
                               "I want six eggs",
                               "Give me six eggs",
@@ -10587,7 +10644,7 @@
                         "expl": "Правильный ответ: \"I'd like six eggs, please\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "How to translate 'дешевый'? (cheap)",
+                        "q": "[TRANSLATE] How to translate 'дешевый'? (cheap)",
                         "opts": [
                               "expensive",
                               "cheap",
@@ -10604,7 +10661,7 @@
                         "expl": "Правильный ответ: \"cheap\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "'I want a ___ of pasta.' (пачка)",
+                        "q": "[COMPLETE] 'I want a ___ of pasta.' (пачка)",
                         "opts": [
                               "bottle",
                               "tin",
@@ -10621,7 +10678,7 @@
                         "expl": "Правильный ответ: \"packet\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "What is the opposite of 'expensive'? (дорогой)",
+                        "q": "[TRANSLATE] What is the opposite of 'expensive'? (дорогой)",
                         "opts": [
                               "cheap",
                               "receipt",
@@ -10638,7 +10695,7 @@
                         "expl": "Правильный ответ: \"cheap\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "'Can I pay by ___?' (карта)",
+                        "q": "[COMPLETE] 'Can I pay by ___?' (карта)",
                         "opts": [
                               "cash",
                               "discount",
@@ -10655,7 +10712,7 @@
                         "expl": "Правильный ответ: \"card\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "What is 'garlic'? (чеснок)",
+                        "q": "[TRANSLATE] What is 'garlic'? (чеснок)",
                         "opts": [
                               "лук",
                               "картошка",
@@ -10672,7 +10729,7 @@
                         "expl": "Правильный ответ: \"чеснок\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "'I don't want any ___ in my tea.' (сахар)",
+                        "q": "[COMPLETE] 'I don't want any ___ in my tea.' (сахар)",
                         "opts": [
                               "salt",
                               "sugar",
@@ -10689,7 +10746,7 @@
                         "expl": "Правильный ответ: \"sugar\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "'Here is your ___ for £4.50.' (чек)",
+                        "q": "[COMPLETE] 'Here is your ___ for £4.50.' (чек)",
                         "opts": [
                               "receipt",
                               "discount",
@@ -11329,7 +11386,7 @@
             ],
             "quiz": [
                   {
-                        "q": "You want to go to town and come back. You need a...",
+                        "q": "[TRANSLATE] You want to go to town and come back. You need a...",
                         "opts": [
                               "single ticket",
                               "return ticket",
@@ -11346,7 +11403,7 @@
                         "expl": "Правильный ответ: \"This\". this / that / these / those · Transport · Buying a ticket"
                   },
                   {
-                        "q": "'Please, ___ the bus here. We are going to town.' (садитесь)",
+                        "q": "[COMPLETE] 'Please, ___ the bus here. We are going to town.' (садитесь)",
                         "opts": [
                               "get off",
                               "get out",
@@ -11363,7 +11420,7 @@
                         "expl": "Правильный ответ: \"These\". this / that / these / those · Transport · Buying a ticket"
                   },
                   {
-                        "q": "'___ turn left. The street is closed.' (не поворачивайте)",
+                        "q": "[COMPLETE] '___ turn left. The street is closed.' (не поворачивайте)",
                         "opts": [
                               "Not",
                               "No",
@@ -11380,7 +11437,7 @@
                         "expl": "Правильный ответ: \"Is that seat free?\". this / that / these / those · Transport · Buying a ticket"
                   },
                   {
-                        "q": "What is 'прямо'?",
+                        "q": "[TRANSLATE] What is 'прямо'?",
                         "opts": [
                               "left",
                               "right",
@@ -11397,7 +11454,7 @@
                         "expl": "Правильный ответ: \"ticket\". this / that / these / those · Transport · Buying a ticket"
                   },
                   {
-                        "q": "What is the opposite of 'near'? (близко)",
+                        "q": "[TRANSLATE] What is the opposite of 'near'? (близко)",
                         "opts": [
                               "far",
                               "left",
@@ -11414,7 +11471,7 @@
                         "expl": "Правильный ответ: \"Those seats are at the back.\". this / that / these / those · Transport · Buying a ticket"
                   },
                   {
-                        "q": "'How do I ___ to the train station?' (добраться)",
+                        "q": "[COMPLETE] 'How do I ___ to the train station?' (добраться)",
                         "opts": [
                               "get off",
                               "get on",
@@ -11431,7 +11488,7 @@
                         "expl": "Правильный ответ: \"This ticket is not valid.\". this / that / these / those · Transport · Buying a ticket"
                   },
                   {
-                        "q": "Where can I buy some medicine? (лекарства)",
+                        "q": "[TRANSLATE] Where can I buy some medicine? (лекарства)",
                         "opts": [
                               "bank",
                               "pharmacy",
@@ -11448,7 +11505,7 @@
                         "expl": "Правильный ответ: \"station\". this / that / these / those · Transport · Buying a ticket"
                   },
                   {
-                        "q": "'This is my ___. Please stand up!' (место)",
+                        "q": "[COMPLETE] 'This is my ___. Please stand up!' (место)",
                         "opts": [
                               "seat",
                               "map",
@@ -11465,7 +11522,7 @@
                         "expl": "Правильный ответ: \"single\". this / that / these / those · Transport · Buying a ticket"
                   },
                   {
-                        "q": "'The cafe is on the ___.' (углу)",
+                        "q": "[COMPLETE] 'The cafe is on the ___.' (углу)",
                         "opts": [
                               "left",
                               "right",
@@ -11482,7 +11539,7 @@
                         "expl": "Правильный ответ: \"Are these passes valid today?\". this / that / these / those · Transport · Buying a ticket"
                   },
                   {
-                        "q": "'___ straight and turn right.' (идите)",
+                        "q": "[COMPLETE] '___ straight and turn right.' (идите)",
                         "opts": [
                               "Go",
                               "Get",
@@ -12111,7 +12168,7 @@
             ],
             "quiz": [
                   {
-                        "q": "'She ___ born in Tashkent.' (она = she)",
+                        "q": "[COMPLETE] 'She ___ born in Tashkent.' (она = she)",
                         "opts": [
                               "were",
                               "was",
@@ -12128,7 +12185,7 @@
                         "expl": "Правильный ответ: \"was\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "What does 'marital status' mean? (семейное положение)",
+                        "q": "[TRANSLATE] What does 'marital status' mean? (семейное положение)",
                         "opts": [
                               "Single or married",
                               "Male or female",
@@ -12145,7 +12202,7 @@
                         "expl": "Правильный ответ: \"Single or married\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "'They ___ born in Kyrgyzstan.' (they = они)",
+                        "q": "[COMPLETE] 'They ___ born in Kyrgyzstan.' (they = они)",
                         "opts": [
                               "was",
                               "is",
@@ -12162,7 +12219,7 @@
                         "expl": "Правильный ответ: \"were\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "What is a 'surname'? (фамилия)",
+                        "q": "[TRANSLATE] What is a 'surname'? (фамилия)",
                         "opts": [
                               "First name",
                               "Last name",
@@ -12179,7 +12236,7 @@
                         "expl": "Правильный ответ: \"Last name\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "Please put your ___ on the document. (подпись)",
+                        "q": "[COMPLETE] Please put your ___ on the document. (подпись)",
                         "opts": [
                               "sign",
                               "signature",
@@ -12196,7 +12253,7 @@
                         "expl": "Правильный ответ: \"signature\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "Write in ___ letters. (Заглавные буквы)",
+                        "q": "[COMPLETE] Write in ___ letters. (Заглавные буквы)",
                         "opts": [
                               "capital",
                               "big",
@@ -12213,7 +12270,7 @@
                         "expl": "Правильный ответ: \"capital\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "What is 'single'? (холост)",
+                        "q": "[TRANSLATE] What is 'single'? (холост)",
                         "opts": [
                               "Married",
                               "Not married",
@@ -12230,7 +12287,7 @@
                         "expl": "Правильный ответ: \"Not married\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "Please ___ this application form. (заполните)",
+                        "q": "[COMPLETE] Please ___ this application form. (заполните)",
                         "opts": [
                               "fill on",
                               "fill out",
@@ -12247,7 +12304,7 @@
                         "expl": "Правильный ответ: \"fill in\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "'___ were you born?' — In 1995.",
+                        "q": "[COMPLETE] '___ were you born?' — In 1995.",
                         "opts": [
                               "Where",
                               "When",
@@ -12264,7 +12321,7 @@
                         "expl": "Правильный ответ: \"When\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "My gender is ___. (мужской)",
+                        "q": "[COMPLETE] My gender is ___. (мужской)",
                         "opts": [
                               "female",
                               "male",
@@ -12904,7 +12961,7 @@
             ],
             "quiz": [
                   {
-                        "q": "Past form of 'go' (irregular verb)",
+                        "q": "[TRANSLATE] Past form of 'go' (irregular verb)",
                         "opts": [
                               "goed",
                               "went",
@@ -12921,7 +12978,7 @@
                         "expl": "Правильный ответ: \"went\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "'I ___ work yesterday.' (Отрицание в прошлом)",
+                        "q": "[COMPLETE] 'I ___ work yesterday.' (Отрицание в прошлом)",
                         "opts": [
                               "didn't work",
                               "don't work",
@@ -12938,7 +12995,7 @@
                         "expl": "Правильный ответ: \"didn't work\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "Past form of 'lose' (терять)",
+                        "q": "[TRANSLATE] Past form of 'lose' (терять)",
                         "opts": [
                               "losed",
                               "loose",
@@ -12955,7 +13012,7 @@
                         "expl": "Правильный ответ: \"lost\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "What is a 'timesheet'? (табель)",
+                        "q": "[TRANSLATE] What is a 'timesheet'? (табель)",
                         "opts": [
                               "Daily report",
                               "Paper for work hours",
@@ -12972,7 +13029,7 @@
                         "expl": "Правильный ответ: \"Paper for work hours\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "Past form of 'see' (видеть)",
+                        "q": "[TRANSLATE] Past form of 'see' (видеть)",
                         "opts": [
                               "seed",
                               "saw",
@@ -12989,7 +13046,7 @@
                         "expl": "Правильный ответ: \"saw\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "What is the opposite of 'late'? (противоположность слова поздно)",
+                        "q": "[TRANSLATE] What is the opposite of 'late'? (противоположность слова поздно)",
                         "opts": [
                               "early",
                               "ago",
@@ -13006,7 +13063,7 @@
                         "expl": "Правильный ответ: \"early\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "'Did you ___ the line leader?' (Ты рассказал...?)",
+                        "q": "[COMPLETE] 'Did you ___ the line leader?' (Ты рассказал...?)",
                         "opts": [
                               "told",
                               "tells",
@@ -13023,7 +13080,7 @@
                         "expl": "Правильный ответ: \"tell\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "What is 'accident'? (несчастный случай)",
+                        "q": "[TRANSLATE] What is 'accident'? (несчастный случай)",
                         "opts": [
                               "A good thing",
                               "A problem or bad event",
@@ -13040,7 +13097,7 @@
                         "expl": "Правильный ответ: \"A problem or bad event\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "Past form of 'make' (делать)",
+                        "q": "[TRANSLATE] Past form of 'make' (делать)",
                         "opts": [
                               "maked",
                               "made",
@@ -13057,7 +13114,7 @@
                         "expl": "Правильный ответ: \"made\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "'I ___ a mistake.' (Я сделал ошибку)",
+                        "q": "[COMPLETE] 'I ___ a mistake.' (Я сделал ошибку)",
                         "opts": [
                               "made",
                               "did",
@@ -13664,7 +13721,7 @@
             ],
             "quiz": [
                   {
-                        "q": "'I ___ to work today. I am sick.' (не могу)",
+                        "q": "[COMPLETE] 'I ___ to work today. I am sick.' (не могу)",
                         "opts": [
                               "cannot / can't",
                               "can",
@@ -13681,7 +13738,7 @@
                         "expl": "Правильный ответ: \"cannot / can't\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "What is a 'GP surgery'? (поликлиника в Англии)",
+                        "q": "[TRANSLATE] What is a 'GP surgery'? (поликлиника в Англии)",
                         "opts": [
                               "A farm manager",
                               "A local doctor clinic",
@@ -13698,7 +13755,7 @@
                         "expl": "Правильный ответ: \"A local doctor clinic\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "If your head hurts, you have a...",
+                        "q": "[TRANSLATE] If your head hurts, you have a...",
                         "opts": [
                               "toothache",
                               "backache",
@@ -13715,7 +13772,7 @@
                         "expl": "Правильный ответ: \"headache\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "'I need a ___ for my finger.' (пластырь)",
+                        "q": "[COMPLETE] 'I need a ___ for my finger.' (пластырь)",
                         "opts": [
                               "plaster",
                               "tablet",
@@ -13732,7 +13789,7 @@
                         "expl": "Правильный ответ: \"plaster\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "'Can you bring me some ___?' (лекарство)",
+                        "q": "[COMPLETE] 'Can you bring me some ___?' (лекарство)",
                         "opts": [
                               "pain",
                               "hurt",
@@ -13749,7 +13806,7 @@
                         "expl": "Правильный ответ: \"medicine\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "'I feel very ___.' (больной)",
+                        "q": "[COMPLETE] 'I feel very ___.' (больной)",
                         "opts": [
                               "ill",
                               "hurt",
@@ -13766,7 +13823,7 @@
                         "expl": "Правильный ответ: \"ill\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "'My back ___.' (болит)",
+                        "q": "[COMPLETE] 'My back ___.' (болит)",
                         "opts": [
                               "hurts",
                               "pains",
@@ -13783,7 +13840,7 @@
                         "expl": "Правильный ответ: \"hurts\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "What is the word for 'стопа'?",
+                        "q": "[TRANSLATE] What is the word for 'стопа'?",
                         "opts": [
                               "leg",
                               "foot",
@@ -13800,7 +13857,7 @@
                         "expl": "Правильный ответ: \"foot\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "To 'call in sick' means...",
+                        "q": "[TRANSLATE] To 'call in sick' means...",
                         "opts": [
                               "To call a doctor",
                               "To call your mother",
@@ -13817,7 +13874,7 @@
                         "expl": "Правильный ответ: \"To call work and say you are ill\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "'You must ___ in your room.' (отдыхать)",
+                        "q": "[COMPLETE] 'You must ___ in your room.' (отдыхать)",
                         "opts": [
                               "work",
                               "rest",
@@ -14446,7 +14503,7 @@
             ],
             "quiz": [
                   {
-                        "q": "Would you like a cup of tea?",
+                        "q": "[TRANSLATE] Would you like a cup of tea?",
                         "opts": [
                               "Yes, I do.",
                               "Yes, please.",
@@ -14463,7 +14520,7 @@
                         "expl": "Правильный ответ: \"Yes, please.\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "What does Cheers mean in the UK?",
+                        "q": "[TRANSLATE] What does Cheers mean in the UK?",
                         "opts": [
                               "Hello",
                               "Bad weather",
@@ -14480,7 +14537,7 @@
                         "expl": "Правильный ответ: \"Thank you or Goodbye\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "If you want food, you are...",
+                        "q": "[TRANSLATE] If you want food, you are...",
                         "opts": [
                               "tired",
                               "happy",
@@ -14497,7 +14554,7 @@
                         "expl": "Правильный ответ: \"hungry\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "If you want water, you are...",
+                        "q": "[TRANSLATE] If you want water, you are...",
                         "opts": [
                               "thirsty",
                               "hungry",
@@ -14514,7 +14571,7 @@
                         "expl": "Правильный ответ: \"thirsty\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "What is a mate?",
+                        "q": "[TRANSLATE] What is a mate?",
                         "opts": [
                               "A farm manager",
                               "A friend or colleague",
@@ -14531,7 +14588,7 @@
                         "expl": "Правильный ответ: \"A friend or colleague\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "How to say конечно in English?",
+                        "q": "[TRANSLATE] How to say конечно in English?",
                         "opts": [
                               "sorry",
                               "lovely",
@@ -14548,7 +14605,7 @@
                         "expl": "Правильный ответ: \"of course\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "Alright? means...",
+                        "q": "[TRANSLATE] Alright? means...",
                         "opts": [
                               "How are you?",
                               "Goodbye",
@@ -14565,7 +14622,7 @@
                         "expl": "Правильный ответ: \"How are you?\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "I am ___ today. I have a lot of work.",
+                        "q": "[COMPLETE] I am ___ today. I have a lot of work.",
                         "opts": [
                               "free",
                               "lovely",
@@ -14582,7 +14639,7 @@
                         "expl": "Правильный ответ: \"busy\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "What do you eat with tea?",
+                        "q": "[TRANSLATE] What do you eat with tea?",
                         "opts": [
                               "A pub",
                               "A weekend",
@@ -14599,7 +14656,7 @@
                         "expl": "Правильный ответ: \"A biscuit\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "___ your weekend! (Наслаждайся)",
+                        "q": "[COMPLETE] ___ your weekend! (Наслаждайся)",
                         "opts": [
                               "Enjoy",
                               "Busy",
@@ -14796,7 +14853,7 @@
     );
 
     // ── RENDER ENGINE ─────────────────────────────────────────────────────────────
-    function saveDone() { localStorage.setItem('fe_a1', JSON.stringify(done)) }
+    function saveDone() { safeSetItem('fe_a1', JSON.stringify(done)) }
     function render() {
       updateHeader();
       const root = document.getElementById('root');
@@ -14818,7 +14875,7 @@
     }
     function setLang(l) {
       lang = l;
-      localStorage.setItem('fe_lang', l);
+      safeSetItem('fe_lang', l);
       setDocumentLang(l);
       document.getElementById('certModalTitle').textContent = tx('cert_modal_title');
       document.getElementById('certModalCopy').textContent = tx('cert_modal_copy');
@@ -15078,7 +15135,7 @@
         const nextTab = tabs[tabIdx + 1];
         const nextName = tl[tabIdx + 1];
         const nxtTx = lang === 'uz' ? 'Keyingi' : lang === 'tj' ? 'Баъдӣ' : lang === 'kg' ? 'Кийинки' : lang === 'kz' ? 'Келесі' : 'Далее';
-        h += `<div style="margin-top:24px"><button class="finish-btn" style="background:#0075de;color:#fff" onclick="setTab('${nextTab}')">${nxtTx}: ${nextName} ➔</button></div>`;
+        h += `<div style="margin-top:24px"><button class="finish-btn"  onclick="setTab('${nextTab}')">${nxtTx}: ${nextName} ➔</button></div>`;
       } else if (tabIdx === tabs.length - 1) {
         const isDone = done.includes(l.id);
         const quizItems = getQuizModel(l);
@@ -15088,7 +15145,7 @@
           if (!attempts.includes(q.c)) { allDone = false; allOk = false; }
         });
         const disabled = !(allDone && allOk);
-        h += `<div style="margin-top:32px;margin-bottom:8px"><button class="finish-btn" style="background:${disabled ? '#e8eaed' : '#0075de'};color:${disabled ? '#8e95a2' : '#fff'};${disabled ? 'box-shadow:none;cursor:not-allowed' : ''}" ${disabled ? 'disabled' : ''} onclick="finishLesson(${l.id})">✓ ${isDone ? t('completed').replace('✓ ', '') : t('complete').replace('✓ ', '')}</button></div>`;
+        h += `<div style="margin-top:32px;margin-bottom:8px"><button class="finish-btn"  ${disabled ? 'disabled' : ''} onclick="finishLesson(${l.id})">✓ ${isDone ? t('completed').replace('✓ ', '') : t('complete').replace('✓ ', '')}</button></div>`;
       }
 
       h += `</div></div>`;
@@ -15122,9 +15179,9 @@
     // ── PROGRESS ──────────────────────────────────────────────────────────────────
     function renderProgress(root) {
       const stats = getProgressStats();
-      const issued = localStorage.getItem('fe_cert_a1_issued') === 'true';
-      const certDate = localStorage.getItem('fe_cert_a1_date') || '';
-      const certName = localStorage.getItem('fe_cert_a1_name') || '';
+      const issued = safeGetItem('fe_cert_a1_issued') === 'true';
+      const certDate = safeGetItem('fe_cert_a1_date') || '';
+      const certName = safeGetItem('fe_cert_a1_name') || '';
       let h = `<div class="scr">${renderScreenNav()}`;
       if (showCourseCongrats && stats.lessonsDone === stats.totalLessons) {
         h += `<div class="done-banner"><div class="done-emoji">🏆</div><div class="done-title">${tx('cert_banner')}</div><div class="done-sub">${tx('cert_banner_sub')}</div></div>`;
@@ -15189,7 +15246,7 @@
       document.getElementById('certGenerateBtn').textContent = tx('print');
       document.getElementById('certNameInput').placeholder = tx('cert_name_placeholder');
       document.getElementById('certNameError').textContent = '';
-      input.value = localStorage.getItem('fe_cert_a1_name') || '';
+      input.value = safeGetItem('fe_cert_a1_name') || '';
       setCertModalOpen(true);
       setTimeout(() => input.focus(), 10);
     }
@@ -15215,9 +15272,9 @@
     function generateCertificate(userName, levelId) {
       const issuedDate = formatCertificateDate();
       populateCertificate(userName, levelId, issuedDate);
-      localStorage.setItem(`fe_cert_${levelId}_name`, userName);
-      localStorage.setItem(`fe_cert_${levelId}_date`, issuedDate);
-      localStorage.setItem(`fe_cert_${levelId}_issued`, 'true');
+      safeSetItem(`fe_cert_${levelId}_name`, userName);
+      safeSetItem(`fe_cert_${levelId}_date`, issuedDate);
+      safeSetItem(`fe_cert_${levelId}_issued`, 'true');
       closeCertModal();
       render();
       setTimeout(() => window.print(), 80);
@@ -15235,8 +15292,8 @@
     }
 
     function downloadCertificate() {
-      const userName = localStorage.getItem('fe_cert_a1_name');
-      const issuedDate = localStorage.getItem('fe_cert_a1_date');
+      const userName = safeGetItem('fe_cert_a1_name');
+      const issuedDate = safeGetItem('fe_cert_a1_date');
       if (!userName || !issuedDate) {
         openCertModal();
         return;

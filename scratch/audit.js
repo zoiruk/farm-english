@@ -38,12 +38,35 @@ LESSONS.forEach(lesson => {
   let quizCount = lesson.quiz ? lesson.quiz.length : 0;
   if (quizCount < REQUIRED_QUIZ) {
     specIssues.push(`Lesson ${lesson.id}: Only ${quizCount} quizzes (Required: ${REQUIRED_QUIZ})`);
+  } else {
+    // Validate options uniqueness and c index validity
+    lesson.quiz.forEach((qItem, qIdx) => {
+      if (typeof qItem.c !== 'number' || qItem.c < 0 || qItem.c >= qItem.opts.length) {
+        specIssues.push(`Lesson ${lesson.id} [Quiz ${qIdx}]: Correct option index c (${qItem.c}) is out of bounds (opts length: ${qItem.opts ? qItem.opts.length : 0})`);
+      }
+      if (qItem.opts && qItem.opts.length === 4) {
+        const uniqueOpts = new Set(qItem.opts.map(o => o.trim().toLowerCase()));
+        if (uniqueOpts.size !== 4) {
+          specIssues.push(`Lesson ${lesson.id} [Quiz ${qIdx}]: Duplicate options found: [${qItem.opts.join(', ')}]`);
+        }
+      }
+    });
   }
 
   // 4. Check Dialogue Count
   let dialogueCount = lesson.dialogue ? lesson.dialogue.length : 0;
   if (dialogueCount < REQUIRED_DIALOGUE) {
     specIssues.push(`Lesson ${lesson.id}: Only ${dialogueCount} dialogue lines (Required: ${REQUIRED_DIALOGUE})`);
+  }
+
+  // 5. Check Quiz tags — [COMPLETE] or [TRANSLATE] prefix required on every question
+  // (opts[c] bounds and duplicate opts are checked by advanced_audit.js)
+  if (lesson.quiz) {
+    lesson.quiz.forEach((qItem, qIdx) => {
+      if (qItem.q && !qItem.q.startsWith('[')) {
+        specIssues.push(`Lesson ${lesson.id} [Quiz ${qIdx}]: Question missing tag prefix [COMPLETE] or [TRANSLATE]: "${qItem.q.substring(0, 50)}"`);
+      }
+    });
   }
 
   // Print words to visually inspect for relevance

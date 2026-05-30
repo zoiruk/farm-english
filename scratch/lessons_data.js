@@ -1473,7 +1473,7 @@ module.exports = [
             ],
             "quiz": [
                   {
-                        "q": "Which sentence is correct?",
+                        "q": "[TRANSLATE] Which sentence is correct?",
                         "opts": [
                               "His name is Rustam. Her name is Fatima.",
                               "His name is Rustam. Her name is he.",
@@ -1494,7 +1494,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"His name is Rustam. Her name is Fatima.\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "Translate: 'Её работа — упаковка. Его работа — сбор ягод.'",
+                        "q": "[TRANSLATE] Translate: 'Её работа — упаковка. Его работа — сбор ягод.'",
                         "opts": [
                               "His job is packing. Her job is picking.",
                               "Her job is packing. His job is picking.",
@@ -1515,7 +1515,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"Her job is packing. His job is picking.\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "'The farm belongs to Tom.' How do we say 'ферма Тома'?",
+                        "q": "[TRANSLATE] 'The farm belongs to Tom.' How do we say 'ферма Тома'?",
                         "opts": [
                               "Tom farm",
                               "Toms farm",
@@ -1536,7 +1536,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"Tom's farm\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "'___ gloves are in the locker.' (his — мужчина)",
+                        "q": "[COMPLETE] '___ gloves are in the locker.' (his — мужчина)",
                         "opts": [
                               "Her",
                               "His",
@@ -1557,7 +1557,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"His\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "'___ shift starts at 6 AM.' (мы)",
+                        "q": "[COMPLETE] '___ shift starts at 6 AM.' (мы)",
                         "opts": [
                               "Their",
                               "Your",
@@ -1578,7 +1578,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"Our\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "'Where is ___ name badge?' (she — женщина)",
+                        "q": "[COMPLETE] 'Where is ___ name badge?' (she — женщина)",
                         "opts": [
                               "his",
                               "she",
@@ -1599,7 +1599,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"her\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "'___ locker is number 12.' (he — мужчина)",
+                        "q": "[COMPLETE] '___ locker is number 12.' (he — мужчина)",
                         "opts": [
                               "Her",
                               "His",
@@ -1620,7 +1620,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"His\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "Translate: 'Наша команда — 8 сборщиков'",
+                        "q": "[TRANSLATE] Translate: 'Наша команда — 8 сборщиков'",
                         "opts": [
                               "Their team has 8 pickers.",
                               "Our team has 8 pickers.",
@@ -1641,7 +1641,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"Our team has 8 pickers.\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "'Anna's job' means:",
+                        "q": "[TRANSLATE] 'Anna's job' means:",
                         "opts": [
                               "Anna owns a job",
                               "The job OF Anna",
@@ -1662,7 +1662,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"The job OF Anna\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "'What is ___ phone number?' — asking about the supervisor (she)",
+                        "q": "[COMPLETE] 'What is ___ phone number?' — asking about the supervisor (she)",
                         "opts": [
                               "his",
                               "her",
@@ -6664,7 +6664,7 @@ module.exports = [
             ],
             "quiz": [
                   {
-                        "q": "'I ___ got my new rubber boots.'",
+                        "q": "[COMPLETE] 'I ___ got my new rubber boots.'",
                         "opts": [
                               "has",
                               "am",
@@ -6685,7 +6685,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"have\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "Adjective order: 'a ___ jacket'",
+                        "q": "[COMPLETE] Adjective order: 'a ___ jacket'",
                         "opts": [
                               "waterproof heavy black",
                               "black waterproof heavy",
@@ -6706,7 +6706,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"heavy black waterproof\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "'She ___ got heavy boots.' (negative)",
+                        "q": "[COMPLETE] 'She ___ got heavy boots.' (negative)",
                         "opts": [
                               "has",
                               "haven't",
@@ -6727,7 +6727,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"hasn't\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "How to translate 'удобный'? (comfortable)",
+                        "q": "[TRANSLATE] How to translate 'удобный'? (comfortable)",
                         "opts": [
                               "dangerous",
                               "comfortable",
@@ -6748,7 +6748,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"comfortable\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "'___ he got a clean apron?' (question)",
+                        "q": "[COMPLETE] '___ he got a clean apron?' (question)",
                         "opts": [
                               "Have",
                               "Has",
@@ -6769,7 +6769,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"Has\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "What is the opposite of 'wet'? (мокрый)",
+                        "q": "[TRANSLATE] What is the opposite of 'wet'? (мокрый)",
                         "opts": [
                               "heavy",
                               "dry",
@@ -6790,7 +6790,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"dry\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "What is 'hairnet'? (сеточка)",
+                        "q": "[TRANSLATE] What is 'hairnet'? (сеточка)",
                         "opts": [
                               "Сеточка для волос",
                               "Наколенники",
@@ -6811,7 +6811,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"Сеточка для волос\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "'My shoes are very ___, they hurt my feet.' (тесные)",
+                        "q": "[COMPLETE] 'My shoes are very ___, they hurt my feet.' (тесные)",
                         "opts": [
                               "loose",
                               "comfortable",
@@ -6832,7 +6832,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"tight\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "'We ___ got knee pads.' (negative)",
+                        "q": "[COMPLETE] 'We ___ got knee pads.' (negative)",
                         "opts": [
                               "hasn't",
                               "don't",
@@ -6853,7 +6853,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"haven't\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "'Always wear a hard hat. It is ___!' (безопасный)",
+                        "q": "[COMPLETE] 'Always wear a hard hat. It is ___!' (безопасный)",
                         "opts": [
                               "dangerous",
                               "safe",
@@ -7666,7 +7666,7 @@ module.exports = [
             ],
             "quiz": [
                   {
-                        "q": "'___ a heater in my caravan.' (1 thing)",
+                        "q": "[COMPLETE] '___ a heater in my caravan.' (1 thing)",
                         "opts": [
                               "There are",
                               "Is there",
@@ -7687,7 +7687,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"There is\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "'___ any hot water.' (negative)",
+                        "q": "[COMPLETE] '___ any hot water.' (negative)",
                         "opts": [
                               "There is any",
                               "There isn't some",
@@ -7708,7 +7708,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"There isn't any\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "'Are there ___ blankets?' (question)",
+                        "q": "[COMPLETE] 'Are there ___ blankets?' (question)",
                         "opts": [
                               "some",
                               "any",
@@ -7729,7 +7729,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"any\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "How to translate 'холодильник'? (fridge)",
+                        "q": "[TRANSLATE] How to translate 'холодильник'? (fridge)",
                         "opts": [
                               "fridge",
                               "cooker",
@@ -7750,7 +7750,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"fridge\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "'There are ___ noisy people in the corridor.' (affirmative)",
+                        "q": "[COMPLETE] 'There are ___ noisy people in the corridor.' (affirmative)",
                         "opts": [
                               "some",
                               "any",
@@ -7771,7 +7771,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"some\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "What is the opposite of 'full'? (полный)",
+                        "q": "[TRANSLATE] What is the opposite of 'full'? (полный)",
                         "opts": [
                               "noisy",
                               "empty",
@@ -7792,7 +7792,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"empty\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "'___ any chairs in the kitchen?' (question, plural)",
+                        "q": "[COMPLETE] '___ any chairs in the kitchen?' (question, plural)",
                         "opts": [
                               "Is there",
                               "Are there",
@@ -7813,7 +7813,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"Are there\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "Where do you wash your clothes? (стирать)",
+                        "q": "[TRANSLATE] Where do you wash your clothes? (стирать)",
                         "opts": [
                               "kitchen",
                               "bedroom",
@@ -7834,7 +7834,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"laundry\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "'The room is not quiet, it is very ___!' (шумно)",
+                        "q": "[COMPLETE] 'The room is not quiet, it is very ___!' (шумно)",
                         "opts": [
                               "empty",
                               "clean",
@@ -7855,7 +7855,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"noisy\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "'I need a repair. The cooker is ___!' (сломана)",
+                        "q": "[COMPLETE] 'I need a repair. The cooker is ___!' (сломана)",
                         "opts": [
                               "broken",
                               "full",
@@ -8646,7 +8646,7 @@ module.exports = [
             ],
             "quiz": [
                   {
-                        "q": "'How ___ milk do you want?' (milk = uncountable)",
+                        "q": "[COMPLETE] 'How ___ milk do you want?' (milk = uncountable)",
                         "opts": [
                               "many",
                               "much",
@@ -8667,7 +8667,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"much\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "'How ___ eggs do you need?' (eggs = countable)",
+                        "q": "[COMPLETE] 'How ___ eggs do you need?' (eggs = countable)",
                         "opts": [
                               "much",
                               "some",
@@ -8688,7 +8688,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"many\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "The MOST POLITE way to order in a shop:",
+                        "q": "[TRANSLATE] The MOST POLITE way to order in a shop:",
                         "opts": [
                               "I want six eggs",
                               "Give me six eggs",
@@ -8709,7 +8709,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"I'd like six eggs, please\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "How to translate 'дешевый'? (cheap)",
+                        "q": "[TRANSLATE] How to translate 'дешевый'? (cheap)",
                         "opts": [
                               "expensive",
                               "cheap",
@@ -8730,7 +8730,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"cheap\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "'I want a ___ of pasta.' (пачка)",
+                        "q": "[COMPLETE] 'I want a ___ of pasta.' (пачка)",
                         "opts": [
                               "bottle",
                               "tin",
@@ -8751,7 +8751,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"packet\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "What is the opposite of 'expensive'? (дорогой)",
+                        "q": "[TRANSLATE] What is the opposite of 'expensive'? (дорогой)",
                         "opts": [
                               "cheap",
                               "receipt",
@@ -8772,7 +8772,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"cheap\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "'Can I pay by ___?' (карта)",
+                        "q": "[COMPLETE] 'Can I pay by ___?' (карта)",
                         "opts": [
                               "cash",
                               "discount",
@@ -8793,7 +8793,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"card\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "What is 'garlic'? (чеснок)",
+                        "q": "[TRANSLATE] What is 'garlic'? (чеснок)",
                         "opts": [
                               "лук",
                               "картошка",
@@ -8814,7 +8814,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"чеснок\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "'I don't want any ___ in my tea.' (сахар)",
+                        "q": "[COMPLETE] 'I don't want any ___ in my tea.' (сахар)",
                         "opts": [
                               "salt",
                               "sugar",
@@ -8835,7 +8835,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"sugar\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "'Here is your ___ for £4.50.' (чек)",
+                        "q": "[COMPLETE] 'Here is your ___ for £4.50.' (чек)",
                         "opts": [
                               "receipt",
                               "discount",
@@ -10469,7 +10469,7 @@ module.exports = [
             ],
             "quiz": [
                   {
-                        "q": "'She ___ born in Tashkent.' (она = she)",
+                        "q": "[COMPLETE] 'She ___ born in Tashkent.' (она = she)",
                         "opts": [
                               "were",
                               "was",
@@ -10490,7 +10490,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"was\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "What does 'marital status' mean? (семейное положение)",
+                        "q": "[TRANSLATE] What does 'marital status' mean? (семейное положение)",
                         "opts": [
                               "Single or married",
                               "Male or female",
@@ -10511,7 +10511,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"Single or married\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "'They ___ born in Kyrgyzstan.' (they = они)",
+                        "q": "[COMPLETE] 'They ___ born in Kyrgyzstan.' (they = они)",
                         "opts": [
                               "was",
                               "is",
@@ -10532,7 +10532,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"were\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "What is a 'surname'? (фамилия)",
+                        "q": "[TRANSLATE] What is a 'surname'? (фамилия)",
                         "opts": [
                               "First name",
                               "Last name",
@@ -10553,7 +10553,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"Last name\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "Please put your ___ on the document. (подпись)",
+                        "q": "[COMPLETE] Please put your ___ on the document. (подпись)",
                         "opts": [
                               "sign",
                               "signature",
@@ -10574,7 +10574,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"signature\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "Write in ___ letters. (Заглавные буквы)",
+                        "q": "[COMPLETE] Write in ___ letters. (Заглавные буквы)",
                         "opts": [
                               "capital",
                               "big",
@@ -10595,7 +10595,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"capital\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "What is 'single'? (холост)",
+                        "q": "[TRANSLATE] What is 'single'? (холост)",
                         "opts": [
                               "Married",
                               "Not married",
@@ -10616,7 +10616,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"Not married\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "Please ___ this application form. (заполните)",
+                        "q": "[COMPLETE] Please ___ this application form. (заполните)",
                         "opts": [
                               "fill on",
                               "fill out",
@@ -10637,7 +10637,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"fill in\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "'___ were you born?' — In 1995.",
+                        "q": "[COMPLETE] '___ were you born?' — In 1995.",
                         "opts": [
                               "Where",
                               "When",
@@ -10658,7 +10658,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"When\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "My gender is ___. (мужской)",
+                        "q": "[COMPLETE] My gender is ___. (мужской)",
                         "opts": [
                               "female",
                               "male",
@@ -11471,7 +11471,7 @@ module.exports = [
             ],
             "quiz": [
                   {
-                        "q": "Past form of 'go' (irregular verb)",
+                        "q": "[TRANSLATE] Past form of 'go' (irregular verb)",
                         "opts": [
                               "goed",
                               "went",
@@ -11492,7 +11492,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"went\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "'I ___ work yesterday.' (Отрицание в прошлом)",
+                        "q": "[COMPLETE] 'I ___ work yesterday.' (Отрицание в прошлом)",
                         "opts": [
                               "didn't work",
                               "don't work",
@@ -11513,7 +11513,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"didn't work\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "Past form of 'lose' (терять)",
+                        "q": "[TRANSLATE] Past form of 'lose' (терять)",
                         "opts": [
                               "losed",
                               "loose",
@@ -11534,7 +11534,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"lost\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "What is a 'timesheet'? (табель)",
+                        "q": "[TRANSLATE] What is a 'timesheet'? (табель)",
                         "opts": [
                               "Daily report",
                               "Paper for work hours",
@@ -11555,7 +11555,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"Paper for work hours\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "Past form of 'see' (видеть)",
+                        "q": "[TRANSLATE] Past form of 'see' (видеть)",
                         "opts": [
                               "seed",
                               "saw",
@@ -11576,7 +11576,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"saw\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "What is the opposite of 'late'? (противоположность слова поздно)",
+                        "q": "[TRANSLATE] What is the opposite of 'late'? (противоположность слова поздно)",
                         "opts": [
                               "early",
                               "ago",
@@ -11597,7 +11597,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"early\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "'Did you ___ the line leader?' (Ты рассказал...?)",
+                        "q": "[COMPLETE] 'Did you ___ the line leader?' (Ты рассказал...?)",
                         "opts": [
                               "told",
                               "tells",
@@ -11618,7 +11618,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"tell\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "What is 'accident'? (несчастный случай)",
+                        "q": "[TRANSLATE] What is 'accident'? (несчастный случай)",
                         "opts": [
                               "A good thing",
                               "A problem or bad event",
@@ -11639,7 +11639,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"A problem or bad event\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "Past form of 'make' (делать)",
+                        "q": "[TRANSLATE] Past form of 'make' (делать)",
                         "opts": [
                               "maked",
                               "made",
@@ -11660,7 +11660,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"made\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "'I ___ a mistake.' (Я сделал ошибку)",
+                        "q": "[COMPLETE] 'I ___ a mistake.' (Я сделал ошибку)",
                         "opts": [
                               "made",
                               "did",
@@ -12440,7 +12440,7 @@ module.exports = [
             ],
             "quiz": [
                   {
-                        "q": "'I ___ to work today. I am sick.' (не могу)",
+                        "q": "[COMPLETE] 'I ___ to work today. I am sick.' (не могу)",
                         "opts": [
                               "cannot / can't",
                               "can",
@@ -12461,7 +12461,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"cannot / can't\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "What is a 'GP surgery'? (поликлиника в Англии)",
+                        "q": "[TRANSLATE] What is a 'GP surgery'? (поликлиника в Англии)",
                         "opts": [
                               "A farm manager",
                               "A local doctor clinic",
@@ -12482,7 +12482,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"A local doctor clinic\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "If your head hurts, you have a...",
+                        "q": "[TRANSLATE] If your head hurts, you have a...",
                         "opts": [
                               "toothache",
                               "backache",
@@ -12503,7 +12503,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"headache\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "'I need a ___ for my finger.' (пластырь)",
+                        "q": "[COMPLETE] 'I need a ___ for my finger.' (пластырь)",
                         "opts": [
                               "plaster",
                               "tablet",
@@ -12524,7 +12524,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"plaster\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "'Can you bring me some ___?' (лекарство)",
+                        "q": "[COMPLETE] 'Can you bring me some ___?' (лекарство)",
                         "opts": [
                               "pain",
                               "hurt",
@@ -12545,7 +12545,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"medicine\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "'I feel very ___.' (больной)",
+                        "q": "[COMPLETE] 'I feel very ___.' (больной)",
                         "opts": [
                               "ill",
                               "hurt",
@@ -12566,7 +12566,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"ill\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "'My back ___.' (болит)",
+                        "q": "[COMPLETE] 'My back ___.' (болит)",
                         "opts": [
                               "hurts",
                               "pains",
@@ -12587,7 +12587,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"hurts\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "What is the word for 'стопа'?",
+                        "q": "[TRANSLATE] What is the word for 'стопа'?",
                         "opts": [
                               "leg",
                               "foot",
@@ -12608,7 +12608,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"foot\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "To 'call in sick' means...",
+                        "q": "[TRANSLATE] To 'call in sick' means...",
                         "opts": [
                               "To call a doctor",
                               "To call your mother",
@@ -12629,7 +12629,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"To call work and say you are ill\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "'You must ___ in your room.' (отдыхать)",
+                        "q": "[COMPLETE] 'You must ___ in your room.' (отдыхать)",
                         "opts": [
                               "work",
                               "rest",
@@ -13431,7 +13431,7 @@ module.exports = [
             ],
             "quiz": [
                   {
-                        "q": "Would you like a cup of tea?",
+                        "q": "[TRANSLATE] Would you like a cup of tea?",
                         "opts": [
                               "Yes, I do.",
                               "Yes, please.",
@@ -13452,7 +13452,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"Yes, please.\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "What does Cheers mean in the UK?",
+                        "q": "[TRANSLATE] What does Cheers mean in the UK?",
                         "opts": [
                               "Hello",
                               "Bad weather",
@@ -13473,7 +13473,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"Thank you or Goodbye\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "If you want food, you are...",
+                        "q": "[TRANSLATE] If you want food, you are...",
                         "opts": [
                               "tired",
                               "happy",
@@ -13494,7 +13494,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"hungry\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "If you want water, you are...",
+                        "q": "[TRANSLATE] If you want water, you are...",
                         "opts": [
                               "thirsty",
                               "hungry",
@@ -13515,7 +13515,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"thirsty\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "What is a mate?",
+                        "q": "[TRANSLATE] What is a mate?",
                         "opts": [
                               "A farm manager",
                               "A friend or colleague",
@@ -13536,7 +13536,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"A friend or colleague\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "How to say конечно in English?",
+                        "q": "[TRANSLATE] How to say конечно in English?",
                         "opts": [
                               "sorry",
                               "lovely",
@@ -13557,7 +13557,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"of course\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "Alright? means...",
+                        "q": "[TRANSLATE] Alright? means...",
                         "opts": [
                               "How are you?",
                               "Goodbye",
@@ -13578,7 +13578,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"How are you?\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "I am ___ today. I have a lot of work.",
+                        "q": "[COMPLETE] I am ___ today. I have a lot of work.",
                         "opts": [
                               "free",
                               "lovely",
@@ -13599,7 +13599,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"busy\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "What do you eat with tea?",
+                        "q": "[TRANSLATE] What do you eat with tea?",
                         "opts": [
                               "A pub",
                               "A weekend",
@@ -13620,7 +13620,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"A biscuit\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "___ your weekend! (Наслаждайся)",
+                        "q": "[COMPLETE] ___ your weekend! (Наслаждайся)",
                         "opts": [
                               "Enjoy",
                               "Busy",
