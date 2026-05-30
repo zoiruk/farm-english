@@ -1,3 +1,23 @@
-﻿node_modules\
+﻿node_modules/
 .env
 .DS_Store
+
+# Editor / IDE
+.vscode/
+.kiro/
+
+# Backup files
+*.bak
+
+# Dev-only artifacts
+artifacts/
+swap.py
+
+# Dev-only scratch scripts (not needed for GitHub Pages)
+scratch/pad_grammar_examples.js
+scratch/rebuild_lessons_data_from_a1.js
+scratch/replace_l11.js
+scratch/replace_l5.js
+scratch/replace_l7.js
+scratch/sync_lessons_from_a1.js
+scratch/upgrade_lessons_to_spec.js
