@@ -29,6 +29,9 @@
       --ne-green: #1aae39;
       --ne-amber: #f9ab00;
       --ne-coral: var(--c-accent);
+      --ne-magenta: #c23a82;
+      --ne-red: #ef4444;
+      --ne-teal: #14b8a6;
       --ne-ease: cubic-bezier(0.22, 1, 0.36, 1);
       --ne-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
       --c-a1: var(--c-accent);
@@ -54,7 +57,8 @@
     * {
       box-sizing: border-box;
       margin: 0;
-      padding: 0
+      padding: 0;
+      -webkit-tap-highlight-color: transparent
     }
 
     body {
@@ -93,13 +97,17 @@
       color: var(--ne-ink);
       cursor: pointer;
       font-family: inherit;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+      box-shadow:
+        0 1px 2px rgba(60, 64, 67, 0.06),
+        0 4px 12px rgba(66, 133, 244, 0.10);
       transition: transform .15s, box-shadow .15s
     }
 
     .float-back:active {
       transform: scale(.95);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, .06)
+      box-shadow:
+        0 1px 2px rgba(60, 64, 67, 0.04),
+        0 2px 6px rgba(66, 133, 244, 0.08)
     }
 
     .float-back .fb-arrow {
@@ -120,13 +128,25 @@
       border-radius: 16px;
       padding: 18px 20px 16px;
       margin-bottom: 14px;
-      border-left: 4px solid #3b82f6;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, .05);
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        0 1px 3px rgba(60, 64, 67, 0.06),
+        0 4px 12px rgba(66, 133, 244, 0.08);
       cursor: pointer;
       transition: box-shadow .2s, transform .15s;
       width: 100%;
       text-align: left;
       font-family: inherit
+    }
+
+    .ch-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      background: currentColor;
+      opacity: 0.9;
     }
 
     .ch-card:active {
@@ -268,7 +288,9 @@
     .tab.on {
       background: #fff;
       color: var(--ne-ink);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, .08)
+      box-shadow:
+        0 1px 2px rgba(60, 64, 67, 0.06),
+        0 2px 6px rgba(66, 133, 244, 0.10)
     }
 
     button:focus-visible,
@@ -821,7 +843,7 @@
 
     .g-cult {
       background: #fffbe6;
-      border-left: 4px solid #f9a825;
+      border-left: 4px solid var(--ne-amber);
       padding: 12px;
       border-radius: 0 8px 8px 0;
       margin-bottom: 12px;
@@ -14918,7 +14940,24 @@
     function setPfCat(c) { pfCat = c; render(); }
 
     // ── HOME ──────────────────────────────────────────────────────────────────────
-    const CH_COLORS = ['#3b82f6', '#e87830', '#f59e0b', '#22a65e', '#1a9cb0', '#8b5cf6', '#c23a82', '#e87830', '#3dba5e', '#6366f1', '#ef4444', '#0ea5e9', '#a855f7', '#14b8a6', '#f97316'];
+    // Colors cycle through CSS token values — must stay in sync with :root variables
+    const CH_COLORS = [
+      'var(--ne-primary)',   // #1a73e8 blue
+      'var(--ne-coral)',     // #e87830 coral/A1
+      'var(--ne-amber)',     // #f9ab00 amber
+      'var(--ne-green)',     // #1aae39 green
+      'var(--ne-cyan)',      // #12b5cb cyan
+      'var(--ne-violet)',    // #7c4dff violet
+      'var(--ne-magenta)',   // #c23a82 magenta
+      'var(--ne-coral)',     // repeat coral
+      'var(--ne-green)',     // repeat green
+      'var(--ne-primary)',   // repeat blue
+      'var(--ne-red)',       // #ef4444 red
+      'var(--ne-cyan)',      // repeat cyan
+      'var(--ne-violet)',    // repeat violet
+      'var(--ne-teal)',      // #14b8a6 teal
+      'var(--ne-amber)'      // repeat amber
+    ];
     function renderHome(root) {
       const stats = getProgressStats();
       let h = '<div class="scr">';
@@ -14945,7 +14984,7 @@
         const isDone = done.includes(l.id);
         const color = CH_COLORS[i % CH_COLORS.length];
         const pct = isDone ? 100 : 0;
-        h += `<button type="button" class="ch-card" style="border-left-color:${color}" onclick="openLesson(${l.id})" aria-label="${escapeAttr(gl(l, 'name') + (isDone ? ' — ' + t('completed') : ''))}">`;
+        h += `<button type="button" class="ch-card" style="color:${color}" onclick="openLesson(${l.id})" aria-label="${escapeAttr(gl(l, 'name') + (isDone ? ' — ' + t('completed') : ''))}">`;
         h += `<div class="ch-badge" style="color:${color}" aria-hidden="true">CHAPTER ${l.id}</div>`;
         h += `<div class="ch-title">${gl(l, 'name')}</div>`;
         h += `<div class="ch-sub">${l.cefr}</div>`;
