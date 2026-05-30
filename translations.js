@@ -701,12 +701,20 @@ const LANGS = [
 // Сохранение/чтение языка из localStorage
 // ──────────────────────────────────────────────
 function getLang() {
-  return localStorage.getItem('fe_lang') || 'ru';
+  try {
+    return localStorage.getItem('fe_lang') || 'ru';
+  } catch (e) {
+    return 'ru';
+  }
 }
 
 function setLang(code) {
   window._lang = code;
-  localStorage.setItem('fe_lang', code);
+  try {
+    localStorage.setItem('fe_lang', code);
+  } catch (e) {
+    console.error('LocalStorage write failed:', e);
+  }
 }
 
 // Инициализация при загрузке

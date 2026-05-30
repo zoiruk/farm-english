@@ -44,7 +44,7 @@ function checkWordCoverage(lesson) {
 
   for (const [index, word] of lesson.words.entries()) {
     const prefix = `words[${index}]`;
-    for (const key of ['e', 'en', 'transcr', ...LANGS]) {
+    for (const key of ['e', 'en', 'transcr', 'pn', ...LANGS]) {
       if (!hasText(word[key])) {
         addIssue(lessonId, 'words', `${prefix} missing ${key}`);
       }
@@ -94,9 +94,14 @@ function checkQuiz(lesson) {
     if (!hasText(item.q)) addIssue(lessonId, 'quiz', `${prefix} missing q`);
     if (!Array.isArray(item.opts) || item.opts.length !== 4) {
       addIssue(lessonId, 'quiz', `${prefix} should have exactly 4 opts`);
+    } else {
+      const uniqueOpts = new Set(item.opts.map(o => o.trim().toLowerCase()));
+      if (uniqueOpts.size !== 4) {
+        addIssue(lessonId, 'quiz', `${prefix} has duplicate options: [${item.opts.join(', ')}]`);
+      }
     }
-    if (typeof item.c !== 'number') {
-      addIssue(lessonId, 'quiz', `${prefix} missing numeric c`);
+    if (typeof item.c !== 'number' || item.c < 0 || item.opts && item.c >= item.opts.length) {
+      addIssue(lessonId, 'quiz', `${prefix} index c (${item.c}) is out of bounds or missing`);
     }
     checkLocalizedFields(lessonId, item, ['hint', 'expl'], `quiz:${index}`);
   }

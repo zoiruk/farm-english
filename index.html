@@ -7,23 +7,46 @@
   <title>FarmEnglish — Английский для сезонных рабочих</title>
   <style>
     :root {
-      --bg: #f0f2f5;
-      --bg-top: linear-gradient(180deg, #dce4ed 0%, #f0f2f5 40%);
-      --card: #ffffff;
-      --card-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-      --card-shadow-hover: 0 4px 12px rgba(0,0,0,0.08);
-      --text: #1a1a2e;
-      --text2: #5a6070;
-      --text3: #8e95a2;
-      --border: #e8eaed;
-      --radius: 16px;
-      /* CEFR Level Colors */
+      --bg: #eef3fb;
+      --bg-top: linear-gradient(180deg, #f7faff 0%, #eef3fb 42%, #ffffff 100%);
+      --card: rgba(255, 255, 255, 0.9);
+      --card-solid: #ffffff;
+      --card-shadow:
+        0 1px 2px rgba(60, 64, 67, 0.06),
+        0 10px 28px rgba(66, 133, 244, 0.10);
+      --card-shadow-hover:
+        0 2px 8px rgba(60, 64, 67, 0.08),
+        0 16px 38px rgba(66, 133, 244, 0.16);
+      --text: #1b1b1f;
+      --text2: #4a4d52;
+      --text3: #69707c;
+      --border: rgba(26, 115, 232, 0.14);
+      --radius: 22px;
+      --ne-primary: #1a73e8;
+      --ne-primary-2: #8ab4f8;
+      --ne-violet: #7c4dff;
+      --ne-cyan: #12b5cb;
+      --ne-green: #1aae39;
+      --ne-amber: #f9ab00;
+      --ne-coral: #e87830;
+      --ne-ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --ne-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
       --c-a1: #e87830;
-      --c-a2: #22a65e;
-      --c-b1: #1a9cb0;
-      --c-b2: #3dba5e;
-      --c-c1: #c23a82;
-      --c-c2: #6b7280;
+      --c-a2: #1aae39;
+      --c-b1: #12b5cb;
+      --c-b2: #1a73e8;
+      --c-c1: #7c4dff;
+      --c-c2: #5f6368;
+
+      /* Aliases to bridge standard and ne- prefixed variables */
+      --ne-bg: var(--bg);
+      --ne-surface: var(--card);
+      --ne-ink: var(--text);
+      --ne-muted: var(--text2);
+      --ne-hint: var(--text3);
+      --ne-line: var(--border);
+      --ne-shadow: var(--card-shadow);
+      --ne-shadow-strong: var(--card-shadow-hover);
     }
 
     * {
@@ -442,39 +465,6 @@
       letter-spacing: 0.4px;
     }
     /* Material 3 Expressive + Neural Expressive skin */
-    :root {
-      --bg: #eef3fb;
-      --bg-top:
-        linear-gradient(180deg, #f7faff 0%, #eef3fb 42%, #ffffff 100%);
-      --card: rgba(255, 255, 255, 0.9);
-      --card-solid: #ffffff;
-      --card-shadow:
-        0 1px 2px rgba(60, 64, 67, 0.06),
-        0 10px 28px rgba(66, 133, 244, 0.10);
-      --card-shadow-hover:
-        0 2px 8px rgba(60, 64, 67, 0.08),
-        0 16px 38px rgba(66, 133, 244, 0.16);
-      --text: #1b1b1f;
-      --text2: #4a4d52;
-      --text3: #69707c;
-      --border: rgba(26, 115, 232, 0.14);
-      --radius: 22px;
-      --ne-primary: #1a73e8;
-      --ne-primary-2: #8ab4f8;
-      --ne-violet: #7c4dff;
-      --ne-cyan: #12b5cb;
-      --ne-green: #1aae39;
-      --ne-amber: #f9ab00;
-      --ne-coral: #e87830;
-      --ne-ease: cubic-bezier(0.22, 1, 0.36, 1);
-      --ne-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-      --c-a1: #e87830;
-      --c-a2: #1aae39;
-      --c-b1: #12b5cb;
-      --c-b2: #1a73e8;
-      --c-c1: #7c4dff;
-      --c-c2: #5f6368;
-    }
 
     body {
       background:
@@ -618,6 +608,65 @@
     .lv-list {
       gap: 12px;
       padding: 0 16px 26px;
+    }
+
+    .onboarding-card {
+      border: 1px solid rgba(232, 120, 48, 0.22);
+      border-radius: 22px;
+      padding: 20px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(254, 247, 240, 0.94));
+      box-shadow: 0 4px 16px rgba(232, 120, 48, 0.08);
+      margin-bottom: 24px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      position: relative;
+      overflow: hidden;
+      text-align: left;
+    }
+    .onboarding-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 5px;
+      background: #e87830;
+      opacity: 0.9;
+    }
+    .onboarding-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #e87830;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .onboarding-text {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .onboarding-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #e87830;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(232, 120, 48, 0.2);
+      transition: background 0.15s, transform 0.1s;
+      text-decoration: none;
+    }
+    .onboarding-btn:hover {
+      background: #d46a24;
+    }
+    .onboarding-btn:active {
+      transform: scale(0.97);
     }
 
     .lv-card {
@@ -858,28 +907,58 @@
 
   <script src="translations.js"></script>
   <script>
-    // window._lang уже инициализирован в translations.js через getLang()
+    // Safe storage helpers
+    function safeGetItem(key, fallback = '') {
+      try {
+        return localStorage.getItem(key) || fallback;
+      } catch (e) {
+        return fallback;
+      }
+    }
 
+    function safeGetJSON(key, fallback = []) {
+      try {
+        const val = localStorage.getItem(key);
+        if (!val) return fallback;
+        const parsed = JSON.parse(val);
+        if (Array.isArray(fallback) && !Array.isArray(parsed)) return fallback;
+        return parsed;
+      } catch (e) {
+        return fallback;
+      }
+    }
+
+    function safeSetItem(key, value) {
+      try {
+        localStorage.setItem(key, value);
+        return true;
+      } catch (e) {
+        console.error('LocalStorage write failed:', e);
+        return false;
+      }
+    }
+
+    // Colors must match CSS tokens: --c-a1 #e87830, --c-a2 #1aae39, --c-b1 #12b5cb, --c-b2 #1a73e8, --c-c1 #7c4dff
     const LEVELS = [
       { id: 'a1', code: 'CEFR A0-A1', name_key: 'level_a1_title', desc_key: 'level_a1_desc', file: 'a1.html', color: '#e87830', icon: '📘', iconBg: 'rgba(232,120,48,0.12)' },
-      { id: 'a2', code: 'CEFR A1-A2', name_key: 'level_a2_title', desc_key: 'level_a2_desc', file: 'a2.html', color: '#22a65e', icon: '📗', iconBg: 'rgba(34,166,94,0.12)', locked: true },
-      { id: 'b1', code: 'CEFR A2-B1', name_key: 'level_b1_title', desc_key: 'level_b1_desc', file: 'b1.html', color: '#1a9cb0', icon: '📙', iconBg: 'rgba(26,156,176,0.12)', locked: true },
-      { id: 'b2', code: 'CEFR B1-B2', name_key: 'level_b2_title', desc_key: 'level_b2_desc', file: 'b2.html', color: '#3dba5e', icon: '📕', iconBg: 'rgba(61,186,94,0.12)', locked: true },
-      { id: 'c1', code: 'CEFR B2-C1', name_key: 'level_c1_title', desc_key: 'level_c1_desc', file: 'c1.html', color: '#c23a82', icon: '💎', iconBg: 'rgba(194,58,130,0.12)', locked: true }
+      { id: 'a2', code: 'CEFR A1-A2', name_key: 'level_a2_title', desc_key: 'level_a2_desc', file: 'a2.html', color: '#1aae39', icon: '📗', iconBg: 'rgba(26,174,57,0.12)', locked: true },
+      { id: 'b1', code: 'CEFR A2-B1', name_key: 'level_b1_title', desc_key: 'level_b1_desc', file: 'b1.html', color: '#12b5cb', icon: '📙', iconBg: 'rgba(18,181,203,0.12)', locked: true },
+      { id: 'b2', code: 'CEFR B1-B2', name_key: 'level_b2_title', desc_key: 'level_b2_desc', file: 'b2.html', color: '#1a73e8', icon: '📕', iconBg: 'rgba(26,115,232,0.12)', locked: true },
+      { id: 'c1', code: 'CEFR B2-C1', name_key: 'level_c1_title', desc_key: 'level_c1_desc', file: 'c1.html', color: '#7c4dff', icon: '💎', iconBg: 'rgba(124,77,255,0.12)', locked: true }
     ];
 
     function render() {
       const lang = window._lang || 'ru';
 
       // Stats
-      const doneA1 = JSON.parse(localStorage.getItem('fe_a1') || '[]');
-      const storedWords = Number(localStorage.getItem('fe_words') || '0');
+      const doneA1 = safeGetJSON('fe_a1', []);
+      const storedWords = Number(safeGetItem('fe_words', '0'));
       const derivedWords = doneA1.length * 30;
       const wordsLearned = Math.max(storedWords, derivedWords);
-      localStorage.setItem('fe_words', String(wordsLearned));
+      safeSetItem('fe_words', String(wordsLearned));
       document.getElementById('st_lessons').innerText = doneA1.length;
       document.getElementById('st_words').innerText = String(wordsLearned);
-      document.getElementById('st_streak').innerText = localStorage.getItem('fe_streak') || '0';
+      document.getElementById('st_streak').innerText = safeGetItem('fe_streak', '0');
 
       // Language header
       const flags = { ru: '🇷🇺', uz: '🇺🇿', tj: '🇹🇯', kg: '🇰🇬', kz: '🇰🇿' };
@@ -904,6 +983,46 @@
       const list = document.getElementById('lv_list');
       list.innerHTML = '';
 
+      if (doneA1.length === 0) {
+        const onboardingData = {
+          ru: {
+            title: "Добро пожаловать в FarmEnglish! 👋",
+            text: "Начните с первого урока A1, чтобы освоить базовый английский язык для жизни и работы на фермах Великобритании. Ваш прогресс сохраняется автоматически.",
+            btn: "Начать Урок 1"
+          },
+          uz: {
+            title: "FarmEnglish-ga xush kelibsiz! 👋",
+            text: "Buyuk Britaniya fermalarida yashash va ishlash uchun asosiy ingliz tilini o'rganishni A1-ning birinchi darsidan boshlang. Rivojlanishingiz avtomatik ravishda saqlanadi.",
+            btn: "1-darsni boshlash"
+          },
+          tj: {
+            title: "Хуш омадед ба FarmEnglish! 👋",
+            text: "Аз дарси аввалини A1 оғоз кунед, то забони англисии асосиро барои ҳаёт ва кор дар фермаҳои Бритониёи Кабир омӯзед. Пешрафти шумо ба таври худкор сабт мешавад.",
+            btn: "Оғози дарси 1"
+          },
+          kg: {
+            title: "FarmEnglish-ке кош келиңиз! 👋",
+            text: "Улуу Британиянын фермаларында жашоо жана иштөө үчүн негизги англис тилин үйрөнүүнү А1дин биринчи сабагынан баштаңыз. Сиздин прогрессиңиз автоматтык түрдө сакталат.",
+            btn: "1-сабакты баштоо"
+          },
+          kz: {
+            title: "FarmEnglish-ке қош келдіңіз! 👋",
+            text: "Ұлыбритания фермаларында тұру және жұмыс істеу үшін негізгі ағылшын тілін үйренуді А1-дің бірінші сабағынан бастаңыз. Прогресіңіз автоматты түрде сақталады.",
+            btn: "1-сабақты бастау"
+          }
+        };
+        const oData = onboardingData[lang] || onboardingData.ru;
+        list.innerHTML += `
+          <div class="onboarding-card">
+            <div class="onboarding-title">${oData.title}</div>
+            <div class="onboarding-text">${oData.text}</div>
+            <a class="onboarding-btn" href="a1.html?lesson=1">
+              ${oData.btn} <span class="icon">arrow_forward</span>
+            </a>
+          </div>
+        `;
+      }
+
       LEVELS.forEach(lv => {
         const isLocked = lv.locked && doneA1.length < 15;
         const doneCount = lv.id === 'a1' ? doneA1.length : 0;
@@ -911,9 +1030,13 @@
 
         const card = document.createElement('div');
         card.className = `lv-card ${isLocked ? 'locked' : ''}`;
-        card.style.borderLeftColor = lv.color;
         card.style.color = lv.color;
+        card.setAttribute('role', 'button');
+        card.setAttribute('tabindex', isLocked ? '-1' : '0');
+        card.setAttribute('aria-label', `${t(lv.name_key)}${isLocked ? '. ' + t('locked') : ''}`);
+        card.setAttribute('aria-disabled', isLocked ? 'true' : 'false');
         card.onclick = () => { if (!isLocked) window.location.href = lv.file; };
+        card.onkeydown = (e) => { if (!isLocked && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); window.location.href = lv.file; } };
 
         const linkLabel = isLocked ? t('locked') : (doneCount > 0 ? t('continue_btn') : t('start'));
 

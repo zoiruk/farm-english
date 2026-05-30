@@ -1,2560 +1,4 @@
-<!DOCTYPE html>
-<html lang="ru">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>FarmEnglish — A0-A1</title>
-  <style>
-    :root {
-      --bg: #eef3fb;
-      --bg-top: linear-gradient(180deg, #f7faff 0%, #eef3fb 42%, #ffffff 100%);
-      --card: rgba(255, 255, 255, 0.9);
-      --card-solid: #ffffff;
-      --card-shadow:
-        0 1px 2px rgba(60, 64, 67, 0.06),
-        0 10px 28px rgba(66, 133, 244, 0.10);
-      --card-shadow-hover:
-        0 2px 8px rgba(60, 64, 67, 0.08),
-        0 16px 38px rgba(66, 133, 244, 0.16);
-      --text: #1b1b1f;
-      --text2: #4a4d52;
-      --text3: #69707c;
-      --border: rgba(26, 115, 232, 0.14);
-      --radius: 22px;
-      --ne-primary: #1a73e8;
-      --ne-primary-2: #8ab4f8;
-      --ne-violet: #7c4dff;
-      --ne-cyan: #12b5cb;
-      --ne-green: #1aae39;
-      --ne-amber: #f9ab00;
-      --ne-coral: var(--c-accent);
-      --ne-ease: cubic-bezier(0.22, 1, 0.36, 1);
-      --ne-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-      --c-a1: var(--c-accent);
-      --c-a2: #1aae39;
-      --c-b1: #12b5cb;
-      --c-b2: #1a73e8;
-      --c-c1: #7c4dff;
-      --c-c2: #5f6368;
-
-      --c-accent: var(--c-a1);
-
-      /* Aliases to bridge standard and ne- prefixed variables */
-      --ne-bg: var(--bg);
-      --ne-surface: var(--card);
-      --ne-ink: var(--text);
-      --ne-muted: var(--text2);
-      --ne-hint: var(--text3);
-      --ne-line: var(--border);
-      --ne-shadow: var(--card-shadow);
-      --ne-shadow-strong: var(--card-shadow-hover);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #f0f2f5;
-      color: var(--ne-ink);
-      min-height: 100vh;
-      line-height: 1.5
-    }
-
-    .app {
-      max-width: 430px;
-      margin: 0 auto;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background: linear-gradient(180deg, #dce4ed 0%, #f0f2f5 35%)
-    }
-
-    .float-back {
-      position: fixed;
-      top: 12px;
-      right: max(12px, calc(50% - 203px));
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      padding: 8px 12px 8px 16px;
-      background: rgba(255, 255, 255, .88);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid #e8eaed;
-      border-radius: 99px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--ne-ink);
-      cursor: pointer;
-      font-family: inherit;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
-      transition: transform .15s, box-shadow .15s
-    }
-
-    .float-back:active {
-      transform: scale(.95);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, .06)
-    }
-
-    .float-back .fb-arrow {
-      font-size: 15px;
-      color: var(--c-accent)
-    }
-
-    .scr {
-      flex: 1;
-      overflow-y: auto;
-      padding: 16px
-    }
-
-    /* Chapter card — reference style */
-    .ch-card {
-      appearance: none;
-      background: #fff;
-      border-radius: 16px;
-      padding: 18px 20px 16px;
-      margin-bottom: 14px;
-      border-left: 4px solid #3b82f6;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, .05);
-      cursor: pointer;
-      transition: box-shadow .2s, transform .15s;
-      width: 100%;
-      text-align: left;
-      font-family: inherit
-    }
-
-    .ch-card:active {
-      transform: scale(.985)
-    }
-
-    .ch-badge {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .7px;
-      margin-bottom: 8px;
-      display: inline-block
-    }
-
-    .ch-title {
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--ne-ink);
-      margin-bottom: 4px;
-      line-height: 1.25;
-      letter-spacing: -.2px
-    }
-
-    .ch-sub {
-      font-size: 13px;
-      color: #8e95a2;
-      margin-bottom: 14px;
-      font-weight: 400
-    }
-
-    .ch-prog-wrap {
-      display: flex;
-      align-items: center;
-      gap: 10px
-    }
-
-    .ch-prog-bar {
-      flex: 1;
-      background: #e8eaed;
-      border-radius: 99px;
-      height: 6px
-    }
-
-    .ch-prog-fill {
-      height: 6px;
-      border-radius: 99px;
-      transition: width .5s
-    }
-
-    .ch-prog-dot {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: #e8eaed;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      flex-shrink: 0
-    }
-
-    .ch-prog-dot.done {
-      font-size: 14px
-    }
-
-    /* Lesson inner view */
-    .les-scr {
-      flex: 1;
-      overflow-y: auto
-    }
-
-    .les-hdr {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 16px;
-      background: rgba(255, 255, 255, .92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid #e8eaed;
-      position: sticky;
-      top: 0;
-      z-index: 50
-    }
-
-    .back-btn {
-      background: #f0f2f5;
-      border: 1px solid #e0e0e0;
-      border-radius: 10px;
-      padding: 7px 14px;
-      font-size: 13px;
-      color: var(--ne-ink);
-      cursor: pointer;
-      font-weight: 600;
-      white-space: nowrap;
-      font-family: inherit
-    }
-
-    .les-hdr-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--ne-ink);
-      flex: 1;
-      line-height: 1.3
-    }
-
-    .les-hdr-lvl {
-      font-size: 11px;
-      font-weight: 700;
-      color: #fff;
-      background: var(--c-accent);
-      border-radius: 8px;
-      padding: 3px 10px;
-      white-space: nowrap
-    }
-
-    .tabs {
-      display: flex;
-      background: #e8eaed;
-      margin: 12px 16px;
-      border-radius: 12px;
-      padding: 3px;
-      gap: 3px
-    }
-
-    .tab {
-      flex: 1;
-      padding: 8px 2px;
-      border: none;
-      border-radius: 10px;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      background: none;
-      color: #8e95a2;
-      font-family: inherit
-    }
-
-    .tab.on {
-      background: #fff;
-      color: var(--ne-ink);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, .08)
-    }
-
-    button:focus-visible,
-    .ch-card:focus-visible,
-    .pf-chip:focus-visible,
-    .w-card:focus-visible {
-      outline: 2px solid var(--ne-primary);
-      outline-offset: 2px
-    }
-
-    .les-body {
-      padding: 0 16px 80px;
-      padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px))
-    }
-
-    .g-card {
-      background: #fff;
-      border-radius: 14px;
-      border: 1px solid #e8eaed;
-      padding: 16px;
-      margin-bottom: 12px
-    }
-
-    .g-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--c-accent);
-      margin-bottom: 6px
-    }
-
-    .g-rule {
-      font-size: 14px;
-      color: #333;
-      line-height: 1.7;
-      background: #fef7f0;
-      border-radius: 10px;
-      padding: 12px;
-      margin-bottom: 10px
-    }
-
-    .g-rule code {
-      font-family: inherit;
-      font-weight: 700;
-      color: var(--ne-ink)
-    }
-
-    .g-ex-box {
-      border-left: 3px solid var(--c-accent);
-      padding: 10px 14px;
-      background: #fef7f0;
-      border-radius: 0 10px 10px 0;
-      margin-bottom: 8px
-    }
-
-    .g-en {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--ne-ink);
-      margin-bottom: 4px
-    }
-
-    .g-tr {
-      font-size: 12px;
-      color: #666
-    }
-
-    .g-note {
-      font-size: 12px;
-      color: #888;
-      margin-top: 8px;
-      font-style: italic;
-      background: #fffbe6;
-      padding: 8px 12px;
-      border-radius: 10px
-    }
-
-    .speak-btn {
-      background: var(--c-accent);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      padding: 7px 14px;
-      font-size: 12px;
-      cursor: pointer;
-      margin-top: 8px;
-      font-family: inherit;
-      font-weight: 600
-    }
-
-    .w-hint {
-      font-size: 13px;
-      color: #c05600;
-      background: #fef7f0;
-      border-radius: 10px;
-      padding: 10px;
-      text-align: center;
-      font-weight: 600;
-      margin-bottom: 14px;
-    }
-
-    .w-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px
-    }
-
-    @media (min-width: 768px) {
-      .w-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    .w-card {
-      appearance: none;
-      background: #fff;
-      border-radius: 14px;
-      border: 1px solid #e8eaed;
-      padding: 14px 10px;
-      cursor: pointer;
-      text-align: center;
-      transition: all .15s;
-      width: 100%;
-      font-family: inherit
-    }
-
-    .w-card:active {
-      background: #fef7f0;
-      border-color: var(--c-accent)
-    }
-
-    .w-em {
-      font-size: 30px;
-      margin-bottom: 6px;
-      display: block
-    }
-
-    .w-en {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--ne-ink)
-    }
-
-    .w-ru {
-      font-size: 11px;
-      color: #666;
-      margin-top: 3px
-    }
-
-    .w-pn {
-      font-size: 14px;
-      color: var(--c-accent);
-      margin-top: 3px;
-      font-style: italic
-    }
-
-    .d-play {
-      background: var(--c-accent);
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      padding: 14px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      width: 100%;
-      margin-bottom: 14px;
-      font-family: inherit
-    }
-
-    .d-bbl {
-      margin-bottom: 11px
-    }
-
-    .d-mgr {
-      background: #fef7f0;
-      border-radius: 4px 14px 14px 14px;
-      padding: 11px 14px;
-      max-width: 88%
-    }
-
-    .d-wkr {
-      background: #fff;
-      border: 1px solid #e8eaed;
-      border-radius: 14px 4px 14px 14px;
-      padding: 11px 14px;
-      max-width: 88%;
-      margin-left: auto
-    }
-
-    .d-spkr {
-      font-size: 10px;
-      font-weight: 700;
-      color: #aaa;
-      margin-bottom: 3px
-    }
-
-    .d-txt {
-      font-size: 14px;
-      color: var(--ne-ink);
-      line-height: 1.5;
-      font-weight: 500
-    }
-
-    .d-tr {
-      font-size: 11px;
-      color: #888;
-      margin-top: 3px
-    }
-
-    .d-spk-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 14px;
-      margin-top: 4px;
-      opacity: .7
-    }
-
-    .q-card {
-      background: #fff;
-      border-radius: 14px;
-      border: 1px solid #e8eaed;
-      padding: 16px;
-      margin-bottom: 12px
-    }
-
-    .q-num {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--c-accent);
-      margin-bottom: 6px
-    }
-
-    .q-q {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--ne-ink);
-      margin-bottom: 12px;
-      line-height: 1.4
-    }
-
-    .q-hint {
-      font-size: 14px;
-      font-weight: 400;
-      color: #8e95a2;
-      margin-top: 6px
-    }
-
-    .q-opts {
-      display: flex;
-      flex-direction: column;
-      gap: 8px
-    }
-
-    .q-opt {
-      background: #f5f6f8;
-      border: 1px solid #e8eaed;
-      border-radius: 12px;
-      padding: 12px 15px;
-      font-size: 14px;
-      cursor: pointer;
-      color: #333;
-      text-align: left;
-      font-weight: 500;
-      font-family: inherit
-    }
-
-    .q-opt.correct {
-      background: #ecfdf5;
-      border-color: #22a65e;
-      color: #166534;
-      font-weight: 600
-    }
-
-    .q-opt.wrong {
-      background: #fef2f2;
-      border-color: #ef4444;
-      color: #991b1b
-    }
-
-    .q-fb {
-      font-size: 13px;
-      font-weight: 600;
-      margin-top: 8px;
-      text-align: center
-    }
-
-    .q-fb.ok {
-      color: #22a65e
-    }
-
-    .q-fb.no {
-      color: #ef4444
-    }
-
-    .done-banner {
-      background: linear-gradient(135deg, var(--c-accent), #f59e0b);
-      border-radius: 14px;
-      padding: 22px;
-      text-align: center;
-      margin-top: 8px;
-      margin-bottom: 16px
-    }
-
-    .done-emoji {
-      font-size: 40px;
-      margin-bottom: 8px
-    }
-
-    .done-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 4px
-    }
-
-    .done-sub {
-      font-size: 13px;
-      color: rgba(255, 255, 255, .85);
-      margin-bottom: 12px
-    }
-
-    .finish-btn {
-      background: #fff;
-      color: var(--c-accent);
-      border: none;
-      border-radius: 12px;
-      padding: 14px;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      width: 100%;
-      font-family: inherit
-    }
-
-    .pf-row {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 12px;
-      overflow-x: auto;
-      padding-bottom: 2px
-    }
-
-    .pf-chip {
-      appearance: none;
-      background: #fff;
-      border: 1px solid #e8eaed;
-      border-radius: 99px;
-      padding: 6px 14px;
-      font-size: 12px;
-      font-weight: 600;
-      color: #666;
-      white-space: nowrap;
-      cursor: pointer;
-      flex-shrink: 0;
-      font-family: inherit
-    }
-
-    .pf-chip.on {
-      background: var(--c-accent);
-      border-color: var(--c-accent);
-      color: #fff
-    }
-
-    .ph-item {
-      background: #fff;
-      border-radius: 12px;
-      border: 1px solid #e8eaed;
-      padding: 13px 15px;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 10px
-    }
-
-    .ph-txt {
-      flex: 1
-    }
-
-    .ph-en {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--ne-ink)
-    }
-
-    .ph-tr {
-      font-size: 12px;
-      color: #888;
-      margin-top: 2px
-    }
-
-    .ph-sp {
-      background: #fef7f0;
-      border: 1px solid #e8eaed;
-      border-radius: 8px;
-      padding: 7px 10px;
-      font-size: 16px;
-      cursor: pointer;
-      flex-shrink: 0
-    }
-
-    .str-card {
-      background: linear-gradient(135deg, var(--c-accent), #f59e0b);
-      border-radius: 14px;
-      padding: 18px;
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 14px
-    }
-
-    .str-n {
-      font-size: 40px;
-      font-weight: 700;
-      color: #fff
-    }
-
-    .str-info .str-t {
-      font-size: 16px;
-      font-weight: 700;
-      color: #fff
-    }
-
-    .str-info .str-s {
-      font-size: 12px;
-      color: rgba(255, 255, 255, .8);
-      margin-top: 3px
-    }
-
-    .stat-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 14px
-    }
-
-    .st-card {
-      background: #fff;
-      border-radius: 12px;
-      border: 1px solid #e8eaed;
-      padding: 15px;
-      text-align: center
-    }
-
-    .st-n {
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--c-accent)
-    }
-
-    .st-l {
-      font-size: 12px;
-      color: #8e95a2;
-      margin-top: 3px;
-      font-weight: 500
-    }
-
-    .prog-bar-lg {
-      background: #e8eaed;
-      border-radius: 99px;
-      height: 8px;
-      margin: 8px 0 16px
-    }
-
-    .prog-bar-lg-fill {
-      background: var(--c-accent);
-      height: 8px;
-      border-radius: 99px;
-      transition: width .5s
-    }
-
-    .sec-lbl {
-      font-size: 11px;
-      font-weight: 700;
-      color: #8e95a2;
-      letter-spacing: .5px;
-      text-transform: uppercase;
-      margin: 0 0 10px
-    }
-
-    .g-tabs {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 12px;
-      overflow-x: auto;
-      padding-bottom: 2px
-    }
-
-    .g-tab {
-      flex: 1;
-      background: #fff;
-      border: .5px solid #ddd8c8;
-      border-radius: 8px;
-      padding: 10px 8px;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      color: #666;
-      text-align: center;
-      white-space: nowrap
-    }
-
-    .g-tab.on {
-      background: #e6f4e0;
-      border-color: #2a5320;
-      color: #2a5320
-    }
-
-    .g-table-wrap {
-      overflow-x: auto;
-      background: #fff;
-      border-radius: 12px;
-      border: .5px solid #ddd8c8;
-      margin-bottom: 12px
-    }
-
-    .g-table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-      font-size: 13px;
-    }
-
-    .g-table th {
-      background: #f7f5f0;
-      padding: 10px;
-      font-weight: 600;
-      color: #666;
-      border-bottom: 1px solid #ddd8c8;
-      font-size: 12px
-    }
-
-    .g-table td {
-      padding: 10px;
-      border-bottom: 1px solid #eee;
-      vertical-align: top
-    }
-
-    .g-transcr {
-      font-size: 14px;
-      color: var(--c-accent);
-      margin-top: 2px
-    }
-
-    .g-tr-cell {
-      font-size: 12px;
-      color: #555;
-      margin-top: 2px
-    }
-
-    .g-cult {
-      background: #fffbe6;
-      border-left: 4px solid #f9a825;
-      padding: 12px;
-      border-radius: 0 8px 8px 0;
-      margin-bottom: 12px;
-      font-size: 13px;
-      color: #555;
-      line-height: 1.4
-    }
-
-    .screen-section {
-      margin-bottom: 14px
-    }
-
-    .summary-card {
-      background: #fff;
-      border: 1px solid #e8eaed;
-      border-radius: 14px;
-      padding: 16px;
-      margin-bottom: 14px
-    }
-
-    .summary-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px
-    }
-
-    .summary-title {
-      font-size: 17px;
-      font-weight: 800;
-      color: var(--ne-ink);
-      line-height: 1.2
-    }
-
-    .summary-sub {
-      font-size: 12px;
-      color: #8e95a2;
-      margin-top: 4px
-    }
-
-    .summary-pill {
-      background: #fef7f0;
-      color: var(--c-accent);
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-size: 12px;
-      font-weight: 700;
-      white-space: nowrap
-    }
-
-    .summary-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 14px
-    }
-
-    .summary-link {
-      flex: 1;
-      border: 1px solid #e8eaed;
-      border-radius: 12px;
-      padding: 11px 12px;
-      background: #fff;
-      color: var(--ne-ink);
-      font-size: 13px;
-      font-weight: 600;
-      text-align: center;
-      cursor: pointer;
-      font-family: inherit
-    }
-
-    .summary-link.primary {
-      background: #fef7f0;
-      color: var(--c-accent);
-      border-color: #f7d9c2
-    }
-
-    .prog-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      font-size: 12px;
-      color: #8e95a2
-    }
-
-    .cert-card {
-      background: linear-gradient(145deg, #163b2d 0%, #0f2a20 100%);
-      border: 1px solid rgba(194, 160, 92, .35);
-      color: #fff
-    }
-
-    .cert-card .sec-lbl,
-    .cert-card .st-l {
-      color: rgba(255, 255, 255, .72)
-    }
-
-    .cert-title {
-      font-size: 20px;
-      font-weight: 800;
-      margin-bottom: 8px
-    }
-
-    .cert-copy {
-      font-size: 14px;
-      line-height: 1.55;
-      color: rgba(255, 255, 255, .88);
-      margin-bottom: 14px
-    }
-
-    .cert-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 14px
-    }
-
-    .cert-chip {
-      border-radius: 999px;
-      padding: 7px 10px;
-      font-size: 12px;
-      font-weight: 700;
-      background: rgba(194, 160, 92, .14);
-      color: #f5deb3;
-      border: 1px solid rgba(194, 160, 92, .32)
-    }
-
-    .cert-btn {
-      width: 100%;
-      border: none;
-      border-radius: 12px;
-      padding: 14px;
-      font-size: 15px;
-      font-weight: 700;
-      cursor: pointer;
-      font-family: inherit;
-      background: linear-gradient(135deg, #d8b56a 0%, #f2df9c 100%);
-      color: #17372a
-    }
-
-    .cert-btn.secondary {
-      background: rgba(255, 255, 255, .08);
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, .14)
-    }
-
-    .cert-note {
-      margin-top: 10px;
-      font-size: 12px;
-      line-height: 1.5;
-      color: rgba(255, 255, 255, .7)
-    }
-
-    .lesson-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px
-    }
-
-    .lesson-mini {
-      background: #fff;
-      border: 1px solid #e8eaed;
-      border-radius: 12px;
-      padding: 12px 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px
-    }
-
-    .lesson-mini.done {
-      border-color: #d9e8de;
-      background: #f9fdf9
-    }
-
-    .lesson-mini-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--ne-ink)
-    }
-
-    .lesson-mini-sub {
-      font-size: 11px;
-      color: #8e95a2;
-      margin-top: 3px
-    }
-
-    .lesson-mini-mark {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: #e8eaed;
-      color: #8e95a2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 13px;
-      font-weight: 800
-    }
-
-    .lesson-mini.done .lesson-mini-mark {
-      background: #22a65e;
-      color: #fff
-    }
-
-    .cert-modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, .52);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      z-index: 500
-    }
-
-    body.modal-open {
-      overflow: hidden
-    }
-
-    .cert-modal {
-      width: min(100%, 360px);
-      background: #fff;
-      border-radius: 18px;
-      padding: 22px 18px 18px;
-      box-shadow: 0 24px 60px rgba(15, 23, 42, .22)
-    }
-
-    .cert-modal-title {
-      font-size: 20px;
-      font-weight: 800;
-      color: var(--ne-ink);
-      margin-bottom: 8px
-    }
-
-    .cert-modal-copy {
-      font-size: 13px;
-      color: #5a6070;
-      line-height: 1.55;
-      margin-bottom: 14px
-    }
-
-    .cert-input {
-      width: 100%;
-      border: 1px solid #d8dee8;
-      border-radius: 12px;
-      padding: 13px 14px;
-      font-size: 15px;
-      font-family: inherit;
-      color: var(--ne-ink);
-      background: #fff
-    }
-
-    .cert-input:focus {
-      border-color: var(--c-accent);
-      box-shadow: 0 0 0 3px rgba(232, 120, 48, .12)
-    }
-
-    .cert-modal-actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 14px
-    }
-
-    .cert-modal-btn {
-      flex: 1;
-      border-radius: 12px;
-      padding: 12px;
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      border: 1px solid #e8eaed;
-      background: #fff;
-      color: var(--ne-ink);
-      font-family: inherit
-    }
-
-    .cert-modal-btn.primary {
-      background: var(--c-accent);
-      color: #fff;
-      border-color: var(--c-accent)
-    }
-
-    .cert-error {
-      font-size: 12px;
-      color: #d14343;
-      margin-top: 8px;
-      min-height: 18px
-    }
-
-    .net-toast {
-      position: fixed;
-      left: 50%;
-      bottom: 22px;
-      transform: translateX(-50%) translateY(12px);
-      width: min(calc(100% - 24px), 400px);
-      padding: 12px 14px;
-      border-radius: 12px;
-      background: rgba(26, 26, 46, .94);
-      color: #fff;
-      font-size: 13px;
-      line-height: 1.45;
-      box-shadow: 0 10px 30px rgba(15, 23, 42, .24);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .2s ease, transform .2s ease;
-      z-index: 800
-    }
-
-    .net-toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0)
-    }
-
-    #certificate {
-      display: none
-    }
-
-    .cert-print-page {
-      width: 210mm;
-      min-height: 297mm;
-      margin: 0 auto;
-      background: linear-gradient(180deg, #103126 0%, #163f31 100%);
-      color: #fff7dd;
-      padding: 18mm 16mm;
-      position: relative;
-      overflow: hidden
-    }
-
-    .cert-print-page::before,
-    .cert-print-page::after {
-      content: '';
-      position: absolute;
-      inset: 10mm;
-      border: 1px solid rgba(216, 181, 106, .65);
-      pointer-events: none
-    }
-
-    .cert-print-page::after {
-      inset: 14mm;
-      border-color: rgba(216, 181, 106, .28)
-    }
-
-    .cert-brand {
-      text-align: center;
-      font-size: 17px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: #f2df9c;
-      margin-bottom: 14mm
-    }
-
-    .cert-kicker {
-      text-align: center;
-      font-size: 13px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: rgba(255, 247, 221, .78);
-      margin-bottom: 5mm
-    }
-
-    .cert-heading {
-      text-align: center;
-      font-size: 34px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      color: #fff7dd;
-      margin: 0 0 10mm
-    }
-
-    .cert-award {
-      text-align: center;
-      font-size: 13px;
-      color: rgba(255, 247, 221, .82);
-      margin-bottom: 6mm
-    }
-
-    .cert-student-name {
-      text-align: center;
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 28px;
-      line-height: 1.2;
-      color: #f5deb3;
-      margin: 0 0 10mm
-    }
-
-    .cert-course {
-      text-align: center;
-      font-size: 15px;
-      line-height: 1.6;
-      color: rgba(255, 247, 221, .92);
-      max-width: 150mm;
-      margin: 0 auto 14mm
-    }
-
-    .cert-stats-row {
-      display: flex;
-      justify-content: center;
-      gap: 16mm;
-      margin: 0 0 14mm
-    }
-
-    .cert-stat {
-      text-align: center
-    }
-
-    .cert-stat-value {
-      font-size: 18px;
-      font-weight: 800;
-      color: #fff7dd
-    }
-
-    .cert-stat-label {
-      font-size: 11px;
-      color: rgba(255, 247, 221, .7);
-      margin-top: 2mm;
-      text-transform: uppercase;
-      letter-spacing: 1px
-    }
-
-    .cert-footer {
-      display: flex;
-      justify-content: space-between;
-      gap: 12mm;
-      margin-top: 18mm;
-      align-items: flex-end
-    }
-
-    .cert-footer-block {
-      flex: 1
-    }
-
-    .cert-footer-line {
-      height: 1px;
-      background: rgba(216, 181, 106, .65);
-      margin-bottom: 6px
-    }
-
-    .cert-footer-label {
-      font-size: 11px;
-      color: rgba(255, 247, 221, .72)
-    }
-
-    @page {
-      size: A4 portrait;
-      margin: 0
-    }
-
-    @media print {
-      body {
-        background: #fff !important
-      }
-
-      body> :not(#certificate) {
-        display: none !important
-      }
-
-      #certificate {
-        display: block !important
-      }
-    }
-    /* Material 3 Expressive + Neural Expressive skin */
-    
-
-    body {
-      background:
-        linear-gradient(135deg, rgba(26, 115, 232, 0.08), transparent 34%),
-        linear-gradient(225deg, rgba(18, 181, 203, 0.08), transparent 32%),
-        var(--ne-bg);
-      color: var(--ne-ink);
-      letter-spacing: 0;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    .app {
-      background:
-        linear-gradient(180deg, #f8faff 0%, #eef3fb 34%, #ffffff 100%);
-      isolation: isolate;
-    }
-
-    .float-back {
-      min-height: 42px;
-      border-radius: 999px;
-      border-color: rgba(26, 115, 232, 0.16);
-      background: rgba(255, 255, 255, 0.84);
-      color: var(--ne-ink);
-      box-shadow: var(--ne-shadow);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      transition: transform 0.18s var(--ne-spring), box-shadow 0.22s ease, background 0.22s ease;
-    }
-
-    .float-back:active {
-      transform: scale(0.96);
-      background: #e8f0fe;
-    }
-
-    .float-back .fb-arrow {
-      color: var(--ne-primary);
-    }
-
-    .scr {
-      padding: 16px;
-    }
-
-    .ch-card,
-    .g-card,
-    .w-card,
-    .phrase-card,
-    .pf-card,
-    .dlg-card,
-    .q-card,
-    .cert-modal {
-      border: 1px solid var(--ne-line);
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.84));
-      box-shadow: var(--ne-shadow);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-
-    .ch-card {
-      border-left: 0;
-      border-radius: 22px;
-      padding: 18px 18px 16px;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.22s var(--ne-spring), box-shadow 0.22s ease, border-color 0.22s ease;
-    }
-
-    .ch-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 auto 0 0;
-      width: 5px;
-      background: var(--ne-primary);
-      opacity: 0.9;
-    }
-
-    .ch-card:nth-child(3n + 2)::before { background: var(--ne-cyan); }
-    .ch-card:nth-child(3n + 3)::before { background: var(--ne-green); }
-
-    .ch-card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(26, 115, 232, 0.24);
-      box-shadow: var(--ne-shadow-strong);
-    }
-
-    .ch-card:active {
-      transform: scale(0.985);
-    }
-
-    .ch-badge {
-      padding: 5px 10px;
-      border-radius: 999px;
-      background: #e8f0fe;
-      color: var(--ne-primary) !important;
-      letter-spacing: 0.08em;
-    }
-
-    .ch-title,
-    .les-hdr-title {
-      color: var(--ne-ink);
-      letter-spacing: 0;
-    }
-
-    .ch-sub {
-      color: var(--ne-hint);
-    }
-
-    .ch-prog-bar {
-      background: #dfe8f7;
-      overflow: hidden;
-    }
-
-    .ch-prog-fill {
-      background: linear-gradient(90deg, var(--ne-primary), var(--ne-cyan)) !important;
-    }
-
-    .ch-prog-dot {
-      background: #e8f0fe;
-      color: var(--ne-primary);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.75);
-    }
-
-    .ch-prog-dot.done {
-      background: #e6f4ea;
-      color: var(--ne-green);
-    }
-
-    .les-hdr {
-      background: rgba(248, 250, 255, 0.82);
-      border-bottom: 1px solid rgba(26, 115, 232, 0.10);
-      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.82) inset;
-    }
-
-    .back-btn,
-    .cert-modal-btn {
-      min-height: 38px;
-      border-radius: 999px;
-      border-color: rgba(26, 115, 232, 0.14);
-      background: rgba(255, 255, 255, 0.86);
-      color: var(--ne-ink);
-      box-shadow: 0 1px 2px rgba(60, 64, 67, 0.06);
-      transition: transform 0.18s var(--ne-spring), background 0.22s ease;
-    }
-
-    .back-btn:active,
-    .cert-modal-btn:active {
-      transform: scale(0.97);
-      background: #e8f0fe;
-    }
-
-    .les-hdr-lvl,
-    .cert-modal-btn.primary {
-      background: linear-gradient(145deg, var(--ne-primary), var(--ne-violet));
-      border-color: transparent;
-      color: #fff;
-      box-shadow: 0 8px 20px rgba(26, 115, 232, 0.22);
-    }
-
-    .tabs,
-    .pf-row {
-      background: rgba(232, 240, 254, 0.86);
-      border: 1px solid rgba(26, 115, 232, 0.10);
-      border-radius: 18px;
-      padding: 4px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
-    }
-
-    .tab,
-    .pf-chip {
-      border-radius: 14px;
-      color: var(--ne-hint);
-      letter-spacing: 0;
-      transition: transform 0.18s var(--ne-spring), background 0.22s ease, color 0.22s ease;
-    }
-
-    .tab.on,
-    .pf-chip.on {
-      background: #fff;
-      color: var(--ne-primary);
-      box-shadow:
-        0 1px 2px rgba(60, 64, 67, 0.06),
-        0 6px 16px rgba(26, 115, 232, 0.12);
-    }
-
-    .tab:active,
-    .pf-chip:active {
-      transform: scale(0.97);
-    }
-
-    .g-card,
-    .w-card,
-    .phrase-card,
-    .pf-card,
-    .dlg-card,
-    .q-card {
-      border-radius: 20px;
-      overflow: hidden;
-    }
-
-    .g-title,
-    .w-en,
-    .phrase-en,
-    .q-title,
-    .pf-title {
-      color: var(--ne-primary);
-    }
-
-    .g-rule,
-    .hint-box,
-    .quiz-explanation,
-    .phrase-note {
-      border: 1px solid rgba(26, 115, 232, 0.10);
-      border-radius: 16px;
-      background: #f7faff;
-      color: var(--ne-muted);
-    }
-
-    code {
-      border-radius: 8px;
-      background: #e8f0fe;
-      color: var(--ne-primary);
-      padding: 1px 5px;
-    }
-
-    .spk-btn,
-    .listen-btn,
-    .q-opt,
-    .done-btn,
-    .cert-btn {
-      border-radius: 999px;
-      border-color: rgba(26, 115, 232, 0.14);
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--ne-ink);
-      box-shadow: 0 1px 2px rgba(60, 64, 67, 0.06);
-      transition: transform 0.18s var(--ne-spring), box-shadow 0.22s ease, background 0.22s ease;
-    }
-
-    .spk-btn:active,
-    .listen-btn:active,
-    .q-opt:active,
-    .done-btn:active,
-    .cert-btn:active {
-      transform: scale(0.97);
-    }
-
-    .done-btn,
-    .cert-btn {
-      background: linear-gradient(145deg, var(--ne-primary), var(--ne-violet));
-      border-color: transparent;
-      color: #fff;
-      box-shadow: 0 10px 24px rgba(26, 115, 232, 0.22);
-    }
-
-    .q-opt.correct,
-    .q-opt.ok {
-      background: #e6f4ea;
-      border-color: rgba(26, 170, 57, 0.28);
-      color: #137333;
-    }
-
-    .q-opt.wrong,
-    .q-opt.bad {
-      background: #fce8e6;
-      border-color: rgba(197, 34, 31, 0.24);
-      color: #a50e0e;
-    }
-
-    .cert-modal-overlay {
-      background: rgba(17, 24, 39, 0.36);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-
-    .cert-modal {
-      border-radius: 28px;
-    }
-
-    .cert-input {
-      border-radius: 16px;
-      border-color: rgba(26, 115, 232, 0.16);
-      background: #f8faff;
-    }
-
-    .cert-input:focus {
-      border-color: var(--ne-primary);
-      box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.16);
-    }
-
-    .net-toast {
-      border-radius: 18px;
-      background: rgba(27, 27, 31, 0.94);
-      box-shadow: 0 16px 38px rgba(15, 23, 42, 0.24);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
-
-    /* Material Symbols Outlined — self-hosted, subset */
-    @font-face {
-      font-family: 'Material Symbols Outlined';
-      src: url('assets/fonts/material-symbols-outlined.woff2') format('woff2');
-      font-display: block;
-    }
-
-    .icon {
-      font-family: 'Material Symbols Outlined';
-      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-      font-size: 20px;
-      line-height: 1;
-      letter-spacing: normal;
-      text-transform: none;
-      display: inline-block;
-      white-space: nowrap;
-      direction: ltr;
-      -webkit-font-smoothing: antialiased;
-      user-select: none;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="app" id="app">
-    <button class="float-back" type="button" onclick="goBack()" aria-label="Back"><svg class="fb-arrow" width="16" height="16" viewBox="0 0 24 24"
-        fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="15 18 9 12 15 6" />
-      </svg> <span id="backLbl">Назад</span></button>
-    <div id="root" style="flex:1;overflow:hidden;display:flex;flex-direction:column"></div>
-  </div>
-  <div class="cert-modal-overlay" id="certModal" onclick="closeCertModal(event)" role="dialog" aria-modal="true"
-    aria-labelledby="certModalTitle" aria-describedby="certModalCopy" aria-hidden="true">
-    <div class="cert-modal" onclick="event.stopPropagation()">
-      <div class="cert-modal-title" id="certModalTitle">Получить сертификат</div>
-      <div class="cert-modal-copy" id="certModalCopy">Введите имя так, как оно должно быть указано на сертификате.</div>
-      <input class="cert-input" id="certNameInput" type="text" maxlength="80" placeholder="Имя Фамилия">
-      <div class="cert-error" id="certNameError"></div>
-      <div class="cert-modal-actions">
-        <button class="cert-modal-btn" type="button" id="certCancelBtn" onclick="closeCertModal()">Отмена</button>
-        <button class="cert-modal-btn primary" type="button" id="certGenerateBtn"
-          onclick="submitCertificate()">Печать</button>
-      </div>
-    </div>
-  </div>
-  <div class="net-toast" id="netToast" role="status" aria-live="polite"></div>
-  <section id="certificate" aria-hidden="true">
-    <div class="cert-print-page">
-      <div class="cert-brand">🌿 FarmEnglish</div>
-      <div class="cert-kicker">Certificate of Completion</div>
-      <h1 class="cert-heading">CERTIFICATE OF COMPLETION</h1>
-      <div class="cert-award">This certificate is proudly presented to</div>
-      <div class="cert-student-name" id="cert-name">Student Name</div>
-      <div class="cert-course">
-        for successfully completing
-        <strong id="cert-course-title">English for Seasonal Workers — CEFR A0-A1</strong><br>
-        <span id="cert-course-subtitle">First Days on the Farm</span>
-      </div>
-      <div class="cert-stats-row">
-        <div class="cert-stat">
-          <div class="cert-stat-value" id="cert-lessons">15</div>
-          <div class="cert-stat-label">Lessons</div>
-        </div>
-        <div class="cert-stat">
-          <div class="cert-stat-value" id="cert-words">450</div>
-          <div class="cert-stat-label">Words</div>
-        </div>
-        <div class="cert-stat">
-          <div class="cert-stat-value" id="cert-date">26 April 2026</div>
-          <div class="cert-stat-label">Issued</div>
-        </div>
-      </div>
-      <div class="cert-footer">
-        <div class="cert-footer-block">
-          <div class="cert-footer-line"></div>
-          <div class="cert-footer-label">FarmEnglish Platform</div>
-        </div>
-        <div class="cert-footer-block">
-          <div class="cert-footer-line"></div>
-          <div class="cert-footer-label" id="cert-level">CEFR A0-A1</div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <script>
-    // ── TRANSLATIONS ──────────────────────────────────────────────────────────────
-    const TR = {
-      ru: {
-        home: 'Главная', phrases: 'Фразник', progress: 'Прогресс',
-        done_of: (n, t) => `${n} / ${t} уроков пройдено`,
-        grammar: 'Грамматика', words: 'Слова', dialogue: 'Диалог', quiz: 'Тест',
-        back: 'Назад', manager: 'Спикер A', worker: 'Спикер B',
-        tap_word: 'Нажмите на слово — услышите произношение',
-        play: '▶ Слушать диалог', complete: '✓ Завершить урок', completed: '✓ Пройден',
-        all: 'Все', work: 'Работа', health: 'Здоровье', pay: 'Зарплата', shop: 'Магазин', social: 'Общение', sos: 'SOS',
-        correct: '✓ Правильно!', wrong: '✗ Неверно — попробуйте снова',
-        congrats: 'Урок пройден! 🎉', score: 'Все ответы верны!',
-        lessons_done: 'уроков завершено', words_learned: 'слов изучено', pts: 'баллов', storage_full_error: 'Не удалось сохранить прогресс. Хранилище заполнено.',
-        q_complete: '✍️ Заполните пропуск:', q_translate: '🗣️ Переведите:', q_negative: '❌ Найдите отрицание:', q_correct: '✅ Какое предложение правильное?', q_question: '❓ Какой вопрос подходит к ответу:',
-        question_of: (q, t) => `Вопрос ${q} из ${t}`,
-        quiz_expl: '💡 <b>Объяснение:</b>',
-        quiz_ok_title: "✅ Отлично! Правильно.",
-        quiz_no_title: "❌ Ошибка — это шаг к успеху!",
-        quiz_no_desc: ["Ошибки — это ступеньки к успеху! Попробуйте еще раз. 💪", "Не сдавайтесь! С каждой попыткой вы становитесь лучше. 🌟", "Ошибаться полезно, так мы учимся быстрее. Не сдавайтесь! 🔥", "Вы на правильном пути! Подумайте еще раз. 🧠", "Никто не идеален с первого раза. Продолжайте! 🚀", "Каждая ошибка делает вас умнее. Попробуйте снова! 💡", "Упорство — ключ к знаниям. Вы сможете! 🔑", "Не бойтесь ошибаться, бойтесь остановиться. Вперед! 🏃‍♂️", "Отличная попытка! Теперь вы знаете, как не надо. Попробуем иначе? 😉", "Ваш мозг сейчас активно работает и учится. Продолжайте! 🏋️‍♂️", "Не опускайте руки! С каждым разом будет легче. 📈", "Секрет успеха — не сдаваться после первой неудачи. 🏆", "Даже носители языка иногда ошибаются. Попробуйте еще раз! 🗣️", "Эта ошибка поможет вам запомнить правило навсегда! 📌", "Терпение и труд все перетрут. Еще одна попытка! 🛠️", "Учеба — это процесс. Вы отлично справляетесь, продолжайте! 🌱", "Немного подумайте и попробуйте другой вариант. 🤔", "Не расстраивайтесь! Главное — понять принцип. 🎯", "Вы ближе к правильному ответу, чем кажется! 🌈", "Ошибки показывают, что вы стараетесь. Молодец! 👏", "Английский любит смелых. Смело пробуйте снова! 🦁", "Ничего страшного! Прочитайте объяснение и попробуйте опять. 📖", "Помните: трудно в учении — легко в работе. 💼", "Ваш прогресс уже заметен, не останавливайтесь из-за одной ошибки! 🧗‍♂️", "Анализируйте ошибки, и они станут вашей силой. 🔋", "Верьте в себя! У вас обязательно получится. ✨", "Главное — это желание учиться. А правильный ответ мы найдем! 🔍", "Попытка не пытка. Давайте попробуем еще раз! 🎯", "Вы уже столько выучили, эта задача тоже вам по плечу! 🐘", "Сделайте глубокий вдох и выберите другой вариант. 🌬️"]
-      },
-      kz: {
-        home: 'Басты бет', phrases: 'Сөздік', progress: 'Прогресс',
-        done_of: (n, t) => `${n} / ${t} сабақ аяқталды`,
-        grammar: 'Грамматика', words: 'Сөздер', dialogue: 'Диалог', quiz: 'Тест',
-        back: 'Артқа', manager: 'Сөйлеуші A', worker: 'Сөйлеуші B',
-        tap_word: 'Тыңдау үшін сөзге басыңыз',
-        play: '▶ Диалогты тыңдау', complete: '✓ Сабақты аяқтау', completed: '✓ Аяқталды',
-        all: 'Барлығы', work: 'Жұмыс', health: 'Денсаулық', pay: 'Жалақы', shop: 'Дүкен', social: 'Қарым-қатынас', sos: 'SOS',
-        correct: '✓ Дұрыс!', wrong: '✗ Қате — қайталаңыз',
-        congrats: 'Сабақ аяқталды! 🎉', score: 'Барлық жауаптар дұрыс!',
-        lessons_done: 'сабақ аяқталды', words_learned: 'сөз үйренілді', pts: 'ұпай', storage_full_error: 'Прогресті сақтау мүмкін болмады. Жад толып қалды.',
-        q_complete: '✍️ Бос орынды толтырыңыз:', q_translate: '🗣️ Аударыңыз:', q_negative: '❌ Болымсыз түрді табыңыз:', q_correct: '✅ Қай сөйлем дұрыс?', q_question: '❓ Жауапқа қай сұрақ сәйкес келеді:',
-        question_of: (q, t) => `Сұрақ ${q} / ${t}`,
-        quiz_expl: '💡 <b>Түсіндірме:</b>',
-        quiz_ok_title: "✅ Тамаша! Дұрыс.",
-        quiz_no_title: "❌ Қате — жетістікке қадам!",
-        quiz_no_desc: ["Қате — жетістікке қадам! Тағы бір рет байқап көріңіз. 💪", "Берілмеңіз! Әр талпыныс сайын сіз жақсара түсесіз. 🌟", "Қателесу пайдалы, осылайша біз тезірек үйренеміз! 🔥", "Сіз дұрыс жолдасыз! Тағы бір рет ойланып көріңіз. 🧠", "Ешкім бірінші реттен мінсіз болмайды. Жалғастырыңыз! 🚀", "Әр қате сізді ақылдырақ етеді. Тағы да байқап көріңіз! 💡", "Табандылық — білім кілті. Сіздің қолыңыздан келеді! 🔑", "Қателесуден қорықпаңыз, тоқтап қалудан қорықыңыз. Алға! 🏃‍♂️", "Жақсы талпыныс! Енді қалай жасамау керектігін білесіз. Тағы байқап көреміз бе? 😉", "Миыңыз қазір белсенді жұмыс істеп, үйреніп жатыр. Жалғастырыңыз! 🏋️‍♂️", "Қолыңызды түсірмеңіз! Әр жолы оңайырақ болады. 📈", "Жетістік құпиясы — бірінші сәтсіздіктен кейін берілмеу. 🏆", "Тілді білетіндер де кейде қателеседі. Тағы да байқап көріңіз! 🗣️", "Бұл қате ережені мәңгі есте сақтауға көмектеседі! 📌", "Сабыр мен еңбек бәрін жеңеді. Тағы бір талпыныс! 🛠️", "Оқу — бұл процесс. Сіз жақсы жасап жатырсыз, жалғастырыңыз! 🌱", "Кішкене ойланып, басқа нұсқаны таңдаңыз. 🤔", "Мұңаймаңыз! Ең бастысы — қағиданы түсіну. 🎯", "Сіз ойлағаннан да дұрыс жауапқа жақынсыз! 🌈", "Қателер сіздің талпынып жатқаныңызды көрсетеді. Жарайсыз! 👏", "Ағылшын тілі батылдарды жақсы көреді. Батыл түрде тағы байқап көріңіз! 🦁", "Ештеңе етпейді! Түсіндірмені оқып, қайта байқап көріңіз. 📖", "Есіңізде болсын: оқуда қиын, жұмыста оңай. 💼", "Сіздің дамуыңыз байқалады, бір қате үшін тоқтап қалмаңыз! 🧗‍♂️", "Қателерді талдаңыз, сонда олар сіздің күшіңізге айналады. 🔋", "Өзіңізге сеніңіз! Міндетті түрде қолыңыздан келеді. ✨", "Ең бастысы — оқуға деген ынта. Ал дұрыс жауапты біз табамыз! 🔍", "Талпыныстан зиян жоқ. Келіңіз, тағы да байқап көрейік! 🎯", "Сіз көп нәрсе үйрендіңіз, бұл тапсырма да сіздің қолыңыздан келеді! 🐘", "Терең дем алып, басқа нұсқаны таңдаңыз. 🌬️"]
-      },
-      uz: {
-        home: 'Bosh sahifa', phrases: 'Iboralar', progress: 'Natijalar',
-        done_of: (n, t) => `${n} / ${t} dars tugallandi`,
-        grammar: 'Grammatika', words: "So\'zlar", dialogue: 'Dialog', quiz: 'Test',
-        back: 'Orqaga', manager: 'Spiker A', worker: 'Spiker B',
-        tap_word: "So\'zni eshitish uchun bosing",
-        play: '▶ Dialogni tinglash', complete: '✓ Darsni tugatish', completed: "✓ Tugallandi",
-        all: 'Barchasi', work: 'Ish', health: 'Salomatlik', pay: 'Maosh', shop: "Do\'kon", social: 'Muloqot', sos: 'SOS',
-        correct: "✓ To\'g'ri!", wrong: "✗ Noto\'g'ri — qayta urining",
-        congrats: "Dars tugallandi! 🎉", score: "Barcha javoblar to\'g'ri!",
-        lessons_done: 'dars tugallandi', words_learned: "so\'z o\'rganildi", pts: 'ball', storage_full_error: "Progressni saqlab bo'lmadi. Xotira to'la.",
-        q_complete: '✍️ Bo\'sh joyni to\'ldiring:', q_translate: '🗣️ Tarjima qiling:', q_negative: '❌ Inkor shaklni toping:', q_correct: '✅ Qaysi gap to\'g\'ri?', q_question: '❓ Javobga qaysi savol mos keladi:',
-        question_of: (q, t) => `Savol ${q} / ${t}`,
-        quiz_expl: '💡 <b>Tushuntirish:</b>',
-        quiz_ok_title: "✅ Ajoyib! To\'g'ri.",
-        quiz_no_title: "❌ Xato — muvaffaqiyatga qadam!",
-        quiz_no_desc: ["Xato — muvaffaqiyatga qadam! Yana urinib ko\'ring. 💪", "Taslim bo\'lmang! Har bir urinish bilan yaxshilanyapsiz. 🌟", "Xato qilish foydali, shunday qilib tezroq o\'rganamiz! 🔥", "Siz to\'g'ri yo\'ldasiz! Yana bir bor o\'ylab ko\'ring. 🧠", "Hech kim birinchisida mukammal bo\'lmaydi. Davom eting! 🚀", "Har bir xato sizni aqlliroq qiladi. Yana urinib ko\'ring! 💡", "Qat'iyat — bilim kaliti. Siz buni eplaysiz! 🔑", "Xato qilishdan qo\'rqmang, to\'xtab qolishdan qo\'rqing. Olg\'a! 🏃‍♂️", "Yaxshi harakat! Endi qanday qilmaslikni bilasiz. Yana urinaylikmi? 😉", "Miya hozir faol ishlamoqda va o\'rganmoqda. Davom eting! 🏋️‍♂️", "Taslim bo\'lmang! Har safar osonroq bo\'ladi. 📈", "Muvaffaqiyat siri — birinchi xatodan keyin taslim bo\'lmaslikdir. 🏆", "Hatoki til egalari ham xato qilishadi. Yana urinib ko\'ring! 🗣️", "Bu xato qoidani butunlay eslab qolishingizga yordam beradi! 📌", "Sabr va mehnat barchasini yengadi. Yana bir urinish! 🛠️", "O\'qish bu jarayon. Siz yaxshi bajaryapsiz, davom eting! 🌱", "Bir oz o\'ylab ko\'ring va boshqa variantni tanlang. 🤔", "Xafa bo\'lmang! Asosiysi tamoyilni tushunish. 🎯", "Siz to\'g'ri javobga o\'ylaganingizdan ham yaqinroqsiz! 🌈", "Xatolar sizning harakat qilayotganingizni ko\'rsatadi. Barakalla! 👏", "Ingliz tili jasurlarni sevadi. Jasorat bilan yana urinib ko\'ring! 🦁", "Hechqisi yo\'q! Tushuntirishni o\'qing va yana urinib ko\'ring. 📖", "Yodda tuting: o\'qishda qiyin, ishda oson. 💼", "Sizning o\'sishingiz sezilmoqda, bitta xato uchun to\'xtamang! 🧗‍♂️", "Xatolarni tahlil qiling va ular sizning kuchingizga aylanadi. 🔋", "O\'zingizga ishoning! Albatta uddalaysiz. ✨", "Asosiysi — o\'rganish istagi. To\'g'ri javobni esa topamiz! 🔍", "Urinish ziyon qilmaydi. Keling yana urinib ko\'ramiz! 🎯", "Siz allaqachon ko\'p narsani o\'rgandingiz, bu vazifani ham eplaysiz! 🐘", "Chuqur nafas oling va boshqa variantni tanlang. 🌬️"]
-      },
-      tj: {
-        home: 'Саҳифа', phrases: 'Ибораҳо', progress: 'Пешрафт',
-        done_of: (n, t) => `${n} / ${t} дарс гузашт`,
-        grammar: 'Грамматика', words: 'Калимаҳо', dialogue: 'Муколама', quiz: 'Тест',
-        back: 'Бозгашт', manager: 'Гӯянда A', worker: 'Гӯянда B',
-        tap_word: 'Барои шунидан пахш кунед',
-        play: '▶ Муколамаро гӯш кунед', complete: '✓ Дарсро тамом кунед', completed: '✓ Тамом шуд',
-        all: 'Ҳама', work: 'Кор', health: 'Саломатӣ', pay: 'Маош', shop: 'Дӯкон', social: 'Муошират', sos: 'SOS',
-        correct: '✓ Дуруст!', wrong: '✗ Нодуруст — бори дигар',
-        congrats: 'Дарс гузашт! 🎉', score: 'Ҳамаи ҷавобҳо дуруст!',
-        lessons_done: 'дарс тамом шуд', words_learned: 'калима омӯхта шуд', pts: 'хол', storage_full_error: 'Пешрафтро сабт кардан нашуд. Захирагоҳ пур аст.',
-        q_complete: '✍️ Холиро пур кунед:', q_translate: '🗣️ Тарҷума кунед:', q_negative: '❌ Шакли инкориро ёбед:', q_correct: '✅ Кадом ҷумла дуруст аст?', q_question: '❓ Ба ҷавоб кадом савол мувофиқ аст:',
-        question_of: (q, t) => `Саволи ${q} аз ${t}`,
-        quiz_expl: '💡 <b>Шарҳ:</b>',
-        quiz_ok_title: "✅ Олӣ! Дуруст.",
-        quiz_no_title: "❌ Хато — як қадам ба сӯи муваффақият!",
-        quiz_no_desc: ["Хато — як қадам ба сӯи муваффақият аст! Боз кӯшиш кунед. 💪", "Таслим нашавед! Бо ҳар як кӯшиш шумо беҳтар мешавед. 🌟", "Хато кардан муфид аст, ҳамин тавр мо тезтар меомӯзем! 🔥", "Шумо дар роҳи дуруст ҳастед! Боз як бор фикр кунед. 🧠", "Ҳеҷ кас аз дафъаи аввал комил нест. Идома диҳед! 🚀", "Ҳар як хато шуморо донотар мекунад. Боз кӯшиш кунед! 💡", "Устуворӣ — калиди дониш аст. Шумо метавонед! 🔑", "Аз хато кардан натарсед, аз қафо гаштан тарсед. Ба пеш! 🏃‍♂️", "Кӯшиши хуб! Акнун медонед, ки чӣ тавр накунед. Боз кӯшиш кунем? 😉", "Майнаи шумо ҳоло фаъолона кор ва омӯзиш дорад. Идома диҳед! 🏋️‍♂️", "Даст наафтонед! Ҳар дафъа осонтар хоҳад шуд. 📈", "Сирри муваффақият — баъд аз хатои аввал таслим нашудан аст. 🏆", "Ҳатто забондонон баъзан хато мекунанд. Боз кӯшиш кунед! 🗣️", "Ин хато кӯмак мекунад, ки қоидаро абадӣ дар хотир нигоҳ доред! 📌", "Сабр ва меҳнат ҳамаро мағлуб мекунад. Боз як кӯшиш! 🛠️", "Омӯзиш ин раванд аст. Шумо хуб ҳастед, идома диҳед! 🌱", "Каме фикр кунед ва варианти дигарро интихоб намоед. 🤔", "Ноумед нашавед! Муҳимаш фаҳмидани қоида аст. 🎯", "Шумо ба ҷавоби дуруст аз он ки фикр мекунед, наздиктаред! 🌈", "Хатогиҳо нишон медиҳанд, ки шумо кӯшиш карда истодаед. Офарин! 👏", "Забони англисӣ ҷасуронро дӯст медорад. Далерона боз кӯшиш кунед! 🦁", "Ҳеҷ гап не! Шарҳро хонед ва боз кӯшиш кунед. 📖", "Дар хотир доред: дар омӯзиш душвор, дар кор осон. 💼", "Пешрафти шумо аён аст, барои як хато манъ нашавед! 🧗‍♂️", "Хатогиҳоро таҳлил кунед ва онҳо ба қувваи шумо табдил меёбанд. 🔋", "Ба худ бовар кунед! Шумо албатта метавонед. ✨", "Муҳимаш — хоҳиши омӯзиш. Ҷавоби дурустро бошад, меёбем! 🔍", "Кӯшиш зарар надорад. Биёед боз як бор кӯшиш кунем! 🎯", "Шумо аллакай бисёр чизро омӯхтед, ин вазифа ҳам аз дастатон меояд! 🐘", "Нафаси амиқ кашед ва варианти дигарро интихоб кунед. 🌬️"]
-      },
-      kg: {
-        home: 'Башкы бет', phrases: 'Фразалар', progress: 'Жетишкендик',
-        done_of: (n, t) => `${n} / ${t} сабак аяктады`,
-        grammar: 'Грамматика', words: 'Сөздөр', dialogue: 'Диалог', quiz: 'Тест',
-        back: 'Артка', manager: 'Сүйлөөчү A', worker: 'Сүйлөөчү B',
-        tap_word: 'Укуу үчүн сөзгө басыңыз',
-        play: '▶ Диалогду угуу', complete: '✓ Сабакты аяктоо', completed: '✓ Аяктады',
-        all: 'Баары', work: 'Иш', health: 'Саламаттык', pay: 'Эмгек акы', shop: 'Дүкөн', social: 'Баарлашуу', sos: 'SOS',
-        correct: '✓ Туура!', wrong: '✗ Туура эмес — кайра',
-        congrats: 'Сабак аяктады! 🎉', score: 'Бардык жооптор туура!',
-        lessons_done: 'сабак аяктады', words_learned: 'сөз үйрөнүлдү', pts: 'упай', storage_full_error: 'Прогрессти сактоо мүмкүн болгон жок. Сактагыч толуп калды.',
-        q_complete: '✍️ Боштукту толтуруңуз:', q_translate: '🗣️ Которуңуз:', q_negative: '❌ Жокко чыгарууну табыңыз:', q_correct: '✅ Кайсы сүйлөм туура?', q_question: '❓ Жоопко кайсы суроо туура келет:',
-        question_of: (q, t) => `Суроо ${q} / ${t}`,
-        quiz_expl: '💡 <b>Түшүндүрмө:</b>',
-        quiz_ok_title: "✅ Абдан жакшы! Туура.",
-        quiz_no_title: "❌ Ката — ийгиликке кадам!",
-        quiz_no_desc: ["Ката — ийгиликке кадам! Дагы бир жолу аракет кылып көрүңүз. 💪", "Багынбаңыз! Ар бир аракет менен сиз жакшыраак болуп жатасыз. 🌟", "Ката кетирүү пайдалуу, ошентип биз тезирээк үйрөнөбүз! 🔥", "Сиз туура жолдосуз! Дагы бир жолу ойлонуп көрүңүз. 🧠", "Эч ким биринчи жолкусунда идеалдуу болбойт. Уланта бериңиз! 🚀", "Ар бир ката сизди акылдуураак кылат. Дагы аракет кылыңыз! 💡", "Өжөрлүк — билимдин ачкычы. Колуңуздан келет! 🔑", "Ката кетирүүдөн коркпоңуз, токтоп калуудан коркуңуз. Алга! 🏃‍♂️", "Жакшы аракет! Эми кандай кылбоо керектигин билесиз. Дагы көрөлүбү? 😉", "Мээңиз азыр активдүү иштеп, үйрөнүп жатат. Улантыңыз! 🏋️‍♂️", "Багынбаңыз! Ар бир жолу оңой болот. 📈", "Ийгиликтин сыры — биринчи катадан кийин багынбоо. 🏆", "Тилди билгендер деле кээде ката кетиришет. Дагы аракет кылып көрүңүз! 🗣️", "Бул ката эрежени түбөлүккө эстеп калууга жардам берет! 📌", "Сабыр жана эмгек баарын жеңет. Дагы бир аракет! 🛠️", "Окуу бул процесс. Сиз жакшы кылып жатасыз, улантыңыз! 🌱", "Бир аз ойлонуп, башка жоопту тандап көрүңүз. 🤔", "Капа болбоңуз! Эң негизгиси эрежени түшүнүү. 🎯", "Сиз ойлогондон да туура жоопко жакынсыз! 🌈", "Каталар сиздин аракет кылып жатканыңызды көрсөтөт. Азаматсыз! 👏", "Англис тили эр жүрөктөрдү жакшы көрөт. Коркпой дагы аракет кылыңыз! 🦁", "Эч нерсе эмес! Түшүндүрмөнү окуп, кайра аракет кылыңыз. 📖", "Эсиңизде болсун: окууда кыйын, жумушта оңой. 💼", "Сиздин өсүүңүз байкалып турат, бир ката үчүн токтобоңуз! 🧗‍♂️", "Каталарды анализдеңиз, алар сиздин күчүңүзгө айланат. 🔋", "Өзүңүзгө ишениңиз! Сөзсүз колуңуздан келет. ✨", "Негизгиси — үйрөнүүгө болгон каалоо. Туура жоопту табабыз! 🔍", "Аракеттен зыян жок. Келиңиз дагы аракет кылып көрөлү! 🎯", "Сиз көп нерсени үйрөндүңүз, бул тапшырманы да аткара аласыз! 🐘", "Терең дем алып, башка вариантын тандаңыз. 🌬️"]
-      }
-    };
-    // Safe storage helpers
-    function safeGetItem(key, fallback = '') {
-      try {
-        return localStorage.getItem(key) || fallback;
-      } catch (e) {
-        return fallback;
-      }
-    }
-
-    function safeGetJSON(key, fallback = []) {
-      try {
-        const val = localStorage.getItem(key);
-        if (!val) return fallback;
-        const parsed = JSON.parse(val);
-        if (Array.isArray(fallback) && !Array.isArray(parsed)) return fallback;
-        return parsed;
-      } catch (e) {
-        return fallback;
-      }
-    }
-
-    function safeSetItem(key, value) {
-      try {
-        localStorage.setItem(key, value);
-        return true;
-      } catch (e) {
-        console.error('LocalStorage write failed:', e);
-        if (typeof showToast === 'function') {
-          showToast(t('storage_full_error') || 'Не удалось сохранить прогресс. Хранилище заполнено.');
-        }
-        return false;
-      }
-    }
-
-    let lang = safeGetItem('fe_lang', 'ru'), scr = 'home', curLesson = null, curTab = 'grammar', curGrammarForm = 'positive', quizState = {};
-    let done = safeGetJSON('fe_a1', []);
-    let pfCat = 'all';
-    let showCourseCongrats = false;
-    const t = (k, ...a) => { const v = (TR[lang] || TR['ru'])[k] || (TR['ru'] || {})[k]; return typeof v === 'function' ? v(...a) : (v ?? k) };
-    const gl = (o, k) => o[k + '_' + lang] || o[k + '_ru'] || '';
-    const OFFLINE_SPEECH_MESSAGE = 'Для озвучки в первый раз может потребоваться интернет';
-    const setDocumentLang = nextLang => { document.documentElement.lang = nextLang || 'ru'; };
-    const escapeAttr = value => String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
-    const speechAttr = text => `spk(${escapeAttr(JSON.stringify(String(text ?? '')))})`;
-    let toastTimer = null;
-    function showToast(msg) {
-      const el = document.getElementById('netToast');
-      if (!el) return;
-      el.textContent = msg;
-      el.classList.add('show');
-      if (toastTimer) clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => el.classList.remove('show'), 2800);
-    }
-    const spk = (txt, r = .88) => {
-      if (!navigator.onLine) {
-        if (speechSynthesis) speechSynthesis.cancel();
-        showToast(OFFLINE_SPEECH_MESSAGE);
-        return;
-      }
-      if (!speechSynthesis) return;
-      speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(txt);
-      u.lang = 'en-GB';
-      u.rate = r;
-      speechSynthesis.speak(u)
-    };
-    let dlgTimer = null;
-    function stopDlg() { if (dlgTimer) clearTimeout(dlgTimer); if (speechSynthesis) speechSynthesis.cancel() }
-    function playDlg(lines) { stopDlg(); let i = 0; function nx() { if (i >= lines.length) return; spk(lines[i].en); dlgTimer = setTimeout(nx, (lines[i].en.length * 70) + 900); i++; } nx() }
-    function setCertModalOpen(isOpen) {
-      const modal = document.getElementById('certModal');
-      if (!modal) return;
-      modal.style.display = isOpen ? 'flex' : 'none';
-      modal.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
-      document.body.classList.toggle('modal-open', isOpen);
-    }
-
-    const UI = {
-      streak_label: { ru: 'Дней подряд', uz: 'Kun ketma-ket', tj: 'Рӯз пайдарпай', kg: 'Күн катарынан', kz: 'Күн қатарынан' },
-      streak_copy: {
-        ru: n => n > 1 ? `${n} дней подряд. Отличный ритм!` : 'Сегодня уже есть шаг вперёд.',
-        uz: n => n > 1 ? `${n} kun ketma-ket. Zo'r ritm!` : 'Bugun ham oldinga qadam bor.',
-        tj: n => n > 1 ? `${n} рӯз пайдарпай. Аъло!` : 'Имрӯз ҳам як қадам ба пеш шуд.',
-        kg: n => n > 1 ? `${n} күн катарынан. Сонун!` : 'Бүгүн да алдыга кадам бар.',
-        kz: n => n > 1 ? `${n} күн қатарынан. Керемет!` : 'Бүгін де алға қадам бар.'
-      },
-      phrase_total: { ru: 'фраз в разговорнике', uz: 'ibora tayyor', tj: 'ибора омода', kg: 'фраза даяр', kz: 'тіркес дайын' },
-      completed_lessons: { ru: 'Пройденные уроки', uz: 'Tugallangan darslar', tj: 'Дарсҳои гузашта', kg: 'Аяктаган сабактар', kz: 'Аяқталған сабақтар' },
-      course_ready: { ru: 'Курс завершён. Сертификат готов к выдаче.', uz: 'Kurs tugadi. Sertifikat tayyor.', tj: 'Курс тамом шуд. Сертификат омода аст.', kg: 'Курс бүттү. Сертификат даяр.', kz: 'Курс аяқталды. Сертификат дайын.' },
-      course_locked: { ru: 'Сертификат откроется после завершения всех 15 уроков.', uz: 'Sertifikat barcha 15 dars tugagach ochiladi.', tj: 'Сертификат баъд аз 15 дарс кушода мешавад.', kg: 'Сертификат 15 сабак бүткөндөн кийин ачылат.', kz: 'Сертификат 15 сабақ біткен соң ашылады.' },
-      cert_card_title: { ru: 'Сертификат A0-A1', uz: 'A0-A1 sertifikati', tj: 'Сертификати A0-A1', kg: 'A0-A1 сертификаты', kz: 'A0-A1 сертификаты' },
-      cert_card_copy: { ru: 'Премиальный сертификат в формате A4 с именем студента, датой и статистикой курса.', uz: 'Talaba ismi, sana va kurs statistikasi bilan A4 sertifikat.', tj: 'Сертификати A4 бо номи донишҷӯ, сана ва омори курс.', kg: 'Студенттин аты, дата жана курс статистикасы бар A4 сертификат.', kz: 'Студент аты, күн және курс статистикасы бар A4 сертификат.' },
-      cert_get: { ru: '🏆 Получить сертификат', uz: '🏆 Sertifikat olish', tj: '🏆 Гирифтани сертификат', kg: '🏆 Сертификатты алуу', kz: '🏆 Сертификатты алу' },
-      cert_download: { ru: 'Скачать сертификат', uz: 'Sertifikatni yuklash', tj: 'Сертификатро боргирӣ кунед', kg: 'Сертификатты жүктөп алуу', kz: 'Сертификатты жүктеу' },
-      cert_note: { ru: 'После нажатия откроется окно печати. Там можно сохранить PDF без внешних библиотек.', uz: 'Bosilgandan keyin chop etish oynasi ochiladi. U yerdan PDF saqlash mumkin.', tj: 'Пас аз пахш равзанаи чоп кушода мешавад. Аз он ҷо PDF сабт кардан мумкин аст.', kg: 'Баскандан кийин басып чыгаруу терезеси ачылат. Ошол жерден PDF сактай аласыз.', kz: 'Басқаннан кейін басып шығару терезесі ашылады. Сол жерден PDF сақтауға болады.' },
-      cert_issued: { ru: 'Сертификат уже выдан', uz: 'Sertifikat berilgan', tj: 'Сертификат аллакай дода шуд', kg: 'Сертификат берилген', kz: 'Сертификат берілген' },
-      cert_not_issued: { ru: 'Сертификат ещё не выдан', uz: 'Sertifikat hali berilmagan', tj: 'Сертификат ҳанӯз дода нашудааст', kg: 'Сертификат али бериле элек', kz: 'Сертификат әлі берілмеген' },
-      cert_modal_title: { ru: 'Получить сертификат', uz: 'Sertifikat olish', tj: 'Гирифтани сертификат', kg: 'Сертификатты алуу', kz: 'Сертификатты алу' },
-      cert_modal_copy: { ru: 'Введите имя так, как оно должно быть указано на сертификате.', uz: 'Ismni sertifikatda qanday ko‘rinishi kerak bo‘lsa, shunday kiriting.', tj: 'Номро тавре ворид кунед, ки дар сертификат бошад.', kg: 'Атыңызды сертификатта кандай көрүнсө, ошондой киргизиңиз.', kz: 'Атыңызды сертификатта қалай көрінуі керек болса, солай енгізіңіз.' },
-      cert_name_placeholder: { ru: 'Имя Фамилия', uz: 'Ism Familiya', tj: 'Ном Насаб', kg: 'Аты Жөнү', kz: 'Аты Тегі' },
-      cert_name_error: { ru: 'Пожалуйста, введите имя для сертификата.', uz: 'Iltimos, sertifikat uchun ism kiriting.', tj: 'Лутфан, барои сертификат ном ворид кунед.', kg: 'Сураныч, сертификат үчүн атыңызды жазыңыз.', kz: 'Сертификат үшін атыңызды енгізіңіз.' },
-      cancel: { ru: 'Отмена', uz: 'Bekor qilish', tj: 'Бекор кардан', kg: 'Жокко чыгаруу', kz: 'Бас тарту' },
-      print: { ru: 'Печать', uz: 'Chop etish', tj: 'Чоп', kg: 'Басып чыгаруу', kz: 'Басып шығару' },
-      cert_banner: {
-        ru: 'Поздравляем! Вы завершили курс A0-A1! 🎉',
-        uz: 'Tabriklaymiz! Siz A0-A1 kursini tugatdingiz! 🎉',
-        tj: 'Табрик! Шумо курси A0-A1-ро тамом кардед! 🎉',
-        kg: 'Куттуктайбыз! A0-A1 курсун бүттүрдүңүз! 🎉',
-        kz: 'Құттықтаймыз! A0-A1 курсын аяқтадыңыз! 🎉'
-      },
-      cert_banner_sub: { ru: 'Осталось только ввести имя и сохранить сертификат в PDF.', uz: 'Endi faqat ismni kiriting va sertifikatni PDF qilib saqlang.', tj: 'Акнун танҳо номро ворид кунед ва сертификатро ба PDF сабт намоед.', kg: 'Эми атыңызды киргизип, сертификатты PDF кылып сактаңыз.', kz: 'Енді тек атыңызды енгізіп, сертификатты PDF етіп сақтаңыз.' }
-    };
-    const CATEGORY_LABELS = {
-      all: { ru: 'Все', uz: 'Barchasi', tj: 'Ҳама', kg: 'Баары', kz: 'Барлығы' },
-      work: { ru: 'Работа', uz: 'Ish', tj: 'Кор', kg: 'Иш', kz: 'Жұмыс' },
-      health: { ru: 'Здоровье', uz: 'Salomatlik', tj: 'Саломатӣ', kg: 'Саламаттык', kz: 'Денсаулық' },
-      pay: { ru: 'Зарплата', uz: 'Maosh', tj: 'Маош', kg: 'Эмгек акы', kz: 'Жалақы' },
-      shop: { ru: 'Магазин', uz: "Do'kon", tj: 'Дӯкон', kg: 'Дүкөн', kz: 'Дүкен' },
-      social: { ru: 'Общение', uz: 'Muloqot', tj: 'Муошират', kg: 'Баарлашуу', kz: 'Қарым-қатынас' },
-      sos: { ru: 'SOS', uz: 'SOS', tj: 'SOS', kg: 'SOS', kz: 'SOS' },
-      transport: { ru: 'Транспорт', uz: 'Transport', tj: 'Нақлиёт', kg: 'Транспорт', kz: 'Көлік' },
-      camp: { ru: 'Кэмп', uz: 'Lager', tj: 'Лагер', kg: 'Кэмп', kz: 'Лагерь' },
-      documents: { ru: 'Документы', uz: 'Hujjatlar', tj: 'Ҳуҷҷатҳо', kg: 'Документтер', kz: 'Құжаттар' }
-    };
-    const EXTRA_EXAMPLES_LABEL = {
-      ru: 'Дополнительные примеры',
-      uz: 'Qo‘shimcha misollar',
-      tj: 'Намунаҳои иловагӣ',
-      kg: 'Кошумча мисалдар',
-      kz: 'Қосымша мысалдар'
-    };
-    const CERTIFICATE_LEVELS = {
-      a1: { title: 'CEFR A0-A1', name: 'First Days on the Farm', lessons: 15 }
-    };
-    const DEFAULT_GRAMMAR_LABELS = {
-      positive: { ru: 'Утверждение', uz: 'Tasdiq', tj: 'Тасдиқ', kg: 'Ырастоо', kz: 'Болымды' },
-      negative: { ru: 'Отрицание', uz: 'Inkor', tj: 'Инкор', kg: 'Терс', kz: 'Болымсыз' },
-      question: { ru: 'Вопрос', uz: 'Savol', tj: 'Савол', kg: 'Суроо', kz: 'Сұрақ' }
-    };
-    const LEGACY_GRAMMAR_ENHANCEMENTS = {
-      8: {
-        note: {
-          ru: 'Не говорите `He have got`. Правильно: `He has got`.',
-          uz: '`He have got` demang. To\'g\'risi: `He has got`.',
-          tj: '`He have got` нагӯед. Дуруст: `He has got`.',
-          kg: '`He have got` деб айтпаңыз. Туурасы: `He has got`.',
-          kz: '`He have got` деп айтпаңыз. Дұрысы: `He has got`.'
-        },
-        cultural: {
-          ru: 'На британских фермах СИЗ часто проверяют перед сменой. Фраза `Have you got your PPE?` звучит очень естественно.',
-          uz: 'Britaniya fermalarida PPE ko\'pincha smena oldidan tekshiriladi. `Have you got your PPE?` iborasi juda tabiiy eshitiladi.',
-          tj: 'Дар фермаҳои Бритониё PPE-ро пеш аз смена зуд-зуд месанҷанд. Ибораи `Have you got your PPE?` хеле табиӣ садо медиҳад.',
-          kg: 'Британия фермаларында PPEни нөөмөт алдында көп текшеришет. `Have you got your PPE?` деген сөз табигый угулат.',
-          kz: 'Британ фермаларында ЖҚҚ-ны ауысым алдында жиі тексереді. `Have you got your PPE?` тіркесі өте табиғи естіледі.'
-        }
-      },
-      9: {
-        note: {
-          ru: 'Для одного предмета используйте `There is`, для нескольких — `There are`.',
-          uz: 'Bitta narsa uchun `There is`, bir nechta narsa uchun `There are` ishlating.',
-          tj: 'Барои як чиз `There is`, барои чанд чиз `There are` истифода баред.',
-          kg: 'Бир нерсе үчүн `There is`, көп нерсе үчүн `There are` колдонуңуз.',
-          kz: 'Бір зат үшін `There is`, бірнеше зат үшін `There are` қолданыңыз.'
-        },
-        cultural: {
-          ru: 'В shared caravan обычно вежливо сначала описать проблему, а потом спокойно попросить ремонт: `There isn\'t any hot water.`',
-          uz: 'Umumiy karavonda odatda muammoni muloyim aytib, keyin ta\'mirlashni so\'rashadi: `There isn\'t any hot water.`',
-          tj: 'Дар caravan-и муштарак одатан аввал мушкилро оромона мегӯянд ва баъд таъмирро мепурсанд: `There isn\'t any hot water.`',
-          kg: 'Жалпы caravanда адегенде көйгөйдү сылык айтып, анан оңдоону сурашат: `There isn\'t any hot water.`',
-          kz: 'Ортақ вагончикте әдетте мәселені сыпайы айтып, содан кейін жөндеуді сұрайды: `There isn\'t any hot water.`'
-        }
-      },
-      10: {
-        labels: {
-          positive: { ru: 'Вежливо', uz: 'Muloyim', tj: 'Боадаб', kg: 'Сылык', kz: 'Сыпайы' },
-          negative: { ru: 'Покупка', uz: 'Xarid', tj: 'Харид', kg: 'Сатып алуу', kz: 'Сатып алу' },
-          question: { ru: 'Сколько?', uz: 'Qancha?', tj: 'Чанд?', kg: 'Канча?', kz: 'Қанша?' }
-        },
-        note: {
-          ru: '`How much` — для неисчисляемого, `How many` — для того, что можно посчитать.',
-          uz: '`How much` sanalmaydigan so\'zlar uchun, `How many` esa sanaladigan so\'zlar uchun.',
-          tj: '`How much` барои ҳисобнашаванда, `How many` барои ҳисобшаванда.',
-          kg: '`How much` эсептелбеген нерселер үчүн, `How many` эсептелген нерселер үчүн.',
-          kz: '`How much` саналмайтын заттарға, `How many` саналатын заттарға қолданылады.'
-        },
-        cultural: {
-          ru: 'В Британии в магазине лучше говорить `I\'d like...` или `Can I have...?`, а не прямое `I want...`.',
-          uz: 'Britaniyada do\'konda `I\'d like...` yoki `Can I have...?` deyish ma\'qul, `I want...` juda to\'g\'ri eshitilmaydi.',
-          tj: 'Дар Бритониё дар мағоза беҳтар аст `I\'d like...` ё `Can I have...?` гӯед, на `I want...`.',
-          kg: 'Британияда дүкөндө `I\'d like...` же `Can I have...?` деген жакшы, `I want...` өтө түз угулат.',
-          kz: 'Британияда дүкенде `I\'d like...` немесе `Can I have...?` деген дұрыс, `I want...` тым тік естіледі.'
-        }
-      },
-      11: {
-        labels: {
-          positive: { ru: 'Маршрут', uz: 'Yo\'l', tj: 'Роҳ', kg: 'Маршрут', kz: 'Бағыт' },
-          negative: { ru: 'Осторожно', uz: 'Ogohlantirish', tj: 'Огоҳӣ', kg: 'Эскертүү', kz: 'Ескерту' },
-          question: { ru: 'Как добраться?', uz: 'Qanday boraman?', tj: 'Чӣ гуна расам?', kg: 'Кантип барам?', kz: 'Қалай жетемін?' }
-        },
-        note: {
-          ru: 'После `Don\'t` используйте глагол без окончания: `Don\'t turn`, `Don\'t get off`.',
-          uz: '`Don\'t` dan keyin fe\'l oddiy shaklda keladi: `Don\'t turn`, `Don\'t get off`.',
-          tj: 'Баъд аз `Don\'t` феъл дар шакли одӣ меояд: `Don\'t turn`, `Don\'t get off`.',
-          kg: '`Don\'t` сөзүнөн кийин этиш жөнөкөй формада келет: `Don\'t turn`, `Don\'t get off`.',
-          kz: '`Don\'t` сөзінен кейін етістік жай формада тұрады: `Don\'t turn`, `Don\'t get off`.'
-        },
-        cultural: {
-          ru: 'Когда спрашиваете дорогу, начните с `Excuse me`. Короткие инструкции вроде `Go straight` или `Turn left` очень типичны.',
-          uz: 'Yo\'l so\'raganda avval `Excuse me` deng. `Go straight`, `Turn left` kabi qisqa ko\'rsatmalar juda odatiy.',
-          tj: 'Ҳангоми пурсидани роҳ аввал `Excuse me` гӯед. Дастурҳои кӯтоҳ мисли `Go straight`, `Turn left` хеле маъмуланд.',
-          kg: 'Жол сураганда адегенде `Excuse me` деп баштаңыз. `Go straight`, `Turn left` сыяктуу кыска көрсөтмөлөр абдан мүнөздүү.',
-          kz: 'Жол сұрағанда алдымен `Excuse me` деңіз. `Go straight`, `Turn left` сияқты қысқа нұсқаулар өте жиі айтылады.'
-        }
-      },
-      12: {
-        note: {
-          ru: 'После `was / were` используйте `born`, а не `birth`: `I was born in 1998`.',
-          uz: '`was / were` dan keyin `born` ishlatiladi, `birth` emas: `I was born in 1998`.',
-          tj: 'Баъд аз `was / were` калимаи `born` меояд, на `birth`: `I was born in 1998`.',
-          kg: '`was / were` сөздөрүнөн кийин `born` колдонулат, `birth` эмес: `I was born in 1998`.',
-          kz: '`was / were` сөздерінен кейін `born` қолданылады, `birth` емес: `I was born in 1998`.'
-        },
-        cultural: {
-          ru: 'В британских анкетах часто просят `surname`, `postcode`, `emergency contact` и запись печатными буквами.',
-          uz: 'Britaniya formalarida ko\'pincha `surname`, `postcode`, `emergency contact` va bosh harflar bilan yozish so\'raladi.',
-          tj: 'Дар бланкаҳои Бритониё аксар вақт `surname`, `postcode`, `emergency contact` ва навиштани ҳарфҳои калон талаб мешавад.',
-          kg: 'Британия формаларында көп учурда `surname`, `postcode`, `emergency contact` жана баш тамга менен жазуу суралат.',
-          kz: 'Британ бланкілерінде жиі `surname`, `postcode`, `emergency contact` және бас әріппен жазу сұралады.'
-        }
-      },
-      13: {
-        note: {
-          ru: 'После `didn\'t` всегда ставьте базовую форму: `didn\'t go`, `didn\'t see`.',
-          uz: '`didn\'t` dan keyin har doim fe\'lning boshlang\'ich shakli keladi: `didn\'t go`, `didn\'t see`.',
-          tj: 'Баъд аз `didn\'t` ҳамеша шакли аввали феъл меояд: `didn\'t go`, `didn\'t see`.',
-          kg: '`didn\'t` сөзүнөн кийин дайыма баштапкы форма келет: `didn\'t go`, `didn\'t see`.',
-          kz: '`didn\'t` сөзінен кейін әрқашан етістіктің бастапқы түрі тұрады: `didn\'t go`, `didn\'t see`.'
-        },
-        cultural: {
-          ru: 'Если на смене была ошибка или инцидент, в Британии важно быстро сообщить об этом супервайзеру и записать детали.',
-          uz: 'Agar smenada xato yoki hodisa bo\'lsa, Britaniyada bu haqda tezda supervisorga aytish va tafsilotni yozish muhim.',
-          tj: 'Агар дар смена хато ё ҳодиса рӯй диҳад, дар Бритониё муҳим аст, ки зуд ба супервайзер хабар диҳед ва ҷузъиётро нависед.',
-          kg: 'Эгер нөөмөттө ката же окуя болсо, Британияда аны тез эле супервайзерге айтып, маалыматты жазып коюу маанилүү.',
-          kz: 'Егер ауысымда қате немесе оқиға болса, Британияда бұл туралы супервайзерге тез айтып, мәліметті жазып қою маңызды.'
-        }
-      },
-      14: {
-        labels: {
-          positive: { ru: 'CAN', uz: 'CAN', tj: 'CAN', kg: 'CAN', kz: 'CAN' },
-          negative: { ru: 'CAN\'T', uz: 'CAN\'T', tj: 'CAN\'T', kg: 'CAN\'T', kz: 'CAN\'T' },
-          question: { ru: 'Помощь?', uz: 'Yordam?', tj: 'Кӯмак?', kg: 'Жардам?', kz: 'Көмек?' }
-        },
-        note: {
-          ru: 'После `can / can\'t` идет глагол без `to`: `I can work`, `I can\'t walk`.',
-          uz: '`can / can\'t` dan keyin fe\'l `to`siz keladi: `I can work`, `I can\'t walk`.',
-          tj: 'Баъд аз `can / can\'t` феъл бе `to` меояд: `I can work`, `I can\'t walk`.',
-          kg: '`can / can\'t` сөздөрүнөн кийин этиш `to`суз келет: `I can work`, `I can\'t walk`.',
-          kz: '`can / can\'t` сөздерінен кейін етістік `to`-сыз келеді: `I can work`, `I can\'t walk`.'
-        },
-        cultural: {
-          ru: 'Фраза `call in sick` очень типична для работы в Британии: это значит заранее сообщить, что вы не выйдете на смену по болезни.',
-          uz: '`call in sick` Britaniyada ishda juda odatiy ibora: bu kasal bo\'lib qolganingizni oldindan aytish degani.',
-          tj: '`call in sick` дар кори Бритониё ибораи хеле маъмул аст: ин маънои пешакӣ гуфтанро дорад, ки бо сабаби беморӣ намеоед.',
-          kg: '`call in sick` Британиядагы жумушта кеңири колдонулган сөз айкашы: бул ооруп калганыңызды алдын ала билдирүү дегенди билдирет.',
-          kz: '`call in sick` Британиядағы жұмыста өте жиі айтылады: бұл ауырып қалғаныңызды алдын ала хабарлау деген сөз.'
-        }
-      },
-      15: {
-        labels: {
-          positive: { ru: 'Предложение', uz: 'Taklif', tj: 'Пешниҳод', kg: 'Сунуш', kz: 'Ұсыныс' },
-          negative: { ru: 'Ответ', uz: 'Javob', tj: 'Ҷавоб', kg: 'Жооп', kz: 'Жауап' },
-          question: { ru: 'Желание', uz: 'Istak', tj: 'Хоҳиш', kg: 'Каалоо', kz: 'Тілек' }
-        },
-        note: {
-          ru: 'Для вежливого желания говорите `I would like...`, а не прямое `I want...`.',
-          uz: 'Muloyim istak uchun `I would like...` deng, juda to\'g\'ri `I want...` emas.',
-          tj: 'Барои хоҳиши боадабона `I would like...` гӯед, на `I want...`.',
-          kg: 'Сылык каалоо үчүн `I would like...` деп айтыңыз, түз эле `I want...` эмес.',
-          kz: 'Сыпайы тілек үшін `I would like...` деңіз, тікелей `I want...` емес.'
-        },
-        cultural: {
-          ru: 'Британский small talk часто строится вокруг чая, погоды и мягких вежливых фраз вроде `Yes, please` и `No, thank you`.',
-          uz: 'Britancha small talk ko\'pincha choy, ob-havo va `Yes, please`, `No, thank you` kabi muloyim iboralar atrofida bo\'ladi.',
-          tj: 'Small talk-и бритониёӣ аксар вақт дар атрофи чой, обу ҳаво ва ибораҳои мулоим мисли `Yes, please`, `No, thank you` сохта мешавад.',
-          kg: 'Британиялык small talk көбүнчө чай, аба ырайы жана `Yes, please`, `No, thank you` сыяктуу жумшак сөздөрдүн айланасында болот.',
-          kz: 'Британдық small talk көбіне шай, ауа райы және `Yes, please`, `No, thank you` сияқты жұмсақ сыпайы тіркестердің айналасында жүреді.'
-        }
-      }
-    };
-    const LEGACY_GRAMMAR_DIALOGUE_ROWS = {
-      8: {
-        positive: [
-          { index: 5, subj: 'I', verb: 'have got' }
-        ],
-        negative: [
-          { index: 1, subj: 'I', verb: "haven't got" }
-        ],
-        question: [
-          { index: 4, subj: 'Have', verb: 'you got' },
-          { index: 8, subj: 'Has', verb: 'your partner got' }
-        ]
-      },
-      9: {
-        negative: [
-          { index: 2, subj: 'There', verb: "isn't" },
-          { index: 4, subj: 'We', verb: "haven't got" }
-        ],
-        question: [
-          { index: 3, subj: 'Is', verb: 'there' },
-          { index: 5, subj: 'Are', verb: 'there' }
-        ]
-      },
-      10: {
-        positive: [
-          { index: 4, subj: 'I', verb: "would like" },
-          { index: 6, subj: 'I', verb: "would like" },
-          { index: 9, subj: 'Here', verb: 'is' }
-        ],
-        negative: [
-          { index: 2, subj: 'That', verb: 'is' },
-          { index: 8, subj: 'I', verb: 'have / can' }
-        ],
-        question: [
-          { index: 0, subj: 'How much', verb: 'is' },
-          { index: 5, subj: 'Would', verb: 'you like' },
-          { index: 7, subj: 'Would', verb: 'you like' }
-        ]
-      },
-      11: {
-        positive: [
-          { index: 1, subj: 'Get', verb: 'on' },
-          { index: 5, subj: 'Get', verb: 'off' },
-          { index: 9, subj: 'Turn', verb: 'right' }
-        ],
-        negative: [
-          { index: 7, subj: "Don't", verb: 'turn' }
-        ],
-        question: [
-          { index: 4, subj: 'Where', verb: 'do I get off' },
-          { index: 6, subj: 'How', verb: 'do I get to' },
-          { index: 8, subj: 'Is', verb: 'it far' }
-        ]
-      },
-      12: {
-        positive: [
-          { index: 1, subj: 'I', verb: 'have' },
-          { index: 3, subj: 'My full name', verb: 'is' },
-          { index: 8, subj: 'I', verb: 'am married' }
-        ],
-        question: [
-          { index: 2, subj: 'What', verb: 'is' },
-          { index: 5, subj: 'When', verb: 'were you born' },
-          { index: 7, subj: 'What', verb: 'is' }
-        ]
-      },
-      13: {
-        positive: [
-          { index: 1, subj: 'I', verb: 'made / dropped' },
-          { index: 5, subj: 'I', verb: 'checked / gave' },
-          { index: 9, subj: 'I', verb: 'will take' }
-        ],
-        negative: [
-          { index: 3, subj: 'I', verb: "didn't find" },
-          { index: 7, subj: 'I', verb: 'forgot' }
-        ],
-        question: [
-          { index: 2, subj: 'When', verb: 'did it happen' },
-          { index: 4, subj: 'Did', verb: 'you check' },
-          { index: 6, subj: 'Did', verb: 'you lose' }
-        ]
-      },
-      14: {
-        positive: [
-          { index: 7, subj: 'I', verb: 'will ask' },
-          { index: 8, subj: 'You', verb: 'can go' },
-          { index: 9, subj: 'I', verb: 'will take' }
-        ],
-        negative: [
-          { index: 0, subj: 'I', verb: 'need to call in sick' },
-          { index: 4, subj: 'I', verb: "can't work" }
-        ],
-        question: [
-          { index: 1, subj: 'What', verb: 'is' },
-          { index: 3, subj: 'Do', verb: 'you have' },
-          { index: 5, subj: 'Can', verb: 'I help' },
-          { index: 6, subj: 'Can', verb: 'you bring' }
-        ]
-      },
-      15: {
-        positive: [
-          { index: 2, subj: 'Would', verb: 'you like' },
-          { index: 7, subj: 'Would', verb: 'you like' }
-        ],
-        negative: [
-          { index: 3, subj: 'Yes,', verb: 'please' },
-          { index: 6, subj: 'No,', verb: 'sorry' },
-          { index: 9, subj: 'Cheers,', verb: 'mate' }
-        ],
-        question: [
-          { index: 1, subj: 'I', verb: 'am / am hungry' },
-          { index: 5, subj: 'Are', verb: 'you free' },
-          { index: 8, subj: 'I', verb: 'would like' }
-        ]
-      }
-    };
-    const QUIZ_LANGS = ['ru', 'uz', 'tj', 'kg', 'kz'];
-    const LEGACY_QUIZ_HINT_TRANSLATIONS = {
-      8: [
-        { uz: 'Menda yangi rezina etiklar bor.', tj: 'Ман мӯзаҳои резинии нав дорам.', kg: 'Менде жаңы резина өтүктөр бар.', kz: 'Менде жаңа резеңке етік бар.' },
-        { uz: 'O\'lcham yoki sifat sifati rangdan oldin keladi: og\'ir qora suv o\'tkazmaydigan.', tj: 'Сифати андоза ё хусусият пеш аз ранг меояд: вазнини сиёҳи обногузар.', kg: 'Өлчөм же сапат сын атоочу түстөн мурда келет: оор кара суу өткөрбөс.', kz: 'Өлшем не сапа сын есімі түстен бұрын келеді: ауыр қара су өткізбейтін.' },
-        { uz: 'Unda yo\'q (She).', tj: 'Ӯ надорад (She).', kg: 'Анда жок (She).', kz: 'Онда жоқ (She).' },
-        { uz: 'qulay', tj: 'бароҳат', kg: 'ыңгайлуу', kz: 'ыңғайлы' },
-        { uz: 'He uchun savol.', tj: 'Савол барои He.', kg: 'He үчүн суроо.', kz: 'He үшін сұрақ.' },
-        { uz: '"ho\'l" so\'zining antonimi.', tj: 'Антоними калимаи «тар».', kg: '"ным" сөзүнүн антоними.', kz: '"дымқыл" сөзінің антонимі.' },
-        { uz: 'Hair + net (soch + to\'r).', tj: 'Hair + net (мӯй + тӯр).', kg: 'Hair + net (чач + тор).', kz: 'Hair + net (шаш + тор).' },
-        { uz: 'Ular oyoqlarga og\'riq beradi, demak ular tor.', tj: 'Онҳо поятонро дард медиҳанд, пас онҳо танганд.', kg: 'Алар бутту оорутат, демек алар тар.', kz: 'Олар аяққа батады, демек олар тар.' },
-        { uz: 'We uchun inkor.', tj: 'Инкор барои We.', kg: 'We үчүн тануу формасы.', kz: 'We үшін болымсыз форма.' },
-        { uz: 'Kaska kiyish xavfsiz.', tj: 'Пӯшидани каска бехатар аст.', kg: 'Каска кийүү коопсуз.', kz: 'Каска кию қауіпсіз.' }
-      ],
-      9: [
-        { uz: 'Heater birlik, shuning uchun There is ishlatiladi.', tj: 'Heater (гармкунак) шакли танҳо аст, бинобар ин There is истифода мешавад.', kg: 'Heater (жылыткыч) жекелик сан, ошондуктан There is колдонулат.', kz: 'Heater (жылытқыш) жекеше, сондықтан There is қолданылады.' },
-        { uz: 'Suv sanalmaydi, shuning uchun inkorda isn\'t any bo\'ladi.', tj: 'Об ҳисобнашаванда аст, барои ҳамин дар инкор isn\'t any меояд.', kg: 'Суу саналбайт, ошондуктан танууда isn\'t any колдонулат.', kz: 'Су саналмайды, сондықтан болымсызда isn\'t any болады.' },
-        { uz: 'Savollarda doim any ishlatamiz.', tj: 'Дар саволҳо ҳамеша any истифода мекунем.', kg: 'Суроолордо дайыма any колдонобуз.', kz: 'Сұрақтарда әрқашан any қолданамыз.' },
-        { uz: 'muzlatgich', tj: 'яхдон', kg: 'муздаткыч', kz: 'тоңазытқыш' },
-        { uz: 'Ko\'plikdagi tasdiqda some ishlatiladi.', tj: 'Дар ҷумлаи тасдиқӣ бо ҷамъ some истифода мешавад.', kg: 'Көптүк ырастоодо some колдонулат.', kz: 'Көпше түрдегі хабарлы сөйлемде some қолданылады.' },
-        { uz: '"to\'la" so\'zining antonimi - "bo\'sh".', tj: 'Антоними «пур» - «холӣ».', kg: '"толук" сөзүнүн антоними - "бош".', kz: '"толы" сөзінің антонимі - "бос".' },
-        { uz: 'Chairs ko\'plik, shuning uchun savol Are there bilan boshlanadi.', tj: 'Chairs ҷамъ аст, савол бо Are there сар мешавад.', kg: 'Chairs көптүк, суроо Are there менен башталат.', kz: 'Chairs көпше, сұрақ Are there деп басталады.' },
-        { uz: 'Kir yuvish xonasi inglizcha laundry.', tj: 'Ҷомашӯйхона ба англисӣ laundry.', kg: 'Кир жуучу жай англисче laundry.', kz: 'Кір жуатын жер ағылшынша laundry.' },
-        { uz: 'Tinch emas (not quiet) degani shovqinli (noisy).', tj: 'На ором (not quiet) яъне пурғавғо (noisy).', kg: 'Тынч эмес (not quiet) деген ызы-чуу (noisy).', kz: 'Тыныш емес (not quiet) дегені шулы (noisy).' },
-        { uz: 'Agar ta\'mir kerak bo\'lsa, narsa buzilgan bo\'ladi.', tj: 'Агар таъмир лозим бошад, чиз вайрон аст.', kg: 'Оңдоо керек болсо, буюм бузулган болот.', kz: 'Жөндеу керек болса, зат сынған болады.' }
-      ],
-      10: [
-        { uz: 'Sutni dona bilan sanab bo\'lmaydi, shuning uchun much ishlatiladi.', tj: 'Ширро дона-дона ҳисоб намекунанд, барои ҳамин much истифода мешавад.', kg: 'Сүттү даанадап санабайбыз, ошондуктан much колдонулат.', kz: 'Сүтті даналап санауға болмайды, сондықтан much қолданылады.' },
-        { uz: 'Tuxumni sanash mumkin, shuning uchun many ishlatiladi.', tj: 'Тухмро ҳисоб кардан мумкин аст, бинобар ин many истифода мешавад.', kg: 'Жумуртканы санаса болот, ошондуктан many колдонулат.', kz: 'Жұмыртқаны санауға болады, сондықтан many қолданылады.' },
-        { uz: 'Britaniyada muloyimlik uchun doim I would like (I\'d like) ishlatiladi.', tj: 'Дар Бритониё барои боадабӣ ҳамеша I would like (I\'d like) мегӯянд.', kg: 'Британияда сылыктык үчүн дайыма I would like (I\'d like) колдонулат.', kz: 'Британияда сыпайылық үшін әрқашан I would like (I\'d like) қолданылады.' },
-        { uz: 'arzon', tj: 'арзон', kg: 'арзан', kz: 'арзан' },
-        { uz: 'Pachka yoki qadoq - packet.', tj: 'Баста ё қуттӣ - packet.', kg: 'Таңгак же пачка - packet.', kz: 'Қаптама не бума - packet.' },
-        { uz: 'Qimmat so\'zining antonimi - arzon (cheap).', tj: 'Антоними гарон - арзон (cheap).', kg: 'Кымбаттын антоними - арзан (cheap).', kz: 'Қымбат сөзінің антонимі - арзан (cheap).' },
-        { uz: 'Karta - bu card.', tj: 'Корт - ин card.', kg: 'Карт - бул card.', kz: 'Карта - бұл card.' },
-        { uz: 'Garlic - sarimsoq.', tj: 'Garlic - сир.', kg: 'Garlic - сарымсак.', kz: 'Garlic - сарымсақ.' },
-        { uz: 'Choyga odatda shakar qo\'shiladi.', tj: 'Ба чой одатан шакар меандозанд.', kg: 'Чайга адатта кант кошулат.', kz: 'Шайға әдетте қант қосылады.' },
-        { uz: 'To\'lov qog\'ozi - receipt.', tj: 'Қоғази пардохт - receipt.', kg: 'Төлөм кагазы - receipt.', kz: 'Төлем қағазы - receipt.' }
-      ],
-      11: [
-        { uz: 'Return ticket - borib-kelish chiptasi.', tj: 'Return ticket - чиптаи рафту баргашт.', kg: 'Return ticket - барып-келүү билети.', kz: 'Return ticket - барып-қайту билеті.' },
-        { uz: 'Jamoat transportiga chiqish - get on.', tj: 'Ба нақлиёти ҷамъиятӣ савор шудан - get on.', kg: 'Коомдук транспортко минүү - get on.', kz: 'Қоғамдық көлікке міну - get on.' },
-        { uz: 'Buyruqning inkorida doim Don\'t ishlatiladi.', tj: 'Дар амри инкорӣ ҳамеша Don\'t истифода мешавад.', kg: 'Буйруктун тануу формасында дайыма Don\'t колдонулат.', kz: 'Бұйрық райдың болымсыз түрінде әрқашан Don\'t қолданылады.' },
-        { uz: 'To\'g\'ri - straight.', tj: 'Рост - straight.', kg: 'Түз - straight.', kz: 'Тура - straight.' },
-        { uz: '"yaqin" so\'zining antonimi - "uzoq" (far).', tj: 'Антоними «наздик» - «дур» (far).', kg: '"жакын" сөзүнүн антоними - "алыс" (far).', kz: '"жақын" сөзінің антонимі - "алыс" (far).' },
-        { uz: 'Qanday boraman = How do I get to...?', tj: 'Чӣ тавр бирасам = How do I get to...?', kg: 'Кантип жетем = How do I get to...?', kz: 'Қалай жетемін = How do I get to...?' },
-        { uz: 'Dori-darmonlar dorixonada sotiladi.', tj: 'Доруҳо дар дорухона фурӯхта мешаванд.', kg: 'Дары-дармек дарыканада сатылат.', kz: 'Дәрілер дәріханада сатылады.' },
-        { uz: 'O\'rin yoki o\'rindiq - seat.', tj: 'Ҷой ё нишастгоҳ - seat.', kg: 'Орун же отургуч - seat.', kz: 'Орын не орындық - seat.' },
-        { uz: 'Burchak - corner.', tj: 'Гӯша - corner.', kg: 'Бурч - corner.', kz: 'Бұрыш - corner.' },
-        { uz: 'To\'g\'ri yuring - Go straight.', tj: 'Рост равед - Go straight.', kg: 'Түз барыңыз - Go straight.', kz: 'Тура жүріңіз - Go straight.' }
-      ],
-      12: [
-        { uz: 'I, He, She, It bilan was born ishlatiladi.', tj: 'Бо I, He, She, It was born истифода мешавад.', kg: 'I, He, She, It менен was born колдонулат.', kz: 'I, He, She, It-пен was born қолданылады.' },
-        { uz: 'Oilaviy holat - single yoki married.', tj: 'Вазъи оилавӣ яъне single ё married.', kg: 'Үй-бүлөлүк абал деген single же married.', kz: 'Отбасылық жағдай деген single немесе married.' },
-        { uz: 'We, You, They bilan were born ishlatiladi.', tj: 'Бо We, You, They were born истифода мешавад.', kg: 'We, You, They менен were born колдонулат.', kz: 'We, You, They-пен were born қолданылады.' },
-        { uz: 'Surname - familiya, ya\'ni last name.', tj: 'Surname - насаб, яъне last name.', kg: 'Surname - фамилия, башкача айтканда last name.', kz: 'Surname - тегі, яғни last name.' },
-        { uz: 'Imzo - signature.', tj: 'Имзо - signature.', kg: 'Кол тамга - signature.', kz: 'Қолтаңба - signature.' },
-        { uz: 'Bosh harflar - capital letters.', tj: 'Ҳарфҳои калон - capital letters.', kg: 'Баш тамгалар - capital letters.', kz: 'Бас әріптер - capital letters.' },
-        { uz: 'Yolg\'iz / turmush qurmagan - not married.', tj: 'Муҷаррад / шавҳар накарда - not married.', kg: 'Бойдок / турмушка чыкпаган - not married.', kz: 'Бойдақ / тұрмыс құрмаған - not married.' },
-        { uz: 'Anketani to\'ldirish - fill in.', tj: 'Варақаро пур кардан - fill in.', kg: 'Форманы толтуруу - fill in.', kz: 'Анкетаны толтыру - fill in.' },
-        { uz: 'Javob yil (1995), demak "Qachon?" deb so\'rashgan.', tj: 'Ҷавоб сол аст (1995), пас «Кай?» пурсиданд.', kg: 'Жооп жыл (1995), демек "Качан?" деп сурашты.', kz: 'Жауап жыл (1995), демек "Қашан?" деп сұрады.' },
-        { uz: 'Erkak jinsi - male.', tj: 'Ҷинси мардона - male.', kg: 'Эркек жынысы - male.', kz: 'Ер жынысы - male.' }
-      ],
-      13: [
-        { uz: 'Go fe\'lining ikkinchi shakli - went.', tj: 'Шакли дуюми go - went.', kg: 'Go этишинин экинчи формасы - went.', kz: 'Go етістігінің екінші түрі - went.' },
-        { uz: 'didn\'t dan keyin fe\'l bosh shaklda keladi (work).', tj: 'Пас аз didn\'t феъл дар шакли асосӣ меояд (work).', kg: 'didn\'tден кийин этиш баштапкы формада келет (work).', kz: 'didn\'t-ден кейін етістік бастапқы түрде келеді (work).' },
-        { uz: 'Yo\'qotmoq - lose, yo\'qotdi - lost.', tj: 'Гум кардан - lose, гум кард - lost.', kg: 'Жоготуу - lose, жоготту - lost.', kz: 'Жоғалту - lose, жоғалтты - lost.' },
-        { uz: 'Timesheet - ish soatlari yoziladigan qog\'oz.', tj: 'Timesheet - қоғаз барои соатҳои корӣ.', kg: 'Timesheet - иш сааттарын эсептеген кагаз.', kz: 'Timesheet - жұмыс сағаттарын есептейтін қағаз.' },
-        { uz: 'Ko\'rmoq - see, ko\'rdi - saw.', tj: 'Дидан - see, дид - saw.', kg: 'Көрүү - see, көрдү - saw.', kz: 'Көру - see, көрді - saw.' },
-        { uz: 'Kech - late, erta - early.', tj: 'Дер - late, барвақт - early.', kg: 'Кеч - late, эрте - early.', kz: 'Кеш - late, ерте - early.' },
-        { uz: 'Did yordamchisidan keyin asosiy fe\'l boshlang\'ich shaklda turadi (tell).', tj: 'Пас аз ёридиҳандаи Did феъли асосӣ дар шакли аввал меояд (tell).', kg: 'Did жардамчысынан кийин негизги этиш баштапкы формада турат (tell).', kz: 'Did көмекшісінен кейін негізгі етістік бастапқы түрде тұрады (tell).' },
-        { uz: 'Accident - muammo yoki yomon hodisa.', tj: 'Accident - мушкил ё ҳодисаи бад.', kg: 'Accident - көйгөй же жаман окуя.', kz: 'Accident - мәселе немесе жаман оқиға.' },
-        { uz: 'Qilmoq - make, qildi - made.', tj: 'Кардан - make, кард - made.', kg: 'Кылуу - make, кылды - made.', kz: 'Істеу - make, істеді - made.' },
-        { uz: 'Xato qilmoq - make a mistake. O\'tgan zamonda - made a mistake.', tj: 'Хато кардан - make a mistake. Дар гузашта - made a mistake.', kg: 'Ката кетирүү - make a mistake. Өткөн чакта - made a mistake.', kz: 'Қате жіберу - make a mistake. Өткен шақта - made a mistake.' }
-      ],
-      14: [
-        { uz: 'Men qila olmayman - I cannot yoki I can\'t.', tj: 'Ман наметавонам - I cannot ё I can\'t.', kg: 'Мен кыла албайм - I cannot же I can\'t.', kz: 'Мен істей алмаймын - I cannot немесе I can\'t.' },
-        { uz: 'GP surgery - mahalliy poliklinika yoki terapevt shifokor ofisi.', tj: 'GP surgery - поликлиникаи маҳаллӣ ё утоқи духтури умумӣ.', kg: 'GP surgery - жергиликтүү поликлиника же терапевттин кабинети.', kz: 'GP surgery - жергілікті емхана немесе терапевт дәрігердің кабинеті.' },
-        { uz: 'Head (bosh) + ache (og\'riq) = headache.', tj: 'Head (сар) + ache (дард) = headache.', kg: 'Head (баш) + ache (оору) = headache.', kz: 'Head (бас) + ache (ауру) = headache.' },
-        { uz: 'Plastyr - plaster.', tj: 'Лейкопластир - plaster.', kg: 'Пластырь - plaster.', kz: 'Пластырь - plaster.' },
-        { uz: 'Dori - medicine.', tj: 'Дору - medicine.', kg: 'Дары - medicine.', kz: 'Дәрі - medicine.' },
-        { uz: 'Kasal - ill yoki sick. Hurt tana a\'zosi og\'rig\'iga aytiladi, pain esa og\'riqning o\'zi.', tj: 'Бемор - ill ё sick. Hurt барои дарди узв, pain барои худи дард аст.', kg: 'Оорулуу - ill же sick. Hurt дене мүчөсүнүн оорушу, pain болсо оорунун өзү.', kz: 'Ауру - ill немесе sick. Hurt дене мүшесінің ауыруы, pain болса ауырсынудың өзі.' },
-        { uz: 'Mening belim og\'riyapti - My back hurts.', tj: 'Пуштам дард мекунад - My back hurts.', kg: 'Белим ооруйт - My back hurts.', kz: 'Белім ауырады - My back hurts.' },
-        { uz: 'Oyoq panjasi - foot, butun oyoq - leg.', tj: 'Кафти по - foot, тамоми пой - leg.', kg: 'Таман - foot, бут толугу менен - leg.', kz: 'Аяқ басы - foot, аяқ толықтай - leg.' },
-        { uz: 'Call in sick - ishga kasallik sababli chiqmasligingizni aytib qo\'ng\'iroq qilish.', tj: 'Call in sick - ба кор занг зада гуфтан, ки аз сабаби беморӣ намеоед.', kg: 'Call in sick - ооруп калганыңызды айтып жумушка чалуу.', kz: 'Call in sick - ауырып қалғаныңызды айтып жұмысқа қоңырау шалу.' },
-        { uz: 'Dam olish - rest.', tj: 'Истироҳат кардан - rest.', kg: 'Эс алуу - rest.', kz: 'Демалу - rest.' }
-      ],
-      15: [
-        { uz: 'Muloyim javob: Yes, please (Ha, marhamat).', tj: 'Ҷавоби боадаб: Yes, please (Ҳа, марҳамат).', kg: 'Сылык жооп: Yes, please (Ооба, сураныч).', kz: 'Сыпайы жауап: Yes, please (Иә, өтінемін).' },
-        { uz: 'Angliyada Cheers ko\'pincha rahmat yoki xayr degani.', tj: 'Дар Англия Cheers бисёр вақт маънои ташаккур ё хайрро дорад.', kg: 'Англияда Cheers көп учурда рахмат же кош бол дегенди билдирет.', kz: 'Англияда Cheers көбіне рақмет не сау бол дегенді білдіреді.' },
-        { uz: 'Agar ovqat yegingiz kelsa, siz hungry bo\'lasiz. Thirsty - chanqoq.', tj: 'Агар хӯрок хостан гиред, hungry мегӯед. Thirsty - ташна.', kg: 'Тамак жегиңиз келсе, hungry болосуз. Thirsty - суусаган.', kz: 'Егер тамақ жегіңіз келсе, hungry боласыз. Thirsty - шөлдеген.' },
-        { uz: 'Agar ichgingiz kelsa, siz thirsty bo\'lasiz.', tj: 'Агар нӯшидан хоҳед, thirsty мегӯед.', kg: 'Ичкиңиз келсе, thirsty болосуз.', kz: 'Егер ішкіңіз келсе, thirsty боласыз.' },
-        { uz: 'Mate - do\'st, tanish yoki hamkasb.', tj: 'Mate - дӯст, шинос ё ҳамкор.', kg: 'Mate - дос, тааныш же кесиптеш.', kz: 'Mate - дос, таныс не әріптес.' },
-        { uz: 'Albatta - of course yoki sure.', tj: 'Албатта - of course ё sure.', kg: 'Албетте - of course же sure.', kz: 'Әрине - of course немесе sure.' },
-        { uz: 'Britancha Alright? - bu Qalaysiz? degani.', tj: 'Бритониёӣ Alright? маънои «Ҳолатон чӣ?» дорад.', kg: 'Британиялык Alright? - "Кандайсың?" дегенди билдирет.', kz: 'Британдық Alright? - "Қалайсың?" дегенді білдіреді.' },
-        { uz: 'Ish ko\'p bo\'lsa, siz busy bo\'lasiz.', tj: 'Агар кор бисёр бошад, шумо busy ҳастед.', kg: 'Иш көп болсо, busy болосуз.', kz: 'Егер жұмыс көп болса, busy боласыз.' },
-        { uz: 'Choy bilan biscuit yeyiladi.', tj: 'Бо чой biscuit мехӯранд.', kg: 'Чай менен biscuit жешет.', kz: 'Шаймен biscuit жейді.' },
-        { uz: 'Rohatlanmoq / yoqtirmoq - enjoy.', tj: 'Лаззат бурдан - enjoy.', kg: 'Ырахат алуу - enjoy.', kz: 'Ләззат алу - enjoy.' }
-      ]
-    };
-    const QUIZ_EXPLANATION_TEXT = {
-      complete: {
-        ru: 'Подставьте форму, которая подходит по смыслу и грамматике.',
-        uz: 'Mazmun va grammatikaga mos shaklni qo\'ying.',
-        tj: 'Шаклеро гузоред, ки ба маъно ва грамматика мувофиқ аст.',
-        kg: 'Маани менен грамматикага туура келген форманы тандаңыз.',
-        kz: 'Мағынасы мен грамматикасына сай форманы қойыңыз.'
-      },
-      translate: {
-        ru: 'Соотнесите перевод из подсказки с английской фразой.',
-        uz: 'Ishoradagi tarjimani inglizcha ibora bilan moslang.',
-        tj: 'Тарҷумаи ишораро бо ибораи англисӣ мувофиқ кунед.',
-        kg: 'Кеңештеги котормону англисче сөз айкашы менен дал келтириңиз.',
-        kz: 'Көмектегі аударманы ағылшынша тіркеспен сәйкестендіріңіз.'
-      },
-      negative: {
-        ru: 'Здесь нужна правильная отрицательная форма.',
-        uz: 'Bu yerda to\'g\'ri inkor shakli kerak.',
-        tj: 'Дар ин ҷо шакли дурусти инкор лозим аст.',
-        kg: 'Бул жерде туура тануу формасы керек.',
-        kz: 'Мұнда дұрыс болымсыз форма керек.'
-      },
-      question: {
-        ru: 'Здесь тренируем вопросительную форму и порядок слов.',
-        uz: 'Bu yerda savol shakli va so\'z tartibini mashq qilamiz.',
-        tj: 'Дар ин ҷо шакли саволӣ ва тартиби калимаҳоро машқ мекунем.',
-        kg: 'Бул жерде суроо формасын жана сөз тартибин машыктырабыз.',
-        kz: 'Мұнда сұраулы форманы және сөз тәртібін жаттықтырамыз.'
-      },
-      vocabulary: {
-        ru: 'Здесь нужно выбрать слово по значению и контексту.',
-        uz: 'Bu yerda ma\'no va kontekst bo\'yicha so\'zni tanlash kerak.',
-        tj: 'Дар ин ҷо бояд калимаро аз рӯи маъно ва замина интихоб кард.',
-        kg: 'Бул жерде сөздү мааниси жана контексти боюнча тандоо керек.',
-        kz: 'Мұнда сөзді мағынасы мен контексті бойынша таңдау керек.'
-      },
-      choice: {
-        ru: 'Выберите вариант, который подходит по смыслу.',
-        uz: 'Mazmunga mos variantni tanlang.',
-        tj: 'Вариантеро интихоб кунед, ки ба маъно мувофиқ аст.',
-        kg: 'Мааниге туура келген вариантты тандаңыз.',
-        kz: 'Мағынаға сай келетін нұсқаны таңдаңыз.'
-      }
-    };
-    const QUIZ_EXPLANATION_LESSONS = {
-      1: { ru: 'формы am / is / are и знакомство', uz: 'am / is / are shakllari va tanishuv', tj: 'шаклҳои am / is / are ва шиносоӣ', kg: 'am / is / are формалары жана таанышуу', kz: 'am / is / are формалары және танысу' },
-      2: { ru: 'притяжательные формы и разговор о работе', uz: 'egalik shakllari va ish haqida gapirish', tj: 'шаклҳои соҳибӣ ва суҳбат дар бораи кор', kg: 'таандык формалар жана иш жөнүндө сүйлөшүү', kz: 'тәуелдік формалар және жұмыс туралы айту' },
-      3: { ru: 'this / that / these / those и предметы на ферме', uz: 'this / that / these / those va fermadagi buyumlar', tj: 'this / that / these / those ва чизҳо дар ферма', kg: 'this / that / these / those жана фермадагы буюмдар', kz: 'this / that / these / those және фермадағы заттар' },
-      4: { ru: 'время, числа и расписание', uz: 'vaqt, sonlar va jadval', tj: 'вақт, рақамҳо ва ҷадвал', kg: 'убакыт, сандар жана график', kz: 'уақыт, сандар және кесте' },
-      5: { ru: 'how much / how many и простые описания', uz: 'how much / how many va sodda tavsiflar', tj: 'how much / how many ва тавсифҳои содда', kg: 'how much / how many жана жөнөкөй сүрөттөө', kz: 'how much / how many және қарапайым сипаттау' },
-      6: { ru: 'Present Simple для рабочих действий', uz: 'ish harakatlari uchun Present Simple', tj: 'Present Simple барои амалҳои корӣ', kg: 'жумуш аракеттери үчүн Present Simple', kz: 'жұмыс қимылдарына арналған Present Simple' },
-      7: { ru: 'Present Simple, погода и рабочая одежда', uz: 'Present Simple, ob-havo va ish kiyimi', tj: 'Present Simple, обу ҳаво ва либоси корӣ', kg: 'Present Simple, аба ырайы жана жумуш кийими', kz: 'Present Simple, ауа райы және жұмыс киімі' },
-      8: { ru: 'have got, одежда и порядок прилагательных', uz: 'have got, kiyim va sifatlar tartibi', tj: 'have got, либос ва тартиби сифатҳо', kg: 'have got, кийим жана сын атооч тартиби', kz: 'have got, киім және сын есім тәртібі' },
-      9: { ru: 'there is / there are, some / any и бытовые вещи', uz: 'there is / there are, some / any va maishiy buyumlar', tj: 'there is / there are, some / any ва чизҳои рӯзгор', kg: 'there is / there are, some / any жана тиричилик буюмдары', kz: 'there is / there are, some / any және тұрмыстық заттар' },
-      10: { ru: 'покупки, much / many и вежливые просьбы', uz: 'xarid, much / many va muloyim so\'rovlar', tj: 'харид, much / many ва дархостҳои боадаб', kg: 'сатып алуу, much / many жана сылык өтүнүчтөр', kz: 'сауда, much / many және сыпайы өтініштер' },
-      11: { ru: 'маршрут, транспорт и императив', uz: 'yo\'nalish, transport va buyruq shakli', tj: 'масир, нақлиёт ва шакли амр', kg: 'багыт, транспорт жана буйрук формасы', kz: 'бағыт, көлік және бұйрық рай' },
-      12: { ru: 'анкеты, личные данные и was / were', uz: 'anketalar, shaxsiy ma\'lumot va was / were', tj: 'анкетаҳо, маълумоти шахсӣ ва was / were', kg: 'анкета, жеке маалымат жана was / were', kz: 'анкета, жеке мәлімет және was / were' },
-      13: { ru: 'Past Simple и сообщение о проблеме', uz: 'Past Simple va muammo haqida xabar berish', tj: 'Past Simple ва хабар додан дар бораи мушкил', kg: 'Past Simple жана көйгөй тууралуу билдирүү', kz: 'Past Simple және мәселе туралы хабарлау' },
-      14: { ru: 'can / can\'t и здоровье на работе', uz: 'can / can\'t va ishdagi salomatlik', tj: 'can / can\'t ва саломатӣ дар кор', kg: 'can / can\'t жана жумуштагы ден соолук', kz: 'can / can\'t және жұмыстағы денсаулық' },
-      15: { ru: 'вежливые фразы и small talk', uz: 'muloyim iboralar va small talk', tj: 'ибораҳои боадаб ва small talk', kg: 'сыпайы сөздөр жана small talk', kz: 'сыпайы тіркестер және small talk' }
-    };
-    const QUIZ_EXPLANATION_PREFIX = {
-      ru: 'Правильный ответ:',
-      uz: 'To\'g\'ri javob:',
-      tj: 'Ҷавоби дуруст:',
-      kg: 'Туура жооп:',
-      kz: 'Дұрыс жауап:'
-    };
-    const QUIZ_FOCUS_PREFIX = {
-      ru: 'Тема урока:',
-      uz: 'Dars mavzusi:',
-      tj: 'Мавзӯи дарс:',
-      kg: 'Сабактын темасы:',
-      kz: 'Сабақ тақырыбы:'
-    };
-    const tx = (key, ...args) => {
-      const entry = UI[key];
-      if (!entry) return key;
-      const val = entry[lang] || entry.ru;
-      return typeof val === 'function' ? val(...args) : val;
-    };
-    function getTodayKey() {
-      const now = new Date();
-      return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
-    }
-    function shiftDateKey(key, delta) {
-      const [year, month, day] = key.split('-').map(Number);
-      const date = new Date(year, month - 1, day);
-      date.setDate(date.getDate() + delta);
-      return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-    }
-    function updateStreak() {
-      const today = getTodayKey();
-      const last = safeGetItem('fe_last_date');
-      let streak = Number(safeGetItem('fe_streak') || '0');
-      if (!last) streak = 1;
-      else if (last === today) streak = Math.max(streak, 1);
-      else if (last === shiftDateKey(today, -1)) streak += 1;
-      else streak = 1;
-      safeSetItem('fe_last_date', today);
-      safeSetItem('fe_streak', String(streak));
-      return streak;
-    }
-    function getCompletedLessonsData() {
-      return LESSONS.filter(lesson => done.includes(lesson.id));
-    }
-    function getCompletedWordsCount() {
-      return getCompletedLessonsData().reduce((sum, lesson) => sum + (lesson.words ? lesson.words.length : 0), 0);
-    }
-    function getProgressStats() {
-      const lessonsDone = done.length;
-      const totalLessons = LESSONS.length;
-      return {
-        lessonsDone,
-        totalLessons,
-        wordsLearned: getCompletedWordsCount(),
-        phraseCount: PHRASES.length,
-        points: lessonsDone * 10,
-        streak: Number(safeGetItem('fe_streak') || '0'),
-        percent: Math.round((lessonsDone / totalLessons) * 100)
-      };
-    }
-    function syncDerivedStats() {
-      safeSetItem('fe_words', String(getCompletedWordsCount()));
-      safeSetItem('fe_phrasebook_count', String(PHRASES.length));
-      safeSetItem('fe_points', String(done.length * 10));
-    }
-    function setScreenHash(screen) {
-      if (screen === 'phrases') window.location.hash = 'phrases';
-      else if (screen === 'progress') window.location.hash = 'progress';
-      else history.replaceState(null, document.title, window.location.pathname + window.location.search);
-    }
-    function renderScreenNav() {
-      const screens = [
-        { id: 'home', label: t('home') },
-        { id: 'phrases', label: t('phrases') },
-        { id: 'progress', label: t('progress') }
-      ];
-      return `<div class="pf-row screen-section">${screens.map(screen => `<button type="button" class="pf-chip${scr === screen.id ? ' on' : ''}" onclick="gotoScr('${screen.id}')">${screen.label}</button>`).join('')}</div>`;
-    }
-    function formatCertificateDate(date = new Date()) {
-      return date.toLocaleDateString('en-GB', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-      });
-    }
-    function getLocalizedValue(map) {
-      return map ? (map[lang] || map.ru || '') : '';
-    }
-    function buildLegacyDialogueRows(lesson, rowSpecs) {
-      const rowsByForm = { positive: [], negative: [], question: [] };
-      if (!lesson || !lesson.dialogue || !rowSpecs) return rowsByForm;
-      Object.entries(rowSpecs).forEach(([formKey, specs]) => {
-        rowsByForm[formKey] = (specs || []).map(spec => {
-          const line = lesson.dialogue[spec.index];
-          if (!line) return null;
-          return {
-            subj: spec.subj || '',
-            verb: spec.verb || '',
-            example: line.en || '',
-            transcr: line.transcr || '',
-            tr_ru: line.ru || '',
-            tr_uz: line.uz || '',
-            tr_tj: line.tj || '',
-            tr_kg: line.kg || '',
-            tr_kz: line.kz || ''
-          };
-        }).filter(Boolean);
-      });
-      return rowsByForm;
-    }
-    function detectQuizExplanationType(questionText) {
-      const text = (questionText || '').toLowerCase();
-      if (text.includes('[translate]') || text.includes('how to translate')) return 'translate';
-      if (text.includes('[negative]') || text.includes('(negative)') || text.includes('negative')) return 'negative';
-      if (text.includes('[question]') || text.includes('(question)') || text.includes('question')) return 'question';
-      if (text.includes('[complete]') || text.includes('___')) return 'complete';
-      if (text.includes('opposite') || text.includes('what is') || text.includes('translate')) return 'vocabulary';
-      return 'choice';
-    }
-    function extractQuizPromptCore(questionText) {
-      let text = (questionText || '').trim();
-      if (!text) return '';
-      const quoteMatch = text.match(/'([^']*___[^']*)'/);
-      if (quoteMatch) return `"${quoteMatch[1]}"`;
-      text = text.replace(/^Adjective order:\s*/i, '');
-      text = text.replace(/^How to translate\s+.+?$/i, '');
-      text = text.replace(/^What is the opposite of\s+.+?$/i, '');
-      text = text.replace(/^What is\s+.+?$/i, '');
-      text = text.replace(/\s*\((negative|question)\)\s*$/i, '');
-      return text.trim();
-    }
-    function normalizeQuizPrompt(q) {
-      const raw = (q.q || '').trim();
-      if (/^\[[A-Z]+\]/.test(raw)) return raw;
-      const type = detectQuizExplanationType(raw);
-      const core = extractQuizPromptCore(raw);
-      if (type === 'translate') return '[TRANSLATE]';
-      if (type === 'negative') return core ? `[NEGATIVE] ${core}` : '[NEGATIVE]';
-      if (type === 'question') return core ? `[QUESTION] ${core}` : '[QUESTION]';
-      if (type === 'complete') return core ? `[COMPLETE] ${core}` : '[COMPLETE]';
-      return core ? `[CORRECT] ${core}` : '[CORRECT]';
-    }
-    function buildQuizExplanationMap(lesson, q) {
-      const type = detectQuizExplanationType(q.q);
-      const answer = Array.isArray(q.opts) ? (q.opts[q.c] || '') : '';
-      const focus = QUIZ_EXPLANATION_LESSONS[lesson.id] || QUIZ_EXPLANATION_LESSONS[1];
-      const map = {};
-      QUIZ_LANGS.forEach(code => {
-        const body = (QUIZ_EXPLANATION_TEXT[type] && QUIZ_EXPLANATION_TEXT[type][code]) || QUIZ_EXPLANATION_TEXT.choice[code];
-        map[code] = `${QUIZ_EXPLANATION_PREFIX[code]} "${answer}". ${body} ${QUIZ_FOCUS_PREFIX[code]} ${focus[code]}.`;
-      });
-      return map;
-    }
-    function getQuizModel(lesson) {
-      const legacyHints = LEGACY_QUIZ_HINT_TRANSLATIONS[lesson.id] || [];
-      return (lesson.quiz || []).map((q, qi) => {
-        const normalized = { ...q };
-        const hintFallback = legacyHints[qi] || {};
-        const explanationMap = buildQuizExplanationMap(lesson, q);
-        normalized.q = normalizeQuizPrompt(q);
-        QUIZ_LANGS.forEach(code => {
-          const hintKey = 'hint_' + code;
-          const explKey = 'expl_' + code;
-          if (!normalized[hintKey]) normalized[hintKey] = hintFallback[code] || normalized.hint_ru || '';
-          if (!normalized[explKey]) normalized[explKey] = explanationMap[code];
-        });
-        if (!normalized.expl) normalized.expl = normalized['expl_' + lang] || normalized.expl_ru || '';
-        return normalized;
-      });
-    }
-    function getGrammarModel(lesson) {
-      const g = lesson.grammar || {};
-      if (g.forms || !Array.isArray(g.tables)) return g;
-      const enhancement = LEGACY_GRAMMAR_ENHANCEMENTS[lesson.id] || {};
-      const extraDialogueRows = buildLegacyDialogueRows(lesson, LEGACY_GRAMMAR_DIALOGUE_ROWS[lesson.id] || {});
-      const formKeys = ['positive', 'negative', 'question'];
-      const formLabels = enhancement.labels || {};
-      const forms = {};
-      formKeys.forEach((key, index) => {
-        const labelMap = formLabels[key] || DEFAULT_GRAMMAR_LABELS[key];
-        const baseRows = (g.tables[index] && Array.isArray(g.tables[index].rows)) ? g.tables[index].rows : [];
-        forms[key] = {
-          label_ru: labelMap.ru,
-          label_uz: labelMap.uz,
-          label_tj: labelMap.tj,
-          label_kg: labelMap.kg,
-          label_kz: labelMap.kz,
-          table: baseRows.concat(extraDialogueRows[key] || [])
-        };
-      });
-      return {
-        ...g,
-        intro_ru: g.rule_ru || '',
-        intro_uz: g.rule_uz || '',
-        intro_tj: g.rule_tj || '',
-        intro_kg: g.rule_kg || '',
-        intro_kz: g.rule_kz || '',
-        note_ru: enhancement.note ? enhancement.note.ru : '',
-        note_uz: enhancement.note ? enhancement.note.uz : '',
-        note_tj: enhancement.note ? enhancement.note.tj : '',
-        note_kg: enhancement.note ? enhancement.note.kg : '',
-        note_kz: enhancement.note ? enhancement.note.kz : '',
-        cultural_ru: enhancement.cultural ? enhancement.cultural.ru : '',
-        cultural_uz: enhancement.cultural ? enhancement.cultural.uz : '',
-        cultural_tj: enhancement.cultural ? enhancement.cultural.tj : '',
-        cultural_kg: enhancement.cultural ? enhancement.cultural.kg : '',
-        cultural_kz: enhancement.cultural ? enhancement.cultural.kz : '',
-        forms
-      };
-    }
-  </script>
-  <script>
-    // ── LESSON DATA ───────────────────────────────────────────────────────────────
-    const MODS = [
-      { id: 1, emoji: '👋', name_ru: 'Знакомство', name_uz: 'Tanishuv', name_tj: 'Шиносоӣ', name_kg: 'Тааныштыруу', lessons: [1, 2] },
-      { id: 2, emoji: '🚜', name_ru: 'На ферме', name_uz: 'Fermada', name_tj: 'Дар ферма', name_kg: 'Фермада', lessons: [3, 4, 5] },
-      { id: 3, emoji: '⏱️', name_ru: 'Каждый день', name_uz: 'Har kuni', name_tj: 'Ҳар рӯз', name_kg: 'Ар күн', lessons: [6, 7] },
-      { id: 4, emoji: '🧤', name_ru: 'Безопасность', name_uz: 'Xavfsizlik', name_tj: 'Бехатарӣ', name_kg: 'Коопсуздук', lessons: [8] },
-      { id: 5, emoji: '🏠', name_ru: 'Жизнь в кэмпе', name_uz: 'Lagerdagi hayot', name_tj: 'Дар лагер', name_kg: 'Лагерде', lessons: [9, 10, 11] },
-      { id: 6, emoji: '📋', name_ru: 'Документы и здоровье', name_uz: "Hujjatlar va salomatlik", name_tj: 'Ҳуҷҷат ва саломатӣ', name_kg: 'Документ жана саламаттык', lessons: [12, 13, 14, 15] },
-    ];
-    const LESSONS = [
+module.exports = [
       {
             "id": 1,
             "mod": 1,
@@ -4007,7 +1451,7 @@
             ],
             "quiz": [
                   {
-                        "q": "[TRANSLATE] Which sentence is correct?",
+                        "q": "Which sentence is correct?",
                         "opts": [
                               "His name is Rustam. Her name is Fatima.",
                               "His name is Rustam. Her name is he.",
@@ -4028,7 +1472,7 @@
                         "expl": "Правильный ответ: \"His name is Rustam. Her name is Fatima.\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "[TRANSLATE] Translate: 'Её работа — упаковка. Его работа — сбор ягод.'",
+                        "q": "Translate: 'Её работа — упаковка. Его работа — сбор ягод.'",
                         "opts": [
                               "His job is packing. Her job is picking.",
                               "Her job is packing. His job is picking.",
@@ -4049,7 +1493,7 @@
                         "expl": "Правильный ответ: \"Her job is packing. His job is picking.\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "[TRANSLATE] 'The farm belongs to Tom.' How do we say 'ферма Тома'?",
+                        "q": "'The farm belongs to Tom.' How do we say 'ферма Тома'?",
                         "opts": [
                               "Tom farm",
                               "Toms farm",
@@ -4070,7 +1514,7 @@
                         "expl": "Правильный ответ: \"Tom's farm\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "[COMPLETE] '___ gloves are in the locker.' (his — мужчина)",
+                        "q": "'___ gloves are in the locker.' (his — мужчина)",
                         "opts": [
                               "Her",
                               "His",
@@ -4091,7 +1535,7 @@
                         "expl": "Правильный ответ: \"His\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "[COMPLETE] '___ shift starts at 6 AM.' (мы)",
+                        "q": "'___ shift starts at 6 AM.' (мы)",
                         "opts": [
                               "Their",
                               "Your",
@@ -4112,7 +1556,7 @@
                         "expl": "Правильный ответ: \"Our\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "[COMPLETE] 'Where is ___ name badge?' (she — женщина)",
+                        "q": "'Where is ___ name badge?' (she — женщина)",
                         "opts": [
                               "his",
                               "she",
@@ -4133,7 +1577,7 @@
                         "expl": "Правильный ответ: \"her\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "[COMPLETE] '___ locker is number 12.' (he — мужчина)",
+                        "q": "'___ locker is number 12.' (he — мужчина)",
                         "opts": [
                               "Her",
                               "His",
@@ -4154,7 +1598,7 @@
                         "expl": "Правильный ответ: \"His\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "[TRANSLATE] Translate: 'Наша команда — 8 сборщиков'",
+                        "q": "Translate: 'Наша команда — 8 сборщиков'",
                         "opts": [
                               "Their team has 8 pickers.",
                               "Our team has 8 pickers.",
@@ -4175,7 +1619,7 @@
                         "expl": "Правильный ответ: \"Our team has 8 pickers.\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "[TRANSLATE] 'Anna's job' means:",
+                        "q": "'Anna's job' means:",
                         "opts": [
                               "Anna owns a job",
                               "The job OF Anna",
@@ -4196,7 +1640,7 @@
                         "expl": "Правильный ответ: \"The job OF Anna\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "[COMPLETE] 'What is ___ phone number?' — asking about the supervisor (she)",
+                        "q": "'What is ___ phone number?' — asking about the supervisor (she)",
                         "opts": [
                               "his",
                               "her",
@@ -9029,7 +6473,7 @@
             ],
             "quiz": [
                   {
-                        "q": "[COMPLETE] 'I ___ got my new rubber boots.'",
+                        "q": "'I ___ got my new rubber boots.'",
                         "opts": [
                               "has",
                               "am",
@@ -9046,7 +6490,7 @@
                         "expl": "Правильный ответ: \"have\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "[COMPLETE] Adjective order: 'a ___ jacket'",
+                        "q": "Adjective order: 'a ___ jacket'",
                         "opts": [
                               "waterproof heavy black",
                               "black waterproof heavy",
@@ -9063,7 +6507,7 @@
                         "expl": "Правильный ответ: \"heavy black waterproof\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "[COMPLETE] 'She ___ got heavy boots.' (negative)",
+                        "q": "'She ___ got heavy boots.' (negative)",
                         "opts": [
                               "has",
                               "haven't",
@@ -9080,7 +6524,7 @@
                         "expl": "Правильный ответ: \"hasn't\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "[TRANSLATE] How to translate 'удобный'? (comfortable)",
+                        "q": "How to translate 'удобный'? (comfortable)",
                         "opts": [
                               "dangerous",
                               "comfortable",
@@ -9097,7 +6541,7 @@
                         "expl": "Правильный ответ: \"comfortable\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "[COMPLETE] '___ he got a clean apron?' (question)",
+                        "q": "'___ he got a clean apron?' (question)",
                         "opts": [
                               "Have",
                               "Has",
@@ -9114,7 +6558,7 @@
                         "expl": "Правильный ответ: \"Has\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "[TRANSLATE] What is the opposite of 'wet'? (мокрый)",
+                        "q": "What is the opposite of 'wet'? (мокрый)",
                         "opts": [
                               "heavy",
                               "dry",
@@ -9131,7 +6575,7 @@
                         "expl": "Правильный ответ: \"dry\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "[TRANSLATE] What is 'hairnet'? (сеточка)",
+                        "q": "What is 'hairnet'? (сеточка)",
                         "opts": [
                               "Сеточка для волос",
                               "Наколенники",
@@ -9148,7 +6592,7 @@
                         "expl": "Правильный ответ: \"Сеточка для волос\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "[COMPLETE] 'My shoes are very ___, they hurt my feet.' (тесные)",
+                        "q": "'My shoes are very ___, they hurt my feet.' (тесные)",
                         "opts": [
                               "loose",
                               "comfortable",
@@ -9165,7 +6609,7 @@
                         "expl": "Правильный ответ: \"tight\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "[COMPLETE] 'We ___ got knee pads.' (negative)",
+                        "q": "'We ___ got knee pads.' (negative)",
                         "opts": [
                               "hasn't",
                               "don't",
@@ -9182,7 +6626,7 @@
                         "expl": "Правильный ответ: \"haven't\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "[COMPLETE] 'Always wear a hard hat. It is ___!' (безопасный)",
+                        "q": "'Always wear a hard hat. It is ___!' (безопасный)",
                         "opts": [
                               "dangerous",
                               "safe",
@@ -9822,7 +7266,7 @@
             ],
             "quiz": [
                   {
-                        "q": "[COMPLETE] '___ a heater in my caravan.' (1 thing)",
+                        "q": "'___ a heater in my caravan.' (1 thing)",
                         "opts": [
                               "There are",
                               "Is there",
@@ -9839,7 +7283,7 @@
                         "expl": "Правильный ответ: \"There is\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "[COMPLETE] '___ any hot water.' (negative)",
+                        "q": "'___ any hot water.' (negative)",
                         "opts": [
                               "There is any",
                               "There isn't some",
@@ -9856,7 +7300,7 @@
                         "expl": "Правильный ответ: \"There isn't any\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "[COMPLETE] 'Are there ___ blankets?' (question)",
+                        "q": "'Are there ___ blankets?' (question)",
                         "opts": [
                               "some",
                               "any",
@@ -9873,7 +7317,7 @@
                         "expl": "Правильный ответ: \"any\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "[TRANSLATE] How to translate 'холодильник'? (fridge)",
+                        "q": "How to translate 'холодильник'? (fridge)",
                         "opts": [
                               "fridge",
                               "cooker",
@@ -9890,7 +7334,7 @@
                         "expl": "Правильный ответ: \"fridge\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "[COMPLETE] 'There are ___ noisy people in the corridor.' (affirmative)",
+                        "q": "'There are ___ noisy people in the corridor.' (affirmative)",
                         "opts": [
                               "some",
                               "any",
@@ -9907,7 +7351,7 @@
                         "expl": "Правильный ответ: \"some\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "[TRANSLATE] What is the opposite of 'full'? (полный)",
+                        "q": "What is the opposite of 'full'? (полный)",
                         "opts": [
                               "noisy",
                               "empty",
@@ -9924,7 +7368,7 @@
                         "expl": "Правильный ответ: \"empty\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "[COMPLETE] '___ any chairs in the kitchen?' (question, plural)",
+                        "q": "'___ any chairs in the kitchen?' (question, plural)",
                         "opts": [
                               "Is there",
                               "Are there",
@@ -9941,7 +7385,7 @@
                         "expl": "Правильный ответ: \"Are there\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "[TRANSLATE] Where do you wash your clothes? (стирать)",
+                        "q": "Where do you wash your clothes? (стирать)",
                         "opts": [
                               "kitchen",
                               "bedroom",
@@ -9958,7 +7402,7 @@
                         "expl": "Правильный ответ: \"laundry\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "[COMPLETE] 'The room is not quiet, it is very ___!' (шумно)",
+                        "q": "'The room is not quiet, it is very ___!' (шумно)",
                         "opts": [
                               "empty",
                               "clean",
@@ -9975,7 +7419,7 @@
                         "expl": "Правильный ответ: \"noisy\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "[COMPLETE] 'I need a repair. The cooker is ___!' (сломана)",
+                        "q": "'I need a repair. The cooker is ___!' (сломана)",
                         "opts": [
                               "broken",
                               "full",
@@ -10593,7 +8037,7 @@
             ],
             "quiz": [
                   {
-                        "q": "[COMPLETE] 'How ___ milk do you want?' (milk = uncountable)",
+                        "q": "'How ___ milk do you want?' (milk = uncountable)",
                         "opts": [
                               "many",
                               "much",
@@ -10610,7 +8054,7 @@
                         "expl": "Правильный ответ: \"much\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "[COMPLETE] 'How ___ eggs do you need?' (eggs = countable)",
+                        "q": "'How ___ eggs do you need?' (eggs = countable)",
                         "opts": [
                               "much",
                               "some",
@@ -10627,7 +8071,7 @@
                         "expl": "Правильный ответ: \"many\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "[TRANSLATE] The MOST POLITE way to order in a shop:",
+                        "q": "The MOST POLITE way to order in a shop:",
                         "opts": [
                               "I want six eggs",
                               "Give me six eggs",
@@ -10644,7 +8088,7 @@
                         "expl": "Правильный ответ: \"I'd like six eggs, please\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "[TRANSLATE] How to translate 'дешевый'? (cheap)",
+                        "q": "How to translate 'дешевый'? (cheap)",
                         "opts": [
                               "expensive",
                               "cheap",
@@ -10661,7 +8105,7 @@
                         "expl": "Правильный ответ: \"cheap\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "[COMPLETE] 'I want a ___ of pasta.' (пачка)",
+                        "q": "'I want a ___ of pasta.' (пачка)",
                         "opts": [
                               "bottle",
                               "tin",
@@ -10678,7 +8122,7 @@
                         "expl": "Правильный ответ: \"packet\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "[TRANSLATE] What is the opposite of 'expensive'? (дорогой)",
+                        "q": "What is the opposite of 'expensive'? (дорогой)",
                         "opts": [
                               "cheap",
                               "receipt",
@@ -10695,7 +8139,7 @@
                         "expl": "Правильный ответ: \"cheap\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "[COMPLETE] 'Can I pay by ___?' (карта)",
+                        "q": "'Can I pay by ___?' (карта)",
                         "opts": [
                               "cash",
                               "discount",
@@ -10712,7 +8156,7 @@
                         "expl": "Правильный ответ: \"card\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "[TRANSLATE] What is 'garlic'? (чеснок)",
+                        "q": "What is 'garlic'? (чеснок)",
                         "opts": [
                               "лук",
                               "картошка",
@@ -10729,7 +8173,7 @@
                         "expl": "Правильный ответ: \"чеснок\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "[COMPLETE] 'I don't want any ___ in my tea.' (сахар)",
+                        "q": "'I don't want any ___ in my tea.' (сахар)",
                         "opts": [
                               "salt",
                               "sugar",
@@ -10746,7 +8190,7 @@
                         "expl": "Правильный ответ: \"sugar\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "[COMPLETE] 'Here is your ___ for £4.50.' (чек)",
+                        "q": "'Here is your ___ for £4.50.' (чек)",
                         "opts": [
                               "receipt",
                               "discount",
@@ -11386,7 +8830,7 @@
             ],
             "quiz": [
                   {
-                        "q": "[TRANSLATE] You want to go to town and come back. You need a...",
+                        "q": "You want to go to town and come back. You need a...",
                         "opts": [
                               "single ticket",
                               "return ticket",
@@ -11403,7 +8847,7 @@
                         "expl": "Правильный ответ: \"This\". this / that / these / those · Transport · Buying a ticket"
                   },
                   {
-                        "q": "[COMPLETE] 'Please, ___ the bus here. We are going to town.' (садитесь)",
+                        "q": "'Please, ___ the bus here. We are going to town.' (садитесь)",
                         "opts": [
                               "get off",
                               "get out",
@@ -11420,7 +8864,7 @@
                         "expl": "Правильный ответ: \"These\". this / that / these / those · Transport · Buying a ticket"
                   },
                   {
-                        "q": "[COMPLETE] '___ turn left. The street is closed.' (не поворачивайте)",
+                        "q": "'___ turn left. The street is closed.' (не поворачивайте)",
                         "opts": [
                               "Not",
                               "No",
@@ -11437,7 +8881,7 @@
                         "expl": "Правильный ответ: \"Is that seat free?\". this / that / these / those · Transport · Buying a ticket"
                   },
                   {
-                        "q": "[TRANSLATE] What is 'прямо'?",
+                        "q": "What is 'прямо'?",
                         "opts": [
                               "left",
                               "right",
@@ -11454,7 +8898,7 @@
                         "expl": "Правильный ответ: \"ticket\". this / that / these / those · Transport · Buying a ticket"
                   },
                   {
-                        "q": "[TRANSLATE] What is the opposite of 'near'? (близко)",
+                        "q": "What is the opposite of 'near'? (близко)",
                         "opts": [
                               "far",
                               "left",
@@ -11471,7 +8915,7 @@
                         "expl": "Правильный ответ: \"Those seats are at the back.\". this / that / these / those · Transport · Buying a ticket"
                   },
                   {
-                        "q": "[COMPLETE] 'How do I ___ to the train station?' (добраться)",
+                        "q": "'How do I ___ to the train station?' (добраться)",
                         "opts": [
                               "get off",
                               "get on",
@@ -11488,7 +8932,7 @@
                         "expl": "Правильный ответ: \"This ticket is not valid.\". this / that / these / those · Transport · Buying a ticket"
                   },
                   {
-                        "q": "[TRANSLATE] Where can I buy some medicine? (лекарства)",
+                        "q": "Where can I buy some medicine? (лекарства)",
                         "opts": [
                               "bank",
                               "pharmacy",
@@ -11505,7 +8949,7 @@
                         "expl": "Правильный ответ: \"station\". this / that / these / those · Transport · Buying a ticket"
                   },
                   {
-                        "q": "[COMPLETE] 'This is my ___. Please stand up!' (место)",
+                        "q": "'This is my ___. Please stand up!' (место)",
                         "opts": [
                               "seat",
                               "map",
@@ -11522,7 +8966,7 @@
                         "expl": "Правильный ответ: \"single\". this / that / these / those · Transport · Buying a ticket"
                   },
                   {
-                        "q": "[COMPLETE] 'The cafe is on the ___.' (углу)",
+                        "q": "'The cafe is on the ___.' (углу)",
                         "opts": [
                               "left",
                               "right",
@@ -11539,7 +8983,7 @@
                         "expl": "Правильный ответ: \"Are these passes valid today?\". this / that / these / those · Transport · Buying a ticket"
                   },
                   {
-                        "q": "[COMPLETE] '___ straight and turn right.' (идите)",
+                        "q": "'___ straight and turn right.' (идите)",
                         "opts": [
                               "Go",
                               "Get",
@@ -12168,7 +9612,7 @@
             ],
             "quiz": [
                   {
-                        "q": "[COMPLETE] 'She ___ born in Tashkent.' (она = she)",
+                        "q": "'She ___ born in Tashkent.' (она = she)",
                         "opts": [
                               "were",
                               "was",
@@ -12185,7 +9629,7 @@
                         "expl": "Правильный ответ: \"was\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "[TRANSLATE] What does 'marital status' mean? (семейное положение)",
+                        "q": "What does 'marital status' mean? (семейное положение)",
                         "opts": [
                               "Single or married",
                               "Male or female",
@@ -12202,7 +9646,7 @@
                         "expl": "Правильный ответ: \"Single or married\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "[COMPLETE] 'They ___ born in Kyrgyzstan.' (they = они)",
+                        "q": "'They ___ born in Kyrgyzstan.' (they = они)",
                         "opts": [
                               "was",
                               "is",
@@ -12219,7 +9663,7 @@
                         "expl": "Правильный ответ: \"were\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "[TRANSLATE] What is a 'surname'? (фамилия)",
+                        "q": "What is a 'surname'? (фамилия)",
                         "opts": [
                               "First name",
                               "Last name",
@@ -12236,7 +9680,7 @@
                         "expl": "Правильный ответ: \"Last name\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "[COMPLETE] Please put your ___ on the document. (подпись)",
+                        "q": "Please put your ___ on the document. (подпись)",
                         "opts": [
                               "sign",
                               "signature",
@@ -12253,7 +9697,7 @@
                         "expl": "Правильный ответ: \"signature\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "[COMPLETE] Write in ___ letters. (Заглавные буквы)",
+                        "q": "Write in ___ letters. (Заглавные буквы)",
                         "opts": [
                               "capital",
                               "big",
@@ -12270,7 +9714,7 @@
                         "expl": "Правильный ответ: \"capital\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "[TRANSLATE] What is 'single'? (холост)",
+                        "q": "What is 'single'? (холост)",
                         "opts": [
                               "Married",
                               "Not married",
@@ -12287,7 +9731,7 @@
                         "expl": "Правильный ответ: \"Not married\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "[COMPLETE] Please ___ this application form. (заполните)",
+                        "q": "Please ___ this application form. (заполните)",
                         "opts": [
                               "fill on",
                               "fill out",
@@ -12304,7 +9748,7 @@
                         "expl": "Правильный ответ: \"fill in\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "[COMPLETE] '___ were you born?' — In 1995.",
+                        "q": "'___ were you born?' — In 1995.",
                         "opts": [
                               "Where",
                               "When",
@@ -12321,7 +9765,7 @@
                         "expl": "Правильный ответ: \"When\". was/were born · Personal information · Filling in forms"
                   },
                   {
-                        "q": "[COMPLETE] My gender is ___. (мужской)",
+                        "q": "My gender is ___. (мужской)",
                         "opts": [
                               "female",
                               "male",
@@ -12961,7 +10405,7 @@
             ],
             "quiz": [
                   {
-                        "q": "[TRANSLATE] Past form of 'go' (irregular verb)",
+                        "q": "Past form of 'go' (irregular verb)",
                         "opts": [
                               "goed",
                               "went",
@@ -12978,7 +10422,7 @@
                         "expl": "Правильный ответ: \"went\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "[COMPLETE] 'I ___ work yesterday.' (Отрицание в прошлом)",
+                        "q": "'I ___ work yesterday.' (Отрицание в прошлом)",
                         "opts": [
                               "didn't work",
                               "don't work",
@@ -12995,7 +10439,7 @@
                         "expl": "Правильный ответ: \"didn't work\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "[TRANSLATE] Past form of 'lose' (терять)",
+                        "q": "Past form of 'lose' (терять)",
                         "opts": [
                               "losed",
                               "loose",
@@ -13012,7 +10456,7 @@
                         "expl": "Правильный ответ: \"lost\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "[TRANSLATE] What is a 'timesheet'? (табель)",
+                        "q": "What is a 'timesheet'? (табель)",
                         "opts": [
                               "Daily report",
                               "Paper for work hours",
@@ -13029,7 +10473,7 @@
                         "expl": "Правильный ответ: \"Paper for work hours\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "[TRANSLATE] Past form of 'see' (видеть)",
+                        "q": "Past form of 'see' (видеть)",
                         "opts": [
                               "seed",
                               "saw",
@@ -13046,7 +10490,7 @@
                         "expl": "Правильный ответ: \"saw\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "[TRANSLATE] What is the opposite of 'late'? (противоположность слова поздно)",
+                        "q": "What is the opposite of 'late'? (противоположность слова поздно)",
                         "opts": [
                               "early",
                               "ago",
@@ -13063,7 +10507,7 @@
                         "expl": "Правильный ответ: \"early\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "[COMPLETE] 'Did you ___ the line leader?' (Ты рассказал...?)",
+                        "q": "'Did you ___ the line leader?' (Ты рассказал...?)",
                         "opts": [
                               "told",
                               "tells",
@@ -13080,7 +10524,7 @@
                         "expl": "Правильный ответ: \"tell\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "[TRANSLATE] What is 'accident'? (несчастный случай)",
+                        "q": "What is 'accident'? (несчастный случай)",
                         "opts": [
                               "A good thing",
                               "A problem or bad event",
@@ -13097,7 +10541,7 @@
                         "expl": "Правильный ответ: \"A problem or bad event\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "[TRANSLATE] Past form of 'make' (делать)",
+                        "q": "Past form of 'make' (делать)",
                         "opts": [
                               "maked",
                               "made",
@@ -13114,7 +10558,7 @@
                         "expl": "Правильный ответ: \"made\". Past Simple regular & irregular · Time expressions · Reporting incidents"
                   },
                   {
-                        "q": "[COMPLETE] 'I ___ a mistake.' (Я сделал ошибку)",
+                        "q": "'I ___ a mistake.' (Я сделал ошибку)",
                         "opts": [
                               "made",
                               "did",
@@ -13721,7 +11165,7 @@
             ],
             "quiz": [
                   {
-                        "q": "[COMPLETE] 'I ___ to work today. I am sick.' (не могу)",
+                        "q": "'I ___ to work today. I am sick.' (не могу)",
                         "opts": [
                               "cannot / can't",
                               "can",
@@ -13738,7 +11182,7 @@
                         "expl": "Правильный ответ: \"cannot / can't\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "[TRANSLATE] What is a 'GP surgery'? (поликлиника в Англии)",
+                        "q": "What is a 'GP surgery'? (поликлиника в Англии)",
                         "opts": [
                               "A farm manager",
                               "A local doctor clinic",
@@ -13755,7 +11199,7 @@
                         "expl": "Правильный ответ: \"A local doctor clinic\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "[TRANSLATE] If your head hurts, you have a...",
+                        "q": "If your head hurts, you have a...",
                         "opts": [
                               "toothache",
                               "backache",
@@ -13772,7 +11216,7 @@
                         "expl": "Правильный ответ: \"headache\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "[COMPLETE] 'I need a ___ for my finger.' (пластырь)",
+                        "q": "'I need a ___ for my finger.' (пластырь)",
                         "opts": [
                               "plaster",
                               "tablet",
@@ -13789,7 +11233,7 @@
                         "expl": "Правильный ответ: \"plaster\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "[COMPLETE] 'Can you bring me some ___?' (лекарство)",
+                        "q": "'Can you bring me some ___?' (лекарство)",
                         "opts": [
                               "pain",
                               "hurt",
@@ -13806,7 +11250,7 @@
                         "expl": "Правильный ответ: \"medicine\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "[COMPLETE] 'I feel very ___.' (больной)",
+                        "q": "'I feel very ___.' (больной)",
                         "opts": [
                               "ill",
                               "hurt",
@@ -13823,7 +11267,7 @@
                         "expl": "Правильный ответ: \"ill\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "[COMPLETE] 'My back ___.' (болит)",
+                        "q": "'My back ___.' (болит)",
                         "opts": [
                               "hurts",
                               "pains",
@@ -13840,7 +11284,7 @@
                         "expl": "Правильный ответ: \"hurts\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "[TRANSLATE] What is the word for 'стопа'?",
+                        "q": "What is the word for 'стопа'?",
                         "opts": [
                               "leg",
                               "foot",
@@ -13857,7 +11301,7 @@
                         "expl": "Правильный ответ: \"foot\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "[TRANSLATE] To 'call in sick' means...",
+                        "q": "To 'call in sick' means...",
                         "opts": [
                               "To call a doctor",
                               "To call your mother",
@@ -13874,7 +11318,7 @@
                         "expl": "Правильный ответ: \"To call work and say you are ill\". Health & Medicine · Phrasal verbs (call in sick) · Offering help (Can I help you?)"
                   },
                   {
-                        "q": "[COMPLETE] 'You must ___ in your room.' (отдыхать)",
+                        "q": "'You must ___ in your room.' (отдыхать)",
                         "opts": [
                               "work",
                               "rest",
@@ -14503,7 +11947,7 @@
             ],
             "quiz": [
                   {
-                        "q": "[TRANSLATE] Would you like a cup of tea?",
+                        "q": "Would you like a cup of tea?",
                         "opts": [
                               "Yes, I do.",
                               "Yes, please.",
@@ -14520,7 +11964,7 @@
                         "expl": "Правильный ответ: \"Yes, please.\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "[TRANSLATE] What does Cheers mean in the UK?",
+                        "q": "What does Cheers mean in the UK?",
                         "opts": [
                               "Hello",
                               "Bad weather",
@@ -14537,7 +11981,7 @@
                         "expl": "Правильный ответ: \"Thank you or Goodbye\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "[TRANSLATE] If you want food, you are...",
+                        "q": "If you want food, you are...",
                         "opts": [
                               "tired",
                               "happy",
@@ -14554,7 +11998,7 @@
                         "expl": "Правильный ответ: \"hungry\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "[TRANSLATE] If you want water, you are...",
+                        "q": "If you want water, you are...",
                         "opts": [
                               "thirsty",
                               "hungry",
@@ -14571,7 +12015,7 @@
                         "expl": "Правильный ответ: \"thirsty\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "[TRANSLATE] What is a mate?",
+                        "q": "What is a mate?",
                         "opts": [
                               "A farm manager",
                               "A friend or colleague",
@@ -14588,7 +12032,7 @@
                         "expl": "Правильный ответ: \"A friend or colleague\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "[TRANSLATE] How to say конечно in English?",
+                        "q": "How to say конечно in English?",
                         "opts": [
                               "sorry",
                               "lovely",
@@ -14605,7 +12049,7 @@
                         "expl": "Правильный ответ: \"of course\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "[TRANSLATE] Alright? means...",
+                        "q": "Alright? means...",
                         "opts": [
                               "How are you?",
                               "Goodbye",
@@ -14622,7 +12066,7 @@
                         "expl": "Правильный ответ: \"How are you?\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "[COMPLETE] I am ___ today. I have a lot of work.",
+                        "q": "I am ___ today. I have a lot of work.",
                         "opts": [
                               "free",
                               "lovely",
@@ -14639,7 +12083,7 @@
                         "expl": "Правильный ответ: \"busy\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "[TRANSLATE] What do you eat with tea?",
+                        "q": "What do you eat with tea?",
                         "opts": [
                               "A pub",
                               "A weekend",
@@ -14656,7 +12100,7 @@
                         "expl": "Правильный ответ: \"A biscuit\". Social interaction · Would you like? · British politeness & Small talk"
                   },
                   {
-                        "q": "[COMPLETE] ___ your weekend! (Наслаждайся)",
+                        "q": "___ your weekend! (Наслаждайся)",
                         "opts": [
                               "Enjoy",
                               "Busy",
@@ -14674,669 +12118,4 @@
                   }
             ]
       }
-];;;
-  </script>
-  <script>
-    // ── PHRASEBOOK ────────────────────────────────────────────────────────────────
-    const PHRASE_GROUPS = {
-      work: [
-        ["Where is my row?", "Где мой ряд?", "Qatorim qayerda?", "Қатори ман куҷост?", "Катарым кайда?", "Қатарым қайда?"],
-        ["The machine is broken.", "Машина сломана.", "Mashina buzilgan.", "Мошин вайрон шудааст.", "Машина бузулду.", "Машина бұзылған."],
-        ["I have finished my row.", "Я закончил свой ряд.", "Qatorimni tugatdim.", "Қатори худро тамом кардам.", "Катарымды бүтүрдүм.", "Қатарымды бітірдім."],
-        ["What time does the shift end?", "Во сколько заканчивается смена?", "Smena qachon tugaydi?", "Смена кай тамом мешавад?", "Нөөмөт качан бүтөт?", "Ауысым қашан бітеді?"],
-        ["I need more trays / punnets.", "Мне нужны ещё лотки / паннеты.", "Menga yana patnis / punnet kerak.", "Ба ман боз латок / пуннет лозим.", "Мага дагы лоток / пуннет керек.", "Маған тағы науа / паннет керек."],
-        ["Please show me the correct size.", "Покажите, пожалуйста, правильный размер.", "To'g'ri o'lchamni ko'rsating, iltimos.", "Лутфан, андозаи дурустро нишон диҳед.", "Туура өлчөмдү көрсөтүп коюңузчу.", "Дұрыс өлшемді көрсетіңізші."],
-        ["This fruit is too small.", "Этот фрукт слишком маленький.", "Bu meva juda kichik.", "Ин мева хеле хурд аст.", "Бул жемиш өтө кичине.", "Бұл жеміс тым кішкентай."],
-        ["This fruit is damaged.", "Этот фрукт повреждён.", "Bu meva shikastlangan.", "Ин мева осеб дидааст.", "Бул жемиш жабыркаган.", "Бұл жеміс зақымдалған."],
-        ["Should I pick this one?", "Мне собирать этот?", "Buni teraymi?", "Инро чинам?", "Муну терейинби?", "Мынаны терейін бе?"],
-        ["Where do I put the full trays?", "Куда ставить полные лотки?", "To'la patnislarni qayerga qo'yaman?", "Латокҳои пурро куҷо мегузорам?", "Толгон лотокторду кайда коём?", "Толы науаларды қайда қоямын?"],
-        ["I need a new knife / scissors.", "Мне нужен новый нож / ножницы.", "Menga yangi pichoq / qaychi kerak.", "Ба ман корд / қайчии нав лозим.", "Мага жаңы бычак / кайчы керек.", "Маған жаңа пышақ / қайшы керек."],
-        ["The scale is not working.", "Весы не работают.", "Tarozi ishlamayapti.", "Тарозу кор намекунад.", "Тараза иштебей жатат.", "Таразы істемей тұр."],
-        ["How many boxes do I need today?", "Сколько ящиков мне нужно сегодня?", "Bugun nechta quti kerak?", "Имрӯз ба ман чанд қуттӣ лозим?", "Бүгүн мага канча куту керек?", "Бүгін маған қанша жәшік керек?"],
-        ["Can you check my row, please?", "Можете проверить мой ряд, пожалуйста?", "Qatorimni tekshirib bera olasizmi?", "Метавонед қатори маро санҷед?", "Катарымды текшерип бересизби?", "Қатарымды тексеріп бере аласыз ба?"],
-        ["I am ready to start.", "Я готов начать.", "Men boshlashga tayyorman.", "Ман барои оғоз омодаам.", "Мен баштоого даярмын.", "Мен бастауға дайынмын."],
-        ["I need help with this task.", "Мне нужна помощь с этим заданием.", "Bu vazifa bilan menga yordam kerak.", "Дар ин кор ба ман кӯмак лозим.", "Бул иш боюнча мага жардам керек.", "Бұл тапсырмаға маған көмек керек."],
-        ["Which field are we working in today?", "На каком поле мы сегодня работаем?", "Bugun qaysi dalada ishlaymiz?", "Имрӯз мо дар кадом майдон кор мекунем?", "Бүгүн кайсы талаада иштейбиз?", "Бүгін қай алқапта жұмыс істейміз?"],
-        ["What is the target for today?", "Какая норма на сегодня?", "Bugungi norma qancha?", "Нақшаи имрӯз чанд аст?", "Бүгүнкү план канча?", "Бүгінгі норма қанша?"],
-        ["Please write my hours correctly.", "Пожалуйста, запишите мои часы правильно.", "Soatlarimni to'g'ri yozing, iltimos.", "Лутфан, соатҳои маро дуруст нависед.", "Сааттарымды туура жазып коюңузчу.", "Сағаттарымды дұрыс жазыңызшы."],
-        ["I am still learning.", "Я всё ещё учусь.", "Men hali o'rganyapman.", "Ман ҳоло ҳам меомӯзам.", "Мен дагы эле үйрөнүп жатам.", "Мен әлі үйреніп жүрмін."],
-        ["Can you show me again?", "Можете показать ещё раз?", "Yana bir bor ko'rsata olasizmi?", "Боз як бор нишон медиҳед?", "Дагы бир жолу көрсөтүп бересизби?", "Тағы бір рет көрсетесіз бе?"],
-        ["This crate is too heavy.", "Этот ящик слишком тяжёлый.", "Bu yashik juda og'ir.", "Ин қуттӣ хеле вазнин аст.", "Бул ящик өтө оор.", "Бұл жәшік тым ауыр."],
-        ["I need a short break.", "Мне нужен короткий перерыв.", "Menga qisqa tanaffus kerak.", "Ба ман танаффуси кӯтоҳ лозим.", "Мага кыска тыныгуу керек.", "Маған қысқа үзіліс керек."],
-        ["The line is moving too fast.", "Линия движется слишком быстро.", "Liniya juda tez ketmoqda.", "Хат хеле зуд ҳаракат мекунад.", "Линия өтө тез жүрүп жатат.", "Желі тым тез жүріп жатыр."],
-        ["Who is the supervisor today?", "Кто сегодня супервайзер?", "Bugun supervisor kim?", "Имрӯз супервайзер кист?", "Бүгүн супервайзер ким?", "Бүгін супервайзер кім?"]
-      ],
-      health: [
-        ["I feel sick. I need a doctor.", "Мне плохо. Нужен врач.", "Yomon his qilyapman. Doktor kerak.", "Бад ҳастам. Духтур лозим.", "Начарлап жатам. Дарыгер керек.", "Өзімді жаман сезініп тұрмын. Дәрігер керек."],
-        ["My back / knee / hand hurts.", "У меня болит спина / колено / рука.", "Belim / tizzam / qo'lim og'riyapti.", "Пуштам / зонуам / дастам дард мекунад.", "Белим / тизем / колум ооруйт.", "Белім / тізем / қолым ауырып тұр."],
-        ["I need to go to hospital.", "Мне нужно в больницу.", "Menga kasalxonaga borish kerak.", "Ман бояд ба беморхона равам.", "Мага оорукана барышым керек.", "Маған ауруханаға бару керек."],
-        ["I have a temperature / headache.", "У меня температура / болит голова.", "Haroratim bor / boshim og'riyapti.", "Ҳарорат дорам / сарам дард мекунад.", "Температурам бар / башым ооруйт.", "Дене қызуым бар / басым ауырып тұр."],
-        ["I feel dizzy.", "У меня кружится голова.", "Boshim aylanmoqda.", "Сарам чарх мезанад.", "Башым айланып жатат.", "Басым айналып тұр."],
-        ["I cut my finger.", "Я порезал палец.", "Barmog'imni kesib oldim.", "Ангуштамро буридам.", "Бармагымды кесип алдым.", "Саусағымды кесіп алдым."],
-        ["I cannot lift this box.", "Я не могу поднять этот ящик.", "Men bu qutini ko'tara olmayman.", "Ман ин қуттиро бардошта наметавонам.", "Мен бул кутуну көтөрө албайм.", "Мен бұл жәшікті көтере алмаймын."],
-        ["I need some water.", "Мне нужна вода.", "Menga suv kerak.", "Ба ман об лозим.", "Мага суу керек.", "Маған су керек."],
-        ["I need to sit down for a minute.", "Мне нужно присесть на минуту.", "Bir daqiqaga o'tirishim kerak.", "Ба ман лозим аст як дақиқа нишинам.", "Мага бир мүнөткө отурушум керек.", "Маған бір минут отыру керек."],
-        ["My tooth hurts.", "У меня болит зуб.", "Tishim og'riyapti.", "Дандонам дард мекунад.", "Тишим ооруп жатат.", "Тісім ауырып тұр."],
-        ["I have a cough.", "У меня кашель.", "Menda yo'tal bor.", "Ман сулфа дорам.", "Мен жөтөлүп жатам.", "Менде жөтел бар."],
-        ["I have the flu.", "У меня грипп.", "Menda gripp bor.", "Ман зуком дорам.", "Менде сасык тумоо бар.", "Менде тұмау бар."],
-        ["I need medicine.", "Мне нужно лекарство.", "Menga dori kerak.", "Ба ман дору лозим.", "Мага дары керек.", "Маған дәрі керек."],
-        ["Can you call first aid?", "Можете вызвать первую помощь?", "Birinchi yordamni chaqira olasizmi?", "Метавонед ёрии аввалро даъват кунед?", "Биринчи жардам чакырып бересизби?", "Алғашқы көмекті шақыра аласыз ба?"],
-        ["I need a bandage / plaster.", "Мне нужен бинт / пластырь.", "Menga bint / plastir kerak.", "Ба ман бинт / пластир лозим.", "Мага бинт / пластырь керек.", "Маған бинт / пластырь керек."],
-        ["I feel better now.", "Сейчас мне лучше.", "Hozir o'zimni yaxshiroq his qilyapman.", "Ҳоло худамро беҳтар ҳис мекунам.", "Азыр өзүмдү жакшыраак сезип жатам.", "Қазір өзімді жақсырақ сезініп тұрмын."],
-        ["I am allergic to this.", "У меня на это аллергия.", "Menda bunga allergiya bor.", "Ман ба ин аллергия дорам.", "Мунун айынан аллергиям бар.", "Бұған аллергиям бар."],
-        ["I cannot breathe well.", "Мне трудно дышать.", "Men yaxshi nafas ola olmayapman.", "Ман хуб нафас гирифта наметавонам.", "Мен жакшы дем ала албай жатам.", "Мен дұрыс дем ала алмай тұрмын."],
-        ["I need to rest today.", "Мне нужно отдохнуть сегодня.", "Bugun dam olishim kerak.", "Имрӯз ба ман истироҳат лозим.", "Бүгүн эс алышым керек.", "Бүгін демалуым керек."],
-        ["Where is the nearest GP surgery?", "Где ближайшая поликлиника / GP?", "Eng yaqin GP qayerda?", "Наздиктарин GP куҷост?", "Эң жакын GP кайда?", "Ең жақын GP қайда?"]
-      ],
-      pay: [
-        ["My payslip is incorrect.", "В расчётном листе ошибка.", "Maosh varaqam noto'g'ri.", "Варақаи маошам нодуруст.", "Маош барагым туура эмес.", "Жалақы парағымда қате бар."],
-        ["I am missing hours on my payslip.", "У меня не хватает часов в расчётном листе.", "Maosh varaqamda soatlar yetishmayapti.", "Дар варақаи маошам соатҳо намерасанд.", "Маош барагымда сааттар жетишпей жатат.", "Жалақы парағымда сағаттар жетіспейді."],
-        ["When is payday?", "Когда день выплаты зарплаты?", "Maosh kuni qachon?", "Рӯзи маош кай аст?", "Айлык күнү качан?", "Жалақы күні қашан?"],
-        ["What is the minimum wage this year?", "Какой минимальный размер оплаты труда в этом году?", "Bu yil minimal ish haqi qancha?", "Имсол ҳадди ақали маош чанд аст?", "Бул жылы минималдык айлык канча?", "Биылғы ең төменгі жалақы қанша?"],
-        ["How much did I earn this week?", "Сколько я заработал за эту неделю?", "Bu hafta qancha topdim?", "Ман ин ҳафта чанд пул кор кардам?", "Бул жумада канча таптым?", "Осы аптада қанша таптым?"],
-        ["How many hours do I have?", "Сколько у меня часов?", "Menda nechta soat bor?", "Ман чанд соат дорам?", "Менде канча саат бар?", "Менде қанша сағат бар?"],
-        ["I worked overtime yesterday.", "Вчера я работал сверхурочно.", "Kecha men ortiqcha ishladim.", "Дирӯз ман изофакорӣ кардам.", "Кечээ мен ашыкча иштедим.", "Кеше мен артық жұмыс істедім."],
-        ["Please explain this deduction.", "Пожалуйста, объясните это удержание.", "Bu ushlab qolishni tushuntiring, iltimos.", "Лутфан, ин нигоҳдоштро фаҳмонед.", "Бул кармоону түшүндүрүп бериңизчи.", "Бұл ұсталымды түсіндіріп беріңізші."],
-        ["I did not receive my full pay.", "Я не получил полную зарплату.", "Men to'liq maosh olmadim.", "Ман маоши пурра нагирифтам.", "Мен толук айлык алган жокмун.", "Мен толық жалақы алмадым."],
-        ["Can I get a copy of my payslip?", "Можно копию моего расчётного листа?", "Maosh varaqam nusxasini olsam bo'ladimi?", "Метавонам нусхаи варақаи маошамро гирам?", "Маош барагымдын көчүрмөсүн алсам болобу?", "Жалақы парағымның көшірмесін ала аламын ба?"],
-        ["My bank details have changed.", "Мои банковские реквизиты изменились.", "Bank ma'lumotlarim o'zgardi.", "Маълумоти бонкиам иваз шуд.", "Банк маалыматтарым өзгөрдү.", "Банк деректерім өзгерді."],
-        ["I need to speak to payroll.", "Мне нужно поговорить с бухгалтерией.", "Menga payroll bilan gaplashish kerak.", "Ба ман лозим аст бо бухгалтерия гап занам.", "Мага бухгалтерия менен сүйлөшүшүм керек.", "Маған бухгалтериямен сөйлесу керек."],
-        ["Is holiday pay included?", "Отпускные включены?", "Ta'til puli kiritilganmi?", "Пули рухсатӣ дохил шудааст?", "Өргүү акысы кошулганбы?", "Демалыс ақысы қосылған ба?"],
-        ["When will the bonus be paid?", "Когда выплатят бонус?", "Bonus qachon to'lanadi?", "Бонус кай пардохт мешавад?", "Бонус качан төлөнөт?", "Бонус қашан төленеді?"],
-        ["Please check my timesheet.", "Пожалуйста, проверьте мой табель.", "Timesheetimni tekshirib bering.", "Лутфан, таймшитамро санҷед.", "Таймшитимди текшерип бериңизчи.", "Таймшитімді тексеріп беріңізші."]
-      ],
-      shop: [
-        ["How much is this?", "Сколько это стоит?", "Bu qancha?", "Ин чанд аст?", "Бул канча?", "Бұл қанша?"],
-        ["I'd like two of these, please.", "Дайте два, пожалуйста.", "Iltimos, ikki dona.", "Лутфан, ду дона.", "Мага мындан эки даана бериңизчи.", "Маған бұдан екі дана беріңізші."],
-        ["Where is the nearest pharmacy?", "Где ближайшая аптека?", "Eng yaqin dorixona qayerda?", "Наздиктарин дорухона куҷост?", "Эң жакын дарыкана кайда?", "Ең жақын дәріхана қайда?"],
-        ["Do you sell SIM cards?", "У вас есть SIM-карты?", "Sizda SIM karta bormi?", "Шумо SIM-корт мефурӯшед?", "SIM-карта сатасыздарбы?", "Сіздерде SIM-карта бар ма?"],
-        ["I need bread, milk and eggs.", "Мне нужны хлеб, молоко и яйца.", "Menga non, sut va tuxum kerak.", "Ба ман нон, шир ва тухм лозим.", "Мага нан, сүт жана жумуртка керек.", "Маған нан, сүт және жұмыртқа керек."],
-        ["Can I pay by card?", "Можно оплатить картой?", "Karta bilan to'lasam bo'ladimi?", "Метавонам бо корт пардохт кунам?", "Карта менен төлөсөм болобу?", "Картамен төлей аламын ба?"],
-        ["Do you have a cheaper one?", "У вас есть вариант подешевле?", "Arzonrog'i bormi?", "Арзонтараш ҳаст?", "Мындан арзаныраагы барбы?", "Арзанырағы бар ма?"],
-        ["I need a toothbrush and toothpaste.", "Мне нужны зубная щётка и паста.", "Menga tish cho'tkasi va pasta kerak.", "Ба ман чуткаи дандон ва паста лозим.", "Мага тиш щеткасы менен паста керек.", "Маған тіс щеткасы мен паста керек."],
-        ["Is there a discount today?", "Сегодня есть скидка?", "Bugun chegirma bormi?", "Имрӯз тахфиф ҳаст?", "Бүгүн арзандатуу барбы?", "Бүгін жеңілдік бар ма?"],
-        ["Can I have a receipt, please?", "Можно чек, пожалуйста?", "Chek berasizmi, iltimos?", "Метавонам чек гирам?", "Чек берип коюңузчу.", "Чек бересіз бе?"],
-        ["Where can I top up my phone?", "Где можно пополнить телефон?", "Telefonimni qayerda to'ldiraman?", "Телефонамро куҷо пур мекунам?", "Телефонумду кайдан толуктайм?", "Телефонымды қайда толтырамын?"],
-        ["Which aisle is the rice in?", "В каком ряду рис?", "Guruch qaysi qatorda?", "Биринҷ дар кадом қатор аст?", "Күрүч кайсы катарда?", "Күріш қай қатарда?"],
-        ["I am looking for warm socks.", "Я ищу тёплые носки.", "Men issiq paypoq qidiryapman.", "Ман ҷӯроби гарм меҷӯям.", "Мен жылуу байпак издеп жатам.", "Мен жылы шұлық іздеп жүрмін."],
-        ["What time does the shop close?", "Во сколько магазин закрывается?", "Do'kon qachon yopiladi?", "Мағоза кай баста мешавад?", "Дүкөн саат канчада жабылат?", "Дүкен сағат нешеде жабылады?"],
-        ["Do you have painkillers?", "У вас есть обезболивающее?", "Og'riq qoldiruvchi bormi?", "Шумо доруи зиддидард доред?", "Ооруну басаңдатуучу дары барбы?", "Ауырсынуды басатын дәрі бар ма?"]
-      ],
-      social: [
-        ["Good morning! How are you?", "Доброе утро! Как дела?", "Xayrli tong! Qandaysiz?", "Субҳ ба хайр! Ҳолатон чӣ?", "Кутман таң! Кандайсыз?", "Қайырлы таң! Қалыңыз қалай?"],
-        ["Cheers! / Thank you very much.", "Спасибо большое!", "Katta rahmat!", "Ташаккури зиёд!", "Чоң рахмат!", "Көп рақмет!"],
-        ["Sorry, I don't understand. Can you repeat slowly?", "Извините, не понимаю. Можете повторить медленно?", "Kechirasiz, tushunmadim. Sekin takrorlaysizmi?", "Бубахшед, намефаҳмам. Оҳиста такрор мекунед?", "Кечириңиз, түшүнбөдүм. Жай кайталайсызбы?", "Кешіріңіз, түсінбедім. Баяу қайталайсыз ба?"],
-        ["Alright, mate? — Not bad, cheers!", "Как дела, приятель? — Неплохо, спасибо!", "Yaxshimisiz, do'stim? — Yomon emas, rahmat!", "Хол чӣ, дӯст? — Бад нест, ташаккур!", "Кандайсың, досум? — Жаман эмес, рахмат!", "Қалайсың, досым? — Жаман емес, рақмет!"],
-        ["Nice to meet you.", "Приятно познакомиться.", "Tanishganimdan xursandman.", "Аз шиносоӣ шодам.", "Таанышканыма кубанычтамын.", "Танысқаныма қуаныштымын."],
-        ["Where are you from?", "Вы откуда?", "Siz qayerdansiz?", "Шумо аз куҷоед?", "Сиз кайдансыз?", "Сіз қайдансыз?"],
-        ["How long have you been here?", "Как давно вы здесь?", "Bu yerda qancha vaqtdan beri ishlaysiz?", "Шумо кай боз ин ҷо ҳастед?", "Бул жерде канча убакыттан бери жүрөсүз?", "Мұнда қашаннан бері жүрсіз?"],
-        ["This is my first week.", "Это моя первая неделя.", "Bu mening birinchi haftam.", "Ин ҳафтаи аввали ман аст.", "Бул менин биринчи жумам.", "Бұл менің бірінші аптама."],
-        ["Can we go together?", "Мы можем пойти вместе?", "Birga bora olamizmi?", "Мо якҷоя рафта метавонем?", "Бирге бара алабызбы?", "Бірге бара аламыз ба?"],
-        ["What is your phone number?", "Какой у вас номер телефона?", "Telefon raqamingiz nima?", "Рақами телефони шумо чанд аст?", "Телефон номериңиз кандай?", "Телефон нөміріңіз қандай?"],
-        ["Please send me the address.", "Пожалуйста, пришлите мне адрес.", "Iltimos, menga manzilni yuboring.", "Лутфан, суроғаро ба ман фиристед.", "Мага даректи жөнөтүп коюңузчу.", "Маған мекенжайды жіберіңізші."],
-        ["See you tomorrow.", "Увидимся завтра.", "Ertaga ko'rishamiz.", "Фардо мебинем.", "Эртең көрүшөбүз.", "Ертең көрісеміз."],
-        ["Are you free after work?", "Вы свободны после работы?", "Ishdan keyin bo'shmisiz?", "Баъд аз кор озод ҳастед?", "Жумуштан кийин бошсузбу?", "Жұмыстан кейін боссыз ба?"],
-        ["Let's have tea.", "Давайте попьём чай.", "Keling, choy ichamiz.", "Биёед, чой менӯшем.", "Келиңиз, чай ичели.", "Шай ішейік."],
-        ["Do you need any help?", "Вам нужна помощь?", "Sizga yordam kerakmi?", "Ба шумо кӯмак лозим аст?", "Сизге жардам керекпи?", "Сізге көмек керек пе?"],
-        ["Thank you for your help.", "Спасибо за помощь.", "Yordamingiz uchun rahmat.", "Барои кӯмакатон ташаккур.", "Жардамыңыз үчүн рахмат.", "Көмегіңізге рақмет."],
-        ["Sorry, I am late.", "Извините, я опоздал.", "Kechirasiz, men kech qoldim.", "Бубахшед, ман дер кардам.", "Кечириңиз, кечигип калдым.", "Кешіріңіз, кешігіп қалдым."],
-        ["No problem, it is okay.", "Нет проблем, всё в порядке.", "Muammo yo'q, hammasi joyida.", "Ҳеҷ гап не, ҳамааш хуб аст.", "Эч маселе жок, баары жакшы.", "Еш мәселе жоқ, бәрі жақсы."],
-        ["Please speak English slowly.", "Пожалуйста, говорите по-английски медленно.", "Iltimos, inglizcha sekin gapiring.", "Лутфан, ба англисӣ оҳиста гап занед.", "Сураныч, англисче жай сүйлөңүз.", "Өтінемін, ағылшынша баяу сөйлеңіз."],
-        ["I am learning English.", "Я учу английский.", "Men ingliz tilini o'rganyapman.", "Ман англисӣ меомӯзам.", "Мен англис тилин үйрөнүп жатам.", "Мен ағылшын тілін үйреніп жүрмін."],
-        ["Can you say that again?", "Можете сказать это ещё раз?", "Buni yana ayta olasizmi?", "Метавонед инро боз гӯед?", "Муну дагы бир жолу айта аласызбы?", "Мұны тағы бір рет айта аласыз ба?"],
-        ["Have a good weekend.", "Хороших выходных.", "Yaxshi dam olish kunlari bo'lsin.", "Рӯзи истироҳати хуб дошта бошед.", "Жакшы дем алыш болсун.", "Демалысыңыз жақсы өтсін."],
-        ["Take care.", "Берегите себя.", "O'zingizni ehtiyot qiling.", "Эҳтиёт бошед.", "Өзүңүздү караңыз.", "Өзіңізді күтіңіз."],
-        ["Welcome to the farm.", "Добро пожаловать на ферму.", "Fermaга xush kelibsiz.", "Ба ферма хуш омадед.", "Фермага кош келиңиз.", "Фермаға қош келдіңіз."],
-        ["See you at the bus stop.", "Увидимся на автобусной остановке.", "Avtobus bekatida ko'rishamiz.", "Дар истгоҳи автобус мебинем.", "Автобус аялдамасында көрүшөбүз.", "Автобус аялдамасында кездесеміз."]
-      ],
-      sos: [
-        ["Help! Emergency! Call 999!", "Помогите! Чрезвычайная ситуация! Звоните 999!", "Yordam! Favqulodda holat! 999 ga qo'ng'iroq qiling!", "Кӯмак! Ҳолати фавқулода! Ба 999 занг занед!", "Жардам! Шашылыш абал! 999 чалыңыз!", "Көмектесіңіз! Төтенше жағдай! 999-ға қоңырау шалыңыз!"],
-        ["There has been an accident.", "Произошёл несчастный случай.", "Baxtsiz hodisa yuz berdi.", "Ҳодисаи нохуш рӯй дод.", "Кырсык болду.", "Жазатайым оқиға болды."],
-        ["I need an ambulance.", "Мне нужна скорая помощь.", "Menga tez yordam kerak.", "Ба ман ёрии таъҷилӣ лозим.", "Мага тез жардам керек.", "Маған жедел жәрдем керек."],
-        ["He is not breathing.", "Он не дышит.", "U nafas olmayapti.", "Ӯ нафас намекашад.", "Ал дем албай жатат.", "Ол дем алмай жатыр."],
-        ["She fell down.", "Она упала.", "U yiqilib tushdi.", "Ӯ афтод.", "Ал жыгылып калды.", "Ол құлап қалды."],
-        ["There is a fire.", "Пожар!", "Yong'in bor!", "Сӯхтор шуд!", "Өрт чыкты!", "Өрт болды!"],
-        ["Call the supervisor now.", "Позвоните супервайзеру сейчас.", "Hozir supervisorni chaqiring.", "Ҳоло супервайзерро даъват кунед.", "Азыр супервайзерди чакырыңыз.", "Қазір супервайзерді шақырыңыз."],
-        ["I lost my passport.", "Я потерял паспорт.", "Pasportimni yo'qotdim.", "Ман шиносномаамро гум кардам.", "Паспортумду жоготуп алдым.", "Паспортымды жоғалтып алдым."],
-        ["My phone is dead.", "У меня разрядился телефон.", "Telefonim o'chib qoldi.", "Телефонам хомӯш шуд.", "Телефонум өчүп калды.", "Телефонымның қуаты бітті."],
-        ["I am alone and afraid.", "Я один и мне страшно.", "Men yolg'izman va qo'rqyapman.", "Ман танҳо ҳастам ва метарсам.", "Мен жалгызмын жана коркуп жатам.", "Мен жалғызбын және қорқып тұрмын."],
-        ["I need the police.", "Мне нужна полиция.", "Menga politsiya kerak.", "Ба ман полис лозим.", "Мага полиция керек.", "Маған полиция керек."],
-        ["Where is the emergency exit?", "Где аварийный выход?", "Favqulodda chiqish qayerda?", "Баромади изтирорӣ куҷост?", "Шашылыш чыгуучу эшик кайда?", "Төтенше шығу есігі қайда?"],
-        ["The gas is leaking.", "Газ утекает.", "Gaz sizib chiqyapti.", "Газ мечакад.", "Газ чыгып жатат.", "Газ шығып жатыр."],
-        ["I cannot find my team.", "Я не могу найти свою команду.", "Jamoamni topa olmayapman.", "Ман дастаи худро ёфта наметавонам.", "Командамды таба албай жатам.", "Тобымды таба алмай тұрмын."],
-        ["Please stay with me.", "Пожалуйста, останьтесь со мной.", "Iltimos, men bilan qoling.", "Лутфан, бо ман бимонед.", "Сураныч, мен менен калыңыз.", "Өтінемін, менің қасымда болыңыз."]
-      ],
-      transport: [
-        ["Where is the bus stop?", "Где автобусная остановка?", "Avtobus bekati qayerda?", "Истгоҳи автобус куҷост?", "Автобус аялдамасы кайда?", "Автобус аялдамасы қайда?"],
-        ["When is the next bus to town?", "Когда следующий автобус в город?", "Shaharga keyingi avtobus qachon?", "Автобуси навбатӣ ба шаҳр кай аст?", "Шаарга кийинки автобус качан?", "Қалаға келесі автобус қашан?"],
-        ["I need a return ticket.", "Мне нужен билет туда-обратно.", "Menga borib-kelish bileti kerak.", "Ба ман чиптаи рафтуо лозим.", "Мага барып-келүү билети керек.", "Маған барып-қайту билеті керек."],
-        ["Does this bus go to Tesco?", "Этот автобус идёт до Tesco?", "Bu avtobus Tescoга boradimi?", "Ин автобус то Tesco меравад?", "Бул автобус Tescoго барабы?", "Бұл автобус Tesco-ға бара ма?"],
-        ["What time is the last bus?", "Во сколько последний автобус?", "Oxirgi avtobus soat nechada?", "Автобуси охирин соати чанд аст?", "Акыркы автобус саат канчада?", "Соңғы автобус сағат нешеде?"],
-        ["How much is the ticket?", "Сколько стоит билет?", "Bilet qancha turadi?", "Чипта чанд пул аст?", "Билет канча турат?", "Билет қанша тұрады?"],
-        ["Can you tell me where to get off?", "Скажите, где мне выходить?", "Qayerda tushishimni ayta olasizmi?", "Метавонед гӯед, ки куҷо фароям?", "Кайсы жерден түшөрүмдү айтып бересизби?", "Қай жерде түсуім керегін айта аласыз ба?"],
-        ["I missed the bus.", "Я опоздал на автобус.", "Avtobusga ulgurmadim.", "Ман ба автобус намерасидам.", "Автобусту өткөрүп жибердим.", "Автобусқа үлгермей қалдым."],
-        ["The train is delayed.", "Поезд задерживается.", "Poyezd kechikmoqda.", "Қатор дер мекунад.", "Поезд кечигип жатат.", "Пойыз кешігіп жатыр."],
-        ["I need a taxi.", "Мне нужно такси.", "Menga taksi kerak.", "Ба ман таксӣ лозим.", "Мага такси керек.", "Маған такси керек."],
-        ["Please stop here.", "Пожалуйста, остановите здесь.", "Iltimos, shu yerda to'xtating.", "Лутфан, дар ҳамин ҷо нигоҳ доред.", "Сураныч, ушул жерден токтотуңуз.", "Өтінемін, осы жерден тоқтатыңыз."],
-        ["Is this seat free?", "Это место свободно?", "Bu o'rindiq bo'shmi?", "Ин ҷой холӣ аст?", "Бул орун бошпу?", "Бұл орын бос па?"],
-        ["Which platform do I need?", "Какая мне нужна платформа?", "Menga qaysi platforma kerak?", "Ба ман кадом платформа лозим?", "Мага кайсы платформа керек?", "Маған қай платформа керек?"],
-        ["Can I buy a ticket on the bus?", "Можно купить билет в автобусе?", "Biletni avtobusda olsam bo'ladimi?", "Метавонам чиптаро дар автобус харам?", "Билетти автобустан алсам болобу?", "Билетті автобуста алуға бола ма?"],
-        ["How do I get to the station?", "Как мне добраться до станции?", "Bekatga qanday boraman?", "Ман чӣ тавр ба истгоҳ меравам?", "Станцияга кантип барам?", "Бекетке қалай барамын?"]
-      ],
-      camp: [
-        ["The shower is broken.", "Душ сломан.", "Dush buzilgan.", "Душ вайрон шудааст.", "Душ бузулду.", "Душ бұзылған."],
-        ["There is no hot water.", "Нет горячей воды.", "Issiq suv yo'q.", "Оби гарм нест.", "Ысык суу жок.", "Ыстық су жоқ."],
-        ["My room is too cold.", "В моей комнате слишком холодно.", "Xonam juda sovuq.", "Ҳуҷраи ман хеле хунук аст.", "Бөлмөм өтө муздак.", "Бөлмем тым суық."],
-        ["The heater is not working.", "Обогреватель не работает.", "Isitgich ishlamayapti.", "Гармкунак кор намекунад.", "Жылыткыч иштебей жатат.", "Жылытқыш істемей тұр."],
-        ["I need clean bedding.", "Мне нужно чистое постельное бельё.", "Menga toza choyshab kerak.", "Ба ман ҷойпӯши тоза лозим.", "Мага таза төшөк керек.", "Маған таза төсек жабдығы керек."],
-        ["Where is the laundry room?", "Где прачечная?", "Kir yuvish xonasi qayerda?", "Ҷои ҷомашӯӣ куҷост?", "Кир жуучу бөлмө кайда?", "Кір жуатын бөлме қайда?"],
-        ["The kitchen is busy.", "На кухне сейчас много людей.", "Oshxona band.", "Ошхона серодам аст.", "Ашкана бошобой.", "Ас үй бос емес."],
-        ["Please clean the bathroom.", "Пожалуйста, уберите ванную.", "Hammomni tozalang, iltimos.", "Лутфан, ҳаммомро тоза кунед.", "Ваннаны тазалап коюңузчу.", "Жуынатын бөлмені тазалаңызшы."],
-        ["I need a new key.", "Мне нужен новый ключ.", "Menga yangi kalit kerak.", "Ба ман калиди нав лозим.", "Мага жаңы ачкыч керек.", "Маған жаңа кілт керек."],
-        ["There is too much noise at night.", "Ночью слишком шумно.", "Kechasi juda shovqin bo'ladi.", "Шабона садо бисёр аст.", "Түнкүсүн ызы-чуу көп.", "Түнде шу тым көп."]
-      ],
-      documents: [
-        ["I need to fill in this form.", "Мне нужно заполнить эту форму.", "Bu formani to'ldirishim kerak.", "Ба ман лозим аст ин формаро пур кунам.", "Бул форманы толтурушум керек.", "Бұл форманы толтыруым керек."],
-        ["Where do I sign?", "Где мне расписаться?", "Qayerga imzo qo'yaman?", "Ман дар куҷо имзо мегузорам?", "Кайсы жерге кол коём?", "Қай жерге қол қоямын?"],
-        ["Please write in capital letters.", "Пожалуйста, пишите печатными буквами.", "Iltimos, katta harflar bilan yozing.", "Лутфан, бо ҳарфҳои калон нависед.", "Баш тамгалар менен жазыңызчы.", "Бас әріптермен жазыңызшы."],
-        ["What is my NI number?", "Какой у меня номер NI?", "Mening NI raqamim nima?", "Рақами NI-и ман чанд аст?", "Менин NI номерим кандай?", "Менің NI нөмірім қандай?"],
-        ["I need a copy of my contract.", "Мне нужна копия моего контракта.", "Menga shartnomam nusxasi kerak.", "Ба ман нусхаи шартномаам лозим.", "Мага келишимимдин көчүрмөсү керек.", "Маған келісімшартымның көшірмесі керек."],
-        ["My visa expires soon.", "Срок моей визы скоро истекает.", "Vizaim tez orada tugaydi.", "Мӯҳлати визои ман ба зудӣ тамом мешавад.", "Визам жакында бүтөт.", "Визамның мерзімі жақында бітеді."],
-        ["Where can I print this document?", "Где можно распечатать этот документ?", "Bu hujjatni qayerda chop etaman?", "Ин ҳуҷҷатро дар куҷо чоп мекунам?", "Бул документти кайдан чыгарам?", "Бұл құжатты қайда басып шығарамын?"],
-        ["This address is correct.", "Этот адрес правильный.", "Bu manzil to'g'ri.", "Ин суроға дуруст аст.", "Бул дарек туура.", "Бұл мекенжай дұрыс."],
-        ["I need to update my phone number.", "Мне нужно обновить номер телефона.", "Telefon raqamimni yangilashim kerak.", "Ба ман лозим аст рақами телефонамро нав кунам.", "Телефон номеримди жаңыртышым керек.", "Телефон нөмірімді жаңартуым керек."],
-        ["Can you help me with this application?", "Вы можете помочь мне с этой анкетой?", "Bu ariza bilan yordam bera olasizmi?", "Метавонед бо ин ариза ба ман кӯмак кунед?", "Бул арыз менен жардам бере аласызбы?", "Осы өтінішпен көмектесе аласыз ба?"]
-      ]
-    };
-    const PHRASES = Object.entries(PHRASE_GROUPS).flatMap(([cat, items]) =>
-      items.map(([en, ru, uz, tj, kg, kz]) => ({ cat, en, ru, uz, tj, kg, kz }))
-    );
-
-    // ── RENDER ENGINE ─────────────────────────────────────────────────────────────
-    function saveDone() { safeSetItem('fe_a1', JSON.stringify(done)) }
-    function render() {
-      updateHeader();
-      const root = document.getElementById('root');
-      if (curLesson) { renderLesson(root); return; }
-      if (scr === 'home') renderHome(root);
-      else if (scr === 'phrases') renderPhrases(root);
-      else if (scr === 'progress') renderProgress(root);
-    }
-    function updateHeader() {
-      const lbl = document.getElementById('backLbl');
-      if (lbl) lbl.textContent = curLesson ? t('back') : t('back');
-    }
-    function gotoScr(s) {
-      stopDlg();
-      scr = s;
-      curLesson = null;
-      setScreenHash(s);
-      render();
-    }
-    function setLang(l) {
-      lang = l;
-      safeSetItem('fe_lang', l);
-      setDocumentLang(l);
-      document.getElementById('certModalTitle').textContent = tx('cert_modal_title');
-      document.getElementById('certModalCopy').textContent = tx('cert_modal_copy');
-      document.getElementById('certNameInput').placeholder = tx('cert_name_placeholder');
-      document.getElementById('certCancelBtn').textContent = tx('cancel');
-      document.getElementById('certGenerateBtn').textContent = tx('print');
-      render();
-    }
-    function openLesson(id) { stopDlg(); curLesson = LESSONS.find(l => l.id === id); curTab = 'grammar'; curGrammarForm = 'positive'; quizState = {}; render(); }
-    function goBack() {
-      stopDlg();
-      if (curLesson) {
-        curLesson = null;
-        render();
-      } else if (scr !== 'home') {
-        gotoScr('home');
-      } else {
-        window.location.href = 'index.html';
-      }
-    }
-    function backFromLesson() { goBack(); }
-    function setTab(tab) { curTab = tab; render(); }
-    function setGForm(f) { curGrammarForm = f; render(); }
-    function answerQ(qi, oi) { if (!quizState[qi]) quizState[qi] = []; if (!quizState[qi].includes(oi)) quizState[qi].push(oi); render(); }
-    function finishLesson(id) {
-      const wasComplete = done.length >= LESSONS.length;
-      if (!done.includes(id)) {
-        done.push(id);
-        saveDone();
-      }
-      syncDerivedStats();
-      updateStreak();
-      const isNowComplete = done.length >= LESSONS.length;
-      showCourseCongrats = !wasComplete && isNowComplete;
-      curLesson = null;
-      scr = showCourseCongrats ? 'progress' : 'home';
-      setScreenHash(scr);
-      render();
-    }
-    function setPfCat(c) { pfCat = c; render(); }
-
-    // ── HOME ──────────────────────────────────────────────────────────────────────
-    const CH_COLORS = ['#3b82f6', '#e87830', '#f59e0b', '#22a65e', '#1a9cb0', '#8b5cf6', '#c23a82', '#e87830', '#3dba5e', '#6366f1', '#ef4444', '#0ea5e9', '#a855f7', '#14b8a6', '#f97316'];
-    function renderHome(root) {
-      const stats = getProgressStats();
-      let h = '<div class="scr">';
-      h += renderScreenNav();
-      h += `<div class="summary-card">
-        <div class="summary-head">
-          <div>
-            <div class="summary-title">${t('progress')}</div>
-            <div class="summary-sub">${t('done_of', stats.lessonsDone, stats.totalLessons)}</div>
-          </div>
-          <div class="summary-pill">${stats.wordsLearned}</div>
-        </div>
-        <div class="prog-bar-lg"><div class="prog-bar-lg-fill" style="width:${stats.percent}%"></div></div>
-        <div class="prog-meta">
-          <span>${t('words_learned')}</span>
-          <span>${stats.percent}%</span>
-        </div>
-        <div class="summary-actions">
-          <button class="summary-link primary" onclick="gotoScr('phrases')">${t('phrases')}</button>
-          <button class="summary-link" onclick="gotoScr('progress')">${t('progress')}</button>
-        </div>
-      </div>`;
-      LESSONS.forEach((l, i) => {
-        const isDone = done.includes(l.id);
-        const color = CH_COLORS[i % CH_COLORS.length];
-        const pct = isDone ? 100 : 0;
-        h += `<button type="button" class="ch-card" style="border-left-color:${color}" onclick="openLesson(${l.id})" aria-label="${escapeAttr(gl(l, 'name') + (isDone ? ' — ' + t('completed') : ''))}">`;
-        h += `<div class="ch-badge" style="color:${color}" aria-hidden="true">CHAPTER ${l.id}</div>`;
-        h += `<div class="ch-title">${gl(l, 'name')}</div>`;
-        h += `<div class="ch-sub">${l.cefr}</div>`;
-        h += `<div class="ch-prog-wrap">`;
-        h += `<div class="ch-prog-bar"><div class="ch-prog-fill" style="width:${pct}%;background:${color}"></div></div>`;
-        h += `<div class="ch-prog-dot${isDone ? ' done' : ''}" style="${isDone ? 'background:' + color + ';color:#fff' : ''}">${isDone ? '✓' : ''}</div>`;
-        h += `</div></button>`;
-      });
-      h += '</div>';
-      root.innerHTML = h;
-    }
-
-    // ── LESSON ────────────────────────────────────────────────────────────────────
-    function renderLesson(root) {
-      const l = curLesson;
-      const tabs = ['grammar', 'words', 'dialogue', 'quiz'];
-      const tl = [t('grammar'), t('words'), t('dialogue'), t('quiz')];
-      let h = `<div class="les-scr">`;
-      h += `<div class="les-hdr"><div class="les-hdr-lvl">${l.id}/15</div><div class="les-hdr-title">${gl(l, 'name')}</div></div>`;
-      h += `<div class="tabs" role="tablist">`;
-      tabs.forEach((tab, i) => h += `<button class="tab${curTab === tab ? ' on' : ''}" onclick="setTab('${tab}')" role="tab" aria-selected="${curTab === tab ? 'true' : 'false'}" aria-label="${escapeAttr(tl[i])}">${tl[i]}</button>`);
-      h += `</div><div class="les-body">`;
-
-      if (curTab === 'grammar') {
-        const g = getGrammarModel(l);
-        if (g.forms) {
-          // NEW 3-FORM FORMAT
-          const tPos = g.forms.positive['label_' + lang] || g.forms.positive.label_ru || 'Positive';
-          const tNeg = g.forms.negative['label_' + lang] || g.forms.negative.label_ru || 'Negative';
-          const tQue = g.forms.question['label_' + lang] || g.forms.question.label_ru || 'Question';
-
-          const intro = gl(g, 'intro') || gl(g, 'rule');
-          h += `<div class="g-card" style="margin-bottom:12px; padding-bottom:12px;">
-                  <div class="g-title" style="margin-bottom:${intro ? '8px' : '0'}">${gl(g, 'title')}</div>
-                  ${intro ? `<div style="font-size:14px;color:#4a5568;line-height:1.4">${intro}</div>` : ''}
-                </div>`;
-
-          h += `<div class="g-tabs">
-            <button class="g-tab${curGrammarForm === 'positive' ? ' on' : ''}" onclick="setGForm('positive')">${tPos}</button>
-            <button class="g-tab${curGrammarForm === 'negative' ? ' on' : ''}" onclick="setGForm('negative')">${tNeg}</button>
-            <button class="g-tab${curGrammarForm === 'question' ? ' on' : ''}" onclick="setGForm('question')">${tQue}</button>
-          </div>`;
-
-          const form = g.forms[curGrammarForm];
-          const formRule = gl(form, 'rule');
-          if (formRule) h += `<div class="g-card"><div class="g-rule">${formRule}</div></div>`;
-
-          h += `<div class="g-table-wrap"><table class="g-table">
-          <thead><tr><th>Subject</th><th>Verb</th><th>Example</th><th><span class="icon" style="font-size:18px">volume_up</span></th></tr></thead>
-          <tbody>`;
-          form.table.forEach(r => {
-            const tr = r['tr_' + lang] || r.tr_ru;
-            h += `<tr>
-            <td><b>${r.subj || ''}</b></td>
-            <td style="color:#2a5320;font-weight:700">${r.verb || ''}</td>
-            <td>
-              <div style="font-size:14px;font-weight:600">${r.example}</div>
-              <div class="g-transcr">${r.transcr || ''}</div>
-              <div class="g-tr-cell">${tr || ''}</div>
-            </td>
-            <td style="text-align:right"><button type="button" class="d-spk-btn" onclick="${speechAttr(r.example)}"><span class="icon">volume_up</span></button></td>
-           </tr>`;
-          });
-          h += `</tbody></table></div>`;
-
-          const cult = gl(g, 'cultural');
-          if (cult) h += `<div class="g-cult">🌍 <b>${lang === 'uz' ? 'Eslatma' : lang === 'tj' ? 'Эзоҳ' : lang === 'kg' ? 'Эскертүү' : lang === 'kz' ? 'Ескертпе' : 'Заметка'}:</b> ${cult}</div>`;
-
-          const note = gl(g, 'note');
-          if (note) h += `<div class="g-note">⚠️ ${note}</div>`;
-          if (Array.isArray(g.examples) && g.examples.length) {
-            h += `<div class="sec-lbl" style="margin-top:16px">${getLocalizedValue(EXTRA_EXAMPLES_LABEL)}</div>`;
-            g.examples.forEach(ex => {
-              const tr = ex[lang] || ex.ru;
-              h += `<div class="g-card"><div class="g-en">${ex.en}</div>`;
-              if (ex.transcr) h += `<div class="g-transcr" style="margin-bottom:4px">${ex.transcr}</div>`;
-              h += `<div class="g-tr">${tr || ''}</div>`;
-              h += `<button type="button" class="speak-btn" onclick="${speechAttr(ex.en)}"><span class="icon">volume_up</span> ${lang === 'ru' ? 'Слушать' : lang === 'uz' ? 'Tinglash' : lang === 'tj' ? 'Гӯш кунед' : lang === 'kg' ? 'Угуу' : 'Тыңдау'}</button></div>`;
-            });
-          }
-        } else {
-          // OLD FORMAT FALLBACK
-          h += `<div class="g-card"><div class="g-title">${gl(g, 'title')}</div><div class="g-rule">${gl(g, 'rule')}</div>`;
-          const note = gl(g, 'note');
-          if (note) h += `<div class="g-note">💡 ${note}</div>`;
-          h += `</div>`;
-          g.examples.forEach(ex => {
-            const tr = ex[lang] || ex.ru;
-            h += `<div class="g-card"><div class="g-en">${ex.en}</div><div class="g-transcr">${ex.transcr || ''}</div><div class="g-tr">${tr}</div>`;
-            h += `<button type="button" class="speak-btn" onclick="${speechAttr(ex.en)}"><span class="icon">volume_up</span> ${lang === 'ru' ? 'Слушать' : lang === 'uz' ? 'Tinglash' : lang === 'tj' ? 'Гӯш кунед' : 'Угуу'}</button></div>`;
-          });
-        }
-      }
-
-      if (curTab === 'words') {
-        h += `<div class="w-hint">👇 ${t('tap_word')}</div><div class="w-grid">`;
-        l.words.forEach(w => {
-          const tr = w[lang] || w.ru;
-          h += `<button type="button" class="w-card" onclick="${speechAttr(w.en)}" aria-label="${escapeAttr(`${w.en}. ${tr}`)}"><span class="w-em">${w.e}</span><div class="w-en">${w.en}</div>`;
-          if (w.transcr) h += `<div class="g-transcr" style="margin-bottom:3px">${w.transcr}</div>`;
-          h += `<div class="w-ru">${tr}</div></button>`;
-        });
-        h += `</div>`;
-      }
-
-      if (curTab === 'dialogue') {
-        h += `<button class="d-play" onclick="playDlg(LESSONS.find(x=>x.id===${l.id}).dialogue)">▶ ${t('play')}</button>`;
-        l.dialogue.forEach(line => {
-          const tr = line[lang] || line.ru;
-          const isMgr = line.s === 'm';
-          h += `<div class="d-bbl"><div class="${isMgr ? 'd-mgr' : 'd-wkr'}">`;
-          h += `<div class="d-spkr">${isMgr ? t('manager') : t('worker')}</div>`;
-          h += `<div class="d-txt">${line.en}</div>`;
-          if (line.transcr) h += `<div class="g-transcr" style="margin-bottom:3px">${line.transcr}</div>`;
-          h += `<div class="d-tr">${tr}</div>`;
-          h += `<button type="button" class="d-spk-btn" onclick="${speechAttr(line.en)}" aria-label="${escapeAttr(t('play') + ': ' + line.en)}"><span class="icon" aria-hidden="true">volume_up</span></button>`;
-          h += `</div></div>`;
-        });
-      }
-
-      if (curTab === 'quiz') {
-        const quizItems = getQuizModel(l);
-        let allDone = true, allOk = true;
-        quizItems.forEach((q, qi) => {
-          const attempts = quizState[qi] || [];
-          const isCorrect = attempts.includes(q.c);
-          if (attempts.length === 0) allDone = false;
-          if (!isCorrect) allOk = false;
-          let qText = q.q;
-          qText = qText.replace('[COMPLETE]', t('q_complete'));
-          qText = qText.replace('[TRANSLATE]', t('q_translate'));
-          qText = qText.replace('[NEGATIVE]', t('q_negative'));
-          qText = qText.replace('[CORRECT]', t('q_correct'));
-          qText = qText.replace('[QUESTION]', t('q_question'));
-
-          let hintHtml = '';
-          const hint = q['hint_' + lang] || q.hint_ru;
-          if (hint) {
-            if (qText.includes('{hint}')) {
-              qText = qText.replace('{hint}', `<span style="font-weight:600;color:var(--text)">${hint}</span>`);
-            } else if (q.q.includes('[TRANSLATE]')) {
-              qText += ` <span style="font-weight:600;color:var(--text)">"${hint}"</span>`;
-            } else {
-              hintHtml = `<div class="q-hint">${hint}</div>`;
-            }
-          }
-
-          h += `<div class="q-card"><div class="q-num">${t('question_of', qi + 1, quizItems.length)}</div><div class="q-q">${qText}${hintHtml}</div><div class="q-opts">`;
-          q.opts.forEach((opt, oi) => {
-            let cls = 'q-opt';
-            const isClicked = attempts.includes(oi);
-            if (isCorrect) {
-              if (oi === q.c) cls += ' correct';
-            } else {
-              if (isClicked) cls += ' wrong';
-            }
-            const disabled = isCorrect || isClicked ? ' disabled' : '';
-            let ariaLabel = opt;
-            if (isCorrect && oi === q.c) ariaLabel += ' — ' + t('correct');
-            else if (isClicked && !isCorrect) ariaLabel += ' — ' + t('wrong');
-            h += `<button class="${cls}"${disabled} onclick="answerQ(${qi},${oi})" aria-label="${escapeAttr(ariaLabel)}">${opt}</button>`;
-          });
-          h += `</div>`;
-          if (attempts.length > 0) {
-            const expl = q['expl_' + lang] || q.expl_ru || q.expl;
-            const explHtml = expl ? `<div style="margin-top:8px;font-size:13px;font-weight:400;opacity:0.9;text-align:left">${t('quiz_expl')} ${expl}</div>` : '';
-            if (isCorrect) {
-              h += `<div class="q-fb ok"><div style="font-weight:bold">${t('quiz_ok_title')}</div>${explHtml}</div>`;
-            } else {
-              const descs = t('quiz_no_desc');
-              const motivation = Array.isArray(descs) ? descs[(qi * 13 + attempts.length * 7) % descs.length] : descs;
-              h += `<div class="q-fb no">
-                <div style="font-weight:bold;margin-bottom:4px">${t('quiz_no_title')}</div>
-                <div style="font-size:13px;font-weight:400;opacity:0.9">${motivation}</div>
-                ${explHtml}
-              </div>`;
-            }
-          }
-          h += `</div>`;
-        });
-        if (allDone && allOk) {
-          h += `<div class="done-banner"><div class="done-emoji">🎉</div><div class="done-title">${t('congrats')}</div><div class="done-sub">${t('score')}</div></div>`;
-        }
-        h += `</div>`;
-      }
-
-
-      const tabIdx = tabs.indexOf(curTab);
-      if (tabIdx >= 0 && tabIdx < tabs.length - 1) {
-        const nextTab = tabs[tabIdx + 1];
-        const nextName = tl[tabIdx + 1];
-        const nxtTx = lang === 'uz' ? 'Keyingi' : lang === 'tj' ? 'Баъдӣ' : lang === 'kg' ? 'Кийинки' : lang === 'kz' ? 'Келесі' : 'Далее';
-        h += `<div style="margin-top:24px"><button class="finish-btn"  onclick="setTab('${nextTab}')">${nxtTx}: ${nextName} ➔</button></div>`;
-      } else if (tabIdx === tabs.length - 1) {
-        const isDone = done.includes(l.id);
-        const quizItems = getQuizModel(l);
-        let allDone = true, allOk = true;
-        quizItems.forEach((q, qi) => {
-          const attempts = quizState[qi] || [];
-          if (!attempts.includes(q.c)) { allDone = false; allOk = false; }
-        });
-        const disabled = !(allDone && allOk);
-        h += `<div style="margin-top:32px;margin-bottom:8px"><button class="finish-btn"  ${disabled ? 'disabled' : ''} onclick="finishLesson(${l.id})">✓ ${isDone ? t('completed').replace('✓ ', '') : t('complete').replace('✓ ', '')}</button></div>`;
-      }
-
-      h += `</div></div>`;
-      root.innerHTML = h;
-    }
-
-    // ── PHRASES ───────────────────────────────────────────────────────────────────
-    function renderPhrases(root) {
-      const cats = ['all', 'work', 'health', 'pay', 'shop', 'social', 'sos', 'transport', 'camp', 'documents'];
-      let h = `<div class="scr">${renderScreenNav()}<div class="summary-card">
-        <div class="summary-head">
-          <div>
-            <div class="summary-title">${t('phrases')}</div>
-            <div class="summary-sub">${PHRASES.length} ${tx('phrase_total')}</div>
-          </div>
-          <div class="summary-pill">${PHRASES.length}</div>
-        </div>
-      </div><div class="pf-row">`;
-      cats.forEach(c => h += `<button type="button" class="pf-chip${pfCat === c ? ' on' : ''}" onclick="setPfCat('${c}')">${(CATEGORY_LABELS[c][lang] || CATEGORY_LABELS[c].ru)}</button>`);
-      h += `</div>`;
-      const list = pfCat === 'all' ? PHRASES : PHRASES.filter(p => p.cat === pfCat);
-      list.forEach(p => {
-        const tr = p[lang] || p.ru;
-        h += `<div class="ph-item"><div class="ph-txt"><div class="ph-en">${p.en}</div><div class="ph-tr">${tr}</div></div>`;
-        h += `<button type="button" class="ph-sp" onclick="${speechAttr(p.en)}"><span class="icon">volume_up</span></button></div>`;
-      });
-      h += `</div>`;
-      root.innerHTML = h;
-    }
-
-    // ── PROGRESS ──────────────────────────────────────────────────────────────────
-    function renderProgress(root) {
-      const stats = getProgressStats();
-      const issued = safeGetItem('fe_cert_a1_issued') === 'true';
-      const certDate = safeGetItem('fe_cert_a1_date') || '';
-      const certName = safeGetItem('fe_cert_a1_name') || '';
-      let h = `<div class="scr">${renderScreenNav()}`;
-      if (showCourseCongrats && stats.lessonsDone === stats.totalLessons) {
-        h += `<div class="done-banner"><div class="done-emoji">🏆</div><div class="done-title">${tx('cert_banner')}</div><div class="done-sub">${tx('cert_banner_sub')}</div></div>`;
-      }
-      h += `<div class="str-card">
-        <div class="str-n">${stats.streak}</div>
-        <div class="str-info">
-          <div class="str-t">${tx('streak_label')}</div>
-          <div class="str-s">${tx('streak_copy', stats.streak)}</div>
-        </div>
-      </div>`;
-      h += `<div class="summary-card">
-        <div class="summary-head">
-          <div>
-            <div class="summary-title">${t('progress')}</div>
-            <div class="summary-sub">${t('done_of', stats.lessonsDone, stats.totalLessons)}</div>
-          </div>
-          <div class="summary-pill">${stats.percent}%</div>
-        </div>
-        <div class="prog-bar-lg"><div class="prog-bar-lg-fill" style="width:${stats.percent}%"></div></div>
-        <div class="stat-grid">
-          <div class="st-card"><div class="st-n">${stats.lessonsDone}</div><div class="st-l">${t('lessons_done')}</div></div>
-          <div class="st-card"><div class="st-n">${stats.wordsLearned}</div><div class="st-l">${t('words_learned')}</div></div>
-          <div class="st-card"><div class="st-n">${stats.phraseCount}</div><div class="st-l">${tx('phrase_total')}</div></div>
-          <div class="st-card"><div class="st-n">${stats.points}</div><div class="st-l">${t('pts')}</div></div>
-        </div>
-      </div>`;
-      h += `<div class="g-card cert-card">
-        <div class="sec-lbl">${tx('cert_card_title')}</div>
-        <div class="cert-title">${tx('cert_card_title')}</div>
-        <div class="cert-copy">${tx('cert_card_copy')}</div>
-        <div class="cert-meta">
-          <div class="cert-chip">${stats.lessonsDone}/${stats.totalLessons}</div>
-          <div class="cert-chip">${stats.wordsLearned} words</div>
-          <div class="cert-chip">${issued ? tx('cert_issued') : tx('cert_not_issued')}</div>
-        </div>
-        <button class="cert-btn${issued ? ' secondary' : ''}" onclick="${issued ? 'downloadCertificate()' : 'openCertModal()'}" ${stats.lessonsDone < stats.totalLessons ? 'disabled style="opacity:.45;cursor:not-allowed"' : ''}>${issued ? tx('cert_download') : tx('cert_get')}</button>
-        <div class="cert-note">${stats.lessonsDone === stats.totalLessons ? tx('cert_note') : tx('course_locked')}${issued && certDate ? ` ${certName ? certName + ' · ' : ''}${certDate}` : ''}</div>
-      </div>`;
-      h += `<div class="screen-section"><div class="sec-lbl">${tx('completed_lessons')}</div><div class="lesson-list">`;
-      LESSONS.forEach(lesson => {
-        const completed = done.includes(lesson.id);
-        h += `<div class="lesson-mini${completed ? ' done' : ''}">
-          <div>
-            <div class="lesson-mini-title">${lesson.id}. ${gl(lesson, 'name')}</div>
-            <div class="lesson-mini-sub">${lesson.cefr}</div>
-          </div>
-          <div class="lesson-mini-mark">${completed ? '✓' : lesson.id}</div>
-        </div>`;
-      });
-      h += `</div></div></div>`;
-      root.innerHTML = h;
-      showCourseCongrats = false;
-    }
-
-    function openCertModal() {
-      if (done.length < LESSONS.length) return;
-      const input = document.getElementById('certNameInput');
-      document.getElementById('certModalTitle').textContent = tx('cert_modal_title');
-      document.getElementById('certModalCopy').textContent = tx('cert_modal_copy');
-      document.getElementById('certCancelBtn').textContent = tx('cancel');
-      document.getElementById('certGenerateBtn').textContent = tx('print');
-      document.getElementById('certNameInput').placeholder = tx('cert_name_placeholder');
-      document.getElementById('certNameError').textContent = '';
-      input.value = safeGetItem('fe_cert_a1_name') || '';
-      setCertModalOpen(true);
-      setTimeout(() => input.focus(), 10);
-    }
-
-    function closeCertModal(event) {
-      if (event && event.target && event.target.id !== 'certModal') return;
-      setCertModalOpen(false);
-      document.getElementById('certNameError').textContent = '';
-    }
-
-    function populateCertificate(userName, levelId, issuedDate) {
-      const level = CERTIFICATE_LEVELS[levelId];
-      const stats = getProgressStats();
-      document.getElementById('cert-name').textContent = userName;
-      document.getElementById('cert-course-title').textContent = `English for Seasonal Workers — ${level.title}`;
-      document.getElementById('cert-course-subtitle').textContent = level.name;
-      document.getElementById('cert-lessons').textContent = String(level.lessons);
-      document.getElementById('cert-words').textContent = String(stats.wordsLearned || 450);
-      document.getElementById('cert-date').textContent = issuedDate;
-      document.getElementById('cert-level').textContent = level.title;
-    }
-
-    function generateCertificate(userName, levelId) {
-      const issuedDate = formatCertificateDate();
-      populateCertificate(userName, levelId, issuedDate);
-      safeSetItem(`fe_cert_${levelId}_name`, userName);
-      safeSetItem(`fe_cert_${levelId}_date`, issuedDate);
-      safeSetItem(`fe_cert_${levelId}_issued`, 'true');
-      closeCertModal();
-      render();
-      setTimeout(() => window.print(), 80);
-    }
-
-    function submitCertificate() {
-      const input = document.getElementById('certNameInput');
-      const userName = input.value.trim();
-      if (!userName) {
-        document.getElementById('certNameError').textContent = tx('cert_name_error');
-        input.focus();
-        return;
-      }
-      generateCertificate(userName, 'a1');
-    }
-
-    function downloadCertificate() {
-      const userName = safeGetItem('fe_cert_a1_name');
-      const issuedDate = safeGetItem('fe_cert_a1_date');
-      if (!userName || !issuedDate) {
-        openCertModal();
-        return;
-      }
-      populateCertificate(userName, 'a1', issuedDate);
-      setTimeout(() => window.print(), 80);
-    }
-
-    // Handle hash navigation from index.html
-    const hash = window.location.hash.replace('#', '');
-    if (hash === 'phrases') scr = 'phrases';
-    else if (hash === 'progress') scr = 'progress';
-    else scr = 'home';
-
-    window.addEventListener('storage', event => {
-      if (event.key === 'fe_lang' && event.newValue && event.newValue !== lang) {
-        lang = event.newValue;
-        setDocumentLang(lang);
-        render();
-      }
-      if (event.key === 'fe_a1') {
-        try {
-          done = JSON.parse(event.newValue || '[]');
-          syncDerivedStats();
-          render();
-        } catch (_) { }
-      }
-    });
-    window.addEventListener('keydown', event => {
-      if (event.key === 'Escape') closeCertModal();
-    });
-    setDocumentLang(lang);
-    syncDerivedStats();
-    document.getElementById('certModalTitle').textContent = tx('cert_modal_title');
-    document.getElementById('certModalCopy').textContent = tx('cert_modal_copy');
-    document.getElementById('certNameInput').placeholder = tx('cert_name_placeholder');
-    document.getElementById('certCancelBtn').textContent = tx('cancel');
-    document.getElementById('certGenerateBtn').textContent = tx('print');
-    render();
-  </script>
-</body>
-
-</html>
+];
