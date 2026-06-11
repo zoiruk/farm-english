@@ -1632,6 +1632,10 @@
       user-select: none;
     }
   </style>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1a73e8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
 
 <body>
@@ -15375,6 +15379,12 @@
     document.getElementById('certCancelBtn').textContent = tx('cancel');
     document.getElementById('certGenerateBtn').textContent = tx('print');
     render();
+  </script>
+  <script>
+    if ('serviceWorker' in navigator &&
+        (location.protocol === 'https:' || location.hostname === 'localhost')) {
+      try { navigator.serviceWorker.register('sw.js'); } catch (_) {}
+    }
   </script>
 </body>
 

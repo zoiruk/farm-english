@@ -935,6 +935,10 @@
       user-select: none;
     }
   </style>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1a73e8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
 
 <body>
@@ -14032,6 +14036,12 @@
       }
     } else {
       render();
+    }
+  </script>
+  <script>
+    if ('serviceWorker' in navigator &&
+        (location.protocol === 'https:' || location.hostname === 'localhost')) {
+      try { navigator.serviceWorker.register('sw.js'); } catch (_) {}
     }
   </script>
 </body>
