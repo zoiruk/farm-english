@@ -80,12 +80,16 @@ function cacheFirst(request) {
 }
 
 function staleWhileRevalidate(request) {
+  const isNav = request.mode === 'navigate';
   return caches.open(CACHE_NAME).then((cache) =>
     cache.match(request).then((cached) => {
       const networkFetch = fetch(request).then((response) => {
         if (response.ok) cache.put(request, response.clone());
         return response;
-      }).catch(() => null);               // network failure is silent
+      }).catch(() =>
+        // Offline fallback: navigation → serve index.html from cache; others → null
+        isNav ? caches.match('./index.html') : null
+      );
       return cached || networkFetch;      // serve cache instantly if available
     })
   );
