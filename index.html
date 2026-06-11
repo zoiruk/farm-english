@@ -997,9 +997,12 @@
       const doneA2Count = new Set(doneA2).size;
       const doneB1Count = new Set(doneB1).size;
       const totalDone = doneA1Count + doneA2Count + doneB1Count;
+      const wordsA1 = Number(safeGetItem('fe_words_a1', '0'));
+      const wordsA2 = Number(safeGetItem('fe_words_a2', '0'));
+      const wordsB1 = Number(safeGetItem('fe_words_b1', '0'));
+      const courseWords = wordsA1 + wordsA2 + wordsB1;
       const storedWords = Number(safeGetItem('fe_words', '0'));
-      const derivedWords = totalDone * 30;
-      const wordsLearned = Math.max(storedWords, derivedWords);
+      const wordsLearned = Math.max(storedWords, courseWords || totalDone * 30);
       safeSetItem('fe_words', String(wordsLearned));
       document.getElementById('st_lessons').innerText = totalDone;
       document.getElementById('st_words').innerText = String(wordsLearned);

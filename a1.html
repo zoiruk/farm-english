@@ -2415,7 +2415,10 @@
       };
     }
     function syncDerivedStats() {
-      safeSetItem('fe_words', String(getCompletedWordsCount()));
+      const a1Words = getCompletedWordsCount();
+      safeSetItem('fe_words_a1', String(a1Words));
+      const total = a1Words + Number(safeGetItem('fe_words_a2', '0')) + Number(safeGetItem('fe_words_b1', '0'));
+      safeSetItem('fe_words', String(Math.max(Number(safeGetItem('fe_words', '0')), total)));
       safeSetItem('fe_phrasebook_count', String(PHRASES.length));
       safeSetItem('fe_points', String(done.length * 10));
     }

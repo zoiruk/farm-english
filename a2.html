@@ -13538,6 +13538,7 @@
     // ── STATE VARIABLES ──────────────────────────────────────────────────────────
     let lang = 'ru';
     let done = [];
+    let showCourseCongrats = false;
     let curLesson = null;
     let curTab = 'grammar';
     let curGrammarForm = 'positive';
@@ -13945,19 +13946,21 @@
       render();
     }
 
+    function getCompletedWordsCount() {
+      return LESSONS.filter(l => done.includes(l.id)).reduce((sum, l) => sum + (l.words ? l.words.length : 0), 0);
+    }
     function finishLesson(id) {
-      const isAlreadyCompleted = done.includes(id);
-      if (!isAlreadyCompleted) {
+      const wasComplete = done.length >= LESSONS.length;
+      if (!done.includes(id)) {
         done.push(id);
         safeSetItem('fe_a2', JSON.stringify(done));
-        
-        // Update words counter in localStorage (fe_words += 30)
-        let wordsCount = Number(safeGetItem('fe_words') || '0');
-        wordsCount += 30;
-        safeSetItem('fe_words', String(wordsCount));
+        const a2Words = getCompletedWordsCount();
+        safeSetItem('fe_words_a2', String(a2Words));
+        const total = Number(safeGetItem('fe_words_a1', '0')) + a2Words + Number(safeGetItem('fe_words_b1', '0'));
+        safeSetItem('fe_words', String(Math.max(Number(safeGetItem('fe_words', '0')), total)));
       }
-      
       updateStreak();
+      showCourseCongrats = !wasComplete && done.length >= LESSONS.length;
       curLesson = null;
       render();
     }
