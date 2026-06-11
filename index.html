@@ -459,6 +459,38 @@
       transform: scale(0.97);
     }
 
+    .phrasebook-nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 16px 20px;
+      padding: 14px 18px;
+      background: var(--card);
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 15px;
+      transition: box-shadow 0.2s, transform 0.15s;
+    }
+
+    .phrasebook-nav:active {
+      transform: scale(0.97);
+    }
+
+    .phrasebook-nav .icon {
+      color: var(--primary);
+      font-size: 22px;
+    }
+
+    .phrasebook-nav-arrow {
+      margin-left: auto;
+      color: var(--primary);
+      font-size: 18px;
+      opacity: 0.7;
+    }
+
     .stat-val {
       display: block;
       font-size: 22px;
@@ -892,6 +924,13 @@
       </a>
     </div>
 
+    <!-- Phrasebook nav button -->
+    <a class="phrasebook-nav" id="phraseNav" href="a1.html#phrases">
+      <span class="icon">menu_book</span>
+      <span id="sl_phrasebook">Разговорник</span>
+      <span class="phrasebook-nav-arrow">›</span>
+    </a>
+
     <!-- Levels List -->
     <div class="lv-list" id="lv_list">
       <!-- JS renders levels here -->
@@ -1025,6 +1064,7 @@
       document.getElementById('sl_lessons').innerText = t('lessons');
       document.getElementById('sl_words').innerText = phraseMap[lang] || phraseMap.ru;
       document.getElementById('sl_streak').innerText = progressMap[lang] || progressMap.ru;
+      document.getElementById('sl_phrasebook').innerText = t('nav_phrasebook');
 
 
       // Level cards
