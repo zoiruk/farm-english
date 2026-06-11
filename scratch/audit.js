@@ -1,6 +1,9 @@
-const LESSONS = require('./lessons_data.js');
+const courseArg = process.argv[2];
+const course = ['a2', 'b1'].includes(courseArg) ? courseArg : 'a1';
+const dataFile = course === 'b1' ? './lessons_data_b1.js' : (course === 'a2' ? './lessons_data_a2.js' : './lessons_data.js');
+const LESSONS = require(dataFile);
 
-console.log(`Found ${LESSONS.length} lessons.\n`);
+console.log(`Found ${LESSONS.length} lessons for course ${course.toUpperCase()}.\n`);
 
 let globalWords = new Map(); // en -> { lessonId, ru }
 let duplicateIssues = [];
@@ -102,4 +105,8 @@ if (specIssues.length === 0) {
 } else {
   console.log("❌ SPECIFICATIONS ISSUES:");
   specIssues.forEach(i => console.log(" - " + i));
+}
+
+if (duplicateIssues.length > 0 || specIssues.length > 0) {
+  process.exitCode = 1;
 }
