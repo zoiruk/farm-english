@@ -1965,7 +1965,7 @@
                         "expl_kz": "\"I earned money yesterday\" — өткен шақтағы дұрыс болымды сөйлем."
                   },
                   {
-                        "q": "[QUESTION] Какой вопрос подходит к ответу \"Yes, I received my payslip.\"?",
+                        "q": "[QUESTION] Выберите грамматически верный вопрос в Past Simple.",
                         "opts": [
                               "Did you received your payslip?",
                               "Did you receive your payslip?",
@@ -2815,7 +2815,7 @@
                               "spend"
                         ],
                         "c": 1,
-                        "hint_ru": "Я прошу дать мне деньги — borrow (взять в долг)",
+                        "hint_ru": "Я прошу дать мне деньги взаймы (взять у кого-то)",
                         "hint_uz": "Men pul so'rayapman — borrow (qarz olmoq)",
                         "hint_tj": "Ман пул мепурсам — borrow (қарз гирифтан)",
                         "hint_kg": "Мен акча сурап жатам — borrow (карызга алуу)",
@@ -5281,7 +5281,7 @@
                               "направление"
                         ],
                         "c": 1,
-                        "hint_ru": "Регулярный медицинский осмотр",
+                        "hint_ru": "Плановое посещение врача для проверки здоровья",
                         "hint_uz": "Muntazam tibbiy tekshiruv",
                         "hint_tj": "Муоинаи тиббии мунтазам",
                         "hint_kg": "Дайыма медициналык текшерүү",
@@ -10093,7 +10093,7 @@
                               "поправка"
                         ],
                         "c": 1,
-                        "hint_ru": "Нарушение договора или правила",
+                        "hint_ru": "Несоблюдение условий контракта или правил",
                         "hint_uz": "Shartnoma yoki qoidani buzish",
                         "hint_tj": "Вайронкории шартнома ё қоида",
                         "hint_kg": "Шарт же эрежени бузуу",
@@ -13542,6 +13542,7 @@
     let curTab = 'grammar';
     let curGrammarForm = 'positive';
     let quizState = {};
+    let quizShuffle = {};
     let dlgTimeout = null;
 
     // ── HELPERS ──────────────────────────────────────────────────────────────────
@@ -13801,8 +13802,16 @@
         let allDone = true, allOk = true;
         
         l.quiz.forEach((q, qi) => {
+          if (!quizShuffle[qi]) {
+            const idxs = [0, 1, 2, 3];
+            for (let i = 3; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [idxs[i], idxs[j]] = [idxs[j], idxs[i]];
+            }
+            quizShuffle[qi] = idxs;
+          }
           const attempts = quizState[qi] || [];
-          const isCorrect = attempts.includes(q.c);
+          const isCorrect = attempts.some(pos => quizShuffle[qi][pos] === q.c);
           if (attempts.length === 0) allDone = false;
           if (!isCorrect) allOk = false;
 
@@ -13820,12 +13829,13 @@
             <div class="q-num">${t('question_of', qi + 1, l.quiz.length)}</div>
             <div class="q-q">${qText}${hintHtml}</div>
             <div class="q-opts">`;
-            
-          q.opts.forEach((opt, oi) => {
+
+          quizShuffle[qi].forEach((origIdx, oi) => {
+            const opt = q.opts[origIdx];
             let cls = 'q-opt';
             const isClicked = attempts.includes(oi);
             if (isCorrect) {
-              if (oi === q.c) cls += ' correct';
+              if (origIdx === q.c) cls += ' correct';
             } else {
               if (isClicked) cls += ' wrong';
             }
@@ -13900,6 +13910,7 @@
       curTab = 'grammar';
       curGrammarForm = 'positive';
       quizState = {};
+      quizShuffle = {};
       render();
     }
 
@@ -13928,15 +13939,9 @@
     function answerQ(qi, oi) {
       if (!quizState[qi]) quizState[qi] = [];
       if (!quizState[qi].includes(oi)) quizState[qi].push(oi);
-      
       const q = curLesson.quiz[qi];
-      if (oi === q.c) {
-        // Speak correct option
-        spk(q.opts[oi], 0.88);
-      } else {
-        // Speak wrong selection
-        spk(q.opts[oi], 0.88);
-      }
+      const origIdx = quizShuffle[qi] ? quizShuffle[qi][oi] : oi;
+      spk(q.opts[origIdx], 0.88);
       render();
     }
 

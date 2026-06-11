@@ -1827,7 +1827,7 @@
       }
     }
 
-    let lang = safeGetItem('fe_lang', 'ru'), scr = 'home', curLesson = null, curTab = 'grammar', curGrammarForm = 'positive', quizState = {};
+    let lang = safeGetItem('fe_lang', 'ru'), scr = 'home', curLesson = null, curTab = 'grammar', curGrammarForm = 'positive', quizState = {}, quizShuffle = {};
     let done = safeGetJSON('fe_a1', []);
     let pfCat = 'all';
     let showCourseCongrats = false;
@@ -4091,7 +4091,7 @@
                         "expl": "Правильный ответ: \"Tom's farm\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "[COMPLETE] '___ gloves are in the locker.' (his — мужчина)",
+                        "q": "[COMPLETE] '___ gloves are in the locker.'",
                         "opts": [
                               "Her",
                               "His",
@@ -4099,7 +4099,7 @@
                               "Him"
                         ],
                         "c": 1,
-                        "hint_ru": "Его перчатки (мужчина)",
+                        "hint_ru": "Нужно притяжательное местоимение мужского рода",
                         "hint_uz": "Uning qo'lqoplari",
                         "hint_tj": "Дастпӯшакҳои ӯ",
                         "hint_kg": "Анын мээлейи",
@@ -9101,7 +9101,7 @@
                         "expl": "Правильный ответ: \"hasn't\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "[TRANSLATE] How to translate 'удобный'? (comfortable)",
+                        "q": "[TRANSLATE] How to translate 'удобный'?",
                         "opts": [
                               "dangerous",
                               "comfortable",
@@ -9152,7 +9152,7 @@
                         "expl": "Правильный ответ: \"dry\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "[TRANSLATE] What is 'hairnet'? (сеточка)",
+                        "q": "[TRANSLATE] What is 'hairnet'?",
                         "opts": [
                               "Сеточка для волос",
                               "Наколенники",
@@ -9894,7 +9894,7 @@
                         "expl": "Правильный ответ: \"any\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "[TRANSLATE] How to translate 'холодильник'? (fridge)",
+                        "q": "[TRANSLATE] How to translate 'холодильник'?",
                         "opts": [
                               "fridge",
                               "cooker",
@@ -9902,7 +9902,7 @@
                               "sink"
                         ],
                         "c": 0,
-                        "hint_ru": "Fridge",
+                        "hint_ru": "Хранит еду и напитки в холоде",
                         "expl_ru": "Правильный ответ: \"fridge\". There is/are · some/any · Rooms & furniture · Reporting problems",
                         "expl_uz": "Toʻgʻri javob: \"fridge\". There is/are · some/any · Rooms & furniture · Reporting problems",
                         "expl_tj": "Ҷавоби дуруст: \"fridge\". There is/are · some/any · Rooms & furniture · Reporting problems",
@@ -10665,7 +10665,7 @@
                         "expl": "Правильный ответ: \"I'd like six eggs, please\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "[TRANSLATE] How to translate 'дешевый'? (cheap)",
+                        "q": "[TRANSLATE] How to translate 'дешевый'?",
                         "opts": [
                               "expensive",
                               "cheap",
@@ -10673,7 +10673,7 @@
                               "cash"
                         ],
                         "c": 1,
-                        "hint_ru": "Дешевый по-английски cheap",
+                        "hint_ru": "Не дорогой, доступный по цене",
                         "expl_ru": "Правильный ответ: \"cheap\". Food & drink vocabulary · Shopping · How much/many · want/would like",
                         "expl_uz": "Toʻgʻri javob: \"cheap\". Food & drink vocabulary · Shopping · How much/many · want/would like",
                         "expl_tj": "Ҷавоби дуруст: \"cheap\". Food & drink vocabulary · Shopping · How much/many · want/would like",
@@ -10733,7 +10733,7 @@
                         "expl": "Правильный ответ: \"card\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "[TRANSLATE] What is 'garlic'? (чеснок)",
+                        "q": "[TRANSLATE] What is 'garlic'?",
                         "opts": [
                               "лук",
                               "картошка",
@@ -10741,7 +10741,7 @@
                               "масло"
                         ],
                         "c": 2,
-                        "hint_ru": "Garlic — это чеснок",
+                        "hint_ru": "Острый белый овощ с характерным запахом",
                         "expl_ru": "Правильный ответ: \"чеснок\". Food & drink vocabulary · Shopping · How much/many · want/would like",
                         "expl_uz": "Toʻgʻri javob: \"чеснок\". Food & drink vocabulary · Shopping · How much/many · want/would like",
                         "expl_tj": "Ҷавоби дуруст: \"чеснок\". Food & drink vocabulary · Shopping · How much/many · want/would like",
@@ -14905,7 +14905,7 @@
       document.getElementById('certGenerateBtn').textContent = tx('print');
       render();
     }
-    function openLesson(id) { stopDlg(); curLesson = LESSONS.find(l => l.id === id); curTab = 'grammar'; curGrammarForm = 'positive'; quizState = {}; render(); }
+    function openLesson(id) { stopDlg(); curLesson = LESSONS.find(l => l.id === id); curTab = 'grammar'; curGrammarForm = 'positive'; quizState = {}; quizShuffle = {}; render(); }
     function goBack() {
       stopDlg();
       if (curLesson) {
@@ -15108,8 +15108,16 @@
         const quizItems = getQuizModel(l);
         let allDone = true, allOk = true;
         quizItems.forEach((q, qi) => {
+          if (!quizShuffle[qi]) {
+            const idxs = [0, 1, 2, 3];
+            for (let i = 3; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [idxs[i], idxs[j]] = [idxs[j], idxs[i]];
+            }
+            quizShuffle[qi] = idxs;
+          }
           const attempts = quizState[qi] || [];
-          const isCorrect = attempts.includes(q.c);
+          const isCorrect = attempts.some(pos => quizShuffle[qi][pos] === q.c);
           if (attempts.length === 0) allDone = false;
           if (!isCorrect) allOk = false;
           let qText = q.q;
@@ -15132,17 +15140,18 @@
           }
 
           h += `<div class="q-card"><div class="q-num">${t('question_of', qi + 1, quizItems.length)}</div><div class="q-q">${qText}${hintHtml}</div><div class="q-opts">`;
-          q.opts.forEach((opt, oi) => {
+          quizShuffle[qi].forEach((origIdx, oi) => {
+            const opt = q.opts[origIdx];
             let cls = 'q-opt';
             const isClicked = attempts.includes(oi);
             if (isCorrect) {
-              if (oi === q.c) cls += ' correct';
+              if (origIdx === q.c) cls += ' correct';
             } else {
               if (isClicked) cls += ' wrong';
             }
             const disabled = isCorrect || isClicked ? ' disabled' : '';
             let ariaLabel = opt;
-            if (isCorrect && oi === q.c) ariaLabel += ' — ' + t('correct');
+            if (isCorrect && origIdx === q.c) ariaLabel += ' — ' + t('correct');
             else if (isClicked && !isCorrect) ariaLabel += ' — ' + t('wrong');
             h += `<button class="${cls}"${disabled} onclick="answerQ(${qi},${oi})" aria-label="${escapeAttr(ariaLabel)}">${opt}</button>`;
           });
