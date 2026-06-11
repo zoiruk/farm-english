@@ -287,10 +287,9 @@ function stemVariants(word) {
 // but first carded in B1 L5). Words never carded anywhere are assumed background
 // vocabulary and are NOT flagged; this is what keeps the check precise instead of
 // drowning in common glue words ("because", "better", "going").
-// SEVERITY (owner decision 2026-06-11, §A): target = flagStrict (A1 warn, A2/B1 hard fail).
-// Currently addWarn (all courses) pending task 4.5 (fix 5 pre-existing A2 violations:
-// department, fees, high, download, follow, leave). Switch addWarn → flagStrict in
-// both calls below when task 4.5 is committed. requirements.md R6, design.md §5.
+// SEVERITY (owner decision 2026-06-11, §A): flagStrict — A1 warn, A2/B1 hard fail.
+// Task 4.5 completed 2026-06-11: all 7 pre-existing A2 violations fixed in dialogues.
+// requirements.md R6, design.md §5.
 function snowballViolation(word, order) {
   if (SNOWBALL_ALLOWLIST.has(word)) return false;
   let earliest;
@@ -306,7 +305,7 @@ function checkSnowball(lesson, order) {
   for (const [idx, line] of (lesson.dialogue || []).entries()) {
     for (const word of extractContentWords(line.en || '')) {
       if (snowballViolation(word, order)) {
-        addWarn(lessonId, 'snowball', `dialogue[${idx}] uses "${word}" before it is taught (carded in a later lesson)`);
+        flagStrict(lessonId, 'snowball', `dialogue[${idx}] uses "${word}" before it is taught (carded in a later lesson)`);
       }
     }
   }
@@ -315,7 +314,7 @@ function checkSnowball(lesson, order) {
     for (const opt of (item.opts || [])) {
       for (const word of extractContentWords(opt)) {
         if (snowballViolation(word, order)) {
-          addWarn(lessonId, 'snowball', `quiz[${idx}] translate opt "${opt}" uses "${word}" before it is taught`);
+          flagStrict(lessonId, 'snowball', `quiz[${idx}] translate opt "${opt}" uses "${word}" before it is taught`);
         }
       }
     }
