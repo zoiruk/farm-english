@@ -13,6 +13,10 @@
 artifacts/
 swap.py
 
+# Local planning/agent context files — not for GitHub Pages
+CLAUDE.md
+release_plan.md
+
 # Dev-only scratch scripts (not needed for GitHub Pages)
 scratch/pad_grammar_examples.js
 scratch/rebuild_lessons_data_from_a1.js
