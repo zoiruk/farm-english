@@ -6532,7 +6532,7 @@ module.exports = [
                               "loose"
                         ],
                         "c": 1,
-                        "hint_ru": "Удобный",
+                        "hint_ru": "Мягкий, хорошо сидящий; не давит и не натирает",
                         "expl_ru": "Правильный ответ: \"comfortable\". have/has · have got · Adjectives · Colours · Clothing (PPE)",
                         "expl_uz": "Toʻgʻri javob: \"comfortable\". have/has · have got · Adjectives · Colours · Clothing (PPE)",
                         "expl_tj": "Ҷавоби дуруст: \"comfortable\". have/has · have got · Adjectives · Colours · Clothing (PPE)",
