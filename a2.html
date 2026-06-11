@@ -13588,21 +13588,21 @@
 
     // TTS speak
     function spk(txt, r = 0.88) {
-      if (!speechSynthesis) return;
-      speechSynthesis.cancel();
+      if (!window.speechSynthesis) return;
+      window.speechSynthesis.cancel();
       const u = new SpeechSynthesisUtterance(txt);
       u.lang = 'en-GB';
       u.rate = r;
       u.onerror = () => {
         showToast(t('offline_speech_error'));
       };
-      speechSynthesis.speak(u);
+      window.speechSynthesis.speak(u);
     }
 
     // Dialogue playback queue
     function stopDlg() {
       clearTimeout(dlgTimeout);
-      if (speechSynthesis) speechSynthesis.cancel();
+      if (window.speechSynthesis) window.speechSynthesis.cancel();
     }
 
     function playDlg(lines) {
