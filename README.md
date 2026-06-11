@@ -59,10 +59,10 @@ specs/              ← Документация продукта
 ### Запуск аудита перед коммитом
 
 ```bash
-node scratch/audit.js && node scratch/advanced_audit.js
+node scratch/audit_all.js
 ```
 
-Урок считается готовым только при нулевых ошибках в обоих аудитах.
+Единый гейт — запускает все три скрипта (audit, advanced_audit, check_duplicates) для всех трёх курсов (a1/a2/b1). Урок считается готовым только при exit 0.
 
 ### Добавление нового уровня
 
