@@ -17,6 +17,9 @@ swap.py
 CLAUDE.md
 release_plan.md
 
+# B1 draft — not ready for prod; deploy only after explicit owner command
+b1.html
+
 # Dev-only scratch scripts (not needed for GitHub Pages)
 scratch/pad_grammar_examples.js
 scratch/rebuild_lessons_data_from_a1.js
