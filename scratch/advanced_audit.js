@@ -164,9 +164,11 @@ function hasWordBoundary(haystack, needle) {
 // An "answer leak" is the correct answer printed inside the QUESTION STEM or HINT,
 // so the learner can pass without knowing it (release_plan §1.2.5). Calibrated:
 //   • [TRANSLATE] questions skipped — source sentence legitimately contains answer words;
-//   • q: full answer phrase checked (word-boundary);
-//   • hint_ru: full phrase AND individual answer words ≥5 chars checked (≥5 avoids
-//     false positives on short words like "most" from "the most expensive").
+//   • q: full answer phrase → addIssue (hard failure, all courses);
+//   • hint_ru: addWarn (PERMANENT POLICY, owner decision 2026-06-11 §B): grammar hints
+//     legitimately name the target form ("use am going to for plans"), making hard failures
+//     impractical. Warns surface for human review. Individual answer words ≥5 chars checked
+//     to avoid false positives on short words like "most" from "the most expensive".
 function checkAnswerLeaks(lesson) {
   const lessonId = lesson.id;
   for (const [index, item] of (lesson.quiz || []).entries()) {
@@ -189,6 +191,30 @@ function checkAnswerLeaks(lesson) {
             addWarn(lessonId, 'quiz', `quiz[${index}] answer word leak in hint_ru: "${stripped}"`);
           }
         }
+      }
+    }
+  }
+}
+
+// Detects [TRANSLATE] questions where hint_ru just restates the question-stem term
+// (e.g., q = "[TRANSLATE] How to translate 'удобный'?" and hint_ru = "Удобный").
+// Such a hint is pedagogically useless — it only repeats what the learner already sees.
+// Not an answer leak (the English answer isn't shown); always addWarn, all courses.
+function checkTranslateHintDuplicate(lesson) {
+  const lessonId = lesson.id;
+  const termRe = /['"]([^'"]{2,})['"]/g;
+  for (const [index, item] of (lesson.quiz || []).entries()) {
+    const q = item.q || '';
+    if (!q.includes('[TRANSLATE]')) continue;
+    const hint = (item.hint_ru || '').trim();
+    if (!hint) continue;
+    const hintLow = hint.toLowerCase().replace(/[.,!?]+$/, '');
+    termRe.lastIndex = 0;
+    let m;
+    while ((m = termRe.exec(q)) !== null) {
+      if (hintLow === m[1].trim().toLowerCase()) {
+        addWarn(lessonId, 'quiz', `quiz[${index}] hint_ru "${hint}" just restates question term '${m[1]}'`);
+        break;
       }
     }
   }
@@ -261,9 +287,10 @@ function stemVariants(word) {
 // but first carded in B1 L5). Words never carded anywhere are assumed background
 // vocabulary and are NOT flagged; this is what keeps the check precise instead of
 // drowning in common glue words ("because", "better", "going").
-// A1 content is frozen and is the first course, so its violations are WARNINGS; A2/B1
-// (authored against the cumulative A1→A2→B1 vocabulary) treat them as hard FAILS.
-// requirements.md R6, design.md §5.
+// SEVERITY (owner decision 2026-06-11, §A): target = flagStrict (A1 warn, A2/B1 hard fail).
+// Currently addWarn (all courses) pending task 4.5 (fix 5 pre-existing A2 violations:
+// department, fees, high, download, follow, leave). Switch addWarn → flagStrict in
+// both calls below when task 4.5 is committed. requirements.md R6, design.md §5.
 function snowballViolation(word, order) {
   if (SNOWBALL_ALLOWLIST.has(word)) return false;
   let earliest;
@@ -441,6 +468,7 @@ for (const lesson of LESSONS) {
   checkQuiz(lesson);
   checkGrammar(lesson);
   checkAnswerLeaks(lesson);
+  checkTranslateHintDuplicate(lesson);
   checkSnowball(lesson, lessonOrder.get(lesson.id));
 
   for (const word of lesson.words || []) {
