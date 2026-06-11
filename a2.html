@@ -907,6 +907,48 @@
       color: rgba(255, 255, 255, 0.88);
     }
 
+    /* ── CERTIFICATE ─────────────────────────────────────────────────────────── */
+    .cert-card { background:linear-gradient(145deg,#163b2d 0%,#0f2a20 100%);border:1px solid rgba(194,160,92,.35);color:#fff }
+    .cert-card .sec-lbl { color:rgba(255,255,255,.72) }
+    .cert-title { font-size:20px;font-weight:800;margin-bottom:8px }
+    .cert-copy { font-size:14px;line-height:1.55;color:rgba(255,255,255,.88);margin-bottom:14px }
+    .cert-meta { display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px }
+    .cert-chip { border-radius:999px;padding:7px 10px;font-size:12px;font-weight:700;background:rgba(194,160,92,.14);color:#f5deb3;border:1px solid rgba(194,160,92,.32) }
+    .cert-btn { width:100%;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;background:linear-gradient(135deg,#d8b56a 0%,#f2df9c 100%);color:#17372a }
+    .cert-btn.secondary { background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.14) }
+    .cert-note { margin-top:10px;font-size:12px;line-height:1.5;color:rgba(255,255,255,.7) }
+    body.modal-open { overflow:hidden }
+    .cert-modal-overlay { position:fixed;inset:0;background:rgba(15,23,42,.52);display:none;align-items:center;justify-content:center;padding:20px;z-index:500 }
+    .cert-modal { width:min(100%,360px);background:#fff;border-radius:18px;padding:22px 18px 18px;box-shadow:0 24px 60px rgba(15,23,42,.22);border:1px solid rgba(0,0,0,.08) }
+    .cert-modal-title { font-size:20px;font-weight:800;margin-bottom:8px }
+    .cert-modal-copy { font-size:13px;color:#5a6070;line-height:1.55;margin-bottom:14px }
+    .cert-input { width:100%;border:1px solid #d8dee8;border-radius:12px;padding:13px 14px;font-size:15px;font-family:inherit;background:#fff;box-sizing:border-box }
+    .cert-input:focus { border-color:var(--c-accent);outline:none;box-shadow:0 0 0 3px rgba(26,174,57,.12) }
+    .cert-modal-actions { display:flex;gap:10px;margin-top:14px }
+    .cert-modal-btn { flex:1;border-radius:12px;padding:12px;font-size:14px;font-weight:700;cursor:pointer;border:1px solid #e8eaed;background:#fff;font-family:inherit }
+    .cert-modal-btn.primary { background:var(--c-accent);color:#fff;border-color:var(--c-accent) }
+    .cert-error { font-size:12px;color:#d14343;margin-top:8px;min-height:18px }
+    #certificate { display:none }
+    .cert-print-page { width:210mm;min-height:297mm;margin:0 auto;background:linear-gradient(180deg,#103126 0%,#163f31 100%);color:#fff7dd;padding:18mm 16mm;position:relative;overflow:hidden }
+    .cert-print-page::before,.cert-print-page::after { content:'';position:absolute;inset:10mm;border:1px solid rgba(216,181,106,.65);pointer-events:none }
+    .cert-print-page::after { inset:14mm;border-color:rgba(216,181,106,.28) }
+    .cert-brand { text-align:center;font-size:17px;font-weight:700;letter-spacing:1px;color:#f2df9c;margin-bottom:14mm }
+    .cert-kicker { text-align:center;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,247,221,.78);margin-bottom:5mm }
+    .cert-heading { text-align:center;font-size:34px;font-weight:800;letter-spacing:1px;color:#fff7dd;margin:0 0 10mm }
+    .cert-award { text-align:center;font-size:13px;color:rgba(255,247,221,.82);margin-bottom:6mm }
+    .cert-student-name { text-align:center;font-family:Georgia,'Times New Roman',serif;font-size:28px;line-height:1.2;color:#f5deb3;margin:0 0 10mm }
+    .cert-course { text-align:center;font-size:15px;line-height:1.6;color:rgba(255,247,221,.92);max-width:150mm;margin:0 auto 14mm }
+    .cert-stats-row { display:flex;justify-content:center;gap:16mm;margin:0 0 14mm }
+    .cert-stat { text-align:center }
+    .cert-stat-value { font-size:18px;font-weight:800;color:#fff7dd }
+    .cert-stat-label { font-size:11px;color:rgba(255,247,221,.7);margin-top:2mm;text-transform:uppercase;letter-spacing:1px }
+    .cert-footer { display:flex;justify-content:space-between;gap:12mm;margin-top:18mm;align-items:flex-end }
+    .cert-footer-block { flex:1 }
+    .cert-footer-line { height:1px;background:rgba(216,181,106,.65);margin-bottom:6px }
+    .cert-footer-label { font-size:11px;color:rgba(255,247,221,.72) }
+    @page { size:A4 portrait;margin:0 }
+    @media print { body { background:#fff !important } body > :not(#certificate) { display:none !important } #certificate { display:block !important } }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -1019,7 +1061,26 @@
           "Не сдавайтесь! С каждой попыткой вы становитесь лучше. 🌟",
           "Хорошая попытка! Ошибки помогают нам учиться. Попробуйте еще.",
           "Почти получилось! Подумайте еще раз и выберите верный ответ."
-        ]
+        ],
+        cert_card_title: 'Сертификат A1-A2',
+        cert_card_copy: 'Премиальный сертификат в формате A4 с именем студента, датой и статистикой курса.',
+        cert_get: '🏆 Получить сертификат',
+        cert_download: 'Скачать сертификат',
+        cert_note: 'После нажатия откроется окно печати. Там можно сохранить PDF без внешних библиотек.',
+        cert_issued: 'Сертификат уже выдан',
+        cert_not_issued: 'Сертификат ещё не выдан',
+        cert_banner: 'Поздравляем! Вы завершили курс A1-A2! 🎉',
+        cert_banner_sub: 'Осталось только ввести имя и сохранить сертификат в PDF.',
+        cert_modal_title: 'Получить сертификат',
+        cert_modal_copy: 'Введите имя так, как оно должно быть указано на сертификате.',
+        cert_name_placeholder: 'Имя Фамилия',
+        cert_name_error: 'Пожалуйста, введите имя для сертификата.',
+        cancel: 'Отмена',
+        print: 'Печать',
+        course_locked: 'Сертификат откроется после завершения всех 15 уроков.',
+        phrase_total: 'фраз в разговорнике',
+        completed_lessons: 'Пройденные уроки',
+        phrasebook: 'Разговорник'
       },
       uz: {
         home: "Bosh sahifa",
@@ -1048,7 +1109,26 @@
           "Taslim bo\u02BBlmang! Har bir urinish sizni yaxshilaydi. 🌟",
           "Yaxshi urinish! Xatolar o\u02BBrganishga yordam beradi. Yana ko\u02BBring.",
           "Deyarli to\u02BBg\u02BBri! Yana bir bor o\u02BBylang."
-        ]
+        ],
+        cert_card_title: 'A1-A2 sertifikati',
+        cert_card_copy: 'Talaba ismi, sana va kurs statistikasi bilan A4 sertifikat.',
+        cert_get: '🏆 Sertifikat olish',
+        cert_download: 'Sertifikatni yuklash',
+        cert_note: 'Bosilgandan keyin chop etish oynasi ochiladi. U yerdan PDF saqlash mumkin.',
+        cert_issued: 'Sertifikat berilgan',
+        cert_not_issued: 'Sertifikat hali berilmagan',
+        cert_banner: 'Tabriklaymiz! Siz A1-A2 kursini tugatdingiz! 🎉',
+        cert_banner_sub: 'Endi faqat ismni kiriting va sertifikatni PDF qilib saqlang.',
+        cert_modal_title: 'Sertifikat olish',
+        cert_modal_copy: 'Ismni sertifikatda qanday ko\u02BBrinishi kerak bo\u02BBlsa, shunday kiriting.',
+        cert_name_placeholder: 'Ism Familiya',
+        cert_name_error: 'Iltimos, sertifikat uchun ism kiriting.',
+        cancel: 'Bekor qilish',
+        print: 'Chop etish',
+        course_locked: 'Sertifikat barcha 15 dars tugagach ochiladi.',
+        phrase_total: 'ibora tayyor',
+        completed_lessons: 'Tugallangan darslar',
+        phrasebook: 'Iboralar'
       },
       tj: {
         home: 'Асосӣ',
@@ -1077,7 +1157,26 @@
           "Таслим нашавед! Бо ҳар як кӯшиш шумо беҳтар мешавед. 🌟",
           "Кӯшиши хуб! Хатогиҳо ба мо омӯхтан кӯмак мекунанд. Боз санҷед.",
           "Қариб иҷро шуд! Боз як бор андеша кунед."
-        ]
+        ],
+        cert_card_title: 'Сертификати A1-A2',
+        cert_card_copy: 'Сертификати A4 бо номи донишҷӯ, сана ва омори курс.',
+        cert_get: '🏆 Гирифтани сертификат',
+        cert_download: 'Сертификатро боргирӣ кунед',
+        cert_note: 'Пас аз пахш равзанаи чоп кушода мешавад. Аз он ҷо PDF сабт кардан мумкин аст.',
+        cert_issued: 'Сертификат аллакай дода шуд',
+        cert_not_issued: 'Сертификат ҳанӯз дода нашудааст',
+        cert_banner: 'Табрик! Шумо курси A1-A2-ро тамом кардед! 🎉',
+        cert_banner_sub: 'Акнун танҳо номро ворид кунед ва сертификатро ба PDF сабт намоед.',
+        cert_modal_title: 'Гирифтани сертификат',
+        cert_modal_copy: 'Номро тавре ворид кунед, ки дар сертификат бошад.',
+        cert_name_placeholder: 'Ном Насаб',
+        cert_name_error: 'Лутфан, барои сертификат ном ворид кунед.',
+        cancel: 'Бекор кардан',
+        print: 'Чоп',
+        course_locked: 'Сертификат баъд аз 15 дарс кушода мешавад.',
+        phrase_total: 'ибора омода',
+        completed_lessons: 'Дарсҳои гузашта',
+        phrasebook: 'Ибораҳо'
       },
       kg: {
         home: 'Башкы',
@@ -1106,7 +1205,26 @@
           "Багынбаңыз! Ар бир аракет менен сиз жакшырасыз. 🌟",
           "Жакшы аракет! Каталар бизге үйрөнүүгө ржардам берет. Дагы көрүңүз.",
           "Дээрлик болду! Дагы бир жолу ойлонуп көрүңүз."
-        ]
+        ],
+        cert_card_title: 'A1-A2 сертификаты',
+        cert_card_copy: 'Студенттин аты, дата жана курс статистикасы бар A4 сертификат.',
+        cert_get: '🏆 Сертификатты алуу',
+        cert_download: 'Сертификатты жүктөп алуу',
+        cert_note: 'Баскандан кийин басып чыгаруу терезеси ачылат. Ошол жерден PDF сактай аласыз.',
+        cert_issued: 'Сертификат берилген',
+        cert_not_issued: 'Сертификат али бериле элек',
+        cert_banner: 'Куттуктайбыз! A1-A2 курсун бүттүрдүңүз! 🎉',
+        cert_banner_sub: 'Эми атыңызды киргизип, сертификатты PDF кылып сактаңыз.',
+        cert_modal_title: 'Сертификатты алуу',
+        cert_modal_copy: 'Атыңызды сертификатта кандай көрүнсө, ошондой киргизиңиз.',
+        cert_name_placeholder: 'Аты Жөнү',
+        cert_name_error: 'Сураныч, сертификат үчүн атыңызды жазыңыз.',
+        cancel: 'Жокко чыгаруу',
+        print: 'Басып чыгаруу',
+        course_locked: 'Сертификат 15 сабак бүткөндөн кийин ачылат.',
+        phrase_total: 'фраза даяр',
+        completed_lessons: 'Аяктаган сабактар',
+        phrasebook: 'Фразалар'
       },
       kz: {
         home: 'Басты',
@@ -1135,7 +1253,26 @@
           "Берілмеңіз! Әрбір әрекет сізді шыңдайды. 🌟",
           "Жақсы әрекет! Қателер үйренуге көмектеседі. Тағы көріңіз.",
           "Сәл-ақ қалды! Тағы бір рет ойланып көріңіз."
-        ]
+        ],
+        cert_card_title: 'A1-A2 сертификаты',
+        cert_card_copy: 'Студент аты, күн және курс статистикасы бар A4 сертификат.',
+        cert_get: '🏆 Сертификатты алу',
+        cert_download: 'Сертификатты жүктеу',
+        cert_note: 'Басқаннан кейін басып шығару терезесі ашылады. Сол жерден PDF сақтауға болады.',
+        cert_issued: 'Сертификат берілген',
+        cert_not_issued: 'Сертификат әлі берілмеген',
+        cert_banner: 'Құттықтаймыз! A1-A2 курсын аяқтадыңыз! 🎉',
+        cert_banner_sub: 'Енді тек атыңызды енгізіп, сертификатты PDF етіп сақтаңыз.',
+        cert_modal_title: 'Сертификатты алу',
+        cert_modal_copy: 'Атыңызды сертификатта қалай көрінуі керек болса, солай енгізіңіз.',
+        cert_name_placeholder: 'Аты Тегі',
+        cert_name_error: 'Сертификат үшін атыңызды енгізіңіз.',
+        cancel: 'Бас тарту',
+        print: 'Басып шығару',
+        course_locked: 'Сертификат 15 сабақ біткен соң ашылады.',
+        phrase_total: 'тіркес дайын',
+        completed_lessons: 'Аяқталған сабақтар',
+        phrasebook: 'Сөздік'
       }
     };
 
@@ -13638,13 +13775,29 @@
     function renderHome(root) {
       stopDlg();
       const completedCount = done.length;
+      const isComplete = completedCount >= LESSONS.length;
       let h = '<div class="scr">';
 
-      // Course completion banner if all 15 lessons completed
-      if (completedCount === 15) {
+      if (isComplete) {
         h += `<div class="course-complete-banner">
-          <div class="course-complete-title">🏆 LEVEL COMPLETE!</div>
-          <div class="course-complete-text">${t('course_complete')}</div>
+          <div class="course-complete-title">🏆 ${t('cert_banner')}</div>
+          <div class="course-complete-text">${t('cert_banner_sub')}</div>
+        </div>`;
+        const issued = safeGetItem('fe_cert_a2_issued') === 'true';
+        const certDate = safeGetItem('fe_cert_a2_date') || '';
+        const certName = safeGetItem('fe_cert_a2_name') || '';
+        h += `<div class="g-card cert-card">
+          <div class="cert-title">${t('cert_card_title')}</div>
+          <div class="cert-copy">${t('cert_card_copy')}</div>
+          <div class="cert-meta">
+            <div class="cert-chip">${completedCount}/${LESSONS.length}</div>
+            <div class="cert-chip">${getCompletedWordsCount()} words</div>
+            <div class="cert-chip">${issued ? t('cert_issued') : t('cert_not_issued')}</div>
+          </div>
+          <button class="cert-btn${issued ? ' secondary' : ''}" onclick="${issued ? 'downloadCertificate()' : 'openCertModal()'}">
+            ${issued ? t('cert_download') : t('cert_get')}
+          </button>
+          <div class="cert-note">${t('cert_note')}${issued && certDate ? ' ' + (certName ? certName + ' · ' : '') + certDate : ''}</div>
         </div>`;
       }
 
@@ -13662,7 +13815,7 @@
           const isDone = done.includes(lId);
           const pct = isDone ? 100 : 0;
           const label = escapeAttr(gl(l, 'name') + (isDone ? ' — ' + t('completed') : ''));
-          
+
           h += `<button type="button" class="ch-card" onclick="openLesson(${lId})" aria-label="${label}">
             <div class="ch-badge" aria-hidden="true" style="color:var(--c-accent)">LESSON ${lId}</div>
             <div class="ch-title">${gl(l, 'name')}</div>
@@ -13675,9 +13828,10 @@
         });
       });
 
-      // Bottom footer to switch language
-      h += `<div style="margin-top:30px; text-align:center; padding-bottom:30px">
-        <button class="finish-btn next-btn-accent" style="max-width:200px" onclick="openLangModal()">${t('home')}: Language ⚙️</button>
+      // Bottom footer — phrasebook link + language switcher
+      h += `<div style="margin-top:30px; text-align:center; padding-bottom:30px; display:flex; flex-direction:column; gap:12px; align-items:center">
+        <a href="a1.html#phrases" class="finish-btn next-btn-accent" style="max-width:200px; display:block; text-decoration:none; text-align:center">📖 ${t('phrasebook')}</a>
+        <button class="finish-btn" style="max-width:200px; background:#fff; color:var(--c-accent); border:2px solid var(--c-accent)" onclick="openLangModal()">${t('home')}: Language ⚙️</button>
       </div>`;
 
       h += '</div>';
@@ -13988,6 +14142,75 @@
       return streak;
     }
 
+    // ── CERTIFICATE ───────────────────────────────────────────────────────────────
+    const CERTIFICATE_LEVELS = {
+      a2: { title: 'CEFR A1-A2', name: 'Life in the Camp', lessons: 15 }
+    };
+    function setCertModalOpen(isOpen) {
+      const modal = document.getElementById('certModal');
+      if (!modal) return;
+      modal.style.display = isOpen ? 'flex' : 'none';
+      modal.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      document.body.classList.toggle('modal-open', isOpen);
+    }
+    function formatCertificateDate(date) {
+      return (date || new Date()).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+    function openCertModal() {
+      if (done.length < LESSONS.length) return;
+      document.getElementById('certModalTitle').textContent = t('cert_modal_title');
+      document.getElementById('certModalCopy').textContent = t('cert_modal_copy');
+      document.getElementById('certCancelBtn').textContent = t('cancel');
+      document.getElementById('certGenerateBtn').textContent = t('print');
+      document.getElementById('certNameInput').placeholder = t('cert_name_placeholder');
+      document.getElementById('certNameError').textContent = '';
+      document.getElementById('certNameInput').value = safeGetItem('fe_cert_a2_name') || '';
+      setCertModalOpen(true);
+      setTimeout(() => document.getElementById('certNameInput').focus(), 10);
+    }
+    function closeCertModal(event) {
+      if (event && event.target && event.target.id !== 'certModal') return;
+      setCertModalOpen(false);
+      document.getElementById('certNameError').textContent = '';
+    }
+    function populateCertificate(userName, levelId, issuedDate) {
+      const level = CERTIFICATE_LEVELS[levelId];
+      document.getElementById('cert-name').textContent = userName;
+      document.getElementById('cert-course-title').textContent = 'English for Seasonal Workers — ' + level.title;
+      document.getElementById('cert-course-subtitle').textContent = level.name;
+      document.getElementById('cert-lessons').textContent = String(level.lessons);
+      document.getElementById('cert-words').textContent = String(getCompletedWordsCount() || 450);
+      document.getElementById('cert-date').textContent = issuedDate;
+      document.getElementById('cert-level').textContent = level.title;
+    }
+    function generateCertificate(userName, levelId) {
+      const issuedDate = formatCertificateDate();
+      populateCertificate(userName, levelId, issuedDate);
+      safeSetItem('fe_cert_' + levelId + '_name', userName);
+      safeSetItem('fe_cert_' + levelId + '_date', issuedDate);
+      safeSetItem('fe_cert_' + levelId + '_issued', 'true');
+      closeCertModal();
+      render();
+      setTimeout(() => window.print(), 80);
+    }
+    function submitCertificate() {
+      const input = document.getElementById('certNameInput');
+      const userName = input.value.trim();
+      if (!userName) {
+        document.getElementById('certNameError').textContent = t('cert_name_error');
+        input.focus();
+        return;
+      }
+      generateCertificate(userName, 'a2');
+    }
+    function downloadCertificate() {
+      const userName = safeGetItem('fe_cert_a2_name');
+      const issuedDate = safeGetItem('fe_cert_a2_date');
+      if (!userName || !issuedDate) { openCertModal(); return; }
+      populateCertificate(userName, 'a2', issuedDate);
+      setTimeout(() => window.print(), 80);
+    }
+
     // ── MODAL ACTIONS ────────────────────────────────────────────────────────────
     function openLangModal() {
       document.getElementById('langModal').style.display = 'flex';
@@ -14025,6 +14248,9 @@
       }
     });
 
+    window.addEventListener('keydown', event => { if (event.key === 'Escape') closeCertModal(); });
+    setCertModalOpen(false);
+
     // Initialize state and boot the app
     lang = safeGetItem('fe_lang', 'ru');
     setDocumentLang(lang);
@@ -14044,6 +14270,59 @@
       render();
     }
   </script>
+  <!-- Certificate name modal -->
+  <div class="cert-modal-overlay" id="certModal" onclick="closeCertModal(event)" role="dialog" aria-modal="true"
+    aria-labelledby="certModalTitle" aria-describedby="certModalCopy" aria-hidden="true">
+    <div class="cert-modal" onclick="event.stopPropagation()">
+      <div class="cert-modal-title" id="certModalTitle">Получить сертификат</div>
+      <div class="cert-modal-copy" id="certModalCopy">Введите имя так, как оно должно быть указано на сертификате.</div>
+      <input class="cert-input" id="certNameInput" type="text" maxlength="80" placeholder="Имя Фамилия">
+      <div class="cert-error" id="certNameError"></div>
+      <div class="cert-modal-actions">
+        <button class="cert-modal-btn" type="button" id="certCancelBtn" onclick="closeCertModal()">Отмена</button>
+        <button class="cert-modal-btn primary" type="button" id="certGenerateBtn" onclick="submitCertificate()">Печать</button>
+      </div>
+    </div>
+  </div>
+  <!-- Certificate print page -->
+  <section id="certificate" aria-hidden="true">
+    <div class="cert-print-page">
+      <div class="cert-brand">🌿 FarmEnglish</div>
+      <div class="cert-kicker">Certificate of Completion</div>
+      <h1 class="cert-heading">CERTIFICATE OF COMPLETION</h1>
+      <div class="cert-award">This certificate is proudly presented to</div>
+      <div class="cert-student-name" id="cert-name">Student Name</div>
+      <div class="cert-course">
+        for successfully completing
+        <strong id="cert-course-title">English for Seasonal Workers — CEFR A1-A2</strong><br>
+        <span id="cert-course-subtitle">Life in the Camp</span>
+      </div>
+      <div class="cert-stats-row">
+        <div class="cert-stat">
+          <div class="cert-stat-value" id="cert-lessons">15</div>
+          <div class="cert-stat-label">Lessons</div>
+        </div>
+        <div class="cert-stat">
+          <div class="cert-stat-value" id="cert-words">450</div>
+          <div class="cert-stat-label">Words</div>
+        </div>
+        <div class="cert-stat">
+          <div class="cert-stat-value" id="cert-date">11 June 2026</div>
+          <div class="cert-stat-label">Issued</div>
+        </div>
+      </div>
+      <div class="cert-footer">
+        <div class="cert-footer-block">
+          <div class="cert-footer-line"></div>
+          <div class="cert-footer-label">FarmEnglish Platform</div>
+        </div>
+        <div class="cert-footer-block">
+          <div class="cert-footer-line"></div>
+          <div class="cert-footer-label" id="cert-level">CEFR A1-A2</div>
+        </div>
+      </div>
+    </div>
+  </section>
   <script>
     if ('serviceWorker' in navigator &&
         (location.protocol === 'https:' || location.hostname === 'localhost')) {
