@@ -89,7 +89,7 @@
       z-index: 100;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      background: rgba(240,242,245,0.75);
+      background: rgba(240, 242, 245, 0.75);
     }
 
     .logo-wrap {
@@ -301,7 +301,7 @@
       transform: translateX(-50%);
       width: 100%;
       max-width: 430px;
-      background: rgba(255,255,255,0.92);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-top: 1px solid var(--border);
@@ -367,8 +367,13 @@
     }
 
     @keyframes slideUp {
-      from { transform: translateY(100%); }
-      to { transform: translateY(0); }
+      from {
+        transform: translateY(100%);
+      }
+
+      to {
+        transform: translateY(0);
+      }
     }
 
     .modal-handle {
@@ -396,8 +401,8 @@
     }
 
     .lang-opt.active {
-      background: rgba(232,120,48,0.08);
-      border-color: rgba(232,120,48,0.2);
+      background: rgba(232, 120, 48, 0.08);
+      border-color: rgba(232, 120, 48, 0.2);
     }
 
     .lang-opt .flag {
@@ -476,6 +481,7 @@
       text-transform: uppercase;
       letter-spacing: 0.4px;
     }
+
     /* Material 3 Expressive + Neural Expressive skin */
 
     body {
@@ -563,7 +569,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(125deg, rgba(255,255,255,0.24) 0%, transparent 46%, rgba(255,255,255,0.08) 100%);
+        linear-gradient(125deg, rgba(255, 255, 255, 0.24) 0%, transparent 46%, rgba(255, 255, 255, 0.08) 100%);
       pointer-events: none;
     }
 
@@ -635,6 +641,7 @@
       overflow: hidden;
       text-align: left;
     }
+
     .onboarding-card::before {
       content: "";
       position: absolute;
@@ -643,6 +650,7 @@
       background: var(--c-a1);
       opacity: 0.9;
     }
+
     .onboarding-title {
       font-size: 18px;
       font-weight: 800;
@@ -652,12 +660,14 @@
       align-items: center;
       gap: 6px;
     }
+
     .onboarding-text {
       font-size: 14px;
       line-height: 1.5;
       color: var(--text);
       margin-bottom: 16px;
     }
+
     .onboarding-btn {
       display: inline-flex;
       align-items: center;
@@ -674,9 +684,11 @@
       transition: background 0.15s, transform 0.1s;
       text-decoration: none;
     }
+
     .onboarding-btn:hover {
       background: #d46a24;
     }
+
     .onboarding-btn:active {
       transform: scale(0.97);
     }
@@ -687,7 +699,7 @@
       border-radius: 22px;
       padding: 18px 18px 16px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,255,255,0.82));
+        linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.82));
       box-shadow: var(--card-shadow);
       overflow: hidden;
       backdrop-filter: blur(14px);
@@ -802,6 +814,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+
       *,
       *::before,
       *::after {
@@ -932,10 +945,20 @@
       try {
         const val = localStorage.getItem(key);
         if (!val) return fallback;
+        if (typeof val === 'string' && !val.trim().startsWith('[')) {
+          const splitVal = val.split(',').map(x => x.trim()).filter(Boolean);
+          if (splitVal.length > 0) return splitVal;
+        }
         const parsed = JSON.parse(val);
         if (Array.isArray(fallback) && !Array.isArray(parsed)) return fallback;
         return parsed;
       } catch (e) {
+        try {
+          const val = localStorage.getItem(key);
+          if (val) {
+            return val.split(',').map(x => x.trim()).filter(Boolean);
+          }
+        } catch (_) { }
         return fallback;
       }
     }
@@ -959,19 +982,22 @@
       { id: 'c1', code: 'CEFR B2-C1', name_key: 'level_c1_title', desc_key: 'level_c1_desc', file: 'c1.html', color: '#7c4dff', icon: '💎', iconBg: 'rgba(124,77,255,0.12)', locked: true }
     ];
 
-    // XSS-safe attribute escaping — mirrors a1.html escapeAttr
-    const escapeAttr = value => String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
-
     function render() {
       const lang = window._lang || 'ru';
 
       // Stats
       const doneA1 = safeGetJSON('fe_a1', []);
+      const doneA2 = safeGetJSON('fe_a2', []);
+      const doneB1 = safeGetJSON('fe_b1', []);
+      const doneA1Count = new Set(doneA1).size;
+      const doneA2Count = new Set(doneA2).size;
+      const doneB1Count = new Set(doneB1).size;
+      const totalDone = doneA1Count + doneA2Count + doneB1Count;
       const storedWords = Number(safeGetItem('fe_words', '0'));
-      const derivedWords = doneA1.length * 30;
+      const derivedWords = totalDone * 30;
       const wordsLearned = Math.max(storedWords, derivedWords);
       safeSetItem('fe_words', String(wordsLearned));
-      document.getElementById('st_lessons').innerText = doneA1.length;
+      document.getElementById('st_lessons').innerText = totalDone;
       document.getElementById('st_words').innerText = String(wordsLearned);
       document.getElementById('st_streak').innerText = safeGetItem('fe_streak', '0');
 
@@ -981,17 +1007,17 @@
       document.getElementById('cur_lang_flag').innerText = flags[lang] || '🇷🇺';
 
       // Hero
-      const titleMap = {ru:'Английский для<br>сезонных работников',uz:"Mavsumiy ishchilar<br>uchun ingliz tili",tj:'Забони англисӣ барои<br>коргарони мавсумӣ',kg:'Мезгилдик жумушчулар<br>үчүн англис тили',kz:'Маусымдық жұмысшылар<br>үшін ағылшын тілі'};
-      const subMap = {ru:'Выберите ваш уровень',uz:'Darajangizni tanlang',tj:'Сатҳи худро интихоб кунед',kg:'Деңгээлиңизди тандаңыз',kz:'Деңгейіңізді таңдаңыз'};
+      const titleMap = { ru: 'Английский для<br>сезонных работников', uz: "Mavsumiy ishchilar<br>uchun ingliz tili", tj: 'Забони англисӣ барои<br>коргарони мавсумӣ', kg: 'Мезгилдик жумушчулар<br>үчүн англис тили', kz: 'Маусымдық жұмысшылар<br>үчүн ағылшын тілі' };
+      const subMap = { ru: 'Выберите ваш уровень', uz: 'Darajangizni tanlang', tj: 'Сатҳи худро интихоб кунед', kg: 'Деңгээлиңизди тандаңыз', kz: 'Деңгейіңізді таңдаңыз' };
       document.getElementById('h_title').innerHTML = titleMap[lang] || titleMap.ru;
       document.getElementById('h_sub').innerText = subMap[lang] || subMap.ru;
 
       // Stat labels — first pill is lesson count, others surface words + streak
-      const phraseMap={ru:'слов',uz:"so'z",tj:'калима',kg:'сөз',kz:'сөз'};
-      const progressMap={ru:'серия',uz:'ketma-ket',tj:'силсила',kg:'катар',kz:'серия'};
+      const phraseMap = { ru: 'слов', uz: "so'z", tj: 'калима', kg: 'сөз', kz: 'сөз' };
+      const progressMap = { ru: 'серия', uz: 'ketma-ket', tj: 'силсила', kg: 'катар', kz: 'серия' };
       document.getElementById('sl_lessons').innerText = t('lessons');
-      document.getElementById('sl_words').innerText = phraseMap[lang]||phraseMap.ru;
-      document.getElementById('sl_streak').innerText = progressMap[lang]||progressMap.ru;
+      document.getElementById('sl_words').innerText = phraseMap[lang] || phraseMap.ru;
+      document.getElementById('sl_streak').innerText = progressMap[lang] || progressMap.ru;
 
 
       // Level cards
@@ -1031,7 +1057,7 @@
           <div class="onboarding-card">
             <div class="onboarding-title">${oData.title}</div>
             <div class="onboarding-text">${oData.text}</div>
-            <a class="onboarding-btn" href="a1.html?lesson=1">
+            <a class="onboarding-btn" href="a1.html">
               ${oData.btn} <span class="icon">arrow_forward</span>
             </a>
           </div>
@@ -1039,9 +1065,14 @@
       }
 
       LEVELS.forEach(lv => {
-        const isLocked = lv.locked && doneA1.length < 15;
-        const doneCount = lv.id === 'a1' ? doneA1.length : 0;
-        const total = 15;
+        let isLocked = lv.locked;
+        if (lv.id === 'a2') {
+          const isA1Complete = doneA1Count >= 15;
+          isLocked = !isA1Complete;
+        }
+
+        const doneCount = lv.id === 'a1' ? doneA1Count : (lv.id === 'a2' ? doneA2Count : (lv.id === 'b1' ? doneB1Count : 0));
+        const total = lv.id === 'b1' ? 6 : 15;
 
         const card = document.createElement('div');
         card.className = `lv-card ${isLocked ? 'locked' : ''}`;
@@ -1067,7 +1098,7 @@
             <span class="lv-link" style="color:${lv.color}">
               ${linkLabel} <span class="lv-link-arrow"><span class="icon">chevron_right</span></span>
             </span>
-            ${!isLocked && lv.id === 'a1' ? `<span class="lv-prog-txt">${doneCount} / ${total}</span>` : ''}
+            ${!isLocked && (lv.id === 'a1' || lv.id === 'a2' || lv.id === 'b1') ? `<span class="lv-prog-txt">${doneCount} / ${total}</span>` : ''}
           </div>
         `;
         list.appendChild(card);
