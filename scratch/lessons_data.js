@@ -1514,7 +1514,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"Tom's farm\". Possessive adjectives · Possessive 's · Jobs"
                   },
                   {
-                        "q": "[COMPLETE] '___ gloves are in the locker.' (his — мужчина)",
+                        "q": "[COMPLETE] '___ gloves are in the locker.'",
                         "opts": [
                               "Her",
                               "His",
@@ -1522,7 +1522,7 @@ module.exports = [
                               "Him"
                         ],
                         "c": 1,
-                        "hint_ru": "Его перчатки (мужчина)",
+                        "hint_ru": "Нужно притяжательное местоимение мужского рода",
                         "hint_uz": "Uning qo'lqoplari",
                         "hint_tj": "Дастпӯшакҳои ӯ",
                         "hint_kg": "Анын мээлейи",
@@ -6524,7 +6524,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"hasn't\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "[TRANSLATE] How to translate 'удобный'? (comfortable)",
+                        "q": "[TRANSLATE] How to translate 'удобный'?",
                         "opts": [
                               "dangerous",
                               "comfortable",
@@ -6575,7 +6575,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"dry\". have/has · have got · Adjectives · Colours · Clothing (PPE)"
                   },
                   {
-                        "q": "[TRANSLATE] What is 'hairnet'? (сеточка)",
+                        "q": "[TRANSLATE] What is 'hairnet'?",
                         "opts": [
                               "Сеточка для волос",
                               "Наколенники",
@@ -7317,7 +7317,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"any\". There is/are · some/any · Rooms & furniture · Reporting problems"
                   },
                   {
-                        "q": "[TRANSLATE] How to translate 'холодильник'? (fridge)",
+                        "q": "[TRANSLATE] How to translate 'холодильник'?",
                         "opts": [
                               "fridge",
                               "cooker",
@@ -7325,7 +7325,7 @@ module.exports = [
                               "sink"
                         ],
                         "c": 0,
-                        "hint_ru": "Fridge",
+                        "hint_ru": "Хранит еду и напитки в холоде",
                         "expl_ru": "Правильный ответ: \"fridge\". There is/are · some/any · Rooms & furniture · Reporting problems",
                         "expl_uz": "Toʻgʻri javob: \"fridge\". There is/are · some/any · Rooms & furniture · Reporting problems",
                         "expl_tj": "Ҷавоби дуруст: \"fridge\". There is/are · some/any · Rooms & furniture · Reporting problems",
@@ -8088,7 +8088,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"I'd like six eggs, please\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "[TRANSLATE] How to translate 'дешевый'? (cheap)",
+                        "q": "[TRANSLATE] How to translate 'дешевый'?",
                         "opts": [
                               "expensive",
                               "cheap",
@@ -8096,7 +8096,7 @@ module.exports = [
                               "cash"
                         ],
                         "c": 1,
-                        "hint_ru": "Дешевый по-английски cheap",
+                        "hint_ru": "Не дорогой, доступный по цене",
                         "expl_ru": "Правильный ответ: \"cheap\". Food & drink vocabulary · Shopping · How much/many · want/would like",
                         "expl_uz": "Toʻgʻri javob: \"cheap\". Food & drink vocabulary · Shopping · How much/many · want/would like",
                         "expl_tj": "Ҷавоби дуруст: \"cheap\". Food & drink vocabulary · Shopping · How much/many · want/would like",
@@ -8156,7 +8156,7 @@ module.exports = [
                         "expl": "Правильный ответ: \"card\". Food & drink vocabulary · Shopping · How much/many · want/would like"
                   },
                   {
-                        "q": "[TRANSLATE] What is 'garlic'? (чеснок)",
+                        "q": "[TRANSLATE] What is 'garlic'?",
                         "opts": [
                               "лук",
                               "картошка",
@@ -8164,7 +8164,7 @@ module.exports = [
                               "масло"
                         ],
                         "c": 2,
-                        "hint_ru": "Garlic — это чеснок",
+                        "hint_ru": "Острый белый овощ с характерным запахом",
                         "expl_ru": "Правильный ответ: \"чеснок\". Food & drink vocabulary · Shopping · How much/many · want/would like",
                         "expl_uz": "Toʻgʻri javob: \"чеснок\". Food & drink vocabulary · Shopping · How much/many · want/would like",
                         "expl_tj": "Ҷавоби дуруст: \"чеснок\". Food & drink vocabulary · Shopping · How much/many · want/would like",
