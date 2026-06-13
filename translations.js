@@ -19,6 +19,15 @@ const TRANSLATIONS = {
     nav_phrasebook: 'Разговорник',
     nav_progress: 'Прогресс',
 
+    // Hub
+    hero_title: 'Английский для<br>сезонных работников',
+    hero_sub: 'Выберите ваш уровень',
+    stat_words_label: 'слов',
+    stat_streak_label: 'серия',
+    onboard_title: 'Добро пожаловать в FarmEnglish! 👋',
+    onboard_text: 'Начните с первого урока A1, чтобы освоить базовый английский язык для жизни и работы на фермах Великобритании. Ваш прогресс сохраняется автоматически.',
+    onboard_btn: 'Начать Урок 1',
+
     // Levels
     level_a1_name: 'A0–A1',
     level_a1_title: 'Первые дни на ферме',
@@ -158,6 +167,14 @@ const TRANSLATIONS = {
     nav_phrasebook: 'Iboralar',
     nav_progress: 'Natijalar',
 
+    hero_title: "Mavsumiy ishchilar<br>uchun ingliz tili",
+    hero_sub: 'Darajangizni tanlang',
+    stat_words_label: "so'z",
+    stat_streak_label: 'ketma-ket',
+    onboard_title: "FarmEnglish-ga xush kelibsiz! 👋",
+    onboard_text: "Buyuk Britaniya fermalarida yashash va ishlash uchun asosiy ingliz tilini o'rganishni A1-ning birinchi darsidan boshlang. Rivojlanishingiz avtomatik ravishda saqlanadi.",
+    onboard_btn: "1-darsni boshlash",
+
     level_a1_name: 'A0–A1',
     level_a1_title: 'Fermadagi birinchi kunlar',
     level_a1_desc: 'Tanishuv, ferma, raqamlar, vaqt, xavfsizlik',
@@ -289,6 +306,14 @@ const TRANSLATIONS = {
     nav_lessons: 'Дарсҳо',
     nav_phrasebook: 'Ибораҳо',
     nav_progress: 'Пешрафт',
+
+    hero_title: 'Забони англисӣ барои<br>коргарони мавсумӣ',
+    hero_sub: 'Сатҳи худро интихоб кунед',
+    stat_words_label: 'калима',
+    stat_streak_label: 'силсила',
+    onboard_title: 'Хуш омадед ба FarmEnglish! 👋',
+    onboard_text: 'Аз дарси аввалини A1 оғоз кунед, то забони англисии асосиро барои ҳаёт ва кор дар фермаҳои Бритониёи Кабир омӯзед. Пешрафти шумо ба таври худкор сабт мешавад.',
+    onboard_btn: 'Оғози дарси 1',
 
     level_a1_name: 'A0–A1',
     level_a1_title: 'Рӯзҳои аввал дар ферма',
@@ -422,6 +447,14 @@ const TRANSLATIONS = {
     nav_phrasebook: 'Фразалар',
     nav_progress: 'Жетишкендик',
 
+    hero_title: 'Мезгилдик жумушчулар<br>үчүн англис тили',
+    hero_sub: 'Деңгээлиңизди тандаңыз',
+    stat_words_label: 'сөз',
+    stat_streak_label: 'катар',
+    onboard_title: 'FarmEnglish-ке кош келиңиз! 👋',
+    onboard_text: 'Улуу Британиянын фермаларында жашоо жана иштөө үчүн негизги англис тилин үйрөнүүнү А1дин биринчи сабагынан баштаңыз. Сиздин прогрессиңиз автоматтык түрдө сакталат.',
+    onboard_btn: '1-сабакты баштоо',
+
     level_a1_name: 'A0–A1',
     level_a1_title: 'Фермадагы биринчи күндөр',
     level_a1_desc: 'Тааныштыруу, ферма, сандар, убакыт, коопсуздук',
@@ -553,6 +586,14 @@ const TRANSLATIONS = {
     nav_lessons: 'Сабақтар',
     nav_phrasebook: 'Сөздік',
     nav_progress: 'Прогресс',
+
+    hero_title: 'Маусымдық жұмысшылар<br>үшін ағылшын тілі',
+    hero_sub: 'Деңгейіңізді таңдаңыз',
+    stat_words_label: 'сөз',
+    stat_streak_label: 'серия',
+    onboard_title: 'FarmEnglish-ке қош келдіңіз! 👋',
+    onboard_text: 'Ұлыбритания фермаларында тұру және жұмыс істеу үшін негізгі ағылшын тілін үйренуді А1-дің бірінші сабағынан бастаңыз. Прогресіңіз автоматты түрде сақталады.',
+    onboard_btn: '1-сабақты бастау',
 
     level_a1_name: 'A0–A1',
     level_a1_title: 'Фермадағы алғашқы күндер',

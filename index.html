@@ -1053,17 +1053,13 @@
       document.getElementById('cur_lang_flag').innerText = flags[lang] || '🇷🇺';
 
       // Hero
-      const titleMap = { ru: 'Английский для<br>сезонных работников', uz: "Mavsumiy ishchilar<br>uchun ingliz tili", tj: 'Забони англисӣ барои<br>коргарони мавсумӣ', kg: 'Мезгилдик жумушчулар<br>үчүн англис тили', kz: 'Маусымдық жұмысшылар<br>үшін ағылшын тілі' };
-      const subMap = { ru: 'Выберите ваш уровень', uz: 'Darajangizni tanlang', tj: 'Сатҳи худро интихоб кунед', kg: 'Деңгээлиңизди тандаңыз', kz: 'Деңгейіңізді таңдаңыз' };
-      document.getElementById('h_title').innerHTML = titleMap[lang] || titleMap.ru;
-      document.getElementById('h_sub').innerText = subMap[lang] || subMap.ru;
+      document.getElementById('h_title').innerHTML = t('hero_title');
+      document.getElementById('h_sub').innerText = t('hero_sub');
 
       // Stat labels — first pill is lesson count, others surface words + streak
-      const phraseMap = { ru: 'слов', uz: "so'z", tj: 'калима', kg: 'сөз', kz: 'сөз' };
-      const progressMap = { ru: 'серия', uz: 'ketma-ket', tj: 'силсила', kg: 'катар', kz: 'серия' };
       document.getElementById('sl_lessons').innerText = t('lessons');
-      document.getElementById('sl_words').innerText = phraseMap[lang] || phraseMap.ru;
-      document.getElementById('sl_streak').innerText = progressMap[lang] || progressMap.ru;
+      document.getElementById('sl_words').innerText = t('stat_words_label');
+      document.getElementById('sl_streak').innerText = t('stat_streak_label');
       document.getElementById('sl_phrasebook').innerText = t('nav_phrasebook');
 
 
@@ -1072,40 +1068,12 @@
       list.innerHTML = '';
 
       if (doneA1.length === 0) {
-        const onboardingData = {
-          ru: {
-            title: "Добро пожаловать в FarmEnglish! 👋",
-            text: "Начните с первого урока A1, чтобы освоить базовый английский язык для жизни и работы на фермах Великобритании. Ваш прогресс сохраняется автоматически.",
-            btn: "Начать Урок 1"
-          },
-          uz: {
-            title: "FarmEnglish-ga xush kelibsiz! 👋",
-            text: "Buyuk Britaniya fermalarida yashash va ishlash uchun asosiy ingliz tilini o'rganishni A1-ning birinchi darsidan boshlang. Rivojlanishingiz avtomatik ravishda saqlanadi.",
-            btn: "1-darsni boshlash"
-          },
-          tj: {
-            title: "Хуш омадед ба FarmEnglish! 👋",
-            text: "Аз дарси аввалини A1 оғоз кунед, то забони англисии асосиро барои ҳаёт ва кор дар фермаҳои Бритониёи Кабир омӯзед. Пешрафти шумо ба таври худкор сабт мешавад.",
-            btn: "Оғози дарси 1"
-          },
-          kg: {
-            title: "FarmEnglish-ке кош келиңиз! 👋",
-            text: "Улуу Британиянын фермаларында жашоо жана иштөө үчүн негизги англис тилин үйрөнүүнү А1дин биринчи сабагынан баштаңыз. Сиздин прогрессиңиз автоматтык түрдө сакталат.",
-            btn: "1-сабакты баштоо"
-          },
-          kz: {
-            title: "FarmEnglish-ке қош келдіңіз! 👋",
-            text: "Ұлыбритания фермаларында тұру және жұмыс істеу үшін негізгі ағылшын тілін үйренуді А1-дің бірінші сабағынан бастаңыз. Прогресіңіз автоматты түрде сақталады.",
-            btn: "1-сабақты бастау"
-          }
-        };
-        const oData = onboardingData[lang] || onboardingData.ru;
         list.innerHTML += `
           <div class="onboarding-card">
-            <div class="onboarding-title">${oData.title}</div>
-            <div class="onboarding-text">${oData.text}</div>
+            <div class="onboarding-title">${t('onboard_title')}</div>
+            <div class="onboarding-text">${t('onboard_text')}</div>
             <a class="onboarding-btn" href="a1.html">
-              ${oData.btn} <span class="icon">arrow_forward</span>
+              ${t('onboard_btn')} <span class="icon">arrow_forward</span>
             </a>
           </div>
         `;
