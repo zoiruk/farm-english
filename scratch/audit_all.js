@@ -15,6 +15,7 @@ const SCRATCH = __dirname;
 
 const CHECKS = [
   { script: 'check_sync.js',       args: [],     label: 'snapshot sync (HTML ↔ lessons_data*)' },
+  { script: 'check_syntax.js',     args: [],     label: 'syntax (inline <script> blocks parse)' },
   { script: 'audit.js',            args: ['a1'], label: 'audit          a1' },
   { script: 'audit.js',            args: ['a2'], label: 'audit          a2' },
   { script: 'audit.js',            args: ['b1'], label: 'audit          b1' },
