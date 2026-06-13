@@ -74,7 +74,11 @@ function checkWordCoverage(lesson) {
   for (const [index, word] of lesson.words.entries()) {
     const prefix = `words[${index}]`;
     for (const key of ['e', 'en', 'transcr', 'pn', ...LANGS]) {
-      if (!hasText(word[key])) {
+      // 'e' may be '' (empty string = Material Symbol); only truly absent/null fails
+      const missing = key === 'e'
+        ? (word.e === undefined || word.e === null)
+        : !hasText(word[key]);
+      if (missing) {
         addIssue(lessonId, 'words', `${prefix} missing ${key}`);
       }
     }
