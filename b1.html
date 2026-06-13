@@ -6743,7 +6743,7 @@
       document.getElementById('cert-course-title').textContent = 'English for Seasonal Workers — ' + level.title;
       document.getElementById('cert-course-subtitle').textContent = level.name;
       document.getElementById('cert-lessons').textContent = String(level.lessons);
-      document.getElementById('cert-words').textContent = String(getCompletedWordsCount() || 180);
+      document.getElementById('cert-words').textContent = String(getCompletedWordsCount() || 0);
       document.getElementById('cert-date').textContent = issuedDate;
       document.getElementById('cert-level').textContent = level.title;
     }
