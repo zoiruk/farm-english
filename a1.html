@@ -42,6 +42,7 @@
       --c-b2: #1a73e8;
       --c-c1: #7c4dff;
       --c-c2: #5f6368;
+      --c-nav-back: #1558b0; /* solid fill for the floating Back button — AA on white & vs page bg */
 
       --c-accent: var(--c-a1);
 
@@ -508,7 +509,7 @@
       cursor: pointer;
       font-size: 14px;
       margin-top: 4px;
-      opacity: .7
+      opacity: 1
     }
 
     .q-card {
@@ -1330,9 +1331,9 @@
     .float-back {
       min-height: 42px;
       border-radius: 999px;
-      border-color: rgba(26, 115, 232, 0.16);
-      background: rgba(255, 255, 255, 0.84);
-      color: var(--ne-ink);
+      border-color: transparent;
+      background: var(--c-nav-back);
+      color: #fff;
       box-shadow: var(--ne-shadow);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
@@ -1341,11 +1342,11 @@
 
     .float-back:active {
       transform: scale(0.96);
-      background: #e8f0fe;
+      background: #0e447f;
     }
 
     .float-back .fb-arrow {
-      color: var(--ne-primary);
+      color: #fff;
     }
 
     .scr {
