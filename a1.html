@@ -2570,14 +2570,6 @@
   </script>
   <script>
     // ── LESSON DATA ───────────────────────────────────────────────────────────────
-    const MODS = [
-      { id: 1, emoji: '👋', name_ru: 'Знакомство', name_uz: 'Tanishuv', name_tj: 'Шиносоӣ', name_kg: 'Тааныштыруу', lessons: [1, 2] },
-      { id: 2, emoji: '🚜', name_ru: 'На ферме', name_uz: 'Fermada', name_tj: 'Дар ферма', name_kg: 'Фермада', lessons: [3, 4, 5] },
-      { id: 3, emoji: '⏱️', name_ru: 'Каждый день', name_uz: 'Har kuni', name_tj: 'Ҳар рӯз', name_kg: 'Ар күн', lessons: [6, 7] },
-      { id: 4, emoji: '🧤', name_ru: 'Безопасность', name_uz: 'Xavfsizlik', name_tj: 'Бехатарӣ', name_kg: 'Коопсуздук', lessons: [8] },
-      { id: 5, emoji: '🏠', name_ru: 'Жизнь в кэмпе', name_uz: 'Lagerdagi hayot', name_tj: 'Дар лагер', name_kg: 'Лагерде', lessons: [9, 10, 11] },
-      { id: 6, emoji: '📋', name_ru: 'Документы и здоровье', name_uz: "Hujjatlar va salomatlik", name_tj: 'Ҳуҷҷат ва саломатӣ', name_kg: 'Документ жана саламаттык', lessons: [12, 13, 14, 15] },
-    ];
     const LESSONS = [
       {
             "id": 1,
@@ -15067,18 +15059,6 @@
               h += `<button type="button" class="speak-btn" onclick="${speechAttr(ex.en)}"><span class="icon">volume_up</span> ${lang === 'ru' ? 'Слушать' : lang === 'uz' ? 'Tinglash' : lang === 'tj' ? 'Гӯш кунед' : lang === 'kg' ? 'Угуу' : 'Тыңдау'}</button></div>`;
             });
           }
-        } else {
-          // OLD FORMAT FALLBACK
-          h += `<div class="g-card"><div class="g-title">${gl(g, 'title')}</div><div class="g-rule">${gl(g, 'rule')}</div>`;
-          const note = gl(g, 'note');
-          if (note) h += `<div class="g-note">💡 ${note}</div>`;
-          h += `</div>`;
-          g.examples.forEach(ex => {
-            const tr = ex[lang] || ex.ru;
-            h += `<div class="g-card"><div class="g-en">${ex.en}</div><div class="g-transcr">${ex.transcr || ''}</div><div class="g-tr">${tr}</div>`;
-            h += `<button type="button" class="speak-btn" onclick="${speechAttr(ex.en)}"><span class="icon">volume_up</span> ${lang === 'ru' ? 'Слушать' : lang === 'uz' ? 'Tinglash' : lang === 'tj' ? 'Гӯш кунед' : 'Угуу'}</button></div>`;
-          });
-        }
       }
 
       if (curTab === 'words') {
@@ -15317,7 +15297,7 @@
       document.getElementById('cert-course-title').textContent = `English for Seasonal Workers — ${level.title}`;
       document.getElementById('cert-course-subtitle').textContent = level.name;
       document.getElementById('cert-lessons').textContent = String(level.lessons);
-      document.getElementById('cert-words').textContent = String(stats.wordsLearned || 450);
+      document.getElementById('cert-words').textContent = String(stats.wordsLearned || 0);
       document.getElementById('cert-date').textContent = issuedDate;
       document.getElementById('cert-level').textContent = level.title;
     }
