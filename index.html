@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FarmEnglish — Английский для сезонных рабочих</title>
+  <meta name="description" content="Бесплатное офлайн-приложение для изучения английского языка сезонными работниками из Центральной Азии в Великобритании. Уровни A1–B1, перевод на 5 языков.">
+  <link rel="icon" type="image/png" href="assets/icons/icon-192.png">
   <style>
     :root {
       --bg: #eef3fb;
@@ -35,6 +37,7 @@
       --ne-ease: cubic-bezier(0.22, 1, 0.36, 1);
       --ne-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
       --c-a1: #e87830;
+      --c-a1-strong: #b5560f; /* AA-contrast orange for white-text buttons (4.88:1) */
       --c-a2: #1aae39;
       --c-b1: #12b5cb;
       --c-b2: #1a73e8;
@@ -720,7 +723,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: var(--c-a1);
+      background: var(--c-a1-strong);
       color: #fff;
       padding: 10px 18px;
       border-radius: 12px;
@@ -875,7 +878,7 @@
     @font-face {
       font-family: 'Material Symbols Outlined';
       src: url('assets/fonts/material-symbols-outlined.woff2') format('woff2');
-      font-display: block;
+      font-display: swap;
     }
 
     .icon {
@@ -916,6 +919,7 @@
       </button>
     </div>
 
+    <main>
     <!-- Hero — Title -->
     <div class="hero">
       <h1 class="hero-title" id="h_title">Английский для<br>сезонных работников</h1>
@@ -951,6 +955,7 @@
     <div class="lv-list" id="lv_list">
       <!-- JS renders levels here -->
     </div>
+    </main>
 
 
   </div>
