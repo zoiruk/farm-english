@@ -40,6 +40,7 @@
       --c-b2: #1a73e8;
       --c-c1: #7c4dff;
       --c-c2: #5f6368;
+      --c-nav-back: #1558b0; /* solid fill for the floating Back button — AA on white & vs page bg */
 
       --c-accent: var(--c-b1);
 
@@ -95,11 +96,11 @@
       align-items: center;
       gap: 5px;
       padding: 8px 12px 8px 16px;
-      border: 1px solid rgba(26, 115, 232, 0.16);
+      border: 1px solid transparent;
       min-height: 42px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.84);
-      color: var(--ne-ink);
+      background: var(--c-nav-back);
+      color: #fff;
       cursor: pointer;
       font-family: inherit;
       box-shadow: var(--ne-shadow);
@@ -110,12 +111,12 @@
 
     .float-back:active {
       transform: scale(0.96);
-      background: #e8f0fe;
+      background: #0e447f;
     }
 
     .float-back .fb-arrow {
       font-size: 15px;
-      color: var(--c-accent);
+      color: #fff;
     }
 
     .scr {
@@ -574,7 +575,7 @@
       cursor: pointer;
       font-size: 14px;
       margin-top: 4px;
-      opacity: .7;
+      opacity: 1;
       min-height: 42px;
       display: inline-flex;
       align-items: center;
