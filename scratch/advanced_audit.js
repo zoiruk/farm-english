@@ -425,6 +425,66 @@ function checkGrammar(lesson) {
   }
 }
 
+// ── New checks (6.5 blind-spots) ────────────────────────────────────────────
+
+const VALID_SPEAKERS = new Set(['m', 'w', 'c', 'd']);
+const CYRILLIC_RE = /[а-яёА-ЯЁ]/;
+
+// Check 8: speaker role — s must be one of the four valid speaker codes.
+function checkSpeakerRoles(lesson) {
+  for (const [index, line] of (lesson.dialogue || []).entries()) {
+    if (hasText(line.s) && !VALID_SPEAKERS.has(line.s)) {
+      flagStrict(lesson.id, 'dialogue',
+        `dialogue[${index}] invalid speaker "${line.s}" (must be m/w/c/d)`);
+    }
+  }
+}
+
+// Check 9: lesson name completeness — name_ru/uz/tj/kg/kz all present and non-empty.
+function checkLessonNames(lesson) {
+  for (const lang of LANGS) {
+    const key = 'name_' + lang;
+    if (!hasText(lesson[key])) {
+      flagStrict(lesson.id, 'lesson', `missing ${key}`);
+    }
+  }
+}
+
+// Check 10: transcription format — transcr fields must contain at least one
+// Cyrillic character (catches Latin accidentally copied instead of Russian transcription).
+function checkTranscrFormat(lesson) {
+  for (const [index, word] of (lesson.words || []).entries()) {
+    if (hasText(word.transcr) && !CYRILLIC_RE.test(word.transcr)) {
+      flagStrict(lesson.id, 'words',
+        `words[${index}] transcr "${word.transcr}" contains no Cyrillic`);
+    }
+  }
+  for (const [index, line] of (lesson.dialogue || []).entries()) {
+    if (hasText(line.transcr) && !CYRILLIC_RE.test(line.transcr)) {
+      flagStrict(lesson.id, 'dialogue',
+        `dialogue[${index}] transcr "${line.transcr}" contains no Cyrillic`);
+    }
+  }
+}
+
+// Check 11: emoji diversity — ≥80% of word e-fields must be unique per lesson.
+// Empty string '' (Material Symbol) counts as one distinct value.
+// Guard: only enforced for A2 (the 6.4 emoji pass). A1 is content-frozen;
+// B1 emoji standardisation is deferred until B1 reaches production.
+function checkEmojiDiversity(lesson) {
+  if (course !== 'a2') return;
+  const words = lesson.words || [];
+  if (words.length === 0) return;
+  const unique = new Set(words.map(w => w.e));
+  const pct = unique.size / words.length;
+  if (pct < 0.8) {
+    addIssue(lesson.id, 'words',
+      `emoji diversity ${Math.round(pct * 100)}% (${unique.size}/${words.length} unique) — must be ≥80%`);
+  }
+}
+
+// ────────────────────────────────────────────────────────────────────────────
+
 const globalWords = new Map();
 
 // taughtAt: normalized word/stem → global lesson order it is FIRST carded (lower=earlier).
@@ -473,6 +533,10 @@ for (const lesson of LESSONS) {
   checkAnswerLeaks(lesson);
   checkTranslateHintDuplicate(lesson);
   checkSnowball(lesson, lessonOrder.get(lesson.id));
+  checkSpeakerRoles(lesson);
+  checkLessonNames(lesson);
+  checkTranscrFormat(lesson);
+  checkEmojiDiversity(lesson);
 
   for (const word of lesson.words || []) {
     const normalized = hasText(word.en) ? word.en.trim().toLowerCase() : '';
