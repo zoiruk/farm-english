@@ -2,7 +2,7 @@
 // │  KILL-SWITCH: bump CACHE_VERSION (e.g. 'v1' → 'v2') and push.          │
 // │  The new SW activates, wipes all old caches, re-fetches everything.     │
 // └─────────────────────────────────────────────────────────────────────────┘
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const CACHE_NAME    = `farmenglish-${CACHE_VERSION}`;
 
 // Files to precache on SW install (offline-first guarantee)
@@ -22,7 +22,11 @@ const PRECACHE = [
 self.addEventListener('install', (event) => {
   self.skipWaiting();
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE))
+    caches.open(CACHE_NAME).then((cache) =>
+      // {cache: 'reload'} bypasses the browser HTTP cache so a fresh deploy is never
+      // precached as a stale copy (GH Pages serves assets with a max-age window).
+      cache.addAll(PRECACHE.map((url) => new Request(url, { cache: 'reload' })))
+    )
   );
 });
 
