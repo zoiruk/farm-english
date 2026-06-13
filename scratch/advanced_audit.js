@@ -467,15 +467,17 @@ function checkTranscrFormat(lesson) {
   }
 }
 
-// Check 11: emoji diversity — ≥80% of word e-fields must be unique per lesson.
-// Empty string '' (Material Symbol) counts as one distinct value.
+// Check 11: emoji diversity — ≥80% of word display values must be unique per lesson.
+// Display value: w.e if non-empty; '[icon:NAME]' if w.e==='' and w.icon set; '[fallback]' otherwise.
 // Guard: only enforced for A2 (the 6.4 emoji pass). A1 is content-frozen;
 // B1 emoji standardisation is deferred until B1 reaches production.
 function checkEmojiDiversity(lesson) {
   if (course !== 'a2') return;
   const words = lesson.words || [];
   if (words.length === 0) return;
-  const unique = new Set(words.map(w => w.e));
+  const unique = new Set(
+    words.map(w => w.e !== '' ? w.e : (w.icon ? '[icon:' + w.icon + ']' : '[fallback]'))
+  );
   const pct = unique.size / words.length;
   if (pct < 0.8) {
     addIssue(lesson.id, 'words',

@@ -264,6 +264,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "receipt_long",
                         "en": "gross",
                         "ru": "до вычетов",
                         "uz": "soliqlar chegirilmasdan oldin",
@@ -275,6 +276,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "payments",
                         "en": "net",
                         "ru": "после вычетов",
                         "uz": "soliqlar chegirilgandan keyin",
@@ -297,6 +299,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "work",
                         "en": "basic",
                         "ru": "базовый",
                         "uz": "bazaviy",
@@ -418,6 +421,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "pin",
                         "en": "tax code",
                         "ru": "налоговый код",
                         "uz": "soliq kodi",
@@ -440,6 +444,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "remove",
                         "en": "deduct",
                         "ru": "вычитать",
                         "uz": "chegirib qolmoq",
@@ -2730,6 +2735,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "medication",
                         "en": "ibuprofen",
                         "pn": "/ˌaɪbjuːˈprəʊfen/",
                         "transcr": "айбьюпроуфэн",
@@ -3585,6 +3591,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "biotech",
                         "en": "antibiotic",
                         "pn": "/ˌæntibaɪˈɒtɪk/",
                         "transcr": "энтибайотик",
@@ -3629,6 +3636,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "nutrition",
                         "en": "vitamin",
                         "pn": "/ˈvɪtəmɪn/",
                         "transcr": "витэмин",
@@ -3684,6 +3692,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "medical_services",
                         "en": "capsule",
                         "pn": "/ˈkæpsjuːl/",
                         "transcr": "кэпсьюл",
@@ -3717,6 +3726,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "air",
                         "en": "spray",
                         "pn": "/spreɪ/",
                         "transcr": "спрэй",
@@ -3750,6 +3760,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "schedule",
                         "en": "dosage",
                         "pn": "/ˈdəʊsɪdʒ/",
                         "transcr": "доусидж",
@@ -4528,6 +4539,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "electrical_services",
                         "en": "overhead",
                         "pn": "/ˌəʊvəˈhed/",
                         "transcr": "оувэхэд",
@@ -5306,6 +5318,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "map",
                         "en": "district",
                         "pn": "/ˈdɪstrɪkt/",
                         "transcr": "дистрикт",
@@ -5339,6 +5352,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "road",
                         "en": "pavement",
                         "pn": "/ˈpeɪvmənt/",
                         "transcr": "пэйвмэнт",
@@ -5361,6 +5375,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "signpost",
                         "en": "avenue",
                         "pn": "/ˈævənjuː/",
                         "transcr": "эвэнью",
@@ -5405,6 +5420,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "crop_square",
                         "en": "square",
                         "pn": "/skweə/",
                         "transcr": "скуэ",
@@ -5427,6 +5443,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "traffic",
                         "en": "intersection",
                         "pn": "/ˌɪntəˈsekʃn/",
                         "transcr": "интэсэкшн",
@@ -5974,6 +5991,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "phone_forwarded",
                         "en": "extension",
                         "pn": "/ɪkˈstenʃn/",
                         "transcr": "иксстэншн",
@@ -6051,6 +6069,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "dialpad",
                         "en": "dial",
                         "pn": "/daɪəl/",
                         "transcr": "дайэл",
@@ -6249,6 +6268,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "call",
                         "en": "pick up the phone",
                         "pn": "/pɪk ʌp ðə fəʊn/",
                         "transcr": "пик ап зэ фоун",
@@ -7904,6 +7924,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "work_history",
                         "en": "zero-hours contract",
                         "pn": "/ˌzɪərəʊ ˈaʊəz ˌkɒntrækt/",
                         "transcr": "зиэроу ауэз контракт",
@@ -8418,6 +8439,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "gavel",
                         "en": "clause",
                         "pn": "/klɔːz/",
                         "transcr": "клоз",
@@ -8429,6 +8451,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "description",
                         "en": "terms",
                         "pn": "/tɜːmz/",
                         "transcr": "тёмз",
@@ -8528,6 +8551,7 @@ module.exports = [
                   },
                   {
                         "e": "",
+                        "icon": "policy",
                         "en": "penalty clause",
                         "pn": "/ˈpenəlti klɔːz/",
                         "transcr": "пэнэлти клоз",

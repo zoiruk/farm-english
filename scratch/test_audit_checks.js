@@ -50,7 +50,9 @@ function checkTranscrFormat(lesson, report) {
 function checkEmojiDiversity(lesson, report) {
   const words = lesson.words || [];
   if (words.length === 0) return;
-  const unique = new Set(words.map(w => w.e));
+  const unique = new Set(
+    words.map(w => w.e !== '' ? w.e : (w.icon ? '[icon:' + w.icon + ']' : '[fallback]'))
+  );
   const pct = unique.size / words.length;
   if (pct < 0.8) {
     report(`emoji diversity ${Math.round(pct * 100)}% (${unique.size}/${words.length} unique)`);
