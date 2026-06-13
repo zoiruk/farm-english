@@ -39,6 +39,8 @@ No build step, no npm, no package.json. Everything runs directly in the browser.
 /
 ├── index.html          ← Hub: level selection, progress, phrasebook
 ├── a1.html             ← A0–A1 course (15 lessons, all data inline)
+├── a2.html             ← A1–A2 course (15 lessons, all data inline)
+├── b1.html             ← A2–B1 course (6 lessons, all data inline)
 ├── translations.js     ← Shared i18n object for index.html (5 languages)
 ├── get_quiz.py         ← Utility: quiz generation helper
 ├── swap.py             ← Utility script
@@ -58,7 +60,7 @@ No build step, no npm, no package.json. Everything runs directly in the browser.
 ### Architecture: Hub-and-Spoke
 
 - **Hub** (`index.html`): Entry point. Shows all CEFR levels, progress stats, phrasebook. Uses external `translations.js`.
-- **Spokes** (`a1.html`, future `a2.html` etc.): Self-contained lesson pages. Each file contains ALL lesson data inline as a `LESSONS` JS array. No external data fetching.
+- **Spokes** (`a1.html`, `a2.html`, `b1.html` etc.): Self-contained lesson pages. Each file contains ALL lesson data inline as a `LESSONS` JS array. No external data fetching.
 - Navigation: Lesson pages have a floating back button (iOS-style chevron) returning to the hub.
 
 ### Lesson Page Internal Navigation
@@ -66,15 +68,15 @@ No build step, no npm, no package.json. Everything runs directly in the browser.
 Users move through tabs sequentially:
 1. Grammar → 2. Words → 3. Dialogue → 4. Quiz → Completion screen
 
-Navigation is driven by "Next →" buttons. No sidebar or tab bar.
+Navigation uses a tab bar (Grammar / Words / Dialogue / Quiz) with "Next →" buttons to advance between tabs.
 
 ## Course Structure
 
 | Level | File | Status | Focus |
 |-------|------|--------|-------|
 | A0–A1 "First Days on the Farm" | `a1.html` | ✅ MVP (15 lessons) | Survival, shifts, numbers, safety |
-| A2 "Life in the Camp" | `a2.html` | 🔜 Phase 2 | Payslip, transport, shops, daily life |
-| B1 "Solving Problems" | `b1.html` | 🔜 Phase 3 | Rights, conflicts, H&S |
+| A2 "Life in the Camp" | `a2.html` | ✅ Phase 2 (15 lessons) | Payslip, transport, shops, daily life |
+| B1 "Solving Problems" | `b1.html` | 🚧 Phase 3 draft (6 lessons) | Rights, conflicts, H&S |
 | B2–C2 | future files | 🔒 Later | — |
 
 Levels unlock sequentially: A1 is always open; each subsequent level unlocks when the previous is 100% complete (`fe_a1.length >= 15`, etc.).
