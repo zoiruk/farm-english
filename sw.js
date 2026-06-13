@@ -2,7 +2,7 @@
 // │  KILL-SWITCH: bump CACHE_VERSION (e.g. 'v1' → 'v2') and push.          │
 // │  The new SW activates, wipes all old caches, re-fetches everything.     │
 // └─────────────────────────────────────────────────────────────────────────┘
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = 'v3';
 const CACHE_NAME    = `farmenglish-${CACHE_VERSION}`;
 
 // Files to precache on SW install (offline-first guarantee)
