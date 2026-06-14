@@ -58,9 +58,10 @@ Basic structure, first two A1 lessons, initial UI layout.
   - L8 "Несчастный случай на ферме" — Past Perfect (Module 4)
   - Each passes the full audit gate (8/8: counts, snowball, no duplicates) on `b1-dev`.
 - Tracked on `b1-dev` branch; **not deployed to production** — hub card is permanently locked.
-- **Deployment gated on translation review (owner decision 2026-06-14):** lessons are authored as
-  AI drafts now, but B1 will NOT be merged/deployed until native speakers review the existing
-  backlog (254 fields) + each new lesson's ~320 draft fields. See `specs/translation_review.md`.
+- **Translation-review blocker still in force (owner decision 2026-06-14).** The blocker was NOT
+  lifted: the owner only permitted *authoring* L8–12 as AI drafts in parallel. B1 stays **LOCKED**
+  and **must not be merged or deployed** until native speakers complete review of the existing
+  backlog (254 fields) **plus** every new lesson's ~320 draft fields. See `specs/translation_review.md`.
 - Will be promoted to `master` only when all 12 lessons are complete, natively translated, audited,
   with MODS finalised to 12 and the completion banner bound to `LESSONS.length`.
 
@@ -106,11 +107,12 @@ Current live `CACHE_VERSION`: **`v3`**.
 
 ## Future work
 
-1. **Translation review (blocks B1 completion)** — native-speaker pass on the 254 existing
+1. **Translation review (hard blocker for B1 release)** — native-speaker pass on the 254 existing
    flagged fields (54 Cat-1 KZ/KG divergence, 123 Cat-1 loanwords, 77 Cat-2 mixed-script UZ) PLUS
-   L7's 320 new draft fields; update lesson data, re-run audit.
-2. **B1 completion** — lessons 8–12 (L7 already drafted as sample), audit gate, merge `b1-dev` →
-   `master`, unlock hub card. **Deferred until item 1 is done** (owner decision 2026-06-14).
+   every new B1 lesson's ~320 draft fields (L7, L8, … as authored); update lesson data, re-run audit.
+2. **B1 completion** — author lessons 9–12 (L7, L8 drafted), finalise MODS to 12, bind completion
+   banner to `LESSONS.length`, run gate. **Authoring proceeds now; merge `b1-dev` → `master` and
+   hub-card unlock remain blocked on item 1** (owner decision 2026-06-14).
 3. **Material Symbols migration for A1** — optional: replace emoji word icons with MS icons for visual consistency with A2 abstract-word cards. Low priority; emoji are functional.
 4. **B2 / C1 levels** — hub cards exist (locked); no content planned yet.
 5. **Analytics / feedback** — currently zero telemetry by design; if user research is needed, add privacy-respecting event logging without external SDK.
