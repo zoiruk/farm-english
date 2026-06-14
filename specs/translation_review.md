@@ -407,3 +407,32 @@ Priority rows from the kz===kg detector (loanwords / grammar labels — low prio
 
 Notes: `uz` fields use Latin Uzbek consistently; `grammar.forms.*.rule_uz` are HTML+transcription (not script errors).
 
+---
+
+## B1 Lesson 12 "Банк, документы и виза" (b1-dev branch) — NEW lesson, full AI draft — B1 COMPLETE
+
+Added 2026-06-14 on `b1-dev` (Reported speech, Module 6 "Life in the UK"; dialogue w/m).
+This is the **final** B1 lesson — the course is now 12/12 and passes the full 9/9 gate on `b1-dev`.
+**Entire lesson is an AI draft** — `ru`/`en` authored directly, every `uz`/`tj`/`kg`/`kz` field needs
+a native pass. **320** localized fields. (Bank/visa overlaps L10 finance + A2 — the pre-check rejected
+`expire`, `expiry`, `translate`, `standing order`, `leave to remain` and many dups.)
+
+Priority rows from the kz===kg detector (loanwords — low priority):
+
+| file | lesson | field | current text | note |
+|------|--------|-------|--------------|------|
+| b1 | 12 | `words[25].kz` | валюта | loanword, identical to `.kg` |
+| b1 | 12 | `words[26].kz` | транзакция (операция) | loanword, identical to `.kg` |
+
+Notes: `uz` fields use Latin Uzbek consistently; `grammar.forms.*.rule_uz` are HTML+transcription (not script errors).
+
+---
+
+### B1 translation-review total (L7–L12)
+
+All six new lessons are AI drafts: **6 × 320 = 1,920 new `uz`/`tj`/`kg`/`kz` fields** require a native
+pass, on top of the 254 pre-existing flagged fields. The kz===kg rows surfaced per lesson are almost
+all international loanwords or grammar formulae (legitimately identical) — the genuine review burden is
+the *whole* of each lesson's non-ru/en content, not just those rows. **B1 must not be merged or
+deployed until this review is complete** (owner decision 2026-06-14).
+

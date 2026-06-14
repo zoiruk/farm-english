@@ -53,20 +53,25 @@ Basic structure, first two A1 lessons, initial UI layout.
 ## Known limitations — v1
 
 ### B1 course
-- **11 of a planned 12 lessons exist** on `b1-dev` (authoring L7–L12 in progress, 2026-06-14):
+- **All 12 lessons now drafted** on `b1-dev` (authoring complete 2026-06-14):
+  - L1–6 (earlier): Past Simple/Continuous · quantifiers · articles · future forms · comparatives · Present Perfect
   - L7 "Собеседование и повышение" — Present Perfect Continuous (Module 3)
   - L8 "Несчастный случай на ферме" — Past Perfect (Module 4)
   - L9 "У врача (GP)" — should/shouldn't + First Conditional (Module 4)
   - L10 "Зарплата и трудовой договор" — Passive voice (Module 5)
   - L11 "Жильё и аренда" — Relative clauses (Module 5)
-  - Each passes the full audit gate (8/8: counts, snowball, no duplicates) on `b1-dev`.
-- Tracked on `b1-dev` branch; **not deployed to production** — hub card is permanently locked.
-- **Translation-review blocker still in force (owner decision 2026-06-14).** The blocker was NOT
-  lifted: the owner only permitted *authoring* L8–12 as AI drafts in parallel. B1 stays **LOCKED**
-  and **must not be merged or deployed** until native speakers complete review of the existing
-  backlog (254 fields) **plus** every new lesson's ~320 draft fields. See `specs/translation_review.md`.
-- Will be promoted to `master` only when all 12 lessons are complete, natively translated, audited,
-  with MODS finalised to 12 and the completion banner bound to `LESSONS.length`.
+  - L12 "Банк, документы и виза" — Reported speech (Module 6)
+- **B1 finalised on `b1-dev`:** MODS = 6 modules covering all 12 lessons (no empty modules);
+  completion banner bound to `LESSONS.length`; hub total shows 12. Full **9/9 gate green** on
+  `b1-dev` (snapshot sync, JS syntax, counts ×3, advanced ×3, cross-course duplicates).
+- Tracked on `b1-dev` branch; **not deployed to production** — hub card is permanently locked
+  (`locked: true`); `CACHE_VERSION` not bumped.
+- **Translation-review blocker still in force (owner decision 2026-06-14).** Authoring is done, but
+  the blocker was NOT lifted: B1 stays **LOCKED** and **must not be merged or deployed** until native
+  speakers complete review of the existing backlog (254 fields) **plus** all six new lessons'
+  ~1,920 draft fields (6 × 320). See `specs/translation_review.md`.
+- Will be promoted to `master` only when the native translation review is complete (content is already
+  audit-ready: 12 lessons, MODS finalised, banner bound to `LESSONS.length`, 9/9 gate green).
 
 ### Translations — pending native-speaker review
 File: `specs/translation_review.md` — 254 flagged fields total.
@@ -112,10 +117,10 @@ Current live `CACHE_VERSION`: **`v3`**.
 
 1. **Translation review (hard blocker for B1 release)** — native-speaker pass on the 254 existing
    flagged fields (54 Cat-1 KZ/KG divergence, 123 Cat-1 loanwords, 77 Cat-2 mixed-script UZ) PLUS
-   every new B1 lesson's ~320 draft fields (L7, L8, … as authored); update lesson data, re-run audit.
-2. **B1 completion** — author lessons 9–12 (L7, L8 drafted), finalise MODS to 12, bind completion
-   banner to `LESSONS.length`, run gate. **Authoring proceeds now; merge `b1-dev` → `master` and
-   hub-card unlock remain blocked on item 1** (owner decision 2026-06-14).
+   the 1,920 new B1 draft fields (L7–L12, 6 × 320); update lesson data, re-run audit.
+2. **B1 release** — authoring is COMPLETE (12 lessons, MODS finalised, 9/9 gate green on `b1-dev`).
+   Remaining steps, all blocked on item 1: merge `b1-dev` → `master`, unlock the hub card, bump
+   `CACHE_VERSION` in `sw.js`, deploy (owner decision 2026-06-14).
 3. **Material Symbols migration for A1** — optional: replace emoji word icons with MS icons for visual consistency with A2 abstract-word cards. Low priority; emoji are functional.
 4. **B2 / C1 levels** — hub cards exist (locked); no content planned yet.
 5. **Analytics / feedback** — currently zero telemetry by design; if user research is needed, add privacy-respecting event logging without external SDK.
