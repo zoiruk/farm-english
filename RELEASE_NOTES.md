@@ -69,10 +69,31 @@ File: `specs/translation_review.md` — 254 flagged fields total.
 
 No translation fix has been applied in code — this is a content audit for a native-speaker pass.
 
+---
+
+## Deployment rules
+
+**Any push that changes `a1.html`, `a2.html`, `index.html`, `translations.js`, or `sw.js` MUST bump `CACHE_VERSION` in `sw.js` in the same push** (e.g. `v3` → `v4`).
+
+- **Why:** the service worker serves these via stale-while-revalidate from a versioned cache (`farmenglish-<version>`). `sw.js` itself only re-installs when its bytes change, so without a version bump returning users keep the old cached copy and **never receive the change**. This caused two production incidents:
+  - the SEV-1 blank a1 fix (`f472514`) reached no one until the `v1→v2` bump (`923e3fa`);
+  - the high-contrast Back button reached no one until the `v2→v3` bump (`64c60db`).
+- **Mechanism:** the bump is the documented kill-switch (`sw.js` header). The new SW's `activate` purges old caches and re-precaches fresh copies; `install` uses `new Request(url, {cache:'reload'})` to bypass the browser HTTP cache (GH Pages `max-age` window).
+- **Verify after push:** `curl` the live `sw.js` for the new version, then a returning-user probe (persistent profile) — old cache evicted, new asset served. Clean-profile / `127.0.0.1` probes do **not** exercise the SW path and can falsely report success.
+- Fonts/icons (`.woff2`/`.png`) are cache-first and effectively immutable — no bump needed unless replaced.
+
+Current live `CACHE_VERSION`: **`v3`**.
+
 ### Icons — partial emoji legacy
 - `a1.html`: all 450 word-card icons are emoji (no Material Symbol replacement planned unless visual consistency becomes a requirement)
 - `a2.html`: 426 emoji + 24 Material Symbol icons (abstract concepts already replaced in phase 6)
 - No functional impact; emoji render consistently on all target platforms (Android 8+, iOS 14+)
+
+### a1 `--c-accent` variable cycle (deferred — deliberate, not a hidden bug)
+- `a1.html` `:root` defines `--c-a1: var(--c-accent)` **and** `--c-accent: var(--c-a1)` — a circular reference, so `var(--c-accent)` resolves to empty throughout a1 (measured in-browser).
+- **Scope: ~24 `var(--c-accent)` uses across a1** render colorless — orange accents fall back to transparent backgrounds / inherited text (also affects `--ne-coral` and `--c-a1`, which alias it). a1 has shipped this way; the blue-without-orange look is the **de-facto appearance users already see**.
+- **Decision (owner, 2026-06-14): do NOT fix now.** Restoring the orange is a visual change to a live, in-use course and needs a dedicated before/after review of all 24 elements — not a drive-by edit.
+- The one *user-blocking* symptom — the invisible `.speak-btn` "Слушать" (white text on the transparent fallback) — was fixed in isolation via a concrete `--c-a1-strong: #b5560f` token (commit `b714949`, white-on-fill 4.88:1), **without** touching the cycle. The Back-button and 🔊 contrast fixes (commits `bcc7319`/`b714949`, b1-dev `ffa05ef`) are likewise independent of the cycle.
 
 ---
 
