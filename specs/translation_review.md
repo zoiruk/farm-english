@@ -364,3 +364,23 @@ legitimately identical, confirm with a speaker; low priority):
 
 Notes: `uz` fields use Latin Uzbek consistently; `grammar.forms.*.rule_uz` are HTML+transcription (not script errors).
 
+---
+
+## B1 Lesson 10 "Зарплата и трудовой договор" (b1-dev branch) — NEW lesson, full AI draft
+
+Added 2026-06-14 on `b1-dev` (Passive voice, Module 5 "Money & Rights"; dialogue m/w).
+**Entire lesson is an AI draft** — `ru`/`en` authored directly, every `uz`/`tj`/`kg`/`kz`
+field needs a native pass. **320** localized fields. (Heavy A2 finance-vocab overlap — the
+candidate pre-check rejected `earnings`, `holiday`, `hourly rate`, `national insurance`,
+`employment` and dozens of dups, so no duplicate cards reached the lesson.)
+
+Priority rows from the kz===kg detector (loanword / grammar formulae — low priority):
+
+| file | lesson | field | current text | note |
+|------|--------|-------|--------------|------|
+| b1 | 10 | `words[4].kz` | комиссия | loanword, identical to `.kg` |
+| b1 | 10 | `quiz[4].expl_kz` | The contract is signed — is + signed. | grammar formula, identical to `.kg` |
+| b1 | 10 | `quiz[8].expl_kz` | Overtime is not included — is not + 3-форма. | grammar formula, identical to `.kg` |
+
+Notes: `uz` fields use Latin Uzbek consistently; `grammar.forms.*.rule_uz` are HTML+transcription (not script errors).
+
