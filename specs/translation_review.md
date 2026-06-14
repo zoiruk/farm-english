@@ -384,3 +384,26 @@ Priority rows from the kz===kg detector (loanword / grammar formulae — low pri
 
 Notes: `uz` fields use Latin Uzbek consistently; `grammar.forms.*.rule_uz` are HTML+transcription (not script errors).
 
+---
+
+## B1 Lesson 11 "Жильё и аренда" (b1-dev branch) — NEW lesson, full AI draft
+
+Added 2026-06-14 on `b1-dev` (Relative clauses who/which/that/where/whose, Module 5 "Money & Rights";
+dialogue m/w). **Entire lesson is an AI draft** — `ru`/`en` authored directly, every
+`uz`/`tj`/`kg`/`kz` field needs a native pass. **320** localized fields. (Housing overlaps A1/A2 —
+the pre-check rejected `ground floor`, `spare room`, `shared`, `corridor`, `shed` and dups.)
+
+Priority rows from the kz===kg detector (loanwords / grammar labels — low priority):
+
+| file | lesson | field | current text | note |
+|------|--------|-------|--------------|------|
+| b1 | 11 | `words[15].kz` | сантехник | loanword, identical to `.kg` |
+| b1 | 11 | `words[16].kz` | электрик | loanword, identical to `.kg` |
+| b1 | 11 | `words[22].kz` | радиатор | loanword, identical to `.kg` |
+| b1 | 11 | `words[29].kz` | ипотека | loanword, identical to `.kg` |
+| b1 | 11 | `quiz[5].hint_kz` | Сантехник — адам | short phrase, identical to `.kg` |
+| b1 | 11 | `grammar.title_kz` | RELATIVE CLAUSES — who / which / that / where / whose | English grammar term, identical to `.kg` |
+| b1 | 11 | `grammar.forms.positive.label_kz` | 👤 WHO / THAT — адамдар | "адамдар" identical to `.kg` |
+
+Notes: `uz` fields use Latin Uzbek consistently; `grammar.forms.*.rule_uz` are HTML+transcription (not script errors).
+
