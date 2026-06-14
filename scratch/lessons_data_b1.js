@@ -6577,4 +6577,827 @@ module.exports = [
           }
         ]
       }
+    ,
+      {
+        "id": 9,
+        "mod": 4,
+        "name_ru": "У врача (GP)",
+        "name_uz": "Shifokorda (GP)",
+        "name_tj": "Назди духтур (GP)",
+        "name_kg": "Дарыгерде (GP)",
+        "name_kz": "Дәрігерде (GP)",
+        "cefr": "should / shouldn't + First Conditional (if + present → advice)",
+        "grammar": {
+          "title_ru": "SHOULD / SHOULDN'T + Первое условное (советы о здоровье)",
+          "title_uz": "SHOULD / SHOULDN'T + Birinchi shart (salomatlik bo'yicha maslahat)",
+          "title_tj": "SHOULD / SHOULDN'T + Шарти якум (маслиҳат оид ба саломатӣ)",
+          "title_kg": "SHOULD / SHOULDN'T + Биринчи шарт (ден соолук кеңеши)",
+          "title_kz": "SHOULD / SHOULDN'T + Бірінші шарт (денсаулық кеңесі)",
+          "intro_ru": "<div style=\"line-height:1.6\">Используйте <b>should</b> (следует) и <b>shouldn't</b> (не следует), чтобы давать и просить совет. Часто вместе с <b>первым условным</b>: <b>if</b> + настоящее время, потом совет.<br>✅ <i>You <b>should</b> rest and drink water.</i><br>✅ <i><b>If</b> you have a fever, you <b>should</b> see a GP.</i><br>❌ <i>You <b>shouldn't</b> go to work when you are ill.</i></div>",
+          "intro_uz": "<div style=\"line-height:1.6\"><b>should</b> (kerak) va <b>shouldn't</b> (kerak emas) maslahat berish va so'rash uchun ishlatiladi. Ko'pincha <b>birinchi shart</b> bilan: <b>if</b> + hozirgi zamon, keyin maslahat.<br>✅ <i>You should rest and drink water.</i><br>✅ <i>If you have a fever, you should see a GP.</i></div>",
+          "intro_tj": "<div style=\"line-height:1.6\"><b>should</b> (бояд) ва <b>shouldn't</b> (набояд) барои додан ва пурсидани маслиҳат истифода мешавад. Аксаран бо <b>шарти якум</b>: <b>if</b> + замони ҳозира, баъд маслиҳат.<br>✅ <i>You should rest and drink water.</i><br>✅ <i>If you have a fever, you should see a GP.</i></div>",
+          "intro_kg": "<div style=\"line-height:1.6\"><b>should</b> (керек) жана <b>shouldn't</b> (керек эмес) кеңеш берүү жана суроо үчүн колдонулат. Көбүнчө <b>биринчи шарт</b> менен: <b>if</b> + учур чак, анан кеңеш.<br>✅ <i>You should rest and drink water.</i></div>",
+          "intro_kz": "<div style=\"line-height:1.6\"><b>should</b> (керек) және <b>shouldn't</b> (керек емес) кеңес беру және сұрау үшін қолданылады. Көбіне <b>бірінші шартпен</b>: <b>if</b> + осы шақ, содан кейін кеңес.<br>✅ <i>You should rest and drink water.</i></div>",
+          "cultural_ru": "В Великобритании сначала идут к GP (семейному врачу) — для этого нужно зарегистрироваться (register) в местной surgery. При несрочных вопросах звоните 111 (NHS), при опасности для жизни — 999. Лекарства без рецепта (paracetamol) продаются в любой аптеке; рецептурные — только по prescription от врача.",
+          "cultural_uz": "Buyuk Britaniyada avval GP (oilaviy shifokor)ga boriladi — buning uchun mahalliy surgery'da ro'yxatdan o'tish kerak. Shoshilinch bo'lmagan savollar uchun 111 (NHS), hayot uchun xavfli holatda 999 ga qo'ng'iroq qiling.",
+          "cultural_tj": "Дар Британияи Кабир аввал назди GP (духтури оилавӣ) мераванд — барои ин дар surgery-и маҳаллӣ ба қайд гирифтан лозим аст. Барои саволҳои ғайрифаврӣ ба 111 (NHS), дар ҳолати хатари ҷонӣ ба 999 занг занед.",
+          "cultural_kg": "Улуу Британияда адегенде GP (үй-бүлөлүк дарыгер)ге барышат — бул үчүн жергиликтүү surgery-ге катталуу керек. Шашылыш эмес суроолор үчүн 111 (NHS), өмүргө коркунучтуу учурда 999 чалыңыз.",
+          "cultural_kz": "Ұлыбританияда алдымен GP (отбасылық дәрігер)ге барады — ол үшін жергілікті surgery-ге тіркелу керек. Шұғыл емес сұрақтар үшін 111 (NHS), өмірге қауіпті жағдайда 999 қоңырау шалыңыз.",
+          "note_ru": "⚠️ После should глагол идёт БЕЗ to и без -s: \"He should rest\" (не \"should to rest\", не \"should rests\")!",
+          "note_uz": "⚠️ should dan keyin fe'l to siz va -s siz keladi: \"He should rest\" (not \"should to rest\")!",
+          "note_tj": "⚠️ Пас аз should феъл БЕ to ва бе -s меояд: \"He should rest\" (на \"should to rest\")!",
+          "note_kg": "⚠️ should дан кийин этиш to сиз жана -s сиз келет: \"He should rest\"!",
+          "note_kz": "⚠️ should кейін етістік to-сыз және -s-сыз келеді: \"He should rest\"!",
+          "forms": {
+            "positive": {
+              "label_ru": "✅ Совет (should)",
+              "label_uz": "✅ Maslahat (should)",
+              "label_tj": "✅ Маслиҳат (should)",
+              "label_kg": "✅ Кеңеш (should)",
+              "label_kz": "✅ Кеңес (should)",
+              "rule_ru": "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:4px\"><div><code>You should rest</code> <span class=\"g-transcr\">[ю шуд рэст]</span> (тебе следует отдохнуть)</div><div><code>She should see a GP</code> <span class=\"g-transcr\">[ши шуд си э джи-пи]</span> (ей следует к врачу)</div><div><code>If you feel ill,</code> <span class=\"g-transcr\">[иф ю фил ил]</span> (если плохо,)</div><div><code>you should drink water</code> <span class=\"g-transcr\">[ю шуд дринк уотэ]</span> (пей воду)</div></div>",
+              "rule_uz": "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:4px\"><div><code>You should rest</code> <span class=\"g-transcr\">[ю шуд рэст]</span> (dam olishingiz kerak)</div><div><code>She should see a GP</code> <span class=\"g-transcr\">[ши шуд си э джи-пи]</span> (u shifokorga borishi kerak)</div><div><code>If you feel ill,</code> <span class=\"g-transcr\">[иф ю фил ил]</span> (agar kasal bo'lsangiz,)</div><div><code>you should drink water</code> <span class=\"g-transcr\">[ю шуд дринк уотэ]</span> (suv iching)</div></div>",
+              "rule_tj": "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:4px\"><div><code>You should rest</code> <span class=\"g-transcr\">[ю шуд рэст]</span> (шумо бояд истироҳат кунед)</div><div><code>She should see a GP</code> <span class=\"g-transcr\">[ши шуд си э джи-пи]</span> (вай бояд назди духтур равад)</div><div><code>If you feel ill,</code> <span class=\"g-transcr\">[иф ю фил ил]</span> (агар бемор бошед,)</div><div><code>you should drink water</code> <span class=\"g-transcr\">[ю шуд дринк уотэ]</span> (об нӯшед)</div></div>",
+              "rule_kg": "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:4px\"><div><code>You should rest</code> <span class=\"g-transcr\">[ю шуд рэст]</span> (эс алышыңыз керек)</div><div><code>She should see a GP</code> <span class=\"g-transcr\">[ши шуд си э джи-пи]</span> (ал дарыгерге барышы керек)</div><div><code>If you feel ill,</code> <span class=\"g-transcr\">[иф ю фил ил]</span> (эгер ооруп калсаңыз,)</div><div><code>you should drink water</code> <span class=\"g-transcr\">[ю шуд дринк уотэ]</span> (суу ичиңиз)</div></div>",
+              "rule_kz": "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:4px\"><div><code>You should rest</code> <span class=\"g-transcr\">[ю шуд рэст]</span> (демалуыңыз керек)</div><div><code>She should see a GP</code> <span class=\"g-transcr\">[ши шуд си э джи-пи]</span> (ол дәрігерге баруы керек)</div><div><code>If you feel ill,</code> <span class=\"g-transcr\">[иф ю фил ил]</span> (егер ауырсаңыз,)</div><div><code>you should drink water</code> <span class=\"g-transcr\">[ю шуд дринк уотэ]</span> (су ішіңіз)</div></div>",
+              "table": [
+                {
+                  "subj": "You",
+                  "verb": "should rest",
+                  "example": "You should rest and drink plenty of fluids.",
+                  "transcr": "Ю шуд рэст энд дринк плэнти оф флуидз",
+                  "tr_ru": "Вам следует отдыхать и пить много жидкости.",
+                  "tr_uz": "Siz dam olishingiz va ko'p suyuqlik ichishingiz kerak.",
+                  "tr_tj": "Шумо бояд истироҳат кунед ва моеъи зиёд нӯшед.",
+                  "tr_kg": "Сиз эс алып, көп суюктук ичишиңиз керек.",
+                  "tr_kz": "Сіз демалып, көп сұйықтық ішуіңіз керек."
+                },
+                {
+                  "subj": "He",
+                  "verb": "should see",
+                  "example": "He should see a GP if the fever is high.",
+                  "transcr": "Хи шуд си э джи-пи иф зэ фивэ из хай",
+                  "tr_ru": "Ему следует обратиться к врачу, если температура высокая.",
+                  "tr_uz": "Agar harorat baland bo'lsa, u shifokorga borishi kerak.",
+                  "tr_tj": "Агар таб баланд бошад, вай бояд назди духтур равад.",
+                  "tr_kg": "Эгер ысытма жогору болсо, ал дарыгерге барышы керек.",
+                  "tr_kz": "Егер қызуы жоғары болса, ол дәрігерге баруы керек."
+                },
+                {
+                  "subj": "If you",
+                  "verb": "feel dizzy",
+                  "example": "If you feel dizzy, you should sit down and rest.",
+                  "transcr": "Иф ю фил дизи, ю шуд сит даун энд рэст",
+                  "tr_ru": "Если кружится голова, вам следует сесть и отдохнуть.",
+                  "tr_uz": "Agar boshingiz aylansa, o'tirib dam olishingiz kerak.",
+                  "tr_tj": "Агар сари шумо чарх занад, шумо бояд нишаста истироҳат кунед.",
+                  "tr_kg": "Эгер башыңыз айланса, отуруп эс алышыңыз керек.",
+                  "tr_kz": "Егер басыңыз айналса, отырып демалуыңыз керек."
+                },
+                {
+                  "subj": "They",
+                  "verb": "should gargle",
+                  "example": "They should gargle with warm water for a sore throat.",
+                  "transcr": "Зэй шуд гагл уиз уом уотэ фо э со срэут",
+                  "tr_ru": "Им следует полоскать горло тёплой водой при боли в горле.",
+                  "tr_uz": "Tomoq og'rig'ida ular iliq suv bilan g'arg'ara qilishlari kerak.",
+                  "tr_tj": "Ҳангоми дарди гулӯ онҳо бояд бо оби гарм ғарғара кунанд.",
+                  "tr_kg": "Тамак ооруганда алар жылуу суу менен чайкашы керек.",
+                  "tr_kz": "Тамақ ауырғанда олар жылы сумен шайқауы керек."
+                }
+              ]
+            },
+            "negative": {
+              "label_ru": "❌ Не следует (shouldn't)",
+              "label_uz": "❌ Kerak emas (shouldn't)",
+              "label_tj": "❌ Набояд (shouldn't)",
+              "label_kg": "❌ Керек эмес (shouldn't)",
+              "label_kz": "❌ Керек емес (shouldn't)",
+              "rule_ru": "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:4px\"><div><code>You shouldn't work</code> <span class=\"g-transcr\">[ю шуднт уёк]</span> (тебе не следует работать)</div><div><code>when you are ill</code> <span class=\"g-transcr\">[уэн ю а ил]</span> (когда болеешь)</div><div><code>He shouldn't ignore</code> <span class=\"g-transcr\">[хи шуднт игно]</span> (ему не следует игнорировать)</div><div><code>chest pain</code> <span class=\"g-transcr\">[чест пэйн]</span> (боль в груди)</div></div>",
+              "rule_uz": "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:4px\"><div><code>You shouldn't work</code> <span class=\"g-transcr\">[ю шуднт уёк]</span> (ishlamasligingiz kerak)</div><div><code>when you are ill</code> <span class=\"g-transcr\">[уэн ю а ил]</span> (kasal bo'lganingizda)</div><div><code>He shouldn't ignore</code> <span class=\"g-transcr\">[хи шуднт игно]</span> (u e'tiborsiz qoldirmasligi kerak)</div><div><code>chest pain</code> <span class=\"g-transcr\">[чест пэйн]</span> (ko'krak og'rig'ini)</div></div>",
+              "rule_tj": "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:4px\"><div><code>You shouldn't work</code> <span class=\"g-transcr\">[ю шуднт уёк]</span> (шумо набояд кор кунед)</div><div><code>when you are ill</code> <span class=\"g-transcr\">[уэн ю а ил]</span> (вақте бемор ҳастед)</div><div><code>He shouldn't ignore</code> <span class=\"g-transcr\">[хи шуднт игно]</span> (вай набояд нодида гирад)</div><div><code>chest pain</code> <span class=\"g-transcr\">[чест пэйн]</span> (дарди сина)</div></div>",
+              "rule_kg": "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:4px\"><div><code>You shouldn't work</code> <span class=\"g-transcr\">[ю шуднт уёк]</span> (иштебешиңиз керек)</div><div><code>when you are ill</code> <span class=\"g-transcr\">[уэн ю а ил]</span> (ооруп турганда)</div><div><code>He shouldn't ignore</code> <span class=\"g-transcr\">[хи шуднт игно]</span> (ал көңүл бурбай койбошу керек)</div><div><code>chest pain</code> <span class=\"g-transcr\">[чест пэйн]</span> (көкүрөк оорусун)</div></div>",
+              "rule_kz": "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:4px\"><div><code>You shouldn't work</code> <span class=\"g-transcr\">[ю шуднт уёк]</span> (жұмыс істемеуіңіз керек)</div><div><code>when you are ill</code> <span class=\"g-transcr\">[уэн ю а ил]</span> (ауырған кезде)</div><div><code>He shouldn't ignore</code> <span class=\"g-transcr\">[хи шуднт игно]</span> (ол елемей қоймауы керек)</div><div><code>chest pain</code> <span class=\"g-transcr\">[чест пэйн]</span> (кеуде ауырсынуын)</div></div>",
+              "table": [
+                {
+                  "subj": "You",
+                  "verb": "shouldn't go",
+                  "example": "You shouldn't go to work if you have a fever.",
+                  "transcr": "Ю шуднт гоу ту уёк иф ю хэв э фивэ",
+                  "tr_ru": "Тебе не следует идти на работу, если у тебя температура.",
+                  "tr_uz": "Agar haroratingiz bo'lsa, ishga bormasligingiz kerak.",
+                  "tr_tj": "Агар таб дошта бошед, ба кор рафтан набояд.",
+                  "tr_kg": "Эгер ысытмаңыз болсо, жумушка барбашыңыз керек.",
+                  "tr_kz": "Егер қызуыңыз болса, жұмысқа бармауыңыз керек."
+                },
+                {
+                  "subj": "He",
+                  "verb": "shouldn't ignore",
+                  "example": "He shouldn't ignore chest pain — it can be serious.",
+                  "transcr": "Хи шуднт игно чест пэйн — ит кэн би сириэс",
+                  "tr_ru": "Ему не следует игнорировать боль в груди — это может быть серьёзно.",
+                  "tr_uz": "U ko'krak og'rig'ini e'tiborsiz qoldirmasligi kerak — bu jiddiy bo'lishi mumkin.",
+                  "tr_tj": "Вай набояд дарди синаро нодида гирад — ин метавонад ҷиддӣ бошад.",
+                  "tr_kg": "Ал көкүрөк оорусун көңүл бурбай койбошу керек — бул олуттуу болушу мүмкүн.",
+                  "tr_kz": "Ол кеуде ауырсынуын елемеуі керек — бұл ауыр болуы мүмкін."
+                },
+                {
+                  "subj": "You",
+                  "verb": "shouldn't take",
+                  "example": "You shouldn't take medicine without advice.",
+                  "transcr": "Ю шуднт тэйк мэдисин уизаут эдвайс",
+                  "tr_ru": "Тебе не следует принимать лекарство без совета.",
+                  "tr_uz": "Maslahatsiz dori ichmasligingiz kerak.",
+                  "tr_tj": "Бе маслиҳат дору хӯрдан набояд.",
+                  "tr_kg": "Кеңешсиз дары ичпешиңиз керек.",
+                  "tr_kz": "Кеңессіз дәрі ішпеуіңіз керек."
+                }
+              ]
+            },
+            "question": {
+              "label_ru": "❓ Вопрос-совет",
+              "label_uz": "❓ Savol-maslahat",
+              "label_tj": "❓ Савол-маслиҳат",
+              "label_kg": "❓ Суроо-кеңеш",
+              "label_kz": "❓ Сұрақ-кеңес",
+              "rule_ru": "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:4px\"><div><code>Should I see a GP?</code> <span class=\"g-transcr\">[шуд ай си э джи-пи]</span> (мне стоит к врачу?)</div><div><code>What should I do?</code> <span class=\"g-transcr\">[уот шуд ай ду]</span> (что мне делать?)</div><div><code>Should I rest today?</code> <span class=\"g-transcr\">[шуд ай рэст тудэй]</span> (мне отдохнуть сегодня?)</div><div><code>If it gets worse?</code> <span class=\"g-transcr\">[иф ит гетс уёс]</span> (если станет хуже?)</div></div>",
+              "rule_uz": "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:4px\"><div><code>Should I see a GP?</code> <span class=\"g-transcr\">[шуд ай си э джи-пи]</span> (shifokorga borishim kerakmi?)</div><div><code>What should I do?</code> <span class=\"g-transcr\">[уот шуд ай ду]</span> (nima qilishim kerak?)</div><div><code>Should I rest today?</code> <span class=\"g-transcr\">[шуд ай рэст тудэй]</span> (bugun dam olishim kerakmi?)</div><div><code>If it gets worse?</code> <span class=\"g-transcr\">[иф ит гетс уёс]</span> (agar yomonlashsa?)</div></div>",
+              "rule_tj": "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:4px\"><div><code>Should I see a GP?</code> <span class=\"g-transcr\">[шуд ай си э джи-пи]</span> (ман бояд назди духтур равам?)</div><div><code>What should I do?</code> <span class=\"g-transcr\">[уот шуд ай ду]</span> (ман чӣ кор кунам?)</div><div><code>Should I rest today?</code> <span class=\"g-transcr\">[шуд ай рэст тудэй]</span> (ман имрӯз истироҳат кунам?)</div><div><code>If it gets worse?</code> <span class=\"g-transcr\">[иф ит гетс уёс]</span> (агар бадтар шавад?)</div></div>",
+              "rule_kg": "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:4px\"><div><code>Should I see a GP?</code> <span class=\"g-transcr\">[шуд ай си э джи-пи]</span> (дарыгерге барышым керекпи?)</div><div><code>What should I do?</code> <span class=\"g-transcr\">[уот шуд ай ду]</span> (эмне кылышым керек?)</div><div><code>Should I rest today?</code> <span class=\"g-transcr\">[шуд ай рэст тудэй]</span> (бүгүн эс алышым керекпи?)</div><div><code>If it gets worse?</code> <span class=\"g-transcr\">[иф ит гетс уёс]</span> (эгер начарласа?)</div></div>",
+              "rule_kz": "<div style=\"display:grid;grid-template-columns:1fr 1fr;gap:4px\"><div><code>Should I see a GP?</code> <span class=\"g-transcr\">[шуд ай си э джи-пи]</span> (дәрігерге баруым керек пе?)</div><div><code>What should I do?</code> <span class=\"g-transcr\">[уот шуд ай ду]</span> (не істеуім керек?)</div><div><code>Should I rest today?</code> <span class=\"g-transcr\">[шуд ай рэст тудэй]</span> (бүгін демалуым керек пе?)</div><div><code>If it gets worse?</code> <span class=\"g-transcr\">[иф ит гетс уёс]</span> (егер нашарласа?)</div></div>",
+              "table": [
+                {
+                  "subj": "Should I",
+                  "verb": "see",
+                  "example": "Should I see a GP, or is it just a cold?",
+                  "transcr": "Шуд ай си э джи-пи, о из ит джаст э колд",
+                  "tr_ru": "Мне стоит обратиться к врачу, или это просто простуда?",
+                  "tr_uz": "Shifokorga borishim kerakmi yoki bu shunchaki shamollashmi?",
+                  "tr_tj": "Ман бояд назди духтур равам ё ин танҳо шамолхӯрӣ аст?",
+                  "tr_kg": "Дарыгерге барышым керекпи, же бул жөн эле суук тийүүбү?",
+                  "tr_kz": "Дәрігерге баруым керек пе, әлде бұл жай суықтау ма?"
+                },
+                {
+                  "subj": "What should",
+                  "verb": "I do",
+                  "example": "What should I do if the medicine does not help?",
+                  "transcr": "Уот шуд ай ду иф зэ мэдисин даз нот хэлп",
+                  "tr_ru": "Что мне делать, если лекарство не помогает?",
+                  "tr_uz": "Agar dori yordam bermasa, nima qilishim kerak?",
+                  "tr_tj": "Агар дору ёрӣ надиҳад, ман чӣ кор кунам?",
+                  "tr_kg": "Эгер дары жардам бербесе, эмне кылышым керек?",
+                  "tr_kz": "Егер дәрі көмектеспесе, не істеуім керек?"
+                },
+                {
+                  "subj": "Should we",
+                  "verb": "call",
+                  "example": "Should we call 111 if she is breathless?",
+                  "transcr": "Шуд уи кол уан-уан-уан иф ши из брэслэс",
+                  "tr_ru": "Нам стоит позвонить в 111, если ей трудно дышать?",
+                  "tr_uz": "Agar u nafas ololmasa, 111 ga qo'ng'iroq qilishimiz kerakmi?",
+                  "tr_tj": "Агар вай нафас гирифта натавонад, мо бояд ба 111 занг занем?",
+                  "tr_kg": "Эгер ал дем ала албаса, биз 111ге чалышыбыз керекпи?",
+                  "tr_kz": "Егер ол тыныс ала алмаса, біз 111-ге қоңырау шалуымыз керек пе?"
+                }
+              ]
+            }
+          }
+        },
+        "words": [
+          {
+            "e": "🦠",
+            "en": "infection",
+            "pn": "/ɪnˈfekʃn/",
+            "transcr": "инфэкшн",
+            "ru": "инфекция",
+            "uz": "infektsiya",
+            "tj": "сироят",
+            "kg": "инфекция",
+            "kz": "инфекция"
+          },
+          {
+            "e": "🔴",
+            "en": "rash",
+            "pn": "/ræʃ/",
+            "transcr": "рэш",
+            "ru": "сыпь",
+            "uz": "toshma",
+            "tj": "тошхӯрӣ",
+            "kg": "бөртмө",
+            "kz": "бөртпе"
+          },
+          {
+            "e": "🫁",
+            "en": "chest",
+            "pn": "/tʃest/",
+            "transcr": "чест",
+            "ru": "грудь (грудная клетка)",
+            "uz": "ko'krak",
+            "tj": "сина",
+            "kg": "көкүрөк",
+            "kz": "кеуде"
+          },
+          {
+            "e": "💁",
+            "en": "receptionist",
+            "pn": "/rɪˈsepʃənɪst/",
+            "transcr": "рисэпшэнист",
+            "ru": "регистратор (в клинике)",
+            "uz": "qabulxona xodimi",
+            "tj": "қабулкунанда",
+            "kg": "кабылдоочу",
+            "kz": "қабылдаушы"
+          },
+          {
+            "e": "💉",
+            "en": "vaccine",
+            "pn": "/ˈvæksiːn/",
+            "transcr": "вэксин",
+            "ru": "вакцина",
+            "uz": "vaksina",
+            "tj": "эмгузаронӣ (ваксина)",
+            "kg": "вакцина",
+            "kz": "вакцина"
+          },
+          {
+            "e": "😮",
+            "en": "swallow",
+            "pn": "/ˈswɒləʊ/",
+            "transcr": "своулоу",
+            "ru": "глотать",
+            "uz": "yutmoq",
+            "tj": "фурӯ бурдан",
+            "kg": "жутуу",
+            "kz": "жұту"
+          },
+          {
+            "e": "🤮",
+            "en": "vomit",
+            "pn": "/ˈvɒmɪt/",
+            "transcr": "вомит",
+            "ru": "рвота (рвать)",
+            "uz": "qusmoq",
+            "tj": "қай кардан",
+            "kg": "кусуу",
+            "kz": "құсу"
+          },
+          {
+            "e": "🤢",
+            "en": "nausea",
+            "pn": "/ˈnɔːziə/",
+            "transcr": "нозиэ",
+            "ru": "тошнота",
+            "uz": "ko'ngil aynishi",
+            "tj": "дилбеҳузурӣ",
+            "kg": "көңүл айнуу",
+            "kz": "жүрек айну"
+          },
+          {
+            "e": "🤧",
+            "en": "runny nose",
+            "pn": "/ˈrʌni nəʊz/",
+            "transcr": "рани ноуз",
+            "ru": "насморк",
+            "uz": "burun oqishi",
+            "tj": "обилаи бинӣ",
+            "kg": "мурун агуу",
+            "kz": "мұрын ағу"
+          },
+          {
+            "e": "🧪",
+            "en": "sample",
+            "pn": "/ˈsɑːmpl/",
+            "transcr": "сампл",
+            "ru": "анализ (образец)",
+            "uz": "namuna (tahlil)",
+            "tj": "намуна (таҳлил)",
+            "kg": "үлгү (анализ)",
+            "kz": "үлгі (талдау)"
+          },
+          {
+            "e": "🍯",
+            "en": "syrup",
+            "pn": "/ˈsɪrəp/",
+            "transcr": "сирэп",
+            "ru": "сироп (от кашля)",
+            "uz": "sirop",
+            "tj": "шарбат (сироп)",
+            "kg": "сироп",
+            "kz": "сироп"
+          },
+          {
+            "e": "🌡️",
+            "en": "thermometer",
+            "pn": "/θəˈmɒmɪtə/",
+            "transcr": "сэмомитэ",
+            "ru": "градусник",
+            "uz": "termometr",
+            "tj": "ҳароратсанҷ",
+            "kg": "термометр",
+            "kz": "термометр"
+          },
+          {
+            "e": "🤚",
+            "en": "itch",
+            "pn": "/ɪtʃ/",
+            "transcr": "итч",
+            "ru": "зуд (чесаться)",
+            "uz": "qichishish",
+            "tj": "хориш",
+            "kg": "кычышуу",
+            "kz": "қышу"
+          },
+          {
+            "e": "🏜️",
+            "en": "dehydrated",
+            "pn": "/diːˈhaɪdreɪtɪd/",
+            "transcr": "дихайдрэйтид",
+            "ru": "обезвоженный",
+            "uz": "suvsizlangan",
+            "tj": "беобшуда",
+            "kg": "суусузданган",
+            "kz": "сусыздану"
+          },
+          {
+            "e": "🥤",
+            "en": "fluids",
+            "pn": "/ˈfluːɪdz/",
+            "transcr": "флуидз",
+            "ru": "жидкости (питьё)",
+            "uz": "suyuqliklar",
+            "tj": "моеъот",
+            "kg": "суюктуктар",
+            "kz": "сұйықтық"
+          },
+          {
+            "e": "🫗",
+            "en": "sip",
+            "pn": "/sɪp/",
+            "transcr": "сип",
+            "ru": "пить маленькими глотками",
+            "uz": "ho'plab ichmoq",
+            "tj": "қурт-қурт нӯшидан",
+            "kg": "ууртап ичүү",
+            "kz": "ұрттап ішу"
+          },
+          {
+            "e": "😟",
+            "en": "serious",
+            "pn": "/ˈsɪəriəs/",
+            "transcr": "сириэс",
+            "ru": "серьёзный",
+            "uz": "jiddiy",
+            "tj": "ҷиддӣ",
+            "kg": "олуттуу",
+            "kz": "ауыр (елеулі)"
+          },
+          {
+            "e": "❗",
+            "en": "severe",
+            "pn": "/sɪˈvɪə/",
+            "transcr": "сивиэ",
+            "ru": "сильный (тяжёлый)",
+            "uz": "kuchli (og'ir)",
+            "tj": "шадид (вазнин)",
+            "kg": "катуу (оор)",
+            "kz": "қатты (ауыр)"
+          },
+          {
+            "e": "🤲",
+            "en": "gentle",
+            "pn": "/ˈdʒentl/",
+            "transcr": "джентл",
+            "ru": "мягкий (щадящий)",
+            "uz": "yumshoq",
+            "tj": "мулоим",
+            "kg": "жумшак",
+            "kz": "жұмсақ"
+          },
+          {
+            "e": "🚫",
+            "en": "avoid",
+            "pn": "/əˈvɔɪd/",
+            "transcr": "эвойд",
+            "ru": "избегать",
+            "uz": "qochmoq (saqlanmoq)",
+            "tj": "парҳез кардан",
+            "kg": "качуу (сактануу)",
+            "kz": "аулақ болу"
+          },
+          {
+            "e": "🩸",
+            "en": "blood test",
+            "pn": "/blʌd test/",
+            "transcr": "блад тэст",
+            "ru": "анализ крови",
+            "uz": "qon tahlili",
+            "tj": "таҳлили хун",
+            "kg": "кан анализи",
+            "kz": "қан анализі"
+          },
+          {
+            "e": "🥄",
+            "en": "spoonful",
+            "pn": "/ˈspuːnfʊl/",
+            "transcr": "спунфул",
+            "ru": "ложка (доза)",
+            "uz": "bir qoshiq",
+            "tj": "як қошуқ",
+            "kg": "бир кашык",
+            "kz": "бір қасық"
+          },
+          {
+            "e": "😴",
+            "en": "drowsy",
+            "pn": "/ˈdraʊzi/",
+            "transcr": "драузи",
+            "ru": "сонливый",
+            "uz": "uyquchan",
+            "tj": "хобовар",
+            "kg": "уйкулуу",
+            "kz": "ұйқышыл"
+          },
+          {
+            "e": "💪",
+            "en": "recovery",
+            "pn": "/rɪˈkʌvəri/",
+            "transcr": "рикавэри",
+            "ru": "выздоровление",
+            "uz": "tuzalish",
+            "tj": "сиҳатшавӣ",
+            "kg": "айыгуу",
+            "kz": "сауығу"
+          },
+          {
+            "e": "🌬️",
+            "en": "inhaler",
+            "pn": "/ɪnˈheɪlə/",
+            "transcr": "инхэйлэ",
+            "ru": "ингалятор",
+            "uz": "ingalyator",
+            "tj": "нафаскаш (ингалятор)",
+            "kg": "ингалятор",
+            "kz": "ингалятор"
+          },
+          {
+            "e": "🍬",
+            "en": "lozenge",
+            "pn": "/ˈlɒzɪndʒ/",
+            "transcr": "лозиндж",
+            "ru": "леденец (от горла)",
+            "uz": "so'riladigan tabletka",
+            "tj": "қанди доругӣ",
+            "kg": "соруучу таблетка",
+            "kz": "сорып жейтін дәрі"
+          },
+          {
+            "e": "💧",
+            "en": "gargle",
+            "pn": "/ˈɡɑːɡl/",
+            "transcr": "гагл",
+            "ru": "полоскать горло",
+            "uz": "g'arg'ara qilmoq",
+            "tj": "ғарғара кардан",
+            "kg": "тамак чайкоо",
+            "kz": "тамақ шаю"
+          },
+          {
+            "e": "🍽️",
+            "en": "appetite",
+            "pn": "/ˈæpɪtaɪt/",
+            "transcr": "эпитайт",
+            "ru": "аппетит",
+            "uz": "ishtaha",
+            "tj": "иштиҳо",
+            "kg": "табит",
+            "kz": "тәбет"
+          },
+          {
+            "e": "🥵",
+            "en": "feverish",
+            "pn": "/ˈfiːvərɪʃ/",
+            "transcr": "фивэриш",
+            "ru": "температурящий (в жару)",
+            "uz": "isitmali",
+            "tj": "табдор",
+            "kg": "ысытмалуу",
+            "kz": "қызуы бар"
+          },
+          {
+            "e": "😮‍💨",
+            "en": "breathless",
+            "pn": "/ˈbreθləs/",
+            "transcr": "брэслэс",
+            "ru": "задыхающийся",
+            "uz": "nafasi qisilgan",
+            "tj": "нафастангӣ",
+            "kg": "деми кысылган",
+            "kz": "тынысы тарылған"
+          }
+        ],
+        "dialogue": [
+          {
+            "s": "w",
+            "en": "Hello, doctor. I have a fever and a bad headache since yesterday.",
+            "transcr": "Хэлоу, доктэ. Ай хэв э фивэ энд э бэд хэдэйк синс йестэдэй.",
+            "ru": "Здравствуйте, доктор. У меня жар и сильная головная боль со вчера.",
+            "uz": "Salom, doktor. Kechadan beri menda isitma va kuchli bosh og'rig'i bor.",
+            "tj": "Салом, духтур. Аз дирӯз ман таб ва дарди сахти сар дорам.",
+            "kg": "Саламатсызбы, доктор. Кечээтен бери менде ысытма жана катуу баш оору бар.",
+            "kz": "Сәлеметсіз бе, дәрігер. Кешеден бері менде қызу және қатты бас ауруы бар."
+          },
+          {
+            "s": "d",
+            "en": "I see. Do you have a cough or a runny nose too?",
+            "transcr": "Ай си. Ду ю хэв э коф о э рани ноуз ту?",
+            "ru": "Понятно. У вас есть кашель или насморк тоже?",
+            "uz": "Tushunarli. Sizda yo'tal yoki burun oqishi ham bormi?",
+            "tj": "Фаҳмидам. Оё шумо инчунин сулфа ё обилаи бинӣ доред?",
+            "kg": "Түшүндүм. Сизде жөтөл же мурун агуу да барбы?",
+            "kz": "Түсінікті. Сізде жөтел немесе мұрын ағу да бар ма?"
+          },
+          {
+            "s": "w",
+            "en": "Yes, a little. I also feel nausea and I cannot swallow easily.",
+            "transcr": "Йес, э литл. Ай олсоу фил нозиэ энд ай кэнот своулоу изили.",
+            "ru": "Да, немного. Ещё чувствую тошноту и не могу легко глотать.",
+            "uz": "Ha, ozgina. Yana ko'nglim aynaydi va oson yuta olmayman.",
+            "tj": "Бале, каме. Инчунин дилбеҳузурӣ дорам ва ба осонӣ фурӯ бурда наметавонам.",
+            "kg": "Ооба, бир аз. Дагы көңүлүм айнып, оңой жута албайм.",
+            "kz": "Иә, сәл. Тағы жүрегім айниды және оңай жұта алмаймын."
+          },
+          {
+            "s": "d",
+            "en": "If you have a fever, you should rest and drink plenty of fluids.",
+            "transcr": "Иф ю хэв э фивэ, ю шуд рэст энд дринк плэнти оф флуидз.",
+            "ru": "Если у вас жар, вам следует отдыхать и пить много жидкости.",
+            "uz": "Agar isitmangiz bo'lsa, dam olib, ko'p suyuqlik ichishingiz kerak.",
+            "tj": "Агар таб дошта бошед, бояд истироҳат кунед ва моеъи зиёд нӯшед.",
+            "kg": "Эгер ысытмаңыз болсо, эс алып, көп суюктук ичишиңиз керек.",
+            "kz": "Егер қызуыңыз болса, демалып, көп сұйықтық ішуіңіз керек."
+          },
+          {
+            "s": "w",
+            "en": "Should I take any medicine? And should I go to work tomorrow?",
+            "transcr": "Шуд ай тэйк эни мэдисин? Энд шуд ай гоу ту уёк тумороу?",
+            "ru": "Мне принимать какое-нибудь лекарство? И стоит ли идти на работу завтра?",
+            "uz": "Biror dori ichishim kerakmi? Va ertaga ishga borishim kerakmi?",
+            "tj": "Ман бояд ягон дору хӯрам? Ва пагоҳ ба кор равам?",
+            "kg": "Кандайдыр дары ичишим керекпи? Жана эртең жумушка барышым керекпи?",
+            "kz": "Қандай да бір дәрі ішуім керек пе? Және ертең жұмысқа баруым керек пе?"
+          },
+          {
+            "s": "d",
+            "en": "Take this syrup, one spoonful twice a day. You shouldn't go to work yet.",
+            "transcr": "Тэйк зис сирэп, уан спунфул твайс э дэй. Ю шуднт гоу ту уёк йет.",
+            "ru": "Принимайте этот сироп, одну ложку дважды в день. Вам пока не следует идти на работу.",
+            "uz": "Bu siropdan kuniga ikki marta bir qoshiqdan iching. Hozircha ishga bormang.",
+            "tj": "Ин шарбатро рӯзе ду бор як қошуқӣ нӯшед. Ҳоло ба кор рафтан набояд.",
+            "kg": "Бул сиропту күнүнө эки жолу бир кашыктан ичиңиз. Азырынча жумушка барбаңыз.",
+            "kz": "Бұл сиропты күніне екі рет бір қасықтан ішіңіз. Әзірге жұмысқа барманыз."
+          },
+          {
+            "s": "w",
+            "en": "Okay. The fever makes me very drowsy and I have no appetite.",
+            "transcr": "Оукэй. Зэ фивэ мэйкс ми вэри драузи энд ай хэв ноу эпитайт.",
+            "ru": "Хорошо. От жара я очень сонный, и у меня нет аппетита.",
+            "uz": "Mayli. Isitma meni juda uyquchan qiladi va ishtaham yo'q.",
+            "tj": "Хуб. Таб маро хеле хобовар мекунад ва иштиҳо надорам.",
+            "kg": "Жакшы. Ысытма мени абдан уйкулуу кылат жана табитим жок.",
+            "kz": "Жақсы. Қызу мені қатты ұйқышыл етеді және тәбетім жоқ."
+          },
+          {
+            "s": "d",
+            "en": "That is normal. Avoid cold drinks, and sip warm water often.",
+            "transcr": "Зэт из номэл. Эвойд колд дринкс, энд сип уом уотэ офэн.",
+            "ru": "Это нормально. Избегайте холодных напитков и часто пейте тёплую воду маленькими глотками.",
+            "uz": "Bu normal. Sovuq ichimliklardan saqlaning va tez-tez iliq suvni ho'plab iching.",
+            "tj": "Ин табиист. Аз нӯшокиҳои хунук парҳез кунед ва зуд-зуд оби гармро қурт-қурт нӯшед.",
+            "kg": "Бул кадимки нерсе. Муздак суусундуктардан качыңыз жана жылуу сууну тез-тез ууртап ичиңиз.",
+            "kz": "Бұл қалыпты. Суық сусындардан аулақ болыңыз және жылы суды жиі ұрттап ішіңіз."
+          },
+          {
+            "s": "w",
+            "en": "What should I do if it gets worse or I feel breathless?",
+            "transcr": "Уот шуд ай ду иф ит гетс уёс о ай фил брэслэс?",
+            "ru": "Что мне делать, если станет хуже или будет трудно дышать?",
+            "uz": "Agar yomonlashsa yoki nafasim qisilsa, nima qilishim kerak?",
+            "tj": "Агар бадтар шавад ё нафасам танг шавад, чӣ кор кунам?",
+            "kg": "Эгер начарласа же демим кысылса, эмне кылышым керек?",
+            "kz": "Егер нашарласа немесе тынысым тарылса, не істеуім керек?"
+          },
+          {
+            "s": "d",
+            "en": "If it gets worse, you should call 111. If it is serious, call 999.",
+            "transcr": "Иф ит гетс уёс, ю шуд кол уан-уан-уан. Иф ит из сириэс, кол найн-найн-найн.",
+            "ru": "Если станет хуже, позвоните в 111. Если серьёзно — звоните 999.",
+            "uz": "Agar yomonlashsa, 111 ga qo'ng'iroq qiling. Jiddiy bo'lsa, 999 ga.",
+            "tj": "Агар бадтар шавад, ба 111 занг занед. Агар ҷиддӣ бошад, ба 999.",
+            "kg": "Эгер начарласа, 111ге чалыңыз. Олуттуу болсо, 999га.",
+            "kz": "Егер нашарласа, 111-ге қоңырау шалыңыз. Ауыр болса, 999-ға."
+          }
+        ],
+        "quiz": [
+          {
+            "q": "[COMPLETE] You ___ rest if you have a fever.",
+            "opts": [
+              "should",
+              "shoulds",
+              "to should",
+              "are should"
+            ],
+            "c": 0,
+            "hint_ru": "Совет: should + глагол без to",
+            "hint_uz": "Maslahat: should + to siz fe'l",
+            "hint_tj": "Маслиҳат: should + феъл бе to",
+            "hint_kg": "Кеңеш: should + to сиз этиш",
+            "hint_kz": "Кеңес: should + to-сыз етістік",
+            "expl_ru": "should + базовый глагол (rest), без to и без -s.",
+            "expl_uz": "should + asosiy fe'l (rest), to siz va -s siz.",
+            "expl_tj": "should + феъли асосӣ (rest), бе to ва -s.",
+            "expl_kg": "should + негизги этиш (rest), to сиз жана -s сиз.",
+            "expl_kz": "should + негізгі етістік (rest), to-сыз және -s-сыз."
+          },
+          {
+            "q": "[COMPLETE] You ___ go to work when you are ill.",
+            "opts": [
+              "shouldn't",
+              "should",
+              "don't should",
+              "not should"
+            ],
+            "c": 0,
+            "hint_ru": "Отрицательный совет",
+            "hint_uz": "Inkor maslahat",
+            "hint_tj": "Маслиҳати манфӣ",
+            "hint_kg": "Терс кеңеш",
+            "hint_kz": "Теріс кеңес",
+            "expl_ru": "shouldn't = should not — не следует.",
+            "expl_uz": "shouldn't = should not — kerak emas.",
+            "expl_tj": "shouldn't = should not — набояд.",
+            "expl_kg": "shouldn't = should not — керек эмес.",
+            "expl_kz": "shouldn't = should not — керек емес."
+          },
+          {
+            "q": "[COMPLETE] ___ you have a fever, you should see a GP.",
+            "opts": [
+              "If",
+              "Are",
+              "Do",
+              "Should"
+            ],
+            "c": 0,
+            "hint_ru": "Условие = первое условное",
+            "hint_uz": "Shart = birinchi shart",
+            "hint_tj": "Шарт = шарти якум",
+            "hint_kg": "Шарт = биринчи шарт",
+            "hint_kz": "Шарт = бірінші шарт",
+            "expl_ru": "First Conditional: If + настоящее время, ... should ...",
+            "expl_uz": "First Conditional: If + hozirgi zamon, ... should ...",
+            "expl_tj": "First Conditional: If + замони ҳозира, ... should ...",
+            "expl_kg": "First Conditional: If + учур чак, ... should ...",
+            "expl_kz": "First Conditional: If + осы шақ, ... should ..."
+          },
+          {
+            "q": "[TRANSLATE] Как сказать \"насморк\"?",
+            "opts": [
+              "a runny nose",
+              "a sore back",
+              "a broken arm",
+              "a high fever"
+            ],
+            "c": 0,
+            "hint_ru": "Когда из носа течёт",
+            "hint_uz": "Burundan suv oqqanda",
+            "hint_tj": "Вақте аз бинӣ об меравад",
+            "hint_kg": "Мурундан суу аккканда",
+            "hint_kz": "Мұрыннан су аққанда",
+            "expl_ru": "\"runny nose\" — насморк.",
+            "expl_uz": "\"runny nose\" — burun oqishi.",
+            "expl_tj": "\"runny nose\" — обилаи бинӣ.",
+            "expl_kg": "\"runny nose\" — мурун агуу.",
+            "expl_kz": "\"runny nose\" — мұрын ағу."
+          },
+          {
+            "q": "[COMPLETE] What ___ I do if the medicine does not help?",
+            "opts": [
+              "should",
+              "do should",
+              "am",
+              "shoulds"
+            ],
+            "c": 0,
+            "hint_ru": "Вопрос-совет с should",
+            "hint_uz": "should bilan savol-maslahat",
+            "hint_tj": "Савол-маслиҳат бо should",
+            "hint_kg": "should менен суроо-кеңеш",
+            "hint_kz": "should арқылы сұрақ-кеңес",
+            "expl_ru": "What should I do? — порядок: What + should + I + глагол.",
+            "expl_uz": "What should I do? — tartib: What + should + I + fe'l.",
+            "expl_tj": "What should I do? — тартиб: What + should + I + феъл.",
+            "expl_kg": "What should I do? — тартип: What + should + I + этиш.",
+            "expl_kz": "What should I do? — тәртіп: What + should + I + етістік."
+          },
+          {
+            "q": "[TRANSLATE] Как сказать \"полоскать горло\"?",
+            "opts": [
+              "to gargle",
+              "to swallow",
+              "to sneeze",
+              "to breathe"
+            ],
+            "c": 0,
+            "hint_ru": "Тёплой водой при боли в горле",
+            "hint_uz": "Tomoq og'rig'ida iliq suv bilan",
+            "hint_tj": "Бо оби гарм ҳангоми дарди гулӯ",
+            "hint_kg": "Тамак ооруганда жылуу суу менен",
+            "hint_kz": "Тамақ ауырғанда жылы сумен",
+            "expl_ru": "\"gargle\" — полоскать горло; swallow — глотать.",
+            "expl_uz": "\"gargle\" — g'arg'ara qilmoq; swallow — yutmoq.",
+            "expl_tj": "\"gargle\" — ғарғара кардан; swallow — фурӯ бурдан.",
+            "expl_kg": "\"gargle\" — тамак чайкоо; swallow — жутуу.",
+            "expl_kz": "\"gargle\" — тамақ шаю; swallow — жұту."
+          },
+          {
+            "q": "[COMPLETE] He ___ ignore chest pain — it can be serious.",
+            "opts": [
+              "shouldn't",
+              "should",
+              "shouldn't to",
+              "not should"
+            ],
+            "c": 0,
+            "hint_ru": "Сильный отрицательный совет",
+            "hint_uz": "Kuchli inkor maslahat",
+            "hint_tj": "Маслиҳати манфии қавӣ",
+            "hint_kg": "Күчтүү терс кеңеш",
+            "hint_kz": "Күшті теріс кеңес",
+            "expl_ru": "He shouldn't ignore — после shouldn't глагол без to.",
+            "expl_uz": "He shouldn't ignore — shouldn't dan keyin to siz.",
+            "expl_tj": "He shouldn't ignore — пас аз shouldn't бе to.",
+            "expl_kg": "He shouldn't ignore — shouldn't дан кийин to сиз.",
+            "expl_kz": "He shouldn't ignore — shouldn't кейін to-сыз."
+          },
+          {
+            "q": "[TRANSLATE] Как сказать \"пить маленькими глотками\"?",
+            "opts": [
+              "to sip",
+              "to spill",
+              "to pour",
+              "to drop"
+            ],
+            "c": 0,
+            "hint_ru": "Понемногу, медленно пить",
+            "hint_uz": "Oz-ozdan, sekin ichish",
+            "hint_tj": "Кам-кам, оҳиста нӯшидан",
+            "hint_kg": "Аз-аздан, жай ичүү",
+            "hint_kz": "Аз-аздан, баяу ішу",
+            "expl_ru": "\"sip\" — пить маленькими глотками.",
+            "expl_uz": "\"sip\" — ho'plab ichmoq.",
+            "expl_tj": "\"sip\" — қурт-қурт нӯшидан.",
+            "expl_kg": "\"sip\" — ууртап ичүү.",
+            "expl_kz": "\"sip\" — ұрттап ішу."
+          },
+          {
+            "q": "[COMPLETE] If it ___ worse, you should call 111.",
+            "opts": [
+              "gets",
+              "get",
+              "getting",
+              "got"
+            ],
+            "c": 0,
+            "hint_ru": "After \"if\" — настоящее время, 3-е лицо",
+            "hint_uz": "\"if\" dan keyin — hozirgi zamon, 3-shaxs",
+            "hint_tj": "Пас аз \"if\" — замони ҳозира, шахси 3",
+            "hint_kg": "\"if\" дан кийин — учур чак, 3-жак",
+            "hint_kz": "\"if\" кейін — осы шақ, 3-жақ",
+            "expl_ru": "First Conditional: if + Present Simple (it gets), главная часть с should.",
+            "expl_uz": "First Conditional: if + Present Simple (it gets).",
+            "expl_tj": "First Conditional: if + Present Simple (it gets).",
+            "expl_kg": "First Conditional: if + Present Simple (it gets).",
+            "expl_kz": "First Conditional: if + Present Simple (it gets)."
+          },
+          {
+            "q": "[TRANSLATE] Как сказать \"У меня нет аппетита\"?",
+            "opts": [
+              "I have no appetite",
+              "I have no money",
+              "I have no time",
+              "I have no pain"
+            ],
+            "c": 0,
+            "hint_ru": "Когда не хочется есть",
+            "hint_uz": "Ovqat yegisi kelmaganda",
+            "hint_tj": "Вақте хӯрдан намехоҳӣ",
+            "hint_kg": "Тамак жегиси келбегенде",
+            "hint_kz": "Тамақ жегісі келмегенде",
+            "expl_ru": "\"appetite\" — аппетит; no appetite — нет аппетита.",
+            "expl_uz": "\"appetite\" — ishtaha; no appetite — ishtaha yo'q.",
+            "expl_tj": "\"appetite\" — иштиҳо; no appetite — иштиҳо нест.",
+            "expl_kg": "\"appetite\" — табит; no appetite — табит жок.",
+            "expl_kz": "\"appetite\" — тәбет; no appetite — тәбет жоқ."
+          }
+        ]
+      }
     ];
