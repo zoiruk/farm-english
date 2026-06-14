@@ -53,14 +53,16 @@ Basic structure, first two A1 lessons, initial UI layout.
 ## Known limitations — v1
 
 ### B1 course
-- **7 of a planned 12 lessons exist** on `b1-dev`. Lesson 7 "Собеседование и повышение"
-  (Present Perfect Continuous, Module 3) was added 2026-06-14 as a **quality sample** — it
-  passes the full audit gate (8/8: counts, snowball, no duplicates) on `b1-dev`.
+- **8 of a planned 12 lessons exist** on `b1-dev` (authoring L7–L12 in progress, 2026-06-14):
+  - L7 "Собеседование и повышение" — Present Perfect Continuous (Module 3)
+  - L8 "Несчастный случай на ферме" — Past Perfect (Module 4)
+  - Each passes the full audit gate (8/8: counts, snowball, no duplicates) on `b1-dev`.
 - Tracked on `b1-dev` branch; **not deployed to production** — hub card is permanently locked.
-- **L8–12 deferred (owner decision 2026-06-14):** native speakers review the existing
-  translation backlog (254 fields) + L7's new draft fields FIRST; only then author L8–12, to
-  avoid doubling unreviewed translation debt. See `specs/translation_review.md`.
-- Will be promoted to `master` when all 12 lessons are complete, translated, and audited.
+- **Deployment gated on translation review (owner decision 2026-06-14):** lessons are authored as
+  AI drafts now, but B1 will NOT be merged/deployed until native speakers review the existing
+  backlog (254 fields) + each new lesson's ~320 draft fields. See `specs/translation_review.md`.
+- Will be promoted to `master` only when all 12 lessons are complete, natively translated, audited,
+  with MODS finalised to 12 and the completion banner bound to `LESSONS.length`.
 
 ### Translations — pending native-speaker review
 File: `specs/translation_review.md` — 254 flagged fields total.

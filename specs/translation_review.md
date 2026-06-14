@@ -323,3 +323,22 @@ Notes for the reviewer:
 **Owner decision (2026-06-14):** review the 254 existing fields FIRST, then this L7 batch, **before**
 authoring B1 L8–12 (deferred to avoid doubling unreviewed translation debt).
 
+---
+
+## B1 Lesson 8 "Несчастный случай на ферме" (b1-dev branch) — NEW lesson, full AI draft
+
+Added 2026-06-14 on `b1-dev` (Past Perfect, Module 4 "Health & Safety"). Same status as L7:
+**entire lesson is an AI draft** — `ru`/`en` authored directly, every `uz`/`tj`/`kg`/`kz` field
+needs a native pass. **320** localized fields (same breakdown as L7).
+
+Priority rows from the kz===kg detector (all 3 look like legitimate loanwords / grammar formulae —
+confirm with a speaker, low priority):
+
+| file | lesson | field | current text | note |
+|------|--------|-------|--------------|------|
+| b1 | 8 | `words[27].kz` | антисептик | identical to `.kg` — international loanword, likely fine |
+| b1 | 8 | `quiz[4].expl_kz` | What had happened? — had + 3-форма (happened). | identical to `.kg` — grammar formula |
+| b1 | 8 | `quiz[6].hint_kz` | "they" + Past Perfect | identical to `.kg` — grammar formula |
+
+Notes: `uz` fields use Latin Uzbek consistently; `grammar.forms.*.rule_uz` are HTML+transcription (not script errors).
+
