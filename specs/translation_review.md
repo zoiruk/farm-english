@@ -297,3 +297,29 @@ Fields where en === ru (brand names like Wi-Fi) are excluded automatically.
 
 _No issues found._
 
+---
+
+## B1 Lesson 7 "Собеседование и повышение" (b1-dev branch) — NEW lesson, full AI draft
+
+Added 2026-06-14 on `b1-dev` as a quality sample (Present Perfect Continuous, Module 3 "Карьера").
+**The entire lesson is an AI draft** — `ru` and `en` were authored directly, but every
+`uz`/`tj`/`kg`/`kz` field needs a native-speaker pass before B1 ships.
+
+- **320** localized fields total: 30 words × 4 langs, 10 dialogue lines × 4, 10 quiz × (hint+expl) × 4,
+  grammar intro/cultural/note × 4, and 3 forms × (label + rule + table rows) × 4.
+- This is a *wholesale* new-content draft, not a pattern match against existing content — so it is
+  tracked here separately and is **not** included in the 254 count above.
+
+Priority rows surfaced by the same detectors (kz===kg / mixed-script):
+
+| file | lesson | field | current text | note |
+|------|--------|-------|--------------|------|
+| b1 | 7 | `quiz[2].expl_kz` | Present Perfect Continuous: have/has been + -ing (working). | identical to `expl_kg` — but it is a grammar formula, likely intentional |
+
+Notes for the reviewer:
+- L7 `uz` fields use **Latin** Uzbek consistently (cleaner than L1–6, whose hint/expl mix Cyrillic+Latin).
+- The 3 `grammar.forms.*.rule_uz` fields contain HTML + Cyrillic transcription by design — not a script error.
+
+**Owner decision (2026-06-14):** review the 254 existing fields FIRST, then this L7 batch, **before**
+authoring B1 L8–12 (deferred to avoid doubling unreviewed translation debt).
+

@@ -53,9 +53,14 @@ Basic structure, first two A1 lessons, initial UI layout.
 ## Known limitations — v1
 
 ### B1 course
-- Only 6 of a planned 12+ lessons exist.
+- **7 of a planned 12 lessons exist** on `b1-dev`. Lesson 7 "Собеседование и повышение"
+  (Present Perfect Continuous, Module 3) was added 2026-06-14 as a **quality sample** — it
+  passes the full audit gate (8/8: counts, snowball, no duplicates) on `b1-dev`.
 - Tracked on `b1-dev` branch; **not deployed to production** — hub card is permanently locked.
-- Will be promoted to `master` when complete and audited.
+- **L8–12 deferred (owner decision 2026-06-14):** native speakers review the existing
+  translation backlog (254 fields) + L7's new draft fields FIRST; only then author L8–12, to
+  avoid doubling unreviewed translation debt. See `specs/translation_review.md`.
+- Will be promoted to `master` when all 12 lessons are complete, translated, and audited.
 
 ### Translations — pending native-speaker review
 File: `specs/translation_review.md` — 254 flagged fields total.
@@ -99,8 +104,11 @@ Current live `CACHE_VERSION`: **`v3`**.
 
 ## Future work
 
-1. **B1 completion** — lessons 7–12, audit gate, merge `b1-dev` → `master`, unlock hub card.
-2. **Translation review** — native-speaker pass on 54 Cat-1 review rows (KZ/KG divergence) and 77 Cat-2 mixed-script UZ fields; update lesson data, re-run audit.
+1. **Translation review (blocks B1 completion)** — native-speaker pass on the 254 existing
+   flagged fields (54 Cat-1 KZ/KG divergence, 123 Cat-1 loanwords, 77 Cat-2 mixed-script UZ) PLUS
+   L7's 320 new draft fields; update lesson data, re-run audit.
+2. **B1 completion** — lessons 8–12 (L7 already drafted as sample), audit gate, merge `b1-dev` →
+   `master`, unlock hub card. **Deferred until item 1 is done** (owner decision 2026-06-14).
 3. **Material Symbols migration for A1** — optional: replace emoji word icons with MS icons for visual consistency with A2 abstract-word cards. Low priority; emoji are functional.
 4. **B2 / C1 levels** — hub cards exist (locked); no content planned yet.
 5. **Analytics / feedback** — currently zero telemetry by design; if user research is needed, add privacy-respecting event logging without external SDK.
