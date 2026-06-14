@@ -72,6 +72,12 @@ Basic structure, first two A1 lessons, initial UI layout.
   ~1,920 draft fields (6 × 320). See `specs/translation_review.md`.
 - Will be promoted to `master` only when the native translation review is complete (content is already
   audit-ready: 12 lessons, MODS finalised, banner bound to `LESSONS.length`, 9/9 gate green).
+- **Path to B1 release (ordered, do not reorder):**
+  1. **Native translation review** — 254 existing flagged fields + 1,920 new L7–L12 draft fields.
+  2. **Merge** `b1-dev` → `master` (resolve audit-tooling drift in favour of master's scripts).
+  3. **Unlock** the hub B1 card in `index.html` (set an unlock condition, e.g. `doneA2Count >= 15`).
+  4. **Bump** `CACHE_VERSION` in `sw.js` (deployment rule — else returning users keep the old cache).
+  5. **Deploy** (push `master`) and verify the live `sw.js` version + a returning-user probe.
 
 ### Translations — pending native-speaker review
 File: `specs/translation_review.md` — 254 flagged fields total.
