@@ -53,9 +53,10 @@ Basic structure, first two A1 lessons, initial UI layout.
 ## Known limitations — v1
 
 ### B1 course
-- **8 of a planned 12 lessons exist** on `b1-dev` (authoring L7–L12 in progress, 2026-06-14):
+- **9 of a planned 12 lessons exist** on `b1-dev` (authoring L7–L12 in progress, 2026-06-14):
   - L7 "Собеседование и повышение" — Present Perfect Continuous (Module 3)
   - L8 "Несчастный случай на ферме" — Past Perfect (Module 4)
+  - L9 "У врача (GP)" — should/shouldn't + First Conditional (Module 4)
   - Each passes the full audit gate (8/8: counts, snowball, no duplicates) on `b1-dev`.
 - Tracked on `b1-dev` branch; **not deployed to production** — hub card is permanently locked.
 - **Translation-review blocker still in force (owner decision 2026-06-14).** The blocker was NOT

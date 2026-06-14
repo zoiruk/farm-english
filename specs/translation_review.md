@@ -342,3 +342,25 @@ confirm with a speaker, low priority):
 
 Notes: `uz` fields use Latin Uzbek consistently; `grammar.forms.*.rule_uz` are HTML+transcription (not script errors).
 
+---
+
+## B1 Lesson 9 "У врача (GP)" (b1-dev branch) — NEW lesson, full AI draft
+
+Added 2026-06-14 on `b1-dev` (should/shouldn't + First Conditional, Module 4 "Health & Safety";
+dialogue uses `d` = doctor / `w` = patient). **Entire lesson is an AI draft** — `ru`/`en` authored
+directly, every `uz`/`tj`/`kg`/`kz` field needs a native pass. **320** localized fields.
+
+Priority rows from the kz===kg detector (all 6 are international loanwords / a grammar formula —
+legitimately identical, confirm with a speaker; low priority):
+
+| file | lesson | field | current text | note |
+|------|--------|-------|--------------|------|
+| b1 | 9 | `words[0].kz` | инфекция | loanword, identical to `.kg` |
+| b1 | 9 | `words[4].kz` | вакцина | loanword, identical to `.kg` |
+| b1 | 9 | `words[10].kz` | сироп | loanword, identical to `.kg` |
+| b1 | 9 | `words[11].kz` | термометр | loanword, identical to `.kg` |
+| b1 | 9 | `words[24].kz` | ингалятор | loanword, identical to `.kg` |
+| b1 | 9 | `quiz[8].expl_kz` | First Conditional: if + Present Simple (it gets). | grammar formula, identical to `.kg` |
+
+Notes: `uz` fields use Latin Uzbek consistently; `grammar.forms.*.rule_uz` are HTML+transcription (not script errors).
+
